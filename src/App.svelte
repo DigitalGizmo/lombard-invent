@@ -1,6 +1,7 @@
 <script>
   import { tweened } from 'svelte/motion';
   import { cubicOut } from 'svelte/easing';
+  import { draggable } from '@neodrag/svelte';
 
   import challenges from './lib/challenges.json';
   import clouds from './assets/images/sky.png'
@@ -81,9 +82,12 @@
           </g>
           {#if challengeIndex === 0}
             <g transform="translate(300 600)">
-              <image href="{power_oxen}" transform="translate(300 0)"/>
-              <image href="{power_steam}" transform="translate(550 0)"/>
-              <image href="{power_trolly}" transform="translate(800 0)" width="250"/>
+              <image href="{power_oxen}" 
+                use:draggable={{ defaultPosition: { x: 300, y: 0 } }} />
+              <image href="{power_steam}" 
+                use:draggable={{ defaultPosition: { x: 550, y: 0 } }}/>
+              <image href="{power_trolly}"  width="250"
+                use:draggable={{ defaultPosition: { x: 800, y: 0 } }}/>
             </g>
           {/if}
         </svg>
