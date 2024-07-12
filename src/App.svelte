@@ -23,15 +23,21 @@
     easing: cubicOut
   });
   
-  // let stillHauling = false;
   let popQuestion = false;
+  
+  let stillHauling = false;
+  async function handleHauler() {
+  // function handleHauler() {
+    stillHauling = true;
 
-  // async function handleHauler() {
-  function handleHauler() {
-    // popQuestion = true;
-    $haulerX = 600;
-    // await $haulerX === 600;
-    // stillHauling = false;
+    // $haulerX += 300;
+    // await $haulerX += 300;
+    // await haulerX.set(500);
+    // await haulerX.set(500);
+    await haulerX.update((haulerX) => haulerX + 300)
+
+
+    stillHauling = false;
     // callback when finished?
   }
 
@@ -52,7 +58,7 @@
     <button on:click={handleHauler}>
       start
     </button>
-    <!-- popQuestion: {popQuestion} -->
+    stillHauling: {stillHauling}
     {#if popQuestion}
     <p>Horses don't cut it, what would be better?</p>
     {/if}
