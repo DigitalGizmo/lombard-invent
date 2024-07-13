@@ -16,7 +16,7 @@
   let frameHeight = 900;
 
   const haulerX = tweened(100, {
-    duration: 3000,
+    duration: 1000,
     easing: cubicOut
   });
   
@@ -36,6 +36,14 @@
   }
 
   // $: if ($haulerX === 600) {popQuestion = true}
+
+  function dragStopped(e) {
+    console.log('neodrag stop function', e)
+  }
+
+  let choiceObjectBounds = {top: 100, left:20, bottom:200, right:100};
+  // let choiceObjectBounds = ".image-panel-image";
+  let positionB = { x: 500, y: 0};
 
 </script>
 
@@ -80,20 +88,38 @@
               {/if}
             </g>
           </g>
-          {#if challengeIndex === 0}
+          {#if challengeIndex === -1}
             <g transform="translate(300 600)">
               <image href="{power_oxen}" 
-                use:draggable={{ defaultPosition: { x: 300, y: 0 } }} />
-              <image href="{power_steam}" 
-                use:draggable={{ defaultPosition: { x: 550, y: 0 } }}/>
+                use:draggable={{ 
+                  defaultPosition: { x: 180, y: 0 }, 
+                  bounds: {top: 100, left:20, bottom:200, right:100} 
+                }} 
+                on:neodrag:end={(e) => console.log('dragging stopped', e)}
+              />
+              <image class="choice-object" href="{power_steam}" 
+                use:draggable={{ 
+                  position: positionB,
+                  bounds: choiceObjectBounds,
+                  onDrag: ({offsetX, offsetY}) => {
+                    positionB = {x: (offsetX*2)-550, y: offsetY*2};
+                  }
+                }}
+                on:neodrag:end={(e) => positionB = {x: 550, y: 0}}
+              />
               <image href="{power_trolly}"  width="250"
-                use:draggable={{ defaultPosition: { x: 800, y: 0 } }}/>
+                use:draggable={{ position: { x: 800, y: 0} }}
+                on:neodrag:end={dragStopped}
+                />
             </g>
           {/if}
         </svg>
       </div> <!-- end image panel image -->
     </div> <!-- /image-panel-fixed -->
   </div>
+
+  <!-- on:neodrag:end={dragStopped} -->
+
 </main>
 
 <style>
