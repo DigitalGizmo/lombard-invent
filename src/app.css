@@ -1,5 +1,13 @@
 
 /* Begin from Moment */
+/* put the images in the only column */
+.image-panel {
+	grid-column: 1;
+	grid-row: 1;
+}
+
+
+
 /* make the image shorter for MOBILE: displays smaller than 800px */
 /* fixed container to keep image from scrolling */
 @media screen and (max-width: 799px) {

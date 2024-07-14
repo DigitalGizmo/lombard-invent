@@ -5,7 +5,9 @@
 
   import challenges from './lib/challenges.json';
   import clouds from './assets/images/sky.png'
+  import clouds_double from './assets/images/sky-double.jpg'
   import landscape from './assets/images/landscape.png'
+  import landscape_double from './assets/images/landscape-double.png'
   import lumber from './assets/images/lumber.png'
   import horses from './assets/images/horses.png'
   import power_oxen from './assets/images/option-oxen.png'
@@ -14,26 +16,39 @@
   import power_kaput from './assets/images/horses-kaput.png'
 
   let frameHeight = 900;
+  let popQuestion = false;
+  
+  let challengeIndex = -1;
+  // let question = challenges[0].question;
 
   const haulerX = tweened(100, {
-    duration: 1000,
+    duration: 4000,
     easing: cubicOut
   });
   
-  let popQuestion = false;
-
-  let challengeIndex = -1;
-  // let question = challenges[0].question;
-  
   let stillHauling = false;
+
   async function handleHauler() {
   // function handleHauler() {
     stillHauling = true;
     // $haulerX += 300;
-    await haulerX.update((haulerX) => haulerX + 200)
+    landX.update((landX) => landX - 400);
+    cloudsX.update((cloudsX) => cloudsX - 200);
+    await haulerX.update((haulerX) => haulerX + 200);
     stillHauling = false;
     challengeIndex +=1;
   }
+
+  const landX = tweened(0, {
+    duration: 4000,
+    easing: cubicOut
+  });
+
+  const cloudsX = tweened(0, {
+    duration: 4000,
+    easing: cubicOut
+  });
+
 
   // $: if ($haulerX === 600) {popQuestion = true}
 
@@ -64,17 +79,17 @@
     </p>
   </div>
 
-  <div> <!-- like image-panel -->
+  <div class="image-panel"> <!-- like image-panel -->
     <div class="image-panel-fixed">
       <div class="image-panel-image">
         <svg viewBox="0 0 2000 1286" preserveAspectRatio="xMidYMid slice">
 
-          <image width="100%" href="{clouds}"
-            transform="translate(0 0)" 
+          <image width="3500px" href="{clouds_double}"
+            transform="translate({$cloudsX} 0)" 
           />
           <!-- {cloudsTransX} , scale(2.8) -->
-          <image width="100%" href="{landscape}"
-            transform="translate(100 0)" 
+          <image width="4000px" href="{landscape_double}" 
+            transform="translate({$landX} 0)" 
           />
           <!-- hauler -->
           <g transform="translate({$haulerX} 400)">
@@ -88,7 +103,7 @@
               {/if}
             </g>
           </g>
-          {#if challengeIndex === -1}
+          {#if challengeIndex === 0}
             <g transform="translate(300 600)">
               <image href="{power_oxen}" 
                 use:draggable={{ 
