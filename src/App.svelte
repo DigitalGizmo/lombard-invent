@@ -20,9 +20,10 @@
   
   let challengeIndex = -1;
   // let question = challenges[0].question;
+  const movementDuration = 6000;
 
   const haulerX = tweened(100, {
-    duration: 4000,
+    duration: movementDuration,
     easing: cubicOut
   });
   
@@ -40,12 +41,12 @@
   }
 
   const landX = tweened(0, {
-    duration: 4000,
+    duration: movementDuration,
     easing: cubicOut
   });
 
   const cloudsX = tweened(0, {
-    duration: 4000,
+    duration: movementDuration,
     easing: cubicOut
   });
 
@@ -54,6 +55,18 @@
 
   function dragStopped(e) {
     console.log('neodrag stop function', e)
+  }
+
+  function dragStop(e) {
+    console.log('stoped at x: ' + e.detail.offsetX + ' y: ' +
+      e.detail.offsetY)
+    if (e.detail.offsetX > 300 && e.detail.offsetX < 400 &&
+    e.detail.offsetY > -270 && e.detail.offsetY < -250
+    ) {
+      positionB = {x: 350, y: -260}
+    } else {
+      positionB = {x: 550, y: 0}
+    }
   }
 
   let choiceObjectBounds = {top: 100, left:20, bottom:200, right:100};
@@ -120,7 +133,7 @@
                     positionB = {x: (offsetX*2)-550, y: offsetY*2};
                   }
                 }}
-                on:neodrag:end={(e) => positionB = {x: 550, y: 0}}
+                on:neodrag:end={dragStop}
               />
               <image href="{power_trolly}"  width="250"
                 use:draggable={{ position: { x: 800, y: 0} }}
@@ -134,6 +147,7 @@
   </div>
 
   <!-- on:neodrag:end={dragStopped} -->
+  <!-- on:neodrag:end={(e) => positionB = {x: 550, y: 0}} -->
 
 </main>
 
