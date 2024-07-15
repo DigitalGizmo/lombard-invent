@@ -4,16 +4,6 @@
   import { draggable } from '@neodrag/svelte';
 
   import challenges from './lib/challenges.json';
-  import clouds from './assets/images/sky.png'
-  import clouds_double from './assets/images/sky-double.jpg'
-  import landscape from './assets/images/landscape.png'
-  import landscape_double from './assets/images/landscape-double.png'
-  import lumber from './assets/images/lumber.png'
-  import horses from './assets/images/horses.png'
-  import power_oxen from './assets/images/option-oxen.png'
-  import power_steam from './assets/images/option-steam-tractor.png'
-  import power_trolly from './assets/images/option-trolley.png'
-  import power_kaput from './assets/images/horses-kaput.png'
 
   let frameHeight = 900;
   let popQuestion = false;
@@ -60,8 +50,8 @@
   function dragStop(e) {
     console.log('stoped at x: ' + e.detail.offsetX + ' y: ' +
       e.detail.offsetY)
-    if (e.detail.offsetX > 300 && e.detail.offsetX < 400 &&
-    e.detail.offsetY > -270 && e.detail.offsetY < -250
+    if (e.detail.offsetX > 280 && e.detail.offsetX < 420 &&
+    e.detail.offsetY > -290 && e.detail.offsetY < -230
     ) {
       positionB = {x: 350, y: -260}
     } else {
@@ -97,35 +87,35 @@
       <div class="image-panel-image">
         <svg viewBox="0 0 2000 1286" preserveAspectRatio="xMidYMid slice">
 
-          <image width="3500px" href="{clouds_double}"
+          <image width="3500px" href="images/sky-double.jpg"
             transform="translate({$cloudsX} 0)" 
           />
           <!-- {cloudsTransX} , scale(2.8) -->
-          <image width="4000px" href="{landscape_double}" 
+          <image width="4000px" href="images/landscape-double.png" 
             transform="translate({$landX} 0)" 
           />
           <!-- hauler -->
           <g transform="translate({$haulerX} 400)">
-            <image  href="{lumber}"/>
+            <image  href="images/lumber.png"/>
             <!-- width="200px" -->
             <g  transform="translate(220 -120)">
               {#if challengeIndex === -1}
-                <image href="{horses}"/>
+                <image href="images/horses.png"/>
               {:else if challengeIndex === 0}
-                <image href="{power_kaput}"/>
+                <image href="images/horses-kaput.png"/>
               {/if}
             </g>
           </g>
           {#if challengeIndex === 0}
             <g transform="translate(300 600)">
-              <image href="{power_oxen}" 
+              <image href="images/option-oxen.png" 
                 use:draggable={{ 
                   defaultPosition: { x: 180, y: 0 }, 
                   bounds: {top: 100, left:20, bottom:200, right:100} 
                 }} 
                 on:neodrag:end={(e) => console.log('dragging stopped', e)}
               />
-              <image class="choice-object" href="{power_steam}" 
+              <image class="choice-object" href="images/option-steam-tractor.png" 
                 use:draggable={{ 
                   position: positionB,
                   bounds: choiceObjectBounds,
@@ -135,7 +125,7 @@
                 }}
                 on:neodrag:end={dragStop}
               />
-              <image href="{power_trolly}"  width="250"
+              <image href="images/option-trolley.png"  width="250"
                 use:draggable={{ position: { x: 800, y: 0} }}
                 on:neodrag:end={dragStopped}
                 />
