@@ -25,7 +25,8 @@
  		position: absolute;
 	}
 	/* the size has to be declared this third time! */
-	.image-panel-image svg {
+	/* .image-panel-image svg { */
+	.image-panel-image div {
 		height: 60vh;
 		width: 100%;
 	}
@@ -53,7 +54,8 @@
 		position: absolute;
 	}
 	/* the size has to be declared this third time! */
-	.image-panel-image svg {
+	/* .image-panel-image svg { */
+	.image-panel-image div {
 		width: 100%;
 		height: calc(100vh - 125px);    
 	}	
