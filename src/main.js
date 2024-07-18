@@ -1,9 +1,9 @@
-import './app.css'
-import App from './App.svelte'
-// import AppX from './AppX.svelte'
+// import './app.css'
+// import App from './App.svelte'
+import AppX from './AppX.svelte'
 // import TestImg from './TestImg.svelte'
 
-const app = new App({
+const app = new AppX({
   target: document.getElementById('app'),
 })
 

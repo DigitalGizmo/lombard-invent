@@ -12,34 +12,35 @@
   // let question = challenges[0].question;
   const movementDuration = 6000;
 
-  const haulerX = tweened(100, {
-    duration: movementDuration,
-    easing: cubicOut
-  });
-  
-  let stillHauling = false;
 
-  async function handleHauler() {
-  // function handleHauler() {
-    stillHauling = true;
-    // $haulerX += 300;
-    landX.update((landX) => landX - 400);
-    cloudsX.update((cloudsX) => cloudsX - 200);
-    await haulerX.update((haulerX) => haulerX + 200);
-    stillHauling = false;
-    challengeIndex +=1;
-  }
-
-  const landX = tweened(0, {
-    duration: movementDuration,
-    easing: cubicOut
-  });
 
   const cloudsX = tweened(0, {
     duration: movementDuration,
     easing: cubicOut
   });
+  
+  const landX = tweened(0, {
+    duration: movementDuration,
+    easing: cubicOut
+  });
 
+  const haulerX = tweened(5, {
+    duration: movementDuration,
+    easing: cubicOut
+  });
+
+  let stillHauling = false;
+
+  // movement
+  async function handleHauler() {
+    stillHauling = true;
+    // $haulerX += 300;
+    landX.update((landX) => landX - 15);
+    cloudsX.update((cloudsX) => cloudsX - 8);
+    await haulerX.update((haulerX) => haulerX + 10);
+    stillHauling = false;
+    challengeIndex +=1;
+  }
 
   // $: if ($haulerX === 600) {popQuestion = true}
 
@@ -79,18 +80,20 @@
       {:else}
         --
       {/if}
+      debug: {$haulerX}
     </p>
 
-    <div>
+    <!-- dragable controlled position overrides normal block layout
+    i.e. absolute is not required for objects to overlapp -->
+    <!-- <div>
       <img 
         class="draggableImage"
         src="images/option-oxen.png" alt="test non svg"
         use:draggable={{defaultPosition: { x: 180, y: 0 }}} 
         on:neodrag:end={(e) => console.log('dragging stopped', e)}
         />
-
         <img  src="images/lumber.png"  alt="lumber"/>
-    </div>
+    </div> -->
 
   </div>
 
@@ -98,34 +101,27 @@
     <div class="image-panel-fixed">
       <div class="image-panel-image">
         <div class="not-svg">
-          <!-- <svg viewBox="0 0 2000 1286" preserveAspectRatio="xMidYMid slice"> -->
 
-          <!-- <img  src="images/sky-double.jpg"  alt="sky" class="moment-image"
-            style="transform:translate({$cloudsX} 0)"
-          /> -->
+          <!-- Clouds and landscape -->
+          <img  src="images/sky-double.jpg"  alt="sky" class="overlaying-image"
+            width="200%" style="transform:translate({$cloudsX}vw, 0px)"
+          />
+          <img  src="images/landscape-double.png" alt="land" class="overlaying-image"
+            width="200%" style="transform:translate({$landX}vw, 0px)"
+          />
 
-          <!-- width="350px" -->
-          <!-- {cloudsTransX} , scale(2.8) -->
-
-          <!-- <img  src="images/landscape-double.png" alt="land" class="moment-image"
-            style="transform:translate({$landX} 0)"
-          /> -->
-
-
-          <!-- width="400px" -->
           <!-- hauler -->
-          <div >
-            <!-- style="transform:translate({$haulerX} 0)" -->
+          <div style="transform:translate({$haulerX}vw, 20vh)">
+            <img  src="images/lumber.png" class="overlaying-image"
+              width="15%" alt="lumber"/> 
 
-            <!-- <img  src="images/lumber.png" width="100px" alt="lumber"/>  -->
-
-            <!-- <div  style="transform:translate(220 -120)">
+            <div  style="transform:translate(15vw, -5vh)">
               {#if challengeIndex === -1}
                 <img src="images/horses.png" width="15%" alt="horses"/>
               {:else if challengeIndex === 0}
                 <img src="images/horses-kaput.png" width="15%" alt="kaput"/>
               {/if}
-            </div> -->
+            </div>
           </div>
           <!-- {#if challengeIndex === 0}
             <div  style="transform:translate(300 600)">
@@ -164,6 +160,9 @@
 </main>
 
 <style>
+  .overlaying-image {
+    position: absolute;
+  }
   .draggableImage{
     width: 20%;
     -webkit-user-drag: none;
@@ -171,8 +170,69 @@
   .not-svg {
     width: 100%;
   }
-  .moment-image {
-        width: 100%;
-        height: 100%;
-    }
+  /* .moment-image { */
+    /* width: 100%;
+    height: 100%; */
+    /* width: 3000px;
+  } */
+
+/* make the image shorter for MOBILE: displays smaller than 800px */
+/* fixed container to keep image from scrolling */
+@media screen and (max-width: 799px) {
+	/* .image-panel div.image-panel-fixed {
+		Removing image-panel so it will also apply to moment-title  */
+	.image-panel-fixed {
+		height: 60vh;
+		width: 100%;
+		position: fixed;
+	}
+	/* no inner div version */
+	.image-panel-image { /* displays smaller than 800px */
+		height: 60vh;
+		width: 100%;
+ 		position: absolute;
+	}
+	/* the size has to be declared this third time! */
+	/* .image-panel-image svg { */
+	/* .image-panel-image div {
+		height: 60vh;
+		width: 100%;
+	}
+	.image-panel-image img {
+		width: 100%;
+		height: 60vh;
+		object-fit: cover;    
+	}	 */
+}
+  
+
+  /* make the image full height for DESKTOP: displays larger than 800px */
+/* fixed container to keep image from scrolling */
+@media screen and (min-width: 800px) {
+	/* .image-panel div.image-panel-fixed {
+		Removing image-panel so it will also apply to moment-title  */
+	.image-panel-fixed {
+		height: calc(100vh - 125px);
+		width: 100%;
+		position: fixed;
+	}
+	/* no inner div version */
+	.image-panel-image {
+		width: 100%;
+		height: calc(100vh - 125px); 
+		position: absolute;
+	}
+	/* the size has to be declared this third time! */
+	/* .image-panel-image svg { */
+	/* .image-panel-image div {
+		width: 100%;
+		height: calc(100vh - 125px);    
+	}	 */
+	/* .image-panel-image img {
+		width: 100%;
+		height: calc(100vh - 125px);
+		object-fit: cover;    
+	}	 */
+}
+
 </style>

@@ -55,13 +55,13 @@
 	}
 	/* the size has to be declared this third time! */
 	/* .image-panel-image svg { */
-	.image-panel-image div {
+	/* .image-panel-image div {
 		width: 100%;
 		height: calc(100vh - 125px);    
-	}	
-	.image-panel-image img {
+	}	 */
+	/* .image-panel-image img {
 		width: 100%;
 		height: calc(100vh - 125px);
 		object-fit: cover;    
-	}	
+	}	 */
 }
