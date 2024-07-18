@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from 'svelte'; //, tick
   import { tweened } from 'svelte/motion';
   import { cubicOut } from 'svelte/easing';
   import { draggable } from '@neodrag/svelte';
@@ -7,12 +8,15 @@
 
   let frameHeight = 900;
   let popQuestion = false;
-  
+  let vwidth = 1200;
   let challengeIndex = -1;
   // let question = challenges[0].question;
-  const movementDuration = 6000;
+  const movementDuration = 5000;
 
-
+  onMount(() => {
+    vwidth = Math.max(document.documentElement.clientWidth || 
+      0, window.innerWidth || 0);
+  })
 
   const cloudsX = tweened(0, {
     duration: movementDuration,
@@ -41,28 +45,30 @@
     stillHauling = false;
     challengeIndex +=1;
   }
-
-  // $: if ($haulerX === 600) {popQuestion = true}
-
+  
   function dragStopped(e) {
     console.log('neodrag stop function', e)
   }
+  
+  let choiceObjectBounds = {top: 100, left:20, bottom:200, right:100};
+  // let choiceObjectBounds = ".image-panel-image";
+  let defaultBx = .1*vwidth;
+  let positionB = { x: defaultBx, y: 0};
+  // $: if ($haulerX === 600) {popQuestion = true}
 
   function dragStop(e) {
     console.log('stoped at x: ' + e.detail.offsetX + ' y: ' +
       e.detail.offsetY)
-    if (e.detail.offsetX > 280 && e.detail.offsetX < 420 &&
-    e.detail.offsetY > -290 && e.detail.offsetY < -230
+    if (e.detail.offsetX > .015*vwidth && e.detail.offsetX < .08*vwidth 
+    // &&e.detail.offsetY > -290 && e.detail.offsetY < -230
     ) {
-      positionB = {x: 350, y: -260}
-    } else {
-      positionB = {x: 550, y: 0}
+      // stick on target
+      positionB = {x: .04*vwidth, y: -170}
+    } else { // back to home base
+      positionB = {x: defaultBx, y: 0}
     }
   }
 
-  let choiceObjectBounds = {top: 100, left:20, bottom:200, right:100};
-  // let choiceObjectBounds = ".image-panel-image";
-  let positionB = { x: 500, y: 0};
 
 </script>
 
@@ -80,20 +86,9 @@
       {:else}
         --
       {/if}
-      debug: {$haulerX}
+      debug: {vwidth}
     </p>
 
-    <!-- dragable controlled position overrides normal block layout
-    i.e. absolute is not required for objects to overlapp -->
-    <!-- <div>
-      <img 
-        class="draggableImage"
-        src="images/option-oxen.png" alt="test non svg"
-        use:draggable={{defaultPosition: { x: 180, y: 0 }}} 
-        on:neodrag:end={(e) => console.log('dragging stopped', e)}
-        />
-        <img  src="images/lumber.png"  alt="lumber"/>
-    </div> -->
 
   </div>
 
@@ -123,32 +118,34 @@
               {/if}
             </div>
           </div>
-          <!-- {#if challengeIndex === 0}
-            <div  style="transform:translate(300 600)">
+          {#if challengeIndex === 0}
+            <div  style="transform:translate(20vw, 20vh)">
               <img src="images/option-oxen.png" alt="ox"
+                width="10%" class="draggable-image"
                 use:draggable={{ 
-                  defaultPosition: { x: 180, y: 0 }, 
+                  defaultPosition: { x: 0, y: 0 }, 
                   bounds: {top: 100, left:20, bottom:200, right:100} 
                 }} 
                 on:neodrag:end={(e) => console.log('dragging stopped', e)}
               />
-              <img class="choice-object" src="images/option-steam-tractor.png" alt="steam"
+              <img src="images/option-steam-tractor.png" 
+                width="10%" class="draggable-image" alt="steam"
                 use:draggable={{ 
                   position: positionB,
                   bounds: choiceObjectBounds,
                   onDrag: ({offsetX, offsetY}) => {
-                    positionB = {x: (offsetX*2)-550, y: offsetY*2};
+                    positionB = {x: offsetX, y: offsetY};
                   }
                 }}
                 on:neodrag:end={dragStop}
               />
-              <img src="images/option-trolley.png"  width="250" alt="trolly"
-                use:draggable={{ position: { x: 800, y: 0} }}
+              <img src="images/option-trolley.png"  width="10%" alt="trolly"
+                class="draggable-image"
+                use:draggable={{ position: { x: .18*vwidth, y: 0} }}
                 on:neodrag:end={dragStopped}
                 />
-            </div> -->
-          <!-- {/if} -->
-          <!-- </svg> -->
+            </div>
+          {/if}
         </div> <!-- new div -->
       </div> <!-- end image panel image -->
     </div> <!-- /image-panel-fixed -->
@@ -163,8 +160,8 @@
   .overlaying-image {
     position: absolute;
   }
-  .draggableImage{
-    width: 20%;
+  .draggable-image{
+    /* width: 15%; */
     -webkit-user-drag: none;
   }
   .not-svg {
