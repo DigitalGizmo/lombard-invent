@@ -16,13 +16,14 @@
 
   let choiceObjectBounds = {top: 100, left:20, bottom:200, right:100};
   // let choiceObjectBounds = ".image-panel-image";
-  let positionB = { x: 500, y: 0};
+  let positionB = { x: 300, y: 0};
+  let positionX = { x: 0, y: 0};
 
   onMount(() => {
     let vwidth = Math.max(document.documentElement.clientWidth || 
       0, window.innerWidth || 0);
-    viewSvgRatio = 1200/vwidth;
-    positionB = { x: 500*viewSvgRatio, y:0};
+    viewSvgRatio = 1600/vwidth;
+    positionB = { x: 300*viewSvgRatio, y:0};
   })
 
   const haulerX = tweened(100, {
@@ -68,7 +69,7 @@
     ) {
       positionB = {x: 350, y: -260}
     } else {
-      positionB = {x: 550, y: 0}
+      positionB = {x: 300*viewSvgRatio, y: 0}
     }
   }
 
@@ -92,6 +93,7 @@
         <image width="4000px" href="images/landscape-double.png" 
           transform="translate({$landX} 0)" 
         />
+
         <!-- hauler -->
         <g transform="translate({$haulerX} 400), scale(1.3)">
           <image  href="images/lumber.png"/>
@@ -105,24 +107,30 @@
           </g>
         </g>
         {#if challengeIndex === -1}
-          <g transform="translate(300 600)">
+
+          <g transform="translate(400 600)">
             <image href="images/option-oxen.png" 
               use:draggable={{ 
-                defaultPosition: { x: 180, y: 0 }, 
+                defaultPosition: { x: 0, y: 0 }, 
                 bounds: {top: 100, left:20, bottom:200, right:100} 
               }} 
               on:neodrag:end={(e) => console.log('dragging stopped', e)}
             />
+
             <image class="choice-object" href="images/option-steam-tractor.png" 
               use:draggable={{ 
                 position: positionB,
-                bounds: choiceObjectBounds,
+                // bounds: choiceObjectBounds,
                 onDrag: ({offsetX, offsetY}) => {
+                  // jumps when move starts. 
+                  // Maybe need ratio related offset for start positio
                   positionB = {x: (offsetX*viewSvgRatio)-0, y: offsetY*viewSvgRatio};
+                  // positionB = {x: offsetX, y: offsetY};
                 }
               }}
               on:neodrag:end={dragStop}
             />
+
             <image href="images/option-trolley.png"  width="250"
               use:draggable={{ position: { x: 800, y: 0} }}
               on:neodrag:end={dragStopped}
