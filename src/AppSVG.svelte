@@ -19,8 +19,9 @@
   let positionB = { x: 300, y: 0};
   let positionX = { x: 0, y: 0};
 
+  let vwidth = 1600;
   onMount(() => {
-    let vwidth = Math.max(document.documentElement.clientWidth || 
+    vwidth = Math.max(document.documentElement.clientWidth || 
       0, window.innerWidth || 0);
     viewSvgRatio = 1600/vwidth;
     positionB = { x: 300*viewSvgRatio, y:0};
@@ -124,7 +125,9 @@
                 onDrag: ({offsetX, offsetY}) => {
                   // jumps when move starts. 
                   // Maybe need ratio related offset for start positio
-                  positionB = {x: (offsetX*viewSvgRatio)-0, y: offsetY*viewSvgRatio};
+                  positionB = {x: (offsetX*viewSvgRatio), y: offsetY*viewSvgRatio};
+                  // positionB = {x: (offsetX*viewSvgRatio)-((1600-vwidth)*viewSvgRatio), y: offsetY*viewSvgRatio};
+                  // positionB = {x: (offsetX*viewSvgRatio)-(offsetX-(offsetX*viewSvgRatio)), y: offsetY*viewSvgRatio};
                   // positionB = {x: offsetX, y: offsetY};
                 }
               }}
@@ -146,7 +149,7 @@
         {#if challengeIndex > -1}
         {challenges[challengeIndex].question}
         {:else}
-        --
+        -- vwidth: {vwidth}
         {/if}
       </p>
       <button on:click={handleHauler}>
