@@ -1,3 +1,95 @@
-h1 {
-  color: blue;
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background-color: #F9FDFF;
+}
+
+div.background img.sky {
+  height: 90%;
+  width: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+div.background img.land {
+  height: 80%;
+  width: auto;
+  position: absolute;
+  top: 10vh;
+  left: 0;
+}
+
+header {
+  position: absolute;
+  width: 100vw;
+  text-align: center;
+}
+
+header h1 {
+  color: #5CB8C4;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 1px black;
+  letter-spacing: .15em;
+}
+
+header ul.progress {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+header ul.progress li {
+  display: inline-block;
+  margin: 0 4%;
+  background: rgba(162, 175, 165, .5);
+  width: 60px;
+  font-size: 2em;
+  line-height: 1.75;
+  height: 60px;
+  color: white;
+  border-radius: 50%;
+}
+
+div.hauler {
+  position: absolute;
+  top: 35vh;
+  text-align: center;
+  width: 100%;
+}
+
+div.hauler img {
+  width: 25%;
+}
+
+article {
+  background: rgba(2, 2, 2, .2);
+  position: absolute;
+  bottom: 5vh;
+  left: 15px;
+  width: 35vw;
+  border: 1px solid lightgray;
+  padding: 1em;
+}
+
+article h2, article p {
+  margin: 0;
+}
+
+div.options {
+  position: absolute;
+  bottom: 5vh;
+  left: 45vw;
+  width: 50vw;
+}
+
+div.options img {
+  width: 12vw;
+}
+
+div.option1, div.option2 {
+  float: left;
+  margin-right: 2em;
 }
