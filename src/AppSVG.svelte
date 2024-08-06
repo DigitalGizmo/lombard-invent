@@ -141,7 +141,7 @@
           </g>
         {/if}
       </svg>
-    </div>
+    </div> <!-- svg container -->
 
     <div class="text-box">
       <p>
