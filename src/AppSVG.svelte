@@ -134,7 +134,7 @@
               on:neodrag:end={dragStop}
             />
 
-            <image href="images/option-trolley.png"  width="250"
+            <image href="images/option-trolly.png"  width="250"
               use:draggable={{ position: { x: 800, y: 0} }}
               on:neodrag:end={dragStopped}
               />
