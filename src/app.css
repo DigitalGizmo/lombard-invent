@@ -87,6 +87,8 @@ div.options {
 
 div.options img {
   width: 12vw;
+  /* Prevent chrome auto drag */
+  -webkit-user-drag: none;
 }
 
 div.option1, div.option2 {
