@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from 'svelte'; //, tick
+  import { onMount, tick } from 'svelte'; //, tick
   import { tweened } from 'svelte/motion';
   import { cubicOut } from 'svelte/easing';
   import { draggable } from '@neodrag/svelte';
@@ -7,7 +7,7 @@
   import challenges from './lib/challenges.json';
   const assetPath = "https://dev.digitalgizmo.com/msm-ed/lombard-invent-assets/"
   // const assetPath = ""
-  let challengeIndex = 1;
+  let challengeIndex = 0;
   const movementDuration = 2000; // 5000
   let vwidth = 1200;
   let vheight = 800;
@@ -29,13 +29,23 @@
     // get the hauler (the horse part) location in x and y
     let hauler = document.getElementById('hauler');
     let rect = hauler.getBoundingClientRect();
-    haulerX = rect.right;
+    haulerX = rect.left;
+  })
+
+  async function calcOptionOffsets() {
+    await tick();
+    console.log('finished waiting')
     // option1
     let option1 = document.getElementById('option1');
     let rect1 = option1.getBoundingClientRect();
-    option1VX = rect1.right;
-    option1LandingXOffset = haulerX - rect1.right;    
-  })
+    option1VX = rect1.left;
+    option1LandingXOffset = haulerX - rect1.left;  
+  }
+
+  $: if (challengeIndex === 1) {
+    console.log('just turned 1')
+    calcOptionOffsets();
+  }
 
   const cloudsX = tweened(0, {
     duration: movementDuration,
@@ -72,7 +82,8 @@
     // &&e.detail.offsetY > -290 && e.detail.offsetY < -230
     ) {
       // stick on target
-      positionA = {x: option1LandingXOffset/1.8, y: -.33*vheight}
+      positionA = {x: option1LandingXOffset + 50, 
+        y: -.33*vheight}
       // positionA = {x: 0, y: -.33*vheight}
       // positionA = {x: haulerX, y: haulerY}
     } else { // back to home base
