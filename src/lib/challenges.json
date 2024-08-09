@@ -1,8 +1,13 @@
 [
   {
+    "slug": "start",
+    "title": "A series of challenges",
+    "question": "You're the inventor and your challenge will be to get these logs hauled effeicantly!"
+  },
+  {
     "slug": "power",
-    "title": "Power",
-    "question": "Horses won't cut it, what's better?"
+    "title": "The Power Problem",
+    "question": "Horses won't cut it, what's better? Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
     "slug": "traction",

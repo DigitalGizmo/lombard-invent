@@ -1,16 +1,47 @@
 <script>
+  import { onMount } from 'svelte'; //, tick
+  import { tweened } from 'svelte/motion';
+  import { cubicOut } from 'svelte/easing';
+  import { draggable } from '@neodrag/svelte';
 
   import challenges from './lib/challenges.json';
   const assetPath = "https://dev.digitalgizmo.com/msm-ed/lombard-invent-assets/"
   // const assetPath = ""
+
+  let challengeIndex = 0;
+  const movementDuration = 2000; // 5000
+
+  const cloudsX = tweened(0, {
+    duration: movementDuration,
+    easing: cubicOut
+  });
+  const landX = tweened(0, {
+    duration: movementDuration,
+    easing: cubicOut
+  });
+
+  // movement
+  async function nextMove() {
+    // stillHauling = true;
+    // $haulerX + 300;
+    // await haulerX.update((haulerX) => haulerX + 10);
+    landX.update((landX) => landX - 15);
+    await cloudsX.update((cloudsX) => cloudsX - 8);
+    // stillHauling = false;
+    challengeIndex +=1;
+  }
 
 </script>
 
 <div class="wrapper">
 
   <div class="background">
-    <img class="sky" src="{assetPath}images/sky-double.jpg" alt="sky" />
-    <img class="land" src="{assetPath}images/landscape-double.png" alt="landscape" />
+    <img class="sky" src="{assetPath}images/sky-double.jpg"  alt="sky" 
+      style="transform:translate({$cloudsX}vw, 0px)"
+    />
+    <img class="land" src="{assetPath}images/landscape-double.png" alt="land" 
+      style="transform:translate({$landX}vw, 0px)"
+    />
   </div>
 
   <header>
@@ -30,8 +61,15 @@
   </div>
 
   <article>
-    <h2>The Power Problem</h2>
-    <p>{challenges[0].question} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <h2>{challenges[challengeIndex].title}</h2>
+    <p>{challenges[challengeIndex].question} </p>
+
+    {#if challengeIndex === 0}
+      <button on:click={nextMove}>
+        start
+      </button>
+
+    {/if}    
   </article>
 
   <div class="options">
