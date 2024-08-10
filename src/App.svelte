@@ -9,27 +9,34 @@
   // const assetPath = ""
   let challengeIndex = 0;
   const movementDuration = 2000; // 5000
-  let vwidth = 1200;
-  let vheight = 800;
+  // let vwidth = 1200;
+  // let vheight = 800;
 
   let choiceObjectBounds = {top: 100, left:20, bottom:50, right:50};
   let positionA = { x: 0, y: 0};
 
-  let haulerX = 600;
-  let haulerY = 400;
-  let option1VX = 300;
+  let haulerLeft = 600;
+  let haulerTop = 400;
+  let haulerWidth = 200;
+  let haulerHeight = 150;
+  // let option1Left = 300;
+  // let optionY = 200;
   // let option1LandingX = 20;
   let option1LandingXOffset = 18;
+  let optionLandingYOffset = -100;
 
   onMount(() => {
-    vwidth = Math.max(document.documentElement.clientWidth || 
-      0, window.innerWidth || 0);
-    vheight = Math.max(document.documentElement.clientHeight || 
-      0, window.innerHeight || 0);
+    // vwidth = Math.max(document.documentElement.clientWidth || 
+    //   0, window.innerWidth || 0);
+    // vheight = Math.max(document.documentElement.clientHeight || 
+    //   0, window.innerHeight || 0);
     // get the hauler (the horse part) location in x and y
     let hauler = document.getElementById('hauler');
     let rect = hauler.getBoundingClientRect();
-    haulerX = rect.left;
+    haulerLeft = rect.left;
+    haulerTop = rect.top;
+    haulerWidth = rect.right - rect.left;
+    haulerHeight = rect.top - rect.bottom;
   })
 
   async function calcOptionOffsets() {
@@ -37,9 +44,11 @@
     console.log('finished waiting')
     // option1
     let option1 = document.getElementById('option1');
-    let rect1 = option1.getBoundingClientRect();
-    option1VX = rect1.left;
-    option1LandingXOffset = haulerX - rect1.left;  
+    let option1Rect = option1.getBoundingClientRect();
+    // option1Left = option1Rect.left;
+    // optionY = option1Rect.top;
+    option1LandingXOffset = haulerLeft - option1Rect.left;  
+    optionLandingYOffset = haulerTop - option1Rect.top;  
   }
 
   $: if (challengeIndex === 1) {
@@ -59,7 +68,6 @@
   // movement
   async function nextMove() {
     // stillHauling = true;
-    // $haulerX + 300;
     // await haulerX.update((haulerX) => haulerX + 10);
     landX.update((landX) => landX - 15);
     await cloudsX.update((cloudsX) => cloudsX - 8);
@@ -68,24 +76,18 @@
   }
 
   function dragStop(e) {
-    /* move to onMount when we have an invisible option1 to start with */
-    // let option1 = document.getElementById('option1');
-    // let rect1 = option1.getBoundingClientRect();
-    // option1VX = rect1.right;
-    // option1LandingXOffset = haulerX - rect1.right;
-
     /* Landing position of a given option is relative to its start point
     * not relative to the viewport */
     console.log('stoped at x: ' + e.detail.offsetX + ' y: ' +
       e.detail.offsetY)
-    if (e.detail.offsetX > .03*vwidth && e.detail.offsetX < .24*vwidth 
-    // &&e.detail.offsetY > -290 && e.detail.offsetY < -230
+    if (e.detail.offsetX > option1LandingXOffset && 
+      e.detail.offsetX < (option1LandingXOffset + haulerWidth - 40) &&
+      e.detail.offsetY > optionLandingYOffset && 
+      e.detail.offsetY < (optionLandingYOffset - haulerHeight - 30)
     ) {
       // stick on target
       positionA = {x: option1LandingXOffset + 50, 
-        y: -.33*vheight}
-      // positionA = {x: 0, y: -.33*vheight}
-      // positionA = {x: haulerX, y: haulerY}
+        y: optionLandingYOffset + 40} 
     } else { // back to home base
       positionA = {x: 0, y: 0} // defaultBx
     }
@@ -128,7 +130,8 @@
         start
       </button>
     {/if}    
-    -- vwidth: {vwidth} haulerX: {haulerX} option1VX: {option1VX}
+    -- vwidth:  haulerLeft: {haulerLeft} 
+    haulerHeight: {haulerHeight} 
     option1LandingXOffset: {option1LandingXOffset}
   </article>
 
