@@ -2,7 +2,12 @@
   {
     "slug": "start",
     "title": "A series of challenges",
-    "question": "You're the inventor and your challenge will be to get these logs hauled effeicantly!"
+    "question": "You're the inventor and your challenge will be to get these logs hauled effeicantly!",
+    "options": [
+      {
+        "feedback": "well, oxen are too slow, and they don't like the cold"
+      }
+    ]
   },
   {
     "slug": "power",
