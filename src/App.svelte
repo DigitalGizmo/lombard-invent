@@ -8,6 +8,7 @@
   const assetPath = "https://dev.digitalgizmo.com/msm-ed/lombard-invent-assets/"
   // const assetPath = ""
   let challengeIndex = 0;
+  let chosenOptionIndex = 0;
   let isFeedback = false;
   const movementDuration = 2000; // 5000
   // let vwidth = 1200;
@@ -18,8 +19,8 @@
 
   let optionAElement;
 
-  let haulerLeft = 600;
-  let haulerTop = 400;
+  // let haulerLeft = 600;
+  // let haulerTop = 400;
   let haulerWidth = 300;
   let haulerHeight = 250;
   // let option1Left = 300;
@@ -33,52 +34,22 @@
 
     let hauler = document.getElementById('hauler');
     let rect = hauler.getBoundingClientRect();
-    haulerLeft = Math.round(rect.left);
-    haulerTop = Math.round(rect.top);
-    haulerWidth =  Math.round(rect.right) - haulerLeft;
-    haulerHeight = Math.round(rect.bottom) - haulerTop;
-    console.log('haulerLeft:' + haulerLeft + ' haulerTop:' + haulerTop + 
+    // haulerLeft = Math.round(rect.left);
+    // haulerTop = Math.round(rect.top);
+    haulerWidth =  Math.round(rect.right - rect.left);
+    haulerHeight = Math.round(rect.bottom - rect.top);
+    console.log('haulerLeft:' + rect.left + ' haulerTop:' + rect.top + 
     ' haulerWidth:' + haulerWidth + ' haulerHeight:' + haulerHeight)
 
     let optionARect = optionAElement.getBoundingClientRect();
     // option1Left = optionARect.left;
     optionTop = optionARect.top;
     console.log('optionTop: ' + optionTop);
-    option1LandingXOffset = haulerLeft - optionARect.left;  
-    optionLandingYOffset = -(Math.round(optionARect.top) - haulerTop);  
+    option1LandingXOffset = rect.left - optionARect.left;  
+    optionLandingYOffset = -(Math.round(optionARect.top) - rect.top);  
     console.log('distance from opt top to haul top: ' + optionLandingYOffset)
 
   })
-
-  // async function calcHaulerOffsets() {
-  //   await tick();
-  //   console.log('finished waiting')
-
-  //   let hauler = document.getElementById('hauler');
-  //   let rect = hauler.getBoundingClientRect();
-  //   haulerLeft = Math.round(rect.left);
-  //   haulerTop = Math.round(rect.top);
-  //   haulerWidth =  Math.round(rect.right) - haulerLeft;
-  //   haulerHeight = Math.round(rect.bottom) - haulerTop;
-  //   console.log('haulerLeft:' + haulerLeft + ' haulerTop:' + haulerTop + 
-  //   ' haulerWidth:' + haulerWidth + ' haulerHeight:' + haulerHeight)
-  //   calcOptionOffsets();
-
-  // }
-
-  // async function calcOptionOffsets() {
-  //   await tick();
-  //   // option1
-  //   // let optionA = document.getElementById('optionA');
-  //   // let optionARect = optionA.getBoundingClientRect();
-  //   let optionARect = optionAElement.getBoundingClientRect();
-  //   // option1Left = optionARect.left;
-  //   optionTop = optionARect.top;
-  //   console.log('optionTop: ' + optionTop);
-  //   option1LandingXOffset = haulerLeft - optionARect.left;  
-  //   optionLandingYOffset = -(Math.round(optionARect.top) - haulerTop);  
-  //   console.log('distance from opt top to haul top: ' + optionLandingYOffset)
-  // }
 
   $: if (challengeIndex === 1) {
     console.log('just turned 1')
@@ -121,6 +92,7 @@
         y: optionLandingYOffset} 
       // determine feedback
       isFeedback = true;
+      chosenOptionIndex = 1;
     } else { // back to home base
       positionA = {x: 0, y: 0} // defaultBx
     }
@@ -151,14 +123,15 @@
 
   <div class="hauler">
     <img src="{assetPath}images/lumber.png" alt="lumber"/>
-    <img src="{assetPath}images/horses.png" alt="horses" id="hauler"/>
+    <img src="{assetPath}images/{challenges[challengeIndex].options[chosenOptionIndex].imageName}.png" 
+    alt="horses" id="hauler"/>
   </div>
 
   <article>
     <h2>{challenges[challengeIndex].title}</h2>
     {#if isFeedback}
       <!-- <p>{challenges[challengeIndex].options[0].feedback} </p> -->
-      <p>well, oxen are too slow, and they don't like the cold </p>
+      <p>{challenges[challengeIndex].options[0].feedback} </p>
     {:else}
       <p>{challenges[challengeIndex].question} </p>
       {#if challengeIndex === 0}
@@ -167,12 +140,12 @@
         </button>
       {/if}   
     {/if}
-    <p>
-      -- vwidth:  haulerLeft: {haulerLeft} 
+    <!-- <p>
+      -- vwidth:  haulerLeft: not a var 
       haulerHeight: {haulerHeight} 
       option1LandingXOffset: {option1LandingXOffset}
       optionLandingYOffset: {optionLandingYOffset}
-    </p>
+    </p> -->
 
   </article>
 
@@ -180,7 +153,7 @@
     <div class="option1" >
       
       <!-- {#if challengeIndex === 1} -->
-        <img src="{assetPath}images/option-oxen.png" 
+        <img src="{assetPath}images/{challenges[challengeIndex].options[1].imageName}.png" 
           id="optionA" alt="option 1: oxen" 
           bind:this={optionAElement}
           use:draggable={{ 

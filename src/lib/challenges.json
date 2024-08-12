@@ -2,18 +2,34 @@
   {
     "slug": "start",
     "title": "A series of challenges",
+    "imageName": "horses",
     "question": "You're the inventor and your challenge will be to get these logs hauled effeicantly!",
     "options": [
       {
-        "feedback": "well, oxen are too slow, and they don't like the cold"
+        "imageName": "horses",
+        "feedback": "no feedback on start"
+      },
+      {
+        "imageName": "option-blank",
+        "feedback": "no feedback on start"
       }
     ]
   },
   {
     "slug": "power",
     "title": "The Power Problem",
-    "question": "Horses won't cut it, what's better? Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-  },
+    "imageName": "horses-kaput",
+    "question": "Horses won't cut it, what's better? Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "options": [
+      {
+        "imageName": "horses-kaput",
+        "feedback": "no feedback on for main image"
+      },
+      {
+        "imageName": "option-oxen",
+        "feedback": "well, oxen are too slow, and they don't like the cold"
+      }
+    ]  },
   {
     "slug": "traction",
     "title": "Traction",
