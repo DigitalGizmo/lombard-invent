@@ -2,16 +2,22 @@
   {
     "slug": "start",
     "title": "A series of challenges",
-    "imageName": "horses",
-    "question": "You're the inventor and your challenge will be to get these logs hauled effeicantly!",
+    "imageName": "horsesX",
+    "question": "You're the inventor and your challenge will be to get these logs hauled efficiantly!",
     "options": [
       {
-        "imageName": "horses",
-        "feedback": "no feedback on start"
+        "imageName": "horsesX",
+        "feedback": "no feedback on start",
+        "correctnessStates": [
+          {"imageName": "horses"}
+        ]
       },
       {
-        "imageName": "option-blank",
-        "feedback": "no feedback on start"
+        "imageName": "option-blankX",
+        "feedback": "no feedback on start",
+        "correctnessStates": [
+          {"imageName": "option-blank"}
+        ]
       }
     ]
   },
@@ -22,12 +28,19 @@
     "question": "Horses won't cut it, what's better? Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "options": [
       {
-        "imageName": "horses-kaput",
-        "feedback": "no feedback on for main image"
+        "imageName": "horses-kaputX",
+        "feedback": "no feedback on for main image",
+        "correctnessStates": [
+          {"imageName": "horses-kaput"}
+        ]
       },
       {
         "imageName": "option-oxen",
-        "feedback": "well, oxen are too slow, and they don't like the cold"
+        "feedback": "well, oxen are too slow, and they don't like the cold",
+        "correctnessStates": [
+          {"imageName": "option-oxen"},
+          {"imageName": "option-oxen-kaput"}
+        ]
       }
     ]  },
   {

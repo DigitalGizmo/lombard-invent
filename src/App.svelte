@@ -10,6 +10,8 @@
   let challengeIndex = 0;
   let chosenOptionIndex = 0;
   let isFeedback = false;
+  let correctnessState = 0;
+  let optionToHide = "";
   const movementDuration = 2000; // 5000
   // let vwidth = 1200;
   // let vheight = 800;
@@ -30,14 +32,12 @@
   let optionLandingYOffset = -100;
 
   onMount(() => {
-
-
     let hauler = document.getElementById('hauler');
     let rect = hauler.getBoundingClientRect();
     // haulerLeft = Math.round(rect.left);
     // haulerTop = Math.round(rect.top);
-    haulerWidth =  Math.round(rect.right - rect.left);
-    haulerHeight = Math.round(rect.bottom - rect.top);
+    haulerWidth =  Math.round(rect.width);
+    haulerHeight = Math.round(rect.height);
     console.log('haulerLeft:' + rect.left + ' haulerTop:' + rect.top + 
     ' haulerWidth:' + haulerWidth + ' haulerHeight:' + haulerHeight)
 
@@ -48,7 +48,6 @@
     option1LandingXOffset = rect.left - optionARect.left;  
     optionLandingYOffset = -(Math.round(optionARect.top) - rect.top);  
     console.log('distance from opt top to haul top: ' + optionLandingYOffset)
-
   })
 
   $: if (challengeIndex === 1) {
@@ -75,6 +74,18 @@
     challengeIndex +=1;
   }
 
+  // Short move for wring
+  async function shortMove() {
+    // stillHauling = true;
+    // await haulerX.update((haulerX) => haulerX + 10);
+    landX.update((landX) => landX - 5);
+    await cloudsX.update((cloudsX) => cloudsX - 3);
+    // stillHauling = false;
+    // challengeIndex +=1;
+    // Kaput the current main hauling image
+    correctnessState = 1;
+  }
+
   function dragStop(e) {
     /* Landing position of a given option is relative to its start point
     * not relative to the viewport
@@ -88,11 +99,19 @@
       // -400 is lt (-500 + 200) aka -400 is lt -300
     ) {
       // stick on target
-      positionA = {x: option1LandingXOffset, 
-        y: optionLandingYOffset} 
+      // hide option version of imag
+      // positionA = {x: option1LandingXOffset, 
+      //   y: optionLandingYOffset} 
       // determine feedback
       isFeedback = true;
+      // index change will change main "horse" image
       chosenOptionIndex = 1;
+      // Hide the option image 
+      optionToHide = "hide-option";
+      // Put it away
+      positionA = {x: 0, y: 0}
+      // Need to trigger short movement
+      shortMove();
     } else { // back to home base
       positionA = {x: 0, y: 0} // defaultBx
     }
@@ -123,7 +142,7 @@
 
   <div class="hauler">
     <img src="{assetPath}images/lumber.png" alt="lumber"/>
-    <img src="{assetPath}images/{challenges[challengeIndex].options[chosenOptionIndex].imageName}.png" 
+    <img src="{assetPath}images/{challenges[challengeIndex].options[chosenOptionIndex].correctnessStates[correctnessState].imageName}.png" 
     alt="horses" id="hauler"/>
   </div>
 
@@ -131,7 +150,7 @@
     <h2>{challenges[challengeIndex].title}</h2>
     {#if isFeedback}
       <!-- <p>{challenges[challengeIndex].options[0].feedback} </p> -->
-      <p>{challenges[challengeIndex].options[0].feedback} </p>
+      <p>{challenges[challengeIndex].options[chosenOptionIndex].feedback} </p>
     {:else}
       <p>{challenges[challengeIndex].question} </p>
       {#if challengeIndex === 0}
@@ -153,7 +172,8 @@
     <div class="option1" >
       
       <!-- {#if challengeIndex === 1} -->
-        <img src="{assetPath}images/{challenges[challengeIndex].options[1].imageName}.png" 
+        <img src="{assetPath}images/{challenges[challengeIndex].options[1].correctnessStates[correctnessState].imageName}.png" 
+          class="{optionToHide}"
           id="optionA" alt="option 1: oxen" 
           bind:this={optionAElement}
           use:draggable={{ 
@@ -184,3 +204,9 @@
     </div>
   
 </div><!--/wrapper-->
+
+<style>
+  .hide-option {
+    visibility: hidden;
+  }
+</style>
