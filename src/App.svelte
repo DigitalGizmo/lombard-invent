@@ -31,23 +31,28 @@
   let option1LandingXOffset = 18;
   let optionLandingYOffset = -100;
 
-  onMount(() => {
+  onMount(async() => {
+    await tick();
     let hauler = document.getElementById('hauler');
-    let rect = hauler.getBoundingClientRect();
     // haulerLeft = Math.round(rect.left);
     // haulerTop = Math.round(rect.top);
-    haulerWidth =  Math.round(rect.width);
-    haulerHeight = Math.round(rect.height);
-    console.log('haulerLeft:' + rect.left + ' haulerTop:' + rect.top + 
-    ' haulerWidth:' + haulerWidth + ' haulerHeight:' + haulerHeight)
+    setTimeout(() => {
+      let rect = hauler.getBoundingClientRect();
+      haulerWidth =  Math.round(rect.width);
+      haulerHeight = Math.round(rect.height);
 
-    let optionARect = optionAElement.getBoundingClientRect();
-    // option1Left = optionARect.left;
-    optionTop = optionARect.top;
-    console.log('optionTop: ' + optionTop);
-    option1LandingXOffset = rect.left - optionARect.left;  
-    optionLandingYOffset = -(Math.round(optionARect.top) - rect.top);  
-    console.log('distance from opt top to haul top: ' + optionLandingYOffset)
+
+      console.log('haulerLeft:' + rect.left + ' haulerTop:' + rect.top + 
+      ' haulerWidth:' + haulerWidth + ' haulerHeight:' + haulerHeight)
+
+      let optionARect = optionAElement.getBoundingClientRect();
+      // option1Left = optionARect.left;
+      optionTop = optionARect.top;
+      console.log('optionTop: ' + optionTop);
+      option1LandingXOffset = rect.left - optionARect.left;  
+      optionLandingYOffset = -(Math.round(optionARect.top) - rect.top);  
+      console.log('distance from opt top to haul top: ' + optionLandingYOffset)
+    }, 10);
   })
 
   $: if (challengeIndex === 1) {
