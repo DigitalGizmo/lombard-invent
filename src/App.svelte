@@ -5,14 +5,14 @@
   import { draggable } from '@neodrag/svelte';
 
   import challenges from './lib/challenges.json';
-  const assetPath = "https://dev.digitalgizmo.com/msm-ed/lombard-invent-assets/"
-  // const assetPath = ""
+  // const assetPath = "https://dev.digitalgizmo.com/msm-ed/lombard-invent-assets/"
+  const assetPath = ""
   let challengeIndex = 0;
   let chosenOptionIndex = 0;
   let isFeedback = false;
   let correctnessState = 0;
   let optionToHide = "";
-  const movementDuration = 2000; // 5000
+  const movementDuration = 5000; // 5000
   // let vwidth = 1200;
   // let vheight = 800;
 
@@ -32,16 +32,30 @@
   let optionLandingYOffset = -100;
 
   onMount(async() => {
+    // Workaround for apparent bug - get the hauler twice here
+    // and then again in calcOptionOffsets
     await tick();
     let hauler = document.getElementById('hauler');
-    // haulerLeft = Math.round(rect.left);
-    // haulerTop = Math.round(rect.top);
-    console.log('1st rect: ' + hauler?.getBoundingClientRect());
+    // console.log('1st rect: ' + hauler.getBoundingClientRect());
+    let tempRect = hauler.getBoundingClientRect();
     setTimeout(() => {
-      let rect = hauler?.getBoundingClientRect();
+      let rect = hauler.getBoundingClientRect();
+      // haulerWidth =  Math.round(rect.width);
+      haulerHeight = Math.round(rect.height);
+      console.log(' hauler height onMount in timeout: ' + haulerHeight);
+    }, 10);
+  })
+
+  async function calcOptionOffsets() {
+    await tick();
+    console.log('finished waiting')
+    let hauler = document.getElementById('hauler');
+
+    console.log('1st rect: ' + hauler.getBoundingClientRect());
+    setTimeout(() => {
+      let rect = hauler.getBoundingClientRect();
       haulerWidth =  Math.round(rect.width);
       haulerHeight = Math.round(rect.height);
-
 
       console.log('haulerLeft:' + rect.left + ' haulerTop:' + rect.top + 
       ' haulerWidth:' + haulerWidth + ' haulerHeight:' + haulerHeight)
@@ -54,42 +68,11 @@
       optionLandingYOffset = -(Math.round(optionARect.top) - rect.top);  
       console.log('distance from opt top to haul top: ' + optionLandingYOffset)
     }, 10);
-  })
-
-// async function calcHaulerOffsets() {
-  //   await tick();
-  //   console.log('finished waiting')
-
-  //   let hauler = document.getElementById('hauler');
-  //   let rect = hauler.getBoundingClientRect();
-  //   haulerLeft = Math.round(rect.left);
-  //   haulerTop = Math.round(rect.top);
-  //   haulerWidth =  Math.round(rect.right) - haulerLeft;
-  //   haulerHeight = Math.round(rect.bottom) - haulerTop;
-  //   console.log('haulerLeft:' + haulerLeft + ' haulerTop:' + haulerTop + 
-  //   ' haulerWidth:' + haulerWidth + ' haulerHeight:' + haulerHeight)
-  //   calcOptionOffsets();
-
-  // }
-
-  // async function calcOptionOffsets() {
-  //   await tick();
-  //   // option1
-  //   // let optionA = document.getElementById('optionA');
-  //   // let optionARect = optionA.getBoundingClientRect();
-  //   let optionARect = optionAElement.getBoundingClientRect();
-  //   // option1Left = optionARect.left;
-  //   optionTop = optionARect.top;
-  //   console.log('optionTop: ' + optionTop);
-  //   option1LandingXOffset = haulerLeft - optionARect.left;  
-  //   optionLandingYOffset = -(Math.round(optionARect.top) - haulerTop);  
-  //   console.log('distance from opt top to haul top: ' + optionLandingYOffset)
-  // }
-
+  }  
 
   $: if (challengeIndex === 1) {
     console.log('just turned 1')
-    // calcHaulerOffsets();
+    calcOptionOffsets();
   }
 
   const cloudsX = tweened(0, {
@@ -135,19 +118,18 @@
       e.detail.offsetY < (optionLandingYOffset + haulerHeight - 30 ) 
       // -400 is lt (-500 + 200) aka -400 is lt -300
     ) {
-      // stick on target
-      // hide option version of imag
-      // positionA = {x: option1LandingXOffset, 
-      //   y: optionLandingYOffset} 
       // determine feedback
       isFeedback = true;
       // index change will change main "horse" image
       chosenOptionIndex = 1;
-      // Hide the option image 
+      // No longer stick option on target
+      // positionA = {x: option1LandingXOffset, 
+      //   y: optionLandingYOffset} 
+      // Hide option instead
       optionToHide = "hide-option";
       // Put it away
       positionA = {x: 0, y: 0}
-      // Need to trigger short movement
+      // Trigger short movement
       shortMove();
     } else { // back to home base
       positionA = {x: 0, y: 0} // defaultBx
@@ -205,10 +187,10 @@
 
   </article>
 
-  <div class="options">
-    <div class="option1" >
+  {#if challengeIndex === 1}
+    <div class="options">
+      <div class="option1" >
       
-      <!-- {#if challengeIndex === 1} -->
         <img src="{assetPath}images/{challenges[challengeIndex].options[1].correctnessStates[correctnessState].imageName}.png" 
           class="{optionToHide}"
           id="optionA" alt="option 1: oxen" 
@@ -223,11 +205,9 @@
           on:neodrag:end={dragStop}      
         />
         <h3>Oxen</h3>
-      <!-- {:else}
-          <img src="{assetPath}images/option-blank.png" 
-          alt="option 1: oxen"/>
-      {/if} -->
-
+        <!-- {:else}
+            <img src="{assetPath}images/option-blank.png" 
+            alt="option 1: oxen"/> -->
 
       </div>
       <div class="option2">
@@ -239,7 +219,8 @@
         <h3>Electric Trolly</h3>
       </div>
     </div>
-  
+  {/if}
+
 </div><!--/wrapper-->
 
 <style>
