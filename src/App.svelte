@@ -178,18 +178,14 @@
         </button>
       {/if}   
     {/if}
-    <!-- <p>
-      -- vwidth:  haulerLeft: not a var 
-      haulerHeight: {haulerHeight} 
-      option1LandingXOffset: {option1LandingXOffset}
-      optionLandingYOffset: {optionLandingYOffset}
-    </p> -->
-
   </article>
 
   {#if challengeIndex === 1}
     <div class="options">
       <div class="option1" >
+
+        <img src="{assetPath}images/oxen-shadow.png" alt="oxen shadow"
+        class="can-be-overlayed">
       
         <img src="{assetPath}images/{challenges[challengeIndex].options[1].correctnessStates[correctnessState].imageName}.png" 
           class="{optionToHide}"
@@ -205,10 +201,6 @@
           on:neodrag:end={dragStop}      
         />
         <h3>Oxen</h3>
-        <!-- {:else}
-            <img src="{assetPath}images/option-blank.png" 
-            alt="option 1: oxen"/> -->
-
       </div>
       <div class="option2">
         <img src="{assetPath}images/option-steam-tractor.png" alt="option 2: steam" />
@@ -226,5 +218,9 @@
 <style>
   .hide-option {
     visibility: hidden;
+  }
+
+  .can-be-overlayed {
+    position: absolute;
   }
 </style>
