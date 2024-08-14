@@ -36,8 +36,9 @@
     let hauler = document.getElementById('hauler');
     // haulerLeft = Math.round(rect.left);
     // haulerTop = Math.round(rect.top);
+    console.log('1st rect: ' + hauler?.getBoundingClientRect());
     setTimeout(() => {
-      let rect = hauler.getBoundingClientRect();
+      let rect = hauler?.getBoundingClientRect();
       haulerWidth =  Math.round(rect.width);
       haulerHeight = Math.round(rect.height);
 
@@ -54,6 +55,37 @@
       console.log('distance from opt top to haul top: ' + optionLandingYOffset)
     }, 10);
   })
+
+// async function calcHaulerOffsets() {
+  //   await tick();
+  //   console.log('finished waiting')
+
+  //   let hauler = document.getElementById('hauler');
+  //   let rect = hauler.getBoundingClientRect();
+  //   haulerLeft = Math.round(rect.left);
+  //   haulerTop = Math.round(rect.top);
+  //   haulerWidth =  Math.round(rect.right) - haulerLeft;
+  //   haulerHeight = Math.round(rect.bottom) - haulerTop;
+  //   console.log('haulerLeft:' + haulerLeft + ' haulerTop:' + haulerTop + 
+  //   ' haulerWidth:' + haulerWidth + ' haulerHeight:' + haulerHeight)
+  //   calcOptionOffsets();
+
+  // }
+
+  // async function calcOptionOffsets() {
+  //   await tick();
+  //   // option1
+  //   // let optionA = document.getElementById('optionA');
+  //   // let optionARect = optionA.getBoundingClientRect();
+  //   let optionARect = optionAElement.getBoundingClientRect();
+  //   // option1Left = optionARect.left;
+  //   optionTop = optionARect.top;
+  //   console.log('optionTop: ' + optionTop);
+  //   option1LandingXOffset = haulerLeft - optionARect.left;  
+  //   optionLandingYOffset = -(Math.round(optionARect.top) - haulerTop);  
+  //   console.log('distance from opt top to haul top: ' + optionLandingYOffset)
+  // }
+
 
   $: if (challengeIndex === 1) {
     console.log('just turned 1')
