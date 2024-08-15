@@ -5,16 +5,18 @@
   import { draggable } from '@neodrag/svelte';
 
   import challenges from './lib/challenges.json';
-  // const assetPath = "https://dev.digitalgizmo.com/msm-ed/lombard-invent-assets/"
-  const assetPath = ""
+  const assetPath = "https://dev.digitalgizmo.com/msm-ed/lombard-invent-assets/"
+  // const assetPath = ""
   let challengeIndex = 0;
   let chosenOptionIndex = 0;
-  let isFeedback = false;
+  let isFeedback = false; // otherwise question/challenge
   let correctnessState = 0;
   let optionToHide = "";
   const movementDuration = 5000; // 5000
   // let vwidth = 1200;
   // let vheight = 800;
+  let textVisible = true;
+  let optionsVisible = false;
 
   let choiceObjectBounds = {top: 100, left:20, bottom:50, right:50};
   let positionA = { x: 0, y: 0};
@@ -31,7 +33,7 @@
   let option1LandingXOffset = 18;
   let optionLandingYOffset = -100;
 
-  onMount(async() => {
+  async function calcHauler() {
     // Workaround for apparent bug - get the hauler twice here
     // and then again in calcOptionOffsets
     await tick();
@@ -44,7 +46,7 @@
       haulerHeight = Math.round(rect.height);
       console.log(' hauler height onMount in timeout: ' + haulerHeight);
     }, 10);
-  })
+  }
 
   async function calcOptionOffsets() {
     await tick();
@@ -70,10 +72,10 @@
     }, 10);
   }  
 
-  $: if (challengeIndex === 1) {
-    console.log('just turned 1')
-    calcOptionOffsets();
-  }
+  // $: if (challengeIndex === 1) {
+  //   console.log('just turned 1')
+  //   calcOptionOffsets();
+  // }
 
   const cloudsX = tweened(0, {
     duration: movementDuration,
@@ -86,24 +88,55 @@
 
   // movement
   async function nextMove() {
-    // stillHauling = true;
-    // await haulerX.update((haulerX) => haulerX + 10);
+    console.log('before timeout')
+    textVisible = false;
+
     landX.update((landX) => landX - 15);
     await cloudsX.update((cloudsX) => cloudsX - 8);
-    // stillHauling = false;
-    challengeIndex +=1;
+
+    setTimeout(() => {
+      console.log('after timeout')
+      // correctnessState = 1;
+      // chalengIndex change will change main "horse" image
+      challengeIndex +=1;
+      // isFeedback = true;
+      calcHauler();
+      displayQuestion();
+    }, 1000);
+  }
+
+  async function displayQuestion() {
+    setTimeout(() => {
+      console.log('display Question')
+      isFeedback = false;
+      textVisible = true;
+      displayOptions();
+    }, 2000);
+  }
+  async function displayFeedback() {
+    setTimeout(() => {
+      console.log('display Feedback')
+      isFeedback = true;
+      textVisible = true;
+    }, 2000);
+  }
+
+  async function displayOptions() {
+    setTimeout(() => {
+      console.log('display Options')
+      optionsVisible = true;
+      calcOptionOffsets();
+    }, 3000);
   }
 
   // Short move for wring
   async function shortMove() {
-    // stillHauling = true;
     // await haulerX.update((haulerX) => haulerX + 10);
+    // textVisible = false;
     landX.update((landX) => landX - 5);
     await cloudsX.update((cloudsX) => cloudsX - 3);
-    // stillHauling = false;
-    // challengeIndex +=1;
-    // Kaput the current main hauling image
     correctnessState = 1;
+    displayFeedback();
   }
 
   function dragStop(e) {
@@ -118,19 +151,22 @@
       e.detail.offsetY < (optionLandingYOffset + haulerHeight - 30 ) 
       // -400 is lt (-500 + 200) aka -400 is lt -300
     ) {
-      // determine feedback
-      isFeedback = true;
-      // index change will change main "horse" image
-      chosenOptionIndex = 1;
+      // // determine feedback
+      // isFeedback = true;
+      // // index change will change main "horse" image
       // No longer stick option on target
       // positionA = {x: option1LandingXOffset, 
       //   y: optionLandingYOffset} 
       // Hide option instead
       optionToHide = "hide-option";
+      chosenOptionIndex = 1;
       // Put it away
       positionA = {x: 0, y: 0}
       // Trigger short movement
+      textVisible = false;
+      isFeedback = true;
       shortMove();
+      // Short move will trigger feedback and options
     } else { // back to home base
       positionA = {x: 0, y: 0} // defaultBx
     }
@@ -166,21 +202,31 @@
   </div>
 
   <article>
-    <h2>{challenges[challengeIndex].title}</h2>
-    {#if isFeedback}
-      <!-- <p>{challenges[challengeIndex].options[0].feedback} </p> -->
-      <p>{challenges[challengeIndex].options[chosenOptionIndex].feedback} </p>
-    {:else}
-      <p>{challenges[challengeIndex].question} </p>
-      {#if challengeIndex === 0}
-        <button on:click={nextMove}>
-          start
-        </button>
-      {/if}   
+    {#if textVisible}
+      <h2>{challenges[challengeIndex].title}</h2>
+      {#if isFeedback}
+        <!-- <p>{challenges[challengeIndex].options[0].feedback} </p> -->
+        <p>{challenges[challengeIndex].options[chosenOptionIndex].feedback} </p>
+      {:else}
+        <!-- this is question/challenge -->
+        <p>{challenges[challengeIndex].question} </p>
+        {#if challengeIndex === 0}
+          <button on:click={nextMove}>
+            start
+          </button>
+        {/if}   
+      {/if}
     {/if}
+    <!-- <p>Debug: challengeIndex: {challengeIndex}, 
+      chosenOptionIndex: {chosenOptionIndex},
+      correctnessState: {correctnessState},
+      imageName: {challenges[challengeIndex].options[chosenOptionIndex].correctnessStates[correctnessState].imageName}
+    </p> -->
+
   </article>
 
-  {#if challengeIndex === 1}
+  <!-- {#if challengeIndex === 1} -->
+  {#if optionsVisible}
     <div class="options">
       <div class="option1" >
 
@@ -203,11 +249,11 @@
         <h3>Oxen</h3>
       </div>
       <div class="option2">
-        <img src="{assetPath}images/option-steam-tractor.png" alt="option 2: steam" />
+        <img src="{assetPath}images/tractor.png" alt="option 2: steam" />
         <h3>Steam Tractor</h3>
       </div>
       <div class="option3">
-        <img src="{assetPath}images/option-trolly.png" alt="option 3: trolly" />
+        <img src="{assetPath}images/trolley.png" alt="option 3: trolly" />
         <h3>Electric Trolly</h3>
       </div>
     </div>
