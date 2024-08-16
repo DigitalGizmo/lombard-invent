@@ -34,7 +34,7 @@
         "correctness": "1",
         "correctnessStateImages": [
           {"imageName": "horses-kaput"},
-          {"imageName": "horses-kaput"}
+          {"imageName": "horses"}
         ]
       },
       {
@@ -66,23 +66,23 @@
         "correctness": "1",
         "correctnessStateImages": [
           {"imageName": "tractor-kaput"},
-          {"imageName": "tractor-kaput"}
+          {"imageName": "option-crawler-track"}
         ]
       },
       {
-        "feedback": "well,this thing doesn't work",
-        "correctness": "0",
-        "correctnessStateImages": [
-          {"imageName": "oxen-kaput"},
-          {"imageName": "oxen"}
-        ]
-      },
-      {
-        "feedback": "Nice! Steam will do the trick",
+        "feedback": "Yay tracks!",
         "correctness": "1",
         "correctnessStateImages": [
+          {"imageName": "oxen-kaput"},
+          {"imageName": "option-crawler-track"}
+        ]
+      },
+      {
+        "feedback": "Spinning!",
+        "correctness": "0",
+        "correctnessStateImages": [
           {"imageName": "tractor"},
-          {"imageName": "tractor"}
+          {"imageName": "option-wheel"}
         ]
       }
     ]  

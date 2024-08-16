@@ -107,8 +107,13 @@
       // console.log('after timeout')
       // chalengIndex change will change main "horse" image
       challengeIndex +=1;
+      chosenOptionIndex = 0;
+      optionsToHide = ["", "", "", "", ""];
+      correctnessStates = [1, 1, 1, 1];
       // isFeedback = true;
       calcHauler();
+      // make it kaput
+      correctnessStates[0] = 0;
       displayQuestion();
     }, 1000);
   }
@@ -139,7 +144,9 @@
     currentCorrectness = Number(challenges[challengeIndex].options[chosenOptionIndex].correctness);
     correctnessStates[_chosenOptionIndex] = currentCorrectness;
 
-    console.log('correctnessStates[ ' + _chosenOptionIndex + '] = ' + challenges[challengeIndex].options[chosenOptionIndex].correctness)
+    // correctnessStates = correctnessStates;
+
+    console.log('correctnessStates[' + _chosenOptionIndex + '] = ' + challenges[challengeIndex].options[chosenOptionIndex].correctness)
 
     displayFeedback();
   }  
@@ -179,9 +186,12 @@
     ) {
       // index change will change main "horse" image
       // No longer stick option on target
-      // Hide option instead
+      // Hide option 
       optionsToHide[_chosenOptionIndex] = "hide-option";
+      // This will change hauler image to the option one
       chosenOptionIndex = _chosenOptionIndex;
+      // set to the correct image for now
+      correctnessStates[0] = 1;
       // Put it away
       optionPositions[_chosenOptionIndex] = {x: 0, y: 0};
       // optionPositions[1].y = 0;
@@ -220,8 +230,9 @@
 
   <div class="hauler">
     <img src="{assetPath}images/lumber.png" alt="lumber"/>
-    <!-- correctnessStates hard coded to 1 is a hack, for now -->
-    <img src="{assetPath}images/{challenges[challengeIndex].options[chosenOptionIndex].correctnessStateImages[correctnessStates[1]].imageName}.png" 
+    <!-- correctnessStates has been set chosen index by chosen index
+     in the array -->
+    <img src="{assetPath}images/{challenges[challengeIndex].options[chosenOptionIndex].correctnessStateImages[correctnessStates[chosenOptionIndex]].imageName}.png" 
     alt="horses" id="hauler"/>
   </div>
 
@@ -241,9 +252,13 @@
         {/if}   
       {/if}
     {/if}
-    <!-- <p>Debug: challengeIndex: {challengeIndex}, 
-      chosenOptionIndex: {chosenOptionIndex},
-      correctnessStates: {correctnessStates},
+    <!-- <p>Debug: 
+      challengeIndex: {challengeIndex}, <br>
+      chosenOptionIndex: {chosenOptionIndex},  <br>
+      correctnessStates: {correctnessStates}, <br>
+      currentCorrectness: {currentCorrectness},  <br>
+      correctnessStates[currentCorrectness], {correctnessStates[currentCorrectness]} <br>
+      imageName: {challenges[challengeIndex].options[chosenOptionIndex].correctnessStateImages[correctnessStates[currentCorrectness]].imageName},
     </p> -->
       <!-- imageName: {challenges[challengeIndex].options[chosenOptionIndex].correctnessStateImages[correctnessState].imageName} -->
 
