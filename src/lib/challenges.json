@@ -53,7 +53,40 @@
           {"imageName": "tractor"}
         ]
       }
-    ]  },
+    ]  
+  },
+  {
+    "slug": "traction",
+    "title": "Traction",
+    "imageName": "horses-kaput",
+    "question": "How can we turn that power into motion?",
+    "options": [
+      {
+        "feedback": "Temp in feedback.",
+        "correctness": "1",
+        "correctnessStateImages": [
+          {"imageName": "tractor-kaput"},
+          {"imageName": "tractor-kaput"}
+        ]
+      },
+      {
+        "feedback": "well,this thing doesn't work",
+        "correctness": "0",
+        "correctnessStateImages": [
+          {"imageName": "oxen-kaput"},
+          {"imageName": "oxen"}
+        ]
+      },
+      {
+        "feedback": "Nice! Steam will do the trick",
+        "correctness": "1",
+        "correctnessStateImages": [
+          {"imageName": "tractor"},
+          {"imageName": "tractor"}
+        ]
+      }
+    ]  
+  },
   {
     "slug": "traction",
     "title": "Traction",

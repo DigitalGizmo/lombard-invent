@@ -10,7 +10,7 @@
   let challengeIndex = 0;
   let chosenOptionIndex = 0;
   let isFeedback = false; // otherwise question/challenge
-  let correctnessState = 1;
+  let currentCorrectness = 0;
   let correctnessStates = [1, 1, 1, 1];
   let optionsToHide = ["", "", "", "", ""];
   const movementDuration = 2000; // 5000
@@ -122,14 +122,22 @@
     }, 2000);
   }
 
+  async function displayOptions() {
+    setTimeout(() => {
+      console.log('display Options')
+      optionsVisible = true;
+      calcOptionOffsets();
+    }, 2000);
+  }
+
   // Short move for wring
   async function shortMove( _chosenOptionIndex) {
     // await haulerX.update((haulerX) => haulerX + 10);
     // textVisible = false;
     landX.update((landX) => landX - 5);
     await cloudsX.update((cloudsX) => cloudsX - 3);
-    // correctnessState = 0;
-    correctnessStates[_chosenOptionIndex] = Number(challenges[challengeIndex].options[chosenOptionIndex].correctness);
+    currentCorrectness = Number(challenges[challengeIndex].options[chosenOptionIndex].correctness);
+    correctnessStates[_chosenOptionIndex] = currentCorrectness;
 
     console.log('correctnessStates[ ' + _chosenOptionIndex + '] = ' + challenges[challengeIndex].options[chosenOptionIndex].correctness)
 
@@ -141,17 +149,20 @@
       console.log('display Feedback')
       isFeedback = true;
       textVisible = true;
+      if (currentCorrectness) {
+        console.log('--- we are going to continue!')
+        onToNext();
+      }
     }, 2000);
   }
 
-  async function displayOptions() {
+  async function onToNext() {
     setTimeout(() => {
-      console.log('display Options')
-      optionsVisible = true;
-      calcOptionOffsets();
+      console.log('on to next challenge')
+      optionsVisible = false;
+      nextMove();
     }, 2000);
   }
-
 
   function dragStop(e, _chosenOptionIndex) { //  _chosenOptionIndex
     /* Landing position of a given option is relative to its start point
