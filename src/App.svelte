@@ -5,8 +5,8 @@
   import { draggable } from '@neodrag/svelte';
 
   import challenges from './lib/challenges.json';
-  const assetPath = "https://dev.digitalgizmo.com/msm-ed/lombard-invent-assets/"
-  // const assetPath = ""
+  // const assetPath = "https://dev.digitalgizmo.com/msm-ed/lombard-invent-assets/"
+  const assetPath = ""
   let challengeIndex = 0;
   let chosenOptionIndex = 0;
   let isFeedback = false; // otherwise question/challenge
@@ -20,6 +20,9 @@
 
   let choiceObjectBounds = {top: 100, left:20, bottom:50, right:50};
   let positionA = { x: 0, y: 0};
+  let optionPositions = [
+    { x: 0, y: 0}, { x: 0, y: 0}, { x: 0, y: 0}, { x: 0, y: 0}
+  ]
 
   let optionAElement;
 
@@ -161,14 +164,19 @@
       optionToHide = "hide-option";
       chosenOptionIndex = 1;
       // Put it away
-      positionA = {x: 0, y: 0}
+      // positionA = {x: 0, y: 0}
+      optionPositions[1] = {x: 0, y: 0};
+      // optionPositions[1].y = 0;
       // Trigger short movement
       textVisible = false;
       isFeedback = true;
       shortMove();
       // Short move will trigger feedback and options
     } else { // back to home base
-      positionA = {x: 0, y: 0} // defaultBx
+      // positionA = {x: 0, y: 0} // defaultBx
+      optionPositions[1] = {x: 0, y: 0};
+      // optionPositions[1].x = 0;
+      // optionPositions[1].y = 0;
     }
   }
 </script>
@@ -238,10 +246,12 @@
           id="optionA" alt="option 1: oxen" 
           bind:this={optionAElement}
           use:draggable={{ 
-            position: positionA,
+            // position: positionA,
+            position: optionPositions[1],
             bounds: choiceObjectBounds,
             onDrag: ({offsetX, offsetY}) => {
-              positionA = {x: offsetX, y: offsetY};
+              // positionA = {x: offsetX, y: offsetY};
+              optionPositions[1] = {x: offsetX, y: offsetY};
             }
           }}  
           on:neodrag:end={dragStop}      
