@@ -10,8 +10,8 @@
   let challengeIndex = 0;
   let chosenOptionIndex = 0;
   let isFeedback = false; // otherwise question/challenge
-  let correctnessState = 0;
-  let optionToHide = "";
+  let correctnessState = 1;
+  let correctnessStates = [1, 1, 1, 1];
   let optionsToHide = ["", "", "", "", ""];
   const movementDuration = 2000; // 5000
   // let vwidth = 1200;
@@ -121,6 +121,21 @@
       displayOptions();
     }, 2000);
   }
+
+  // Short move for wring
+  async function shortMove( _chosenOptionIndex) {
+    // await haulerX.update((haulerX) => haulerX + 10);
+    // textVisible = false;
+    landX.update((landX) => landX - 5);
+    await cloudsX.update((cloudsX) => cloudsX - 3);
+    // correctnessState = 0;
+    correctnessStates[_chosenOptionIndex] = Number(challenges[challengeIndex].options[chosenOptionIndex].correctness);
+
+    console.log('correctnessStates[ ' + _chosenOptionIndex + '] = ' + challenges[challengeIndex].options[chosenOptionIndex].correctness)
+
+    displayFeedback();
+  }  
+
   async function displayFeedback() {
     setTimeout(() => {
       console.log('display Feedback')
@@ -137,15 +152,6 @@
     }, 2000);
   }
 
-  // Short move for wring
-  async function shortMove() {
-    // await haulerX.update((haulerX) => haulerX + 10);
-    // textVisible = false;
-    landX.update((landX) => landX - 5);
-    await cloudsX.update((cloudsX) => cloudsX - 3);
-    correctnessState = 1;
-    displayFeedback();
-  }
 
   function dragStop(e, _chosenOptionIndex) { //  _chosenOptionIndex
     /* Landing position of a given option is relative to its start point
@@ -171,7 +177,7 @@
       // Trigger short movement
       textVisible = false;
       isFeedback = true;
-      shortMove();
+      shortMove( _chosenOptionIndex);
       // Short move will trigger feedback and options
     } else { // back to home base
       optionPositions[_chosenOptionIndex] = {x: 0, y: 0};
@@ -203,7 +209,8 @@
 
   <div class="hauler">
     <img src="{assetPath}images/lumber.png" alt="lumber"/>
-    <img src="{assetPath}images/{challenges[challengeIndex].options[chosenOptionIndex].correctnessStates[correctnessState].imageName}.png" 
+    <!-- correctnessStates hard coded to 1 is a hack, for now -->
+    <img src="{assetPath}images/{challenges[challengeIndex].options[chosenOptionIndex].correctnessStateImages[correctnessStates[1]].imageName}.png" 
     alt="horses" id="hauler"/>
   </div>
 
@@ -223,11 +230,11 @@
         {/if}   
       {/if}
     {/if}
-    <p>Debug: challengeIndex: {challengeIndex}, 
+    <!-- <p>Debug: challengeIndex: {challengeIndex}, 
       chosenOptionIndex: {chosenOptionIndex},
-      correctnessState: {correctnessState},
-      imageName: {challenges[challengeIndex].options[chosenOptionIndex].correctnessStates[correctnessState].imageName}
-    </p>
+      correctnessStates: {correctnessStates},
+    </p> -->
+      <!-- imageName: {challenges[challengeIndex].options[chosenOptionIndex].correctnessStateImages[correctnessState].imageName} -->
 
   </article>
 
@@ -237,7 +244,7 @@
       <div class="option1" >
         <img src="{assetPath}images/oxen-shadow.png" alt="oxen shadow"
         class="can-be-overlayed">
-        <img src="{assetPath}images/{challenges[challengeIndex].options[1].correctnessStates[correctnessState].imageName}.png" 
+        <img src="{assetPath}images/{challenges[challengeIndex].options[1].correctnessStateImages[correctnessStates[1]].imageName}.png" 
           class="{optionsToHide[1]}"
           id="optionA" alt="option 1: oxen" 
           bind:this={optionElements[1]}
@@ -255,7 +262,7 @@
       <div class="option2">
         <img src="{assetPath}images/tractor-shadow.png" alt="tractor shadow"
         class="can-be-overlayed">
-        <img src="{assetPath}images/{challenges[challengeIndex].options[2].correctnessStates[correctnessState].imageName}.png" 
+        <img src="{assetPath}images/{challenges[challengeIndex].options[2].correctnessStateImages[correctnessStates[2]].imageName}.png" 
           class="{optionsToHide[2]}"
           id="optionA" alt="option 2: tractor" 
           bind:this={optionElements[2]}

@@ -7,15 +7,17 @@
     "options": [
       {
         "feedback": "no feedback on start",
-        "correctnessStates": [
-          {"imageName": "horses"},
-          {"imageName": "horses-kaput"}
+        "correctness": "0",
+        "correctnessStateImages": [
+          {"imageName": "horses-kaput"},
+          {"imageName": "horses"}
         ]
       },
       {
         "imageName": "horses-kaput",
         "feedback": "no feedback on start",
-        "correctnessStates": [
+        "correctness": "0",
+        "correctnessStateImages": [
           {"imageName": "option-blank"}
         ]
       }
@@ -29,20 +31,24 @@
     "options": [
       {
         "feedback": "Temp in feedback.",
-        "correctnessStates": [
+        "correctness": "1",
+        "correctnessStateImages": [
+          {"imageName": "horses-kaput"},
           {"imageName": "horses-kaput"}
         ]
       },
       {
         "feedback": "well, oxen are too slow, and they don't like the cold",
-        "correctnessStates": [
-          {"imageName": "oxen"},
-          {"imageName": "oxen-kaput"}
+        "correctness": "0",
+        "correctnessStateImages": [
+          {"imageName": "oxen-kaput"},
+          {"imageName": "oxen"}
         ]
       },
       {
         "feedback": "Nice! Steam will do the trick",
-        "correctnessStates": [
+        "correctness": "1",
+        "correctnessStateImages": [
           {"imageName": "tractor"},
           {"imageName": "tractor"}
         ]
