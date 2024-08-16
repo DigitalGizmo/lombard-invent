@@ -39,6 +39,13 @@
           {"imageName": "oxen"},
           {"imageName": "oxen-kaput"}
         ]
+      },
+      {
+        "feedback": "Nice! Steam will do the trick",
+        "correctnessStates": [
+          {"imageName": "tractor"},
+          {"imageName": "tractor"}
+        ]
       }
     ]  },
   {

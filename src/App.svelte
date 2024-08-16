@@ -12,6 +12,7 @@
   let isFeedback = false; // otherwise question/challenge
   let correctnessState = 0;
   let optionToHide = "";
+  let optionsToHide = ["", "", "", "", ""];
   const movementDuration = 2000; // 5000
   // let vwidth = 1200;
   // let vheight = 800;
@@ -24,6 +25,7 @@
   ]
 
   let optionAElement;
+  let optionElements = [null, null, null, null];
 
   // let haulerLeft = 600;
   // let haulerTop = 400;
@@ -33,6 +35,7 @@
   let optionTop = 500;
   // let option1LandingX = 20;
   let option1LandingXOffset = 18;
+  let optionLandingXOffsets = [20, 70, 120];
   let optionLandingYOffset = -100;
 
   async function calcHauler() {
@@ -64,12 +67,23 @@
       console.log('haulerLeft:' + rect.left + ' haulerTop:' + rect.top + 
       ' haulerWidth:' + haulerWidth + ' haulerHeight:' + haulerHeight)
 
-      let optionARect = optionAElement.getBoundingClientRect();
-      // option1Left = optionARect.left;
-      optionTop = optionARect.top;
+      // May need to create array and get each, but many not matter since
+      // we never show the landed option
+      // For now only 1 & 1
+      for (let i = 1; i < 3; i++) {
+        let optionRect = optionElements[i].getBoundingClientRect();
+        optionLandingXOffsets[i] = rect.left - optionRect.left;
+        optionTop = optionRect.top;
+      }
+
+
+      let optionRect = optionElements[1].getBoundingClientRect();
+      // option1Left = optionRect.left;
+      // option1LandingXOffset = rect.left - optionRect.left;  
+      
+      // optionTop = optionRect.top;
       console.log('optionTop: ' + optionTop);
-      option1LandingXOffset = rect.left - optionARect.left;  
-      optionLandingYOffset = -(Math.round(optionARect.top) - rect.top);  
+      optionLandingYOffset = -(Math.round(optionRect.top) - rect.top);  
       console.log('distance from opt top to haul top: ' + optionLandingYOffset)
     }, 10);
   }  
@@ -85,12 +99,12 @@
 
   // movement
   async function nextMove() {
-    console.log('before timeout')
+    // console.log('before timeout')
     textVisible = false;
     landX.update((landX) => landX - 15);
     await cloudsX.update((cloudsX) => cloudsX - 8);
     setTimeout(() => {
-      console.log('after timeout')
+      // console.log('after timeout')
       // chalengIndex change will change main "horse" image
       challengeIndex +=1;
       // isFeedback = true;
@@ -140,8 +154,8 @@
     // console.log('stoped at x: ' + e.detail.offsetX + ' y: ' +
     //   e.detail.offsetY)
     console.log('opt index: ' + _chosenOptionIndex);
-    if (e.detail.offsetX > option1LandingXOffset && 
-      e.detail.offsetX < (option1LandingXOffset + haulerWidth - 40) &&
+    if (e.detail.offsetX > optionLandingXOffsets[_chosenOptionIndex] && 
+      e.detail.offsetX < (optionLandingXOffsets[_chosenOptionIndex] + haulerWidth - 40) &&
       e.detail.offsetY > optionLandingYOffset && // -400 is gt -500
       e.detail.offsetY < (optionLandingYOffset + haulerHeight - 30 ) 
       // -400 is lt (-500 + 200) aka -400 is lt -300
@@ -149,10 +163,10 @@
       // index change will change main "horse" image
       // No longer stick option on target
       // Hide option instead
-      optionToHide = "hide-option";
-      chosenOptionIndex = 1;
+      optionsToHide[_chosenOptionIndex] = "hide-option";
+      chosenOptionIndex = _chosenOptionIndex;
       // Put it away
-      optionPositions[1] = {x: 0, y: 0};
+      optionPositions[_chosenOptionIndex] = {x: 0, y: 0};
       // optionPositions[1].y = 0;
       // Trigger short movement
       textVisible = false;
@@ -160,7 +174,7 @@
       shortMove();
       // Short move will trigger feedback and options
     } else { // back to home base
-      optionPositions[1] = {x: 0, y: 0};
+      optionPositions[_chosenOptionIndex] = {x: 0, y: 0};
     }
   }
 </script>
@@ -221,15 +235,12 @@
   {#if optionsVisible}
     <div class="options">
       <div class="option1" >
-
         <img src="{assetPath}images/oxen-shadow.png" alt="oxen shadow"
         class="can-be-overlayed">
-      
         <img src="{assetPath}images/{challenges[challengeIndex].options[1].correctnessStates[correctnessState].imageName}.png" 
-          class="{optionToHide}"
+          class="{optionsToHide[1]}"
           id="optionA" alt="option 1: oxen" 
-          
-          bind:this={optionAElement}
+          bind:this={optionElements[1]}
           use:draggable={{ 
             position: optionPositions[1],
             bounds: choiceObjectBounds,
@@ -238,14 +249,25 @@
             }
           }}  
           on:neodrag:end={(e) => dragStop(e, 1)}     
-          />
-          <!-- on:neodrag:end={dragStop} -->
+        />
         <h3>Oxen</h3>
       </div>
       <div class="option2">
-
-        <img src="{assetPath}images/tractor.png" alt="option 2: steam" />
-
+        <img src="{assetPath}images/tractor-shadow.png" alt="tractor shadow"
+        class="can-be-overlayed">
+        <img src="{assetPath}images/{challenges[challengeIndex].options[2].correctnessStates[correctnessState].imageName}.png" 
+          class="{optionsToHide[2]}"
+          id="optionA" alt="option 2: tractor" 
+          bind:this={optionElements[2]}
+          use:draggable={{ 
+            position: optionPositions[2],
+            bounds: choiceObjectBounds,
+            onDrag: ({offsetX, offsetY}) => {
+              optionPositions[2] = {x: offsetX, y: offsetY};
+            }
+          }}  
+          on:neodrag:end={(e) => dragStop(e, 2)}     
+        />
         <h3>Steam Tractor</h3>
       </div>
       <div class="option3">
