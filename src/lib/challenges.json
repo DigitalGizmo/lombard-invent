@@ -1,8 +1,8 @@
 [
   {
     "slug": "start",
-    "title": "A series of challenges",
-    "challengeText": "You're the inventor and your challenge will be to get these logs hauled efficiantly!",
+    "title": "Be The Inventor",
+    "challengeText": "You're the inventor and your challenge will be to get these logs hauled efficiently! Drag and drop your best guess from the options to the right.",
     "options": [
       {
         "feedback": "no feedback on start",
@@ -25,7 +25,7 @@
   {
     "slug": "power",
     "title": "The Power Problem",
-    "challengeText": "Horses won't cut it, what's better? Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "challengeText": "Horses were used extensively to move timber from the forest to the nearest river, railroad or sawmill. It was very hard on the horses and expensive. In addition, Horses where limited in how far they could haul a heavy logging sled. What do you think would work better?",
     "options": [
       {
         "feedback": "Temp in feedback.",
@@ -37,7 +37,7 @@
       },
       {
         "label": "Oxen",
-        "feedback": "well, oxen are too slow, and they don't like the cold",
+        "feedback": "Oxen are tougher and stronger than horses however, oxen are very slow so they weren't suitable. Try a different solution.",
         "correctness": "0",
         "correctnessStateImages": [
           {"imageName": "oxen-kaput"},
@@ -46,7 +46,7 @@
       },
       {
         "label": "Steam Tractor",
-        "feedback": "Nice! Steam will do the trick",
+        "feedback": "Excellent solution! Steam worked, was powerful and simpler. A steam powered Lombard Log Hauler could haul much further than a team of horses and it didn't get tired. Let's call our new machine a Log Hauler!",
         "correctness": "1",
         "correctnessStateImages": [
           {"imageName": "tractor"},
@@ -55,7 +55,7 @@
       },
       {
         "label": "Electric Trolley",
-        "feedback": "trolley own't work",
+        "feedback": "Alvin Lombard actually tried electricity to power a Lombard Log Hauler. It operated very much like a trolley car. However, it was deemed a failure due to the cost. Try a different solution.",
         "correctness": "0",
         "correctnessStateImages": [
           {"imageName": "trolley-kaput"},
@@ -67,33 +67,33 @@
   {
     "slug": "traction",
     "title": "Traction",
-    "challengeText": "How can we turn that power into motion?",
+    "challengeText": "Timber was usually moved during the winter when the ground was frozen and sleds could easily be hauled over icey and snowy roads. However, designing a machine that could move under those wintery conditions was rather tricky. What solution would provide the right traction?",
     "options": [
       {
         "label": "Crawler Tracks",
-        "feedback": "Temp in feedback.",
+        "feedback": "Right you are! In 1900 Alvin Lombard developed and patented the first practical crawler track system. Crawler tracks spread the weight of the machine so it can move over soft ground and have plenty of traction on ice and snow.",
         "correctness": "1",
         "correctnessStateImages": [
-          {"imageName": "tractor-kaput"},
-          {"imageName": "option-crawler-track"}
+          {"imageName": "tracks-kaput"},
+          {"imageName": "tracks"}
         ]
       },
       {
-        "label": "Wheel",
-        "feedback": "Yay tracks!",
+        "label": "Large Wheels",
+        "feedback": "Wheels would sink in snow and soft ground and the steel wheels of the day offered very little traction on ice and snow.",
         "correctness": "0",
         "correctnessStateImages": [
-          {"imageName": "oxen-kaput"},
-          {"imageName": "option-crawler-track"}
+          {"imageName": "wheel-kaput"},
+          {"imageName": "wheel"}
         ]
       },
       {
-        "label": "I forget what",
-        "feedback": "Spinning!",
+        "label": "Giant Screws",
+        "feedback": "Interesting solution! In 1904 Ira Peavey of Bangor, Maine patented a \"Snow Locomotive\" which used giant screws to move it through the snow and over ice. Unfortunately, it worked but was not a complete success.",
         "correctness": "0",
         "correctnessStateImages": [
-          {"imageName": "tractor"},
-          {"imageName": "option-wheel"}
+          {"imageName": "screw-kaput"},
+          {"imageName": "screw"}
         ]
       }
     ]  
