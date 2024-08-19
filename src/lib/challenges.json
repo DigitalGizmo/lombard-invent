@@ -5,6 +5,7 @@
     "challengeText": "You're the inventor and your challenge will be to get these logs hauled efficiently! Drag and drop your best guess from the options to the right.",
     "options": [
       {
+        "label": "",
         "feedback": "no feedback on start",
         "correctness": "0",
         "correctnessStateImages": [
@@ -13,6 +14,7 @@
         ]
       },
       {
+        "label": "",
         "imageName": "horses-kaput",
         "feedback": "no feedback on start",
         "correctness": "0",
@@ -28,6 +30,7 @@
     "challengeText": "Horses were used extensively to move timber from the forest to the nearest river, railroad or sawmill. It was very hard on the horses and expensive. In addition, Horses where limited in how far they could haul a heavy logging sled. What do you think would work better?",
     "options": [
       {
+        "label": "Hauler label not used",
         "feedback": "Temp in feedback.",
         "correctness": "1",
         "correctnessStateImages": [
@@ -70,6 +73,14 @@
     "challengeText": "Timber was usually moved during the winter when the ground was frozen and sleds could easily be hauled over icey and snowy roads. However, designing a machine that could move under those wintery conditions was rather tricky. What solution would provide the right traction?",
     "options": [
       {
+        "label": "Hauler label not used",
+        "feedback": "Temp in feedback.",
+        "correctness": "1",
+        "correctnessStateImages": [
+          {"imageName": "tractor-kaput"},
+          {"imageName": "tractor"}
+        ]
+      },      {
         "label": "Crawler Tracks",
         "feedback": "Right you are! In 1900 Alvin Lombard developed and patented the first practical crawler track system. Crawler tracks spread the weight of the machine so it can move over soft ground and have plenty of traction on ice and snow.",
         "correctness": "1",

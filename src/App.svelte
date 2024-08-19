@@ -338,7 +338,7 @@
       </div>
       <div class="option3">
         <img src="{assetPath}images/trolley.png" alt="option 3: trolly" />
-        <h3>Trolley</h3>
+        <h3>{challenges[challengeIndex].options[3].label}</h3>
       </div>
     </div>
   {/if}
