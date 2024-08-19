@@ -5,8 +5,8 @@
   import { draggable } from '@neodrag/svelte';
 
   import challenges from './lib/challenges.json';
-  // const assetPath = "https://dev.digitalgizmo.com/msm-ed/lombard-invent-assets/"
-  const assetPath = ""
+  const assetPath = "https://dev.digitalgizmo.com/msm-ed/lombard-invent-assets/"
+  // const assetPath = ""
   let challengeIndex = 0;
   let chosenOptionIndex = 0;
   let isFeedback = false; // otherwise question/challenge
@@ -19,6 +19,7 @@
   let textVisible = true;
   let optionsVisible = false;
   let haulerScale = 1;
+  let accomplished = ["", "", "", "", "", "", "", ]
 
   let choiceObjectBounds = {top: 100, left:20, bottom:50, right:50};
   let optionPositions = [
@@ -174,10 +175,10 @@
       console.log('display Feedback')
       isFeedback = true;
       textVisible = true;
-      // if (currentCorrectness) {
-      //   console.log('--- we are going to continue!')
-      //   onToNext();
-      // }
+      if (challengeIndex > 0 && currentCorrectness) {
+        
+        accomplished[0]= "Power";
+      }
     }, 1000);
   }
 
@@ -246,8 +247,8 @@
   <header>
     <h1>Be An Inventor</h1>
     <ul class="progress">
-      <li>1</li>
-      <li>2</li>
+      <li>1 {accomplished[0]}</li>
+      <li>2 {accomplished[1]}</li>
       <li>3</li>
       <li>4</li>
       <li>5</li>
@@ -315,7 +316,7 @@
           }}  
           on:neodrag:end={(e) => dragStop(e, 1)}     
         />
-        <h3>Oxen</h3>
+        <h3>{challenges[challengeIndex].options[1].label}</h3>
       </div>
       <div class="option2">
         <img src="{assetPath}images/tractor-shadow.png" alt="tractor shadow"
@@ -333,11 +334,11 @@
           }}  
           on:neodrag:end={(e) => dragStop(e, 2)}     
         />
-        <h3>Steam Tractor</h3>
+        <h3>{challenges[challengeIndex].options[2].label}</h3>
       </div>
       <div class="option3">
         <img src="{assetPath}images/trolley.png" alt="option 3: trolly" />
-        <h3>Electric Trolly</h3>
+        <h3>Trolley</h3>
       </div>
     </div>
   {/if}
