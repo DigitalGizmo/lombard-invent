@@ -18,6 +18,7 @@
   // let vheight = 800;
   let textVisible = true;
   let optionsVisible = false;
+  let haulerScale = 1;
 
   let choiceObjectBounds = {top: 100, left:20, bottom:50, right:50};
   let optionPositions = [
@@ -101,6 +102,7 @@
   async function nextMove() {
     // console.log('before timeout')
     textVisible = false;
+    optionsVisible = false;
     landX.update((landX) => landX - 15);
     await cloudsX.update((cloudsX) => cloudsX - 8);
     setTimeout(() => {
@@ -114,17 +116,17 @@
       calcHauler();
       // make it kaput
       correctnessStates[0] = 0;
-      displayQuestion();
+      displayChallengeText();
     }, 1000);
   }
 
-  async function displayQuestion() {
+  async function displayChallengeText() {
     setTimeout(() => {
       console.log('display challengeText')
       isFeedback = false;
       textVisible = true;
       displayOptions();
-    }, 2000);
+    }, 1000);
   }
 
   async function displayOptions() {
@@ -138,17 +140,33 @@
   // Short move for wring
   async function shortMove( _chosenOptionIndex) {
     // await haulerX.update((haulerX) => haulerX + 10);
-    // textVisible = false;
     landX.update((landX) => landX - 5);
     await cloudsX.update((cloudsX) => cloudsX - 3);
-    currentCorrectness = Number(challenges[challengeIndex].options[chosenOptionIndex].correctness);
     correctnessStates[_chosenOptionIndex] = currentCorrectness;
-
-    // correctnessStates = correctnessStates;
-
     console.log('correctnessStates[' + _chosenOptionIndex + '] = ' + challenges[challengeIndex].options[chosenOptionIndex].correctness)
-
     displayFeedback();
+  }  
+
+  async function bingCorrect(_chosenOptionIndex) {
+    console.log(' -- bing Correct!');
+    correctnessStates[_chosenOptionIndex] = currentCorrectness;
+    // console.log('correctnessStates[' + _chosenOptionIndex + '] = ' + challenges[challengeIndex].options[chosenOptionIndex].correctness)
+    await tick();
+    setTimeout(() => {
+      haulerScale = 1.4;
+      console.log('setting scale 1.2')
+      bingCorrectPart2();
+    }, 500);
+  }  
+
+  async function bingCorrectPart2(_chosenOptionIndex) {
+    console.log(' -- bing Correct p 2');
+    await tick();
+    setTimeout(() => {
+      haulerScale = 1;
+      console.log('setting scale 1.2')
+      displayFeedback();
+    }, 500);
   }  
 
   async function displayFeedback() {
@@ -156,11 +174,11 @@
       console.log('display Feedback')
       isFeedback = true;
       textVisible = true;
-      if (currentCorrectness) {
-        console.log('--- we are going to continue!')
-        onToNext();
-      }
-    }, 2000);
+      // if (currentCorrectness) {
+      //   console.log('--- we are going to continue!')
+      //   onToNext();
+      // }
+    }, 1000);
   }
 
   async function onToNext() {
@@ -198,8 +216,16 @@
       // Trigger short movement
       textVisible = false;
       isFeedback = true;
-      shortMove( _chosenOptionIndex);
-      // Short move will trigger feedback and options
+      // Handle correctness
+      currentCorrectness = Number(challenges[challengeIndex].options[chosenOptionIndex].correctness);
+      // correctnessStates[_chosenOptionIndex] = currentCorrectness;
+      if (currentCorrectness) {
+        bingCorrect(_chosenOptionIndex);
+      } else {
+        shortMove( _chosenOptionIndex);
+        // Short move will trigger feedback and options
+      }
+
     } else { // back to home base
       optionPositions[_chosenOptionIndex] = {x: 0, y: 0};
     }
@@ -233,6 +259,7 @@
     <!-- correctnessStates has been set chosen index by chosen index
      in the array -->
     <img src="{assetPath}images/{challenges[challengeIndex].options[chosenOptionIndex].correctnessStateImages[correctnessStates[chosenOptionIndex]].imageName}.png" 
+    style="transform:scale({haulerScale})"
     alt="horses" id="hauler"/>
   </div>
 
@@ -242,6 +269,11 @@
       {#if isFeedback}
         <!-- <p>{challenges[challengeIndex].options[0].feedback} </p> -->
         <p>{challenges[challengeIndex].options[chosenOptionIndex].feedback} </p>
+        {#if currentCorrectness}
+          <button on:click={nextMove}>
+            Next Challenge
+          </button>
+        {/if}           
       {:else}
         <!-- this is question/challenge -->
         <p>{challenges[challengeIndex].challengeText} </p>
