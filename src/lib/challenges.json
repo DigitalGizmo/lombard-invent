@@ -2,8 +2,7 @@
   {
     "slug": "start",
     "title": "A series of challenges",
-    "imageName": "horsesX",
-    "question": "You're the inventor and your challenge will be to get these logs hauled efficiantly!",
+    "challengeText": "You're the inventor and your challenge will be to get these logs hauled efficiantly!",
     "options": [
       {
         "feedback": "no feedback on start",
@@ -26,8 +25,7 @@
   {
     "slug": "power",
     "title": "The Power Problem",
-    "imageName": "horses-kaput",
-    "question": "Horses won't cut it, what's better? Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "challengeText": "Horses won't cut it, what's better? Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "options": [
       {
         "feedback": "Temp in feedback.",
@@ -38,6 +36,7 @@
         ]
       },
       {
+        "label": "Oxen",
         "feedback": "well, oxen are too slow, and they don't like the cold",
         "correctness": "0",
         "correctnessStateImages": [
@@ -46,11 +45,21 @@
         ]
       },
       {
+        "label": "Steam Tractor",
         "feedback": "Nice! Steam will do the trick",
         "correctness": "1",
         "correctnessStateImages": [
           {"imageName": "tractor"},
           {"imageName": "tractor"}
+        ]
+      },
+      {
+        "label": "Electric Trolley",
+        "feedback": "trolley own't work",
+        "correctness": "0",
+        "correctnessStateImages": [
+          {"imageName": "trolley-kaput"},
+          {"imageName": "trolley"}
         ]
       }
     ]  
@@ -58,10 +67,10 @@
   {
     "slug": "traction",
     "title": "Traction",
-    "imageName": "horses-kaput",
-    "question": "How can we turn that power into motion?",
+    "challengeText": "How can we turn that power into motion?",
     "options": [
       {
+        "label": "Crawler Tracks",
         "feedback": "Temp in feedback.",
         "correctness": "1",
         "correctnessStateImages": [
@@ -70,14 +79,16 @@
         ]
       },
       {
+        "label": "Wheel",
         "feedback": "Yay tracks!",
-        "correctness": "1",
+        "correctness": "0",
         "correctnessStateImages": [
           {"imageName": "oxen-kaput"},
           {"imageName": "option-crawler-track"}
         ]
       },
       {
+        "label": "I forget what",
         "feedback": "Spinning!",
         "correctness": "0",
         "correctnessStateImages": [
@@ -88,23 +99,18 @@
     ]  
   },
   {
-    "slug": "traction",
-    "title": "Traction",
-    "question": "How can we turn that power into motion?"
-  },
-  {
     "slug": "steering",
     "title": "Steering",
-    "question": "Ack"
+    "challengeText": "Ack"
   },
   {
     "slug": "cost",
     "title": "Cost",
-    "question": ""
+    "challengeText": ""
   },
   {
     "slug": "brakes",
     "title": "Breaks",
-    "question": "How to stop"
+    "challengeText": "How to stop"
   }
 ]

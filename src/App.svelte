@@ -13,7 +13,7 @@
   let currentCorrectness = 0;
   let correctnessStates = [1, 1, 1, 1];
   let optionsToHide = ["", "", "", "", ""];
-  const movementDuration = 2000; // 5000
+  const movementDuration = 5000; // 5000
   // let vwidth = 1200;
   // let vheight = 800;
   let textVisible = true;
@@ -120,7 +120,7 @@
 
   async function displayQuestion() {
     setTimeout(() => {
-      console.log('display Question')
+      console.log('display challengeText')
       isFeedback = false;
       textVisible = true;
       displayOptions();
@@ -244,7 +244,7 @@
         <p>{challenges[challengeIndex].options[chosenOptionIndex].feedback} </p>
       {:else}
         <!-- this is question/challenge -->
-        <p>{challenges[challengeIndex].question} </p>
+        <p>{challenges[challengeIndex].challengeText} </p>
         {#if challengeIndex === 0}
           <button on:click={nextMove}>
             start
