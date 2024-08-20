@@ -177,7 +177,7 @@
       textVisible = true;
       if (challengeIndex > 0 && currentCorrectness) {
         
-        accomplished[0]= "Power";
+        accomplished[0]= "<span>Power</span>";
       }
     }, 1000);
   }
@@ -247,8 +247,8 @@
   <header>
     <h1>Be An Inventor</h1>
     <ul class="progress">
-      <li>1 {accomplished[0]}</li>
-      <li>2 {accomplished[1]}</li>
+      <li>1 {@html accomplished[0]}</li>
+      <li>2 {@html accomplished[1]}</li>
       <li>3</li>
       <li>4</li>
       <li>5</li>

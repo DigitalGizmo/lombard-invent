@@ -16,7 +16,7 @@
   <header>
     <h1>Be An Inventor</h1>
     <ul class="progress">
-      <li>1</li>
+      <li>1 <span>Power</span></li>
       <li>2</li>
       <li>3</li>
       <li>4</li>
