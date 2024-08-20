@@ -337,7 +337,7 @@
         <h3>{challenges[challengeIndex].options[2].label}</h3>
       </div>
       <div class="option3">
-        <img src="{assetPath}images/trolley.png" alt="option 3: trolly" />
+        <img src="{assetPath}images/{challenges[challengeIndex].options[3].correctnessStateImages[correctnessStates[3]].imageName}.png" alt="option 3: trolly" />
         <h3>{challenges[challengeIndex].options[3].label}</h3>
       </div>
     </div>
