@@ -5,7 +5,7 @@
   import { draggable } from '@neodrag/svelte';
 
   import challenges from './lib/challenges.json';
-  const assetPath = "https://dev.digitalgizmo.com/msm-ed/lombard-invent-assets/"
+  const assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
   // const assetPath = ""
   let challengeIndex = 0;
   let chosenOptionIndex = 0;
