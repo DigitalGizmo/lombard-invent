@@ -47,7 +47,7 @@ div.hauler img {
 }
 
 article {
-  background: rgba(2, 2, 2, .2);
+  background: rgba(217, 217, 217, .7);
   color: #525252;
   position: absolute;
   top: 70vh;
@@ -59,11 +59,12 @@ article {
 }
 
 article h2 {
-  margin: .75em 0 0 0;
+  margin: 1.5em 0 0 0;
+  color: #5CB8C4;
 }
 
 article p {
-  margin: 0;
+  margin: 0 0 1em 0;
 }
 
 article header.text-box {
@@ -81,8 +82,8 @@ article header.text-box ul.progress {
 
 article header.text-box ul.progress li {
   display: inline-block;
-  background: rgba(92, 184, 196, .5);
-  width: 60px;
+  background: #D2D2D2;
+  width: 60px; /* this needs to be fixed so it remains round */
   font-size: 2em;
   line-height: 1.75;
   height: 60px;
@@ -90,14 +91,21 @@ article header.text-box ul.progress li {
   border-radius: 50%;
 }
 
-article header.text-box ul.progress li span {
+article header.text-box ul.progress li span { /* progress number label */
   display: block;
-  margin: -2.5em auto 0 4em;
   color: #5CB8C4;
   font-size: .5em;
   text-transform: uppercase;
   letter-spacing: .05em;
   font-weight: bold;
+}
+
+article header.text-box ul.progress li.current, article header.text-box ul.progress li:hover {
+  background: #5CB8C4;
+}
+
+article header.text-box ul.progress li.accomplished {
+  background: #74A4A7;
 }
 
 div.options {
