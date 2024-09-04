@@ -246,13 +246,6 @@
 
   <header>
     <h1>Be An Inventor</h1>
-    <ul class="progress">
-      <li>1 {@html accomplished[0]}</li>
-      <li>2 {@html accomplished[1]}</li>
-      <li>3</li>
-      <li>4</li>
-      <li>5</li>
-    </ul>
   </header>
 
   <div class="hauler">
@@ -265,6 +258,15 @@
   </div>
 
   <article>
+    <header class="text-box">
+      <ul class="progress">
+        <li>1 {@html accomplished[0]}</li>
+        <li>2 {@html accomplished[1]}</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+    </header>
     {#if textVisible}
       <h2>{challenges[challengeIndex].title}</h2>
       {#if isFeedback}
