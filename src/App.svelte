@@ -287,14 +287,19 @@
         {/if}   
       {/if}
     {/if}
-    <!-- <p>Debug: 
+    <p>Debug: 
+      correctnessStateImages[correctnessStates[chosenOptionIndex]].imageName: {challenges[challengeIndex].options[chosenOptionIndex].correctnessStateImages[correctnessStates[chosenOptionIndex]].imageName} <br>
+      
       challengeIndex: {challengeIndex}, <br>
       chosenOptionIndex: {chosenOptionIndex},  <br>
-      correctnessStates: {correctnessStates}, <br>
+
+      correctnessStates[chosenOptionIndex]: {correctnessStates[chosenOptionIndex]}
+
+      <!-- correctnessStates: {correctnessStates}, <br>
       currentCorrectness: {currentCorrectness},  <br>
       correctnessStates[currentCorrectness], {correctnessStates[currentCorrectness]} <br>
-      imageName: {challenges[challengeIndex].options[chosenOptionIndex].correctnessStateImages[correctnessStates[currentCorrectness]].imageName},
-    </p> -->
+      imageName: {challenges[challengeIndex].options[chosenOptionIndex].correctnessStateImages[correctnessStates[currentCorrectness]].imageName}, -->
+    </p>
       <!-- imageName: {challenges[challengeIndex].options[chosenOptionIndex].correctnessStateImages[correctnessState].imageName} -->
 
   </article>
