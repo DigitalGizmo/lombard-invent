@@ -1,7 +1,7 @@
 .wrapper {
   width: 100vw;
-  /* height: 100vh; */
-  height: 120vh;
+  height: 100vh;
+  /* height: 120vh; */
   overflow: hidden;
   position: relative;
   background-color: #F9FDFF;

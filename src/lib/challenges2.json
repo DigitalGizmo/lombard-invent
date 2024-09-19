@@ -48,16 +48,16 @@
         "note": "opton applied, 2",
         "optionChosen": [
           [
-            {"imageName": "oxen"},
-            {"imageName": "oxen-kaput"}
+            {"imageName": "oxen-kaput"},
+            {"imageName": "oxen"}
           ],
           [
             {"imageName": "tractor"},
             {"imageName": "tractor"}
           ],
           [
-            {"imageName": "trolley"},
-            {"imageName": "trolley-kaput"}
+            {"imageName": "trolley-kaput"},
+            {"imageName": "trolley"}
           ]
         ]
       }
@@ -104,12 +104,12 @@
             {"imageName": "tractor-tracks"}
           ],
           [
-            {"imageName": "tractor-wheels"},
-            {"imageName": "tractor-wheels-kaput"}
+            {"imageName": "tractor-wheels-kaput"},
+            {"imageName": "tractor-wheels"}
           ],
           [
-            {"imageName": "tractor-screw"},
-            {"imageName": "tractor-screw-kaput"}
+            {"imageName": "tractor-screw-kaput"},
+            {"imageName": "tractor-screw"}
           ]
         ]
       }

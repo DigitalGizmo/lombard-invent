@@ -73,14 +73,14 @@
       // May need to create array and get each, but many not matter since
       // we never show the landed option
       // For now only 1 & 1
-      for (let i = 0; i < 2; i++) {
+      for (let i = 0; i < 3; i++) {
         let optionRect = optionElements[i].getBoundingClientRect();
         optionLandingXOffsets[i] = rect.left - optionRect.left;
         optionTop = optionRect.top;
       }
 
 
-      let optionRect = optionElements[1].getBoundingClientRect();
+      let optionRect = optionElements[0].getBoundingClientRect();
       // option1Left = optionRect.left;
       // option1LandingXOffset = rect.left - optionRect.left;  
       
@@ -205,10 +205,11 @@
       e.detail.offsetX < (optionLandingXOffsets[_chosenOptionIndex] + haulerWidth - 40) &&
       e.detail.offsetY > optionLandingYOffset && // -400 is gt -500
       e.detail.offsetY < (optionLandingYOffset + haulerHeight - 30 ) 
+      )
       // -400 is lt (-500 + 200) aka -400 is lt -300
-    ) {
-      // index change will change main "horse" image
-      // No longer stick option on target
+      {
+      // Set challengePhase to 2 to enable multi-factor image selection
+      challengePhaseIndex = 2;
       // Hide option 
       optionsToHide[_chosenOptionIndex] = "hide-option";
       // This will change hauler image to the option one
@@ -300,27 +301,14 @@
         {/if}   
       {/if}
     {/if}
-    <p>Debug: 
-
-      <!-- {challenges[challengeIndex].challengePhase[2].optionChosen[chosenOptionIndex][correctnessStates[chosenOptionIndex]].imageName} <br> -->
+    <!-- <p>Debug: 
+      {challenges[challengeIndex].challengePhase[2].optionChosen[chosenOptionIndex][correctnessStates[chosenOptionIndex]].imageName} <br>
       challengeIndex: {challengeIndex} <br>
-      challengePhaseIndex: {challengePhaseIndex}
-
-      challenges[challengeIndex].options[0].imageName: {challenges[challengeIndex].options[0].imageName}
-
-      <!-- correctnessStateImages[correctnessStates[chosenOptionIndex]].imageName: {challenges[challengeIndex].options[chosenOptionIndex].correctnessStateImages[correctnessStates[chosenOptionIndex]].imageName} <br>
-      
-      challengeIndex: {challengeIndex}, <br>
+      challengePhaseIndex: {challengePhaseIndex} <br>
       chosenOptionIndex: {chosenOptionIndex},  <br>
-
-      correctnessStates[chosenOptionIndex]: {correctnessStates[chosenOptionIndex]} -->
-
-      <!-- correctnessStates: {correctnessStates}, <br>
-      currentCorrectness: {currentCorrectness},  <br>
-      correctnessStates[currentCorrectness], {correctnessStates[currentCorrectness]} <br>
-      imageName: {challenges[challengeIndex].options[chosenOptionIndex].correctnessStateImages[correctnessStates[currentCorrectness]].imageName}, -->
-    </p>
-      <!-- imageName: {challenges[challengeIndex].options[chosenOptionIndex].correctnessStateImages[correctnessState].imageName} -->
+      correctnessStates[chosenOptionIndex]: {correctnessStates[chosenOptionIndex]}
+      challenges[challengeIndex].options[0].imageName: {challenges[challengeIndex].options[0].imageName}
+    </p> -->
 
   </article>
 
@@ -328,7 +316,7 @@
   {#if optionsVisible}
     <div class="options">
       <div class="option1" >
-        <img src="{assetPath}images/oxen-shadow.png" alt="oxen shadow"
+        <img src="{assetPath}images/{challenges[challengeIndex].options[0].imageName}-shadow.png" alt="oxen shadow"
         class="can-be-overlayed">
         <img src="{assetPath}images/{challenges[challengeIndex].options[0].imageName}.png" 
           class="{optionsToHide[0]}"
@@ -338,7 +326,7 @@
             position: optionPositions[0],
             bounds: choiceObjectBounds,
             onDrag: ({offsetX, offsetY}) => {
-              optionPositions[1] = {x: offsetX, y: offsetY};
+              optionPositions[0] = {x: offsetX, y: offsetY};
             }
           }}  
           on:neodrag:end={(e) => dragStop(e, 0)}     
@@ -347,7 +335,7 @@
       </div>
 
       <div class="option2">
-        <img src="{assetPath}images/tractor-shadow.png" alt="tractor shadow"
+        <img src="{assetPath}images/{challenges[challengeIndex].options[1].imageName}-shadow.png" alt="tractor shadow"
         class="can-be-overlayed">
         <img src="{assetPath}images/{challenges[challengeIndex].options[1].imageName}.png" 
           class="{optionsToHide[1]}"
@@ -357,17 +345,33 @@
             position: optionPositions[1],
             bounds: choiceObjectBounds,
             onDrag: ({offsetX, offsetY}) => {
-              optionPositions[2] = {x: offsetX, y: offsetY};
+              optionPositions[1] = {x: offsetX, y: offsetY};
             }
           }}  
           on:neodrag:end={(e) => dragStop(e, 1)}     
         />
         <h3>{challenges[challengeIndex].options[1].label}</h3>
       </div>
+
       <div class="option3">
-        <img src="{assetPath}images/{challenges[challengeIndex].options[2].imageName}.png" alt="option 3: trolly" />
+        <img src="{assetPath}images/{challenges[challengeIndex].options[2].imageName}-shadow.png" alt="tractor shadow"
+        class="can-be-overlayed">
+        <img src="{assetPath}images/{challenges[challengeIndex].options[2].imageName}.png" 
+          class="{optionsToHide[2]}"
+          id="optionA" alt="option 2: tractor" 
+          bind:this={optionElements[2]}
+          use:draggable={{ 
+            position: optionPositions[2],
+            bounds: choiceObjectBounds,
+            onDrag: ({offsetX, offsetY}) => {
+              optionPositions[2] = {x: offsetX, y: offsetY};
+            }
+          }}  
+          on:neodrag:end={(e) => dragStop(e, 2)}     
+        />
         <h3>{challenges[challengeIndex].options[2].label}</h3>
       </div>
+
     </div>
   {/if}
 
