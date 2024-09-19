@@ -4,10 +4,11 @@
   import { cubicOut } from 'svelte/easing';
   import { draggable } from '@neodrag/svelte';
 
-  import challenges from './lib/challenges.json';
+  import challenges from './lib/challenges2.json';
   const assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
   // const assetPath = ""
   let challengeIndex = 0;
+  let challengePhaseIndex = 0;
   let chosenOptionIndex = 0;
   let isFeedback = false; // otherwise question/challenge
   let currentCorrectness = 0;
@@ -26,7 +27,7 @@
     { x: 0, y: 0}, { x: 0, y: 0}, { x: 0, y: 0}, { x: 0, y: 0}
   ]
 
-  let optionAElement;
+  // let optionAElement;
   let optionElements = [null, null, null, null];
 
   // let haulerLeft = 600;
@@ -72,7 +73,7 @@
       // May need to create array and get each, but many not matter since
       // we never show the landed option
       // For now only 1 & 1
-      for (let i = 1; i < 3; i++) {
+      for (let i = 0; i < 2; i++) {
         let optionRect = optionElements[i].getBoundingClientRect();
         optionLandingXOffsets[i] = rect.left - optionRect.left;
         optionTop = optionRect.top;
@@ -116,7 +117,10 @@
       // isFeedback = true;
       calcHauler();
       // make it kaput
-      correctnessStates[0] = 0;
+      challengePhaseIndex = 1;
+
+      correctnessStates[0] = 0; // ? not used here, but creates error if gone
+
       displayChallengeText();
     }, 1000);
   }
@@ -252,9 +256,18 @@
     <img src="{assetPath}images/lumber.png" alt="lumber"/>
     <!-- correctnessStates has been set chosen index by chosen index
      in the array -->
-    <img src="{assetPath}images/{challenges[challengeIndex].options[chosenOptionIndex].correctnessStateImages[correctnessStates[chosenOptionIndex]].imageName}.png" 
-    style="transform:scale({haulerScale})"
-    alt="horses" id="hauler"/>
+    {#if challengePhaseIndex < 2}
+      <img src="{assetPath}images/{challenges[challengeIndex].challengePhase[challengePhaseIndex].imageName}.png" 
+      style="transform:scale({haulerScale})"
+      alt="horses" id="hauler"/>
+    {:else}
+      <img src="{assetPath}images/{challenges[challengeIndex].challengePhase[2].optionChosen[chosenOptionIndex][correctnessStates[chosenOptionIndex]].imageName}.png"
+      style="transform:scale({haulerScale})"
+      alt="horses" id="hauler"/>
+
+    {/if}
+    
+
   </div>
 
   <article>
@@ -288,12 +301,19 @@
       {/if}
     {/if}
     <p>Debug: 
-      correctnessStateImages[correctnessStates[chosenOptionIndex]].imageName: {challenges[challengeIndex].options[chosenOptionIndex].correctnessStateImages[correctnessStates[chosenOptionIndex]].imageName} <br>
+
+      <!-- {challenges[challengeIndex].challengePhase[2].optionChosen[chosenOptionIndex][correctnessStates[chosenOptionIndex]].imageName} <br> -->
+      challengeIndex: {challengeIndex} <br>
+      challengePhaseIndex: {challengePhaseIndex}
+
+      challenges[challengeIndex].options[0].imageName: {challenges[challengeIndex].options[0].imageName}
+
+      <!-- correctnessStateImages[correctnessStates[chosenOptionIndex]].imageName: {challenges[challengeIndex].options[chosenOptionIndex].correctnessStateImages[correctnessStates[chosenOptionIndex]].imageName} <br>
       
       challengeIndex: {challengeIndex}, <br>
       chosenOptionIndex: {chosenOptionIndex},  <br>
 
-      correctnessStates[chosenOptionIndex]: {correctnessStates[chosenOptionIndex]}
+      correctnessStates[chosenOptionIndex]: {correctnessStates[chosenOptionIndex]} -->
 
       <!-- correctnessStates: {correctnessStates}, <br>
       currentCorrectness: {currentCorrectness},  <br>
@@ -310,42 +330,43 @@
       <div class="option1" >
         <img src="{assetPath}images/oxen-shadow.png" alt="oxen shadow"
         class="can-be-overlayed">
-        <img src="{assetPath}images/{challenges[challengeIndex].options[1].correctnessStateImages[correctnessStates[1]].imageName}.png" 
-          class="{optionsToHide[1]}"
+        <img src="{assetPath}images/{challenges[challengeIndex].options[0].imageName}.png" 
+          class="{optionsToHide[0]}"
           id="optionA" alt="option 1: oxen" 
+          bind:this={optionElements[0]}
+          use:draggable={{ 
+            position: optionPositions[0],
+            bounds: choiceObjectBounds,
+            onDrag: ({offsetX, offsetY}) => {
+              optionPositions[1] = {x: offsetX, y: offsetY};
+            }
+          }}  
+          on:neodrag:end={(e) => dragStop(e, 0)}     
+        />
+        <h3>{challenges[challengeIndex].options[0].label}</h3>
+      </div>
+
+      <div class="option2">
+        <img src="{assetPath}images/tractor-shadow.png" alt="tractor shadow"
+        class="can-be-overlayed">
+        <img src="{assetPath}images/{challenges[challengeIndex].options[1].imageName}.png" 
+          class="{optionsToHide[1]}"
+          id="optionA" alt="option 2: tractor" 
           bind:this={optionElements[1]}
           use:draggable={{ 
             position: optionPositions[1],
             bounds: choiceObjectBounds,
             onDrag: ({offsetX, offsetY}) => {
-              optionPositions[1] = {x: offsetX, y: offsetY};
+              optionPositions[2] = {x: offsetX, y: offsetY};
             }
           }}  
           on:neodrag:end={(e) => dragStop(e, 1)}     
         />
         <h3>{challenges[challengeIndex].options[1].label}</h3>
       </div>
-      <div class="option2">
-        <img src="{assetPath}images/tractor-shadow.png" alt="tractor shadow"
-        class="can-be-overlayed">
-        <img src="{assetPath}images/{challenges[challengeIndex].options[2].correctnessStateImages[correctnessStates[2]].imageName}.png" 
-          class="{optionsToHide[2]}"
-          id="optionA" alt="option 2: tractor" 
-          bind:this={optionElements[2]}
-          use:draggable={{ 
-            position: optionPositions[2],
-            bounds: choiceObjectBounds,
-            onDrag: ({offsetX, offsetY}) => {
-              optionPositions[2] = {x: offsetX, y: offsetY};
-            }
-          }}  
-          on:neodrag:end={(e) => dragStop(e, 2)}     
-        />
-        <h3>{challenges[challengeIndex].options[2].label}</h3>
-      </div>
       <div class="option3">
-        <img src="{assetPath}images/{challenges[challengeIndex].options[3].correctnessStateImages[correctnessStates[3]].imageName}.png" alt="option 3: trolly" />
-        <h3>{challenges[challengeIndex].options[3].label}</h3>
+        <img src="{assetPath}images/{challenges[challengeIndex].options[2].imageName}.png" alt="option 3: trolly" />
+        <h3>{challenges[challengeIndex].options[2].label}</h3>
       </div>
     </div>
   {/if}

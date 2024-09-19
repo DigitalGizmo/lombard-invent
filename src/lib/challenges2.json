@@ -3,7 +3,7 @@
     "slug": "intro",
     "title": "Be The Inventor",
     "challengeText": "You're the inventor and your challenge will be to get these logs hauled efficiently! Drag and drop your best guess from the options to the right.",
-    "haulerPhase": [
+    "challengePhase": [
       {
         "note": "while in transition, 0",
         "imageName": "horses"
@@ -11,14 +11,31 @@
       {
         "note": "while at kaput, 1",
         "imageName": "horses-kaput"
+      },
+      {
+        "note": "opton applied, 2",
+        "optionChosen": [
+          [
+            {"imageName": "n/a"},
+            {"imageName": "n/a"}
+          ]
+        ]
       }
-    ]
+    ],
+    "options": [
+      {
+        "label": "n/a",
+        "feedback": "not used",
+        "correctness": "0",
+        "imageName": "placeHolder"
+      }
+    ]  
   },
   {
     "slug": "power",
     "title": "The Power Problem",
     "challengeText": "Horses were used extensively to move timber from the forest to the nearest river, railroad or sawmill. It was very hard on the horses and expensive. In addition, Horses where limited in how far they could haul a heavy logging sled. What do you think would work better?",
-    "haulerPhase": [
+    "challengePhase": [
       {
         "note": "while in transition, 0",
         "imageName": "horses"
@@ -70,7 +87,7 @@
     "slug": "traction",
     "title": "Traction",
     "challengeText": "Timber was usually moved during the winter when the ground was frozen and sleds could easily be hauled over icey and snowy roads. However, designing a machine that could move under those wintery conditions was rather tricky. What solution would provide the right traction?",
-    "haulerPhase": [
+    "challengePhase": [
       {
         "note": "while in transition, 0",
         "imageName": "tractor"
