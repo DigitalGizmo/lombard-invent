@@ -81,16 +81,16 @@ article header.text-box ul.progress {
   justify-content: space-between;
 }
 
-article header.text-box ul.progress li {
+/* article header.text-box ul.progress li {
   display: inline-block;
   background: #D2D2D2;
-  width: 60px; /* this needs to be fixed so it remains round */
+  width: 60px; 
   font-size: 2em;
   line-height: 1.75;
   height: 60px;
   color: white;
   border-radius: 50%;
-}
+} */
 
 article header.text-box ul.progress li span { /* progress number label */
   display: block;

@@ -14,14 +14,18 @@
   let currentCorrectness = 0;
   let correctnessStates = [1, 1, 1, 1];
   let optionsToHide = ["", "", "", "", ""];
-  const movementDuration = 5000; // 5000
+  const movementDuration = 2000; // 5000
   // let vwidth = 1200;
   // let vheight = 800;
   let textVisible = true;
   let optionsVisible = false;
   let haulerScale = 1;
-  let accomplished = ["", "", "", "", "", "", "", ]
-
+  const doneLabels = ["<span>Power</span>", "<span>Traction</span>", 
+    "<span>Steering</span>", "<span>Cost</span>", "<span>Brakes</span>"];
+  let doneStatus = [{isDone: false, label: ""}, {isDone: false, label: ""}, 
+  {isDone: false, label: ""}, {isDone: false, label: ""}, {isDone: false, label: ""}
+   ]
+  // let test = true;
   let choiceObjectBounds = {top: 100, left:20, bottom:50, right:50};
   let optionPositions = [
     { x: 0, y: 0}, { x: 0, y: 0}, { x: 0, y: 0}, { x: 0, y: 0}
@@ -180,8 +184,9 @@
       isFeedback = true;
       textVisible = true;
       if (challengeIndex > 0 && currentCorrectness) {
-        
-        accomplished[0]= "<span>Power</span>";
+        // minus 1 bcz json element 0 is intro
+        doneStatus[challengeIndex - 1].label = doneLabels[challengeIndex - 1];
+        doneStatus[challengeIndex - 1].isDone = true;
       }
     }, 1000);
   }
@@ -274,11 +279,21 @@
   <article>
     <header class="text-box">
       <ul class="progress">
-        <li>1 {@html accomplished[0]}</li>
-        <li>2 {@html accomplished[1]}</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
+        <li class="progress-item" class:done={doneStatus[0].isDone}> 
+          1 {@html doneStatus[0].label}
+        </li>
+        <li class="progress-item" class:done={doneStatus[1].isDone}> 
+          2 {@html doneStatus[1].label}
+        </li>
+        <li class="progress-item" class:done={doneStatus[2].isDone}> 
+          3 {@html doneStatus[2].label}
+        </li>
+        <li class="progress-item" class:done={doneStatus[3].isDone}> 
+          4 {@html doneStatus[3].label}
+        </li>
+        <li class="progress-item" class:done={doneStatus[4].isDone}> 
+          5 {@html doneStatus[4].label}
+        </li>
       </ul>
     </header>
     {#if textVisible}
@@ -385,4 +400,20 @@
   .can-be-overlayed {
     position: absolute;
   }
+
+  .progress-item {
+  display: inline-block;
+  background: #D2D2D2;
+  width: 60px; 
+  font-size: 2em;
+  line-height: 1.75;
+  height: 60px;
+  color: white;
+  border-radius: 50%;
+}
+
+  .done {
+    background: green;
+  }
+
 </style>
