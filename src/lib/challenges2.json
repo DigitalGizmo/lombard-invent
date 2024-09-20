@@ -138,7 +138,54 @@
   {
     "slug": "steering",
     "title": "Steering",
-    "challengeText": "Ack"
+    "challengeText": "Ack",
+    "challengePhase": [
+      {
+        "note": "while in transition, 0",
+        "imageName": "tractor-tracks"
+      },
+      {
+        "note": "while at kaput, 1",
+        "imageName": "tractor-kaput"
+      },
+      {
+        "note": "opton applied, 2",
+        "optionChosen": [
+          [
+            {"imageName": "chX-h-temp0"},
+            {"imageName": "chX-h-temp0"}
+          ],
+          [
+            {"imageName": "chX-h-temp1-kaput"},
+            {"imageName": "chX-h-temp1"}
+          ],
+          [
+            {"imageName": "tractor-screw-kaput"},
+            {"imageName": "tractor-screw"}
+          ]
+        ]
+      }
+    ],
+    "options": [ 
+      {
+        "label": "Steerable Skis",
+        "feedback": "Right you are! In 1900 Alvin Lombard developed and patented the first practical crawler track system. Crawler tracks spread the weight of the machine so it can move over soft ground and have plenty of traction on ice and snow.",
+        "correctness": "1",
+        "imageName": "chX-opt-temp0"
+      },
+      {
+        "label": "Track Steering",
+        "feedback": "Wheels would sink in snow and soft ground and the steel wheels of the day offered very little traction on ice and snow.",
+        "correctness": "0",
+        "imageName": "chX-opt-temp1"
+      },
+      {
+        "label": "Raiload Tracks",
+        "feedback": "Interesting solution! In 1904 Ira Peavey of Bangor, Maine patented a \"Snow Locomotive\" which used giant screws to move it through the snow and over ice. Unfortunately, it worked but was not a complete success.",
+        "correctness": "0",
+        "imageName": "screw"
+      }
+    ]  
   },
   {
     "slug": "cost",
