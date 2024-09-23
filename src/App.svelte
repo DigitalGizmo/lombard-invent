@@ -14,7 +14,7 @@
   let currentCorrectness = 0;
   let correctnessStates = [1, 1, 1, 1];
   let optionsToHide = ["", "", "", "", ""];
-  const movementDuration = 2000; // 5000
+  const movementDuration = 1000; // 5000
   // let vwidth = 1200;
   // let vheight = 800;
   let textVisible = true;
@@ -126,7 +126,8 @@
       correctnessStates[0] = 0; // ? not used here, but creates error if gone
 
       displayChallengeText();
-    }, 1000);
+    }, 500);
+    // 1000
   }
 
   async function displayChallengeText() {
@@ -134,8 +135,11 @@
       console.log('display challengeText')
       isFeedback = false;
       textVisible = true;
-      displayOptions();
-    }, 1000);
+      if (challengeIndex < 6) {
+        displayOptions();
+      }
+    }, 500);
+    // 1000
   }
 
   async function displayOptions() {
@@ -143,7 +147,8 @@
       console.log('display Options')
       optionsVisible = true;
       calcOptionOffsets();
-    }, 2000);
+    }, 500);
+    // 2000
   }
 
   // Short move for wring
@@ -188,7 +193,8 @@
         doneStatus[challengeIndex - 1].label = doneLabels[challengeIndex - 1];
         doneStatus[challengeIndex - 1].isDone = true;
       }
-    }, 1000);
+    }, 500);
+    // 1000
   }
 
   async function onToNext() {
@@ -196,7 +202,8 @@
       console.log('on to next challenge')
       optionsVisible = false;
       nextMove();
-    }, 2000);
+    }, 500);
+    // 2000
   }
 
   function dragStop(e, _chosenOptionIndex) { //  _chosenOptionIndex
@@ -265,7 +272,7 @@
     {#if challengePhaseIndex < 2}
       <img src="{assetPath}images/{challenges[challengeIndex].challengePhase[challengePhaseIndex].imageName}.png" 
       style="transform:scale({haulerScale})"
-      alt="horses" id="hauler"/>
+      alt="{challenges[challengeIndex].challengePhase[challengePhaseIndex].imageName}" id="hauler"/>
     {:else}
       <img src="{assetPath}images/{challenges[challengeIndex].challengePhase[2].optionChosen[chosenOptionIndex][correctnessStates[chosenOptionIndex]].imageName}.png"
       style="transform:scale({haulerScale})"
@@ -303,7 +310,11 @@
         <p>{challenges[challengeIndex].options[chosenOptionIndex].feedback} </p>
         {#if currentCorrectness}
           <button on:click={nextMove}>
-            Next Challenge
+            {#if challengeIndex < 5}
+              Next Challenge
+            {:else}
+              Start Hauling Logs!
+            {/if}
           </button>
         {/if}           
       {:else}

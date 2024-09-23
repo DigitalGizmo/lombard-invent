@@ -138,7 +138,7 @@
   {
     "slug": "steering",
     "title": "Steering",
-    "challengeText": "Ack",
+    "challengeText": "The Lombard Log hauler weighs 19 tons. How can such a heavy machine be steered?",
     "challengePhase": [
       {
         "note": "while in transition, 0",
@@ -152,7 +152,59 @@
         "note": "opton applied, 2",
         "optionChosen": [
           [
-            {"imageName": "chX-h-temp0"},
+            {"imageName": "chX-h-temp0-kaput"},
+            {"imageName": "chX-h-temp0"}
+          ],
+          [
+            {"imageName": "chX-h-temp1"},
+            {"imageName": "chX-h-temp1"}
+          ],
+          [
+            {"imageName": "chX-h-temp2-kaput"},
+            {"imageName": "chX-h-temp2"}
+          ]
+        ]
+      }
+    ],
+    "options": [ 
+      {
+        "label": "Tiller",
+        "feedback": "Tiller steering was used on many early automobiles and would have been very familiar to Alvin Lombard. However, the Lombard log hauler has approximately 8,000 lbs of weight on the skis. A tiller type steering mechanism would not provide enough mechanical advantage",
+        "correctness": "0",
+        "imageName": "chX-opt-temp0"
+      },
+      {
+        "label": "Steering Wheel",
+        "feedback": "Perfect! A steering wheel used with gears to provide a 1:40 mechanical advantage worked very well ",
+        "correctness": "1",
+        "imageName": "chX-opt-temp1"
+      },
+      {
+        "label": "Horse",
+        "feedback": "The early Lombard log hauler used a horse to steer the skis. The steersman sat on the front of the machine used a set of reins to direct the horse. However, the horse added cost (they need to eat) and complexity.",
+        "correctness": "0",
+        "imageName": "chX-opt-temp2"
+      }
+    ]  
+  },
+  {
+    "slug": "cost",
+    "title": "Cost",
+    "challengeText": "The Lombard steam Log Hauler worked great. However, it was pretty expensive to operate. How can cost be reduced?",
+    "challengePhase": [
+      {
+        "note": "while in transition, 0",
+        "imageName": "chX-h-temp1"
+      },
+      {
+        "note": "while at kaput, 1",
+        "imageName": "chX-h-temp1-kaput"
+      },
+      {
+        "note": "opton applied, 2",
+        "optionChosen": [
+          [
+            {"imageName": "chX-h-temp0-kaput"},
             {"imageName": "chX-h-temp0"}
           ],
           [
@@ -160,41 +212,83 @@
             {"imageName": "chX-h-temp1"}
           ],
           [
-            {"imageName": "tractor-screw-kaput"},
-            {"imageName": "tractor-screw"}
+            {"imageName": "chX-h-temp2"},
+            {"imageName": "chX-h-temp2"}
           ]
         ]
       }
     ],
     "options": [ 
       {
-        "label": "Steerable Skis",
-        "feedback": "Right you are! In 1900 Alvin Lombard developed and patented the first practical crawler track system. Crawler tracks spread the weight of the machine so it can move over soft ground and have plenty of traction on ice and snow.",
-        "correctness": "1",
+        "label": "Reduce Crew",
+        "feedback": "A Lombard steam log hauler required a crew of three: Steersman, Engineer and fireman. All were vital to the successful and safe operation of the machine. Reducing the crew would create many problems.",
+        "correctness": "0",
         "imageName": "chX-opt-temp0"
       },
       {
-        "label": "Track Steering",
-        "feedback": "Wheels would sink in snow and soft ground and the steel wheels of the day offered very little traction on ice and snow.",
+        "label": "Make Smaller",
+        "feedback": "Lombard did produce a much smaller 15 ton steam Lombard log hauler. Featuring a vertical boiler, narrower tracks and being generally smaller than the full size Lombard. Though successful, the cost savings was minimal",
         "correctness": "0",
         "imageName": "chX-opt-temp1"
       },
       {
-        "label": "Raiload Tracks",
-        "feedback": "Interesting solution! In 1904 Ira Peavey of Bangor, Maine patented a \"Snow Locomotive\" which used giant screws to move it through the snow and over ice. Unfortunately, it worked but was not a complete success.",
-        "correctness": "0",
-        "imageName": "screw"
+        "label": "Gas Engine",
+        "feedback": "Correct! In 1909 Lombard developed a prototype gasoline powered log hauler.  In 1917 production focused on the Lombard's \"Tractor-Truck\" which was smaller lighter, faster, required only a driver and was very simple to operate.",
+        "correctness": "1",
+        "imageName": "chX-opt-temp2"
       }
     ]  
   },
   {
-    "slug": "cost",
-    "title": "Cost",
-    "challengeText": ""
-  },
-  {
     "slug": "brakes",
     "title": "Breaks",
-    "challengeText": "How to stop"
+    "challengeText": "A Lombard steam Log Hauler weighed 19 tons and could pull up to 300 tons of logs loaded on sleds. Going down a hill is going to be a challenge!",
+    "challengePhase": [
+      {
+        "note": "while in transition, 0",
+        "imageName": "chX-h-temp2"
+      },
+      {
+        "note": "while at kaput, 1",
+        "imageName": "chX-h-temp2-kaput"
+      },
+      {
+        "note": "opton applied, 2",
+        "optionChosen": [
+          [
+            {"imageName": "chX-h-temp0-kaput"},
+            {"imageName": "chX-h-temp0"}
+          ],
+          [
+            {"imageName": "chX-h-temp1"},
+            {"imageName": "chX-h-temp1"}
+          ],
+          [
+            {"imageName": "chX-h-temp2-kaput"},
+            {"imageName": "chX-h-temp2"}
+          ]
+        ]
+      }
+    ],
+    "options": [ 
+      {
+        "label": "Straw",
+        "feedback": "When horse were used to pull logging sleds straw was placed on the hills to create friction to hold the sleds back.  However, it required a person stationed at each hill to remove the old wet, ice coated straw and lay down a new layer all of which cost money",
+        "correctness": "0",
+        "imageName": "chX-opt-temp0"
+      },
+      {
+        "label": "Mechanical Brakes",
+        "feedback": "Steam powered Lombard log haulers never had brakes. However, with the introduction of the Lombard Lag Bed tractor in 1912 all gasoline powered Lombards had a powerful, foot operated drum brake mounted on the drive shaft",
+        "correctness": "1",
+        "imageName": "chX-opt-temp1"
+      },
+      {
+        "label": "Snubbing Machine",
+        "feedback": "Snub lines and snubbing machines were often used to hold back heavy logging sleds when used with horses. However, they were dangerous to use and required a crew to operate which was expensive",
+        "correctness": "0",
+        "imageName": "chX-opt-temp2"
+      }
+    ]  
   }
 ]
