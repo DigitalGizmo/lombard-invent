@@ -56,23 +56,23 @@
       let rect = hauler.getBoundingClientRect();
       // haulerWidth =  Math.round(rect.width);
       haulerHeight = Math.round(rect.height);
-      console.log(' hauler height onMount in timeout: ' + haulerHeight);
+      // console.log(' hauler height onMount in timeout: ' + haulerHeight);
     }, 10);
   }
 
   async function calcOptionOffsets() {
     await tick();
-    console.log('finished waiting')
+    // console.log('finished waiting')
     let hauler = document.getElementById('hauler');
 
-    console.log('1st rect: ' + hauler.getBoundingClientRect());
+    // console.log('1st rect: ' + hauler.getBoundingClientRect());
     setTimeout(() => {
       let rect = hauler.getBoundingClientRect();
       haulerWidth =  Math.round(rect.width);
       haulerHeight = Math.round(rect.height);
 
-      console.log('haulerLeft:' + rect.left + ' haulerTop:' + rect.top + 
-      ' haulerWidth:' + haulerWidth + ' haulerHeight:' + haulerHeight)
+      // console.log('haulerLeft:' + rect.left + ' haulerTop:' + rect.top + 
+      // ' haulerWidth:' + haulerWidth + ' haulerHeight:' + haulerHeight)
 
       // May need to create array and get each, but many not matter since
       // we never show the landed option
@@ -89,9 +89,9 @@
       // option1LandingXOffset = rect.left - optionRect.left;  
       
       // optionTop = optionRect.top;
-      console.log('optionTop: ' + optionTop);
+      // console.log('optionTop: ' + optionTop);
       optionLandingYOffset = -(Math.round(optionRect.top) - rect.top);  
-      console.log('distance from opt top to haul top: ' + optionLandingYOffset)
+      // console.log('distance from opt top to haul top: ' + optionLandingYOffset)
     }, 10);
   }  
 
@@ -132,7 +132,7 @@
 
   async function displayChallengeText() {
     setTimeout(() => {
-      console.log('display challengeText')
+      console.log('display challengeText. chalengIndex: ' + challengeIndex)
       isFeedback = false;
       textVisible = true;
       if (challengeIndex < 6) {
@@ -157,28 +157,28 @@
     landX.update((landX) => landX - 5);
     await cloudsX.update((cloudsX) => cloudsX - 3);
     correctnessStates[_chosenOptionIndex] = currentCorrectness;
-    console.log('correctnessStates[' + _chosenOptionIndex + '] = ' + challenges[challengeIndex].options[chosenOptionIndex].correctness)
+    // console.log('correctnessStates[' + _chosenOptionIndex + '] = ' + challenges[challengeIndex].options[chosenOptionIndex].correctness)
     displayFeedback();
   }  
 
   async function bingCorrect(_chosenOptionIndex) {
-    console.log(' -- bing Correct!');
+    // console.log(' -- bing Correct!');
     correctnessStates[_chosenOptionIndex] = currentCorrectness;
     // console.log('correctnessStates[' + _chosenOptionIndex + '] = ' + challenges[challengeIndex].options[chosenOptionIndex].correctness)
     await tick();
     setTimeout(() => {
       haulerScale = 1.4;
-      console.log('setting scale 1.2')
+      // console.log('setting scale 1.2')
       bingCorrectPart2();
     }, 500);
   }  
 
   async function bingCorrectPart2(_chosenOptionIndex) {
-    console.log(' -- bing Correct p 2');
+    // console.log(' -- bing Correct p 2');
     await tick();
     setTimeout(() => {
       haulerScale = 1;
-      console.log('setting scale 1.2')
+      // console.log('setting scale 1.2')
       displayFeedback();
     }, 500);
   }  

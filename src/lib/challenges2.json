@@ -290,5 +290,37 @@
         "imageName": "chX-opt-temp2"
       }
     ]  
+  },
+  {
+    "slug": "end",
+    "title": "You Invented a Better Hauler!",
+    "challengeText": "You're going to make a lot of money now!",
+    "challengePhase": [
+      {
+        "note": "while in transition, 0",
+        "imageName": "chX-opt-temp1"
+      },
+      {
+        "note": "while at kaput, 1",
+        "imageName": "chX-opt-temp1"
+      },
+      {
+        "note": "opton applied, 2",
+        "optionChosen": [
+          [
+            {"imageName": "n/a"},
+            {"imageName": "n/a"}
+          ]
+        ]
+      }
+    ],
+    "options": [
+      {
+        "label": "n/a",
+        "feedback": "not used",
+        "correctness": "0",
+        "imageName": "placeHolder"
+      }
+    ]  
   }
 ]
