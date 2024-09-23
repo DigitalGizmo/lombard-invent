@@ -14,7 +14,8 @@
   let currentCorrectness = 0;
   let correctnessStates = [1, 1, 1, 1];
   let optionsToHide = ["", "", "", "", ""];
-  const movementDuration = 1000; // 5000
+  const speed = 1; // Smaller is faster
+  const movementDuration = 5000 * speed; // 5000
   // let vwidth = 1200;
   // let vheight = 800;
   let textVisible = true;
@@ -126,8 +127,7 @@
       correctnessStates[0] = 0; // ? not used here, but creates error if gone
 
       displayChallengeText();
-    }, 500);
-    // 1000
+    }, 1000 * speed);
   }
 
   async function displayChallengeText() {
@@ -138,8 +138,7 @@
       if (challengeIndex < 6) {
         displayOptions();
       }
-    }, 500);
-    // 1000
+    }, 1000 * speed);
   }
 
   async function displayOptions() {
@@ -147,8 +146,7 @@
       console.log('display Options')
       optionsVisible = true;
       calcOptionOffsets();
-    }, 500);
-    // 2000
+    }, 2000 * speed);
   }
 
   // Short move for wring
@@ -193,8 +191,7 @@
         doneStatus[challengeIndex - 1].label = doneLabels[challengeIndex - 1];
         doneStatus[challengeIndex - 1].isDone = true;
       }
-    }, 500);
-    // 1000
+    }, 1000 * speed);
   }
 
   async function onToNext() {
@@ -202,8 +199,7 @@
       console.log('on to next challenge')
       optionsVisible = false;
       nextMove();
-    }, 500);
-    // 2000
+    }, 2000 * speed);
   }
 
   function dragStop(e, _chosenOptionIndex) { //  _chosenOptionIndex
