@@ -258,7 +258,7 @@
   </div>
 
   <header>
-    <h1>Be An Inventor</h1>
+    <h1>Be The Inventor</h1>
   </header>
 
   <div class="hauler">
@@ -398,29 +398,3 @@
   {/if}
 
 </div><!--/wrapper-->
-
-<style>
-  .hide-option {
-    visibility: hidden;
-  }
-
-  .can-be-overlayed {
-    position: absolute;
-  }
-
-  .progress-item {
-  display: inline-block;
-  background: #D2D2D2;
-  width: 60px; 
-  font-size: 2em;
-  line-height: 1.75;
-  height: 60px;
-  color: white;
-  border-radius: 50%;
-}
-
-  .done {
-    background: green;
-  }
-
-</style>

@@ -1,3 +1,14 @@
+h1, h2, h3, h4 {
+  font-family: "Montagu Slab", serif;
+  font-weight: 500;
+}
+
+p {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .wrapper {
   width: 100vw;
   height: 100vh;
@@ -54,14 +65,15 @@ article {
   top: 70vh;
   left: 15px;
   width: 32vw;
-  height: 20vh;
+/*  height: 20vh;*/
   border: 1px solid lightgray;
   padding: 1%;
 }
 
 article h2 {
-  margin: 1.5em 0 0 0;
+  margin: 1.65em 0 0 0;
   color: #5CB8C4;
+  border-top: 1px solid lightgray;
 }
 
 article p {
@@ -81,7 +93,7 @@ article header.text-box ul.progress {
   justify-content: space-between;
 }
 
-/* article header.text-box ul.progress li {
+article header.text-box ul.progress li.progress-item {
   display: inline-block;
   background: #D2D2D2;
   width: 60px; 
@@ -90,22 +102,19 @@ article header.text-box ul.progress {
   height: 60px;
   color: white;
   border-radius: 50%;
-} */
+}
 
-article header.text-box ul.progress li span { /* progress number label */
+article header.text-box ul.progress li.progress-item span { /* progress number label */
   display: block;
-  color: #5CB8C4;
-  font-size: .5em;
+  color: #5CB8C4;/* aqua */
+  font-size: .35em;
   text-transform: uppercase;
   letter-spacing: .05em;
   font-weight: bold;
+  margin-top: 4px;
 }
 
-article header.text-box ul.progress li.current, article header.text-box ul.progress li:hover {
-  background: #5CB8C4;
-}
-
-article header.text-box ul.progress li.accomplished {
+article header.text-box ul.progress li.done {
   background: #74A4A7;
 }
 
@@ -126,3 +135,13 @@ div.option1, div.option2 {
   float: left;
   margin-right: 2em;
 }
+
+.hide-option {
+  visibility: hidden;
+}
+
+.can-be-overlayed {
+  position: absolute;
+}
+
+
