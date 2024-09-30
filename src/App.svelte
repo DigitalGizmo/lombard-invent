@@ -14,7 +14,7 @@
   let currentCorrectness = 0;
   let correctnessStates = [1, 1, 1, 1];
   let optionsToHide = ["", "", "", "", ""];
-  const speed = 1; // Smaller is faster
+  const speed = 1; // Smaller is faster for working preview
   const movementDuration = 5000 * speed; // 5000
   // let vwidth = 1200;
   // let vheight = 800;
@@ -98,11 +98,11 @@
 
   const cloudsX = tweened(0, {
     duration: movementDuration,
-    easing: cubicOut
+    // easing: cubicOut
   });
   const landX = tweened(0, {
     duration: movementDuration,
-    easing: cubicOut
+    // easing: cubicOut
   });
 
   // movement
@@ -110,8 +110,8 @@
     // console.log('before timeout')
     textVisible = false;
     optionsVisible = false;
-    landX.update((landX) => landX - 15);
-    await cloudsX.update((cloudsX) => cloudsX - 8);
+    landX.update((landX) => landX - 50);
+    await cloudsX.update((cloudsX) => cloudsX - 20);
     setTimeout(() => {
       // console.log('after timeout')
       // chalengIndex change will change main "horse" image
@@ -149,11 +149,11 @@
     }, 2000 * speed);
   }
 
-  // Short move for wring
+  // Short move for wrong
   async function shortMove( _chosenOptionIndex) {
     // await haulerX.update((haulerX) => haulerX + 10);
-    landX.update((landX) => landX - 5);
-    await cloudsX.update((cloudsX) => cloudsX - 3);
+    landX.update((landX) => landX - 20);
+    await cloudsX.update((cloudsX) => cloudsX - 12);
     correctnessStates[_chosenOptionIndex] = currentCorrectness;
     // console.log('correctnessStates[' + _chosenOptionIndex + '] = ' + challenges[challengeIndex].options[chosenOptionIndex].correctness)
     displayFeedback();
