@@ -32,6 +32,14 @@
     { x: 0, y: 0}, { x: 0, y: 0}, { x: 0, y: 0}, { x: 0, y: 0}
   ]
 
+  // let audioName = "progress"
+  let audioProgress = new Audio(assetPath + 'audio/progress.mp3')
+  const audioIncorrect = new Audio(assetPath + 'audio/incorrect.mp3')
+  const audioCorrect = new Audio(assetPath + 'audio/correct.mp3')
+  const audioProgressSteam = new Audio(assetPath + 'audio/progress-audioProgressSteam.mp3')
+  // $: audio = new Audio(assetPath + 'audio/' + audioName + '.mp3')
+
+
   // let optionAElement;
   let optionElements = [null, null, null, null];
 
@@ -110,8 +118,12 @@
     // console.log('before timeout')
     textVisible = false;
     optionsVisible = false;
+    // audioName = "progress";
+    audioProgress = new Audio(assetPath + 'audio/progress.mp3')
+    audioProgress.play();
     landX.update((landX) => landX - 50);
     await cloudsX.update((cloudsX) => cloudsX - 20);
+    audioProgress.pause();
     setTimeout(() => {
       // console.log('after timeout')
       // chalengIndex change will change main "horse" image
@@ -123,6 +135,8 @@
       calcHauler();
       // make it kaput
       challengePhaseIndex = 1;
+      // audioName = "incorrect";
+      audioIncorrect.play();
 
       correctnessStates[0] = 0; // ? not used here, but creates error if gone
 
@@ -152,9 +166,12 @@
   // Short move for wrong
   async function shortMove( _chosenOptionIndex) {
     // await haulerX.update((haulerX) => haulerX + 10);
+    audioProgress.play();
     landX.update((landX) => landX - 20);
     await cloudsX.update((cloudsX) => cloudsX - 12);
+    audioProgress.pause();
     correctnessStates[_chosenOptionIndex] = currentCorrectness;
+    audioIncorrect.play();
     // console.log('correctnessStates[' + _chosenOptionIndex + '] = ' + challenges[challengeIndex].options[chosenOptionIndex].correctness)
     displayFeedback();
   }  
@@ -164,6 +181,7 @@
     correctnessStates[_chosenOptionIndex] = currentCorrectness;
     // console.log('correctnessStates[' + _chosenOptionIndex + '] = ' + challenges[challengeIndex].options[chosenOptionIndex].correctness)
     await tick();
+    audioCorrect.play();
     setTimeout(() => {
       haulerScale = 1.4;
       // console.log('setting scale 1.2')
@@ -178,6 +196,7 @@
       haulerScale = 1;
       // console.log('setting scale 1.2')
       displayFeedback();
+      audioCorrect.pause();
     }, 500);
   }  
 
@@ -244,6 +263,10 @@
       optionPositions[_chosenOptionIndex] = {x: 0, y: 0};
     }
   }
+
+  // function playSound() {
+  //   audio.play();
+  // }
 </script>
 
 <div class="wrapper">
