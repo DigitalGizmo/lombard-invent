@@ -65,7 +65,7 @@ article {
   top: 70vh;
   left: 15px;
   width: 32vw;
-/*  height: 20vh;*/
+  min-height: 15vh;
   border: 1px solid lightgray;
   padding: 1%;
 }
