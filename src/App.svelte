@@ -32,6 +32,9 @@
     { x: 0, y: 0}, { x: 0, y: 0}, { x: 0, y: 0}, { x: 0, y: 0}
   ]
 
+  // Temp array for progress audio names, should be in json
+  const progressAudioNames = ['progress', 'progress-steam', 'progress-steam', 
+    'progress-steam', 'progress-steam', 'progress-steam' ]
   // let audioName = "progress"
   let audioProgress = new Audio(assetPath + 'audio/progress.mp3')
   const audioIncorrect = new Audio(assetPath + 'audio/incorrect.mp3')
@@ -119,7 +122,7 @@
     textVisible = false;
     optionsVisible = false;
     // audioName = "progress";
-    audioProgress = new Audio(assetPath + 'audio/progress.mp3')
+    audioProgress = new Audio(assetPath + 'audio/' + progressAudioNames[challengeIndex] + '.mp3')
     audioProgress.play();
     landX.update((landX) => landX - 50);
     await cloudsX.update((cloudsX) => cloudsX - 20);
