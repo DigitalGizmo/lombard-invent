@@ -11,10 +11,11 @@
   let challengePhaseIndex = 0;
   let chosenOptionIndex = 0;
   let isFeedback = false; // otherwise question/challenge
+  let isMoreFeedbackShowing = false;
   let currentCorrectness = 0;
   let correctnessStates = [1, 1, 1, 1];
   let optionsToHide = ["", "", "", "", ""];
-  const speed = 1; // Smaller is faster for working preview
+  const speed = .5; // Smaller is faster for working preview
   const movementDuration = 5000 * speed; // 5000
   // let vwidth = 1200;
   // let vheight = 800;
@@ -230,6 +231,8 @@
     * All Y offset numbers are "upside down": negative numbers fro option start */
     // console.log('stoped at x: ' + e.detail.offsetX + ' y: ' +
     //   e.detail.offsetY)
+    // Hide more feedback
+    isMoreFeedbackShowing = false;
     console.log('opt index: ' + _chosenOptionIndex);
     if (e.detail.offsetX > optionLandingXOffsets[_chosenOptionIndex] && 
       e.detail.offsetX < (optionLandingXOffsets[_chosenOptionIndex] + haulerWidth - 40) &&
@@ -329,7 +332,11 @@
       <h2>{challenges[challengeIndex].title}</h2>
       {#if isFeedback}
         <!-- <p>{challenges[challengeIndex].options[0].feedback} </p> -->
-        <p>{challenges[challengeIndex].options[chosenOptionIndex].feedback} </p>
+        <p>{challenges[challengeIndex].options[chosenOptionIndex].feedback} 
+          <a href="/" on:click={(e) => { e.preventDefault(); 
+            isMoreFeedbackShowing = true;}}>
+            More...</a>
+        </p>
         {#if currentCorrectness}
           <button on:click={nextMove}>
             {#if challengeIndex < 5}
@@ -339,6 +346,10 @@
             {/if}
           </button>
         {/if}           
+        {#if isMoreFeedbackShowing}
+          <p>{challenges[challengeIndex].options[chosenOptionIndex].moreFeedback} </p>
+        {/if}
+
       {:else}
         <!-- this is question/challenge -->
         <p>{challenges[challengeIndex].challengeText} </p>

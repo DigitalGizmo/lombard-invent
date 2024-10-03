@@ -26,6 +26,7 @@
       {
         "label": "n/a",
         "feedback": "not used",
+        "moreFeedback": "also not used, but needs to exist",
         "correctness": "0",
         "imageName": "placeHolder"
       }
@@ -66,18 +67,21 @@
       {
         "label": "Oxen",
         "feedback": "Oxen are tougher and stronger than horses however, oxen are very slow so they weren't suitable. Try a different solution.",
+        "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
         "imageName": "oxen"
       },
       {
         "label": "Steam Tractor",
         "feedback": "Excellent solution! Steam worked, was powerful and simpler. A steam powered Lombard Log Hauler could haul much further than a team of horses and it didn't get tired. Let's call our new machine a Log Hauler!",
+        "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "1",
         "imageName": "tractor"
       },
       {
         "label": "Electric Trolley",
         "feedback": "Alvin Lombard actually tried electricity to power a Lombard Log Hauler. It operated very much like a trolley car. However, it was deemed a failure due to the cost. Try a different solution.",
+        "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
         "imageName": "trolley"
       }
@@ -118,18 +122,21 @@
       {
         "label": "Crawler Tracks",
         "feedback": "Right you are! In 1900 Alvin Lombard developed and patented the first practical crawler track system. Crawler tracks spread the weight of the machine so it can move over soft ground and have plenty of traction on ice and snow.",
+        "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "1",
         "imageName": "tracks"
       },
       {
         "label": "Large Wheels",
         "feedback": "Wheels would sink in snow and soft ground and the steel wheels of the day offered very little traction on ice and snow.",
+        "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
         "imageName": "wheels"
       },
       {
         "label": "Giant Screws",
         "feedback": "Interesting solution! In 1904 Ira Peavey of Bangor, Maine patented a \"Snow Locomotive\" which used giant screws to move it through the snow and over ice. Unfortunately, it worked but was not a complete success.",
+        "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
         "imageName": "screw"
       }
@@ -170,12 +177,14 @@
       {
         "label": "Tiller",
         "feedback": "Tiller steering was used on many early automobiles and would have been very familiar to Alvin Lombard. However, the Lombard log hauler has approximately 8,000 lbs of weight on the skis. A tiller type steering mechanism would not provide enough mechanical advantage",
+        "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
         "imageName": "chX-opt-temp0"
       },
       {
         "label": "Steering Wheel",
         "feedback": "Perfect! A steering wheel used with gears to provide a 1:40 mechanical advantage worked very well ",
+        "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "1",
         "imageName": "chX-opt-temp1"
       },
@@ -222,18 +231,21 @@
       {
         "label": "Reduce Crew",
         "feedback": "A Lombard steam log hauler required a crew of three: Steersman, Engineer and fireman. All were vital to the successful and safe operation of the machine. Reducing the crew would create many problems.",
+        "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
         "imageName": "chX-opt-temp0"
       },
       {
         "label": "Make Smaller",
         "feedback": "Lombard did produce a much smaller 15 ton steam Lombard log hauler. Featuring a vertical boiler, narrower tracks and being generally smaller than the full size Lombard. Though successful, the cost savings was minimal",
+        "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
         "imageName": "chX-opt-temp1"
       },
       {
         "label": "Gas Engine",
         "feedback": "Correct! In 1909 Lombard developed a prototype gasoline powered log hauler.  In 1917 production focused on the Lombard's \"Tractor-Truck\" which was smaller lighter, faster, required only a driver and was very simple to operate.",
+        "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "1",
         "imageName": "chX-opt-temp2"
       }
@@ -274,18 +286,21 @@
       {
         "label": "Straw",
         "feedback": "When horse were used to pull logging sleds straw was placed on the hills to create friction to hold the sleds back.  However, it required a person stationed at each hill to remove the old wet, ice coated straw and lay down a new layer all of which cost money",
+        "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
         "imageName": "chX-opt-temp0"
       },
       {
         "label": "Mechanical Brakes",
         "feedback": "Steam powered Lombard log haulers never had brakes. However, with the introduction of the Lombard Lag Bed tractor in 1912 all gasoline powered Lombards had a powerful, foot operated drum brake mounted on the drive shaft",
+        "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "1",
         "imageName": "chX-opt-temp1"
       },
       {
         "label": "Snubbing Machine",
         "feedback": "Snub lines and snubbing machines were often used to hold back heavy logging sleds when used with horses. However, they were dangerous to use and required a crew to operate which was expensive",
+        "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
         "imageName": "chX-opt-temp2"
       }
@@ -318,6 +333,7 @@
       {
         "label": "n/a",
         "feedback": "not used",
+        "moreFeedback": "may not be needed, or maybe more congratulations",
         "correctness": "0",
         "imageName": "placeHolder"
       }
