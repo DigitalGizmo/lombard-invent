@@ -1,8 +1,8 @@
 [
   {
     "slug": "start",
-    "title": "Be The Inventor",
-    "challengeText": "You're the inventor and your challenge will be to get these logs hauled efficiently! Drag and drop your best guess from the options to the right.",
+    "title": "Be The XXInventor",
+    "challengeText": "Your challenge will be to invent a machine to haul logs out of the forest! For each of the five challenges, drag and drop your best guess from the options to the Lombard Hauler.",
     "options": [
       {
         "label": "",
@@ -26,8 +26,8 @@
   },
   {
     "slug": "power",
-    "title": "The Power Problem",
-    "challengeText": "Horses were used extensively to move timber from the forest to the nearest river, railroad or sawmill. It was very hard on the horses and expensive. In addition, Horses where limited in how far they could haul a heavy logging sled. What do you think would work better?",
+    "title": "1. The Power Challenge",
+    "challengeText": "Lumbermen used horses to haul timber from the forest to the nearest river or railroad. This work was very hard on the horses. Horses couldn't pull a heavy logging sled more than a few miles while lumbermen needed to go deeper into the woods to harvest the logs. What power source do you think would work better?",
     "options": [
       {
         "label": "Hauler label not used",
@@ -40,7 +40,7 @@
       },
       {
         "label": "Oxen",
-        "feedback": "Oxen are tougher and stronger than horses however, oxen are very slow so they weren't suitable. Try a different solution.",
+        "feedback": "Sorry, incorrect! Oxen are tougher and stronger than horses however, oxen are very slow so they weren't suitable. Try a different solution.",
         "correctness": "0",
         "correctnessStateImages": [
           {"imageName": "oxen-kaput"},
@@ -49,7 +49,7 @@
       },
       {
         "label": "Steam Tractor",
-        "feedback": "Excellent solution! Steam worked, was powerful and simpler. A steam powered Lombard Log Hauler could haul much further than a team of horses and it didn't get tired. Let's call our new machine a Log Hauler!",
+        "feedback": "Excellent solution! Steam worked! A steam powered machine could haul much further than a team of horses, and it didn’t get tired or hungry. Let's call our new machine a Lombard Log Hauler! Onward to the next challenge!",
         "correctness": "1",
         "correctnessStateImages": [
           {"imageName": "tractor"},
@@ -58,7 +58,7 @@
       },
       {
         "label": "Electric Trolley",
-        "feedback": "Alvin Lombard actually tried electricity to power a Lombard Log Hauler. It operated very much like a trolley car. However, it was deemed a failure due to the cost. Try a different solution.",
+        "feedback": "Sorry, incorrect! Alvin Lombard actually tried electricity to power a Lombard Log Hauler. It operated very much like a trolley car. However, it was deemed a failure due to the cost. Try a different solution.",
         "correctness": "0",
         "correctnessStateImages": [
           {"imageName": "trolley-kaput"},
@@ -69,7 +69,7 @@
   },
   {
     "slug": "traction",
-    "title": "Traction",
+    "title": "2. The Traction Challenge",
     "challengeText": "Timber was usually moved during the winter when the ground was frozen and sleds could easily be hauled over icey and snowy roads. However, designing a machine that could move under those wintery conditions was rather tricky. What solution would provide the right traction?",
     "options": [
       {

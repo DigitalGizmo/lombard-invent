@@ -332,7 +332,7 @@
       <h2>{challenges[challengeIndex].title}</h2>
       {#if isFeedback}
         <!-- <p>{challenges[challengeIndex].options[0].feedback} </p> -->
-        <p>{challenges[challengeIndex].options[chosenOptionIndex].feedback} 
+        <p class="feedback">{challenges[challengeIndex].options[chosenOptionIndex].feedback} 
           <a href="/" on:click={(e) => { e.preventDefault(); 
             isMoreFeedbackShowing = true;}}>
             More...</a>

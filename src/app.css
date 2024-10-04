@@ -80,6 +80,9 @@ article p {
   margin: 0 0 1em 0;
 }
 
+article p.feedback {
+  color: purple;
+}
 article header.text-box {
   width: 94%;
   top: -30px;
