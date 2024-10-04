@@ -6,11 +6,11 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "horses"
+        "imageName": "c0-horses"
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "horses-kaput"
+        "imageName": "c0-horses-kaput"
       },
       {
         "note": "opton applied, 2",
@@ -39,26 +39,26 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "horses"
+        "imageName": "c0-horses"
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "horses-kaput"
+        "imageName": "c0-horses-kaput"
       },
       {
         "note": "opton applied, 2",
         "optionChosen": [
           [
-            {"imageName": "oxen-kaput"},
-            {"imageName": "oxen"}
+            {"imageName": "c1-oxen-kaput"},
+            {"imageName": "c1-oxen"}
           ],
           [
-            {"imageName": "tractor"},
-            {"imageName": "tractor"}
+            {"imageName": "c1-tractor"},
+            {"imageName": "c1-tractor"}
           ],
           [
-            {"imageName": "trolley-kaput"},
-            {"imageName": "trolley"}
+            {"imageName": "c1-trolley-kaput"},
+            {"imageName": "c1-trolley"}
           ]
         ]
       }
@@ -69,21 +69,21 @@
         "feedback": "Sorry, incorrect! Oxen are tougher and stronger than horses however, oxen are very slow so they weren't suitable. Try a different solution.",
         "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
-        "imageName": "oxen"
+        "imageName": "c1opt-oxen"
       },
       {
         "label": "Steam Tractor",
         "feedback": "Excellent solution! Steam Tractor worked! A steam powered machine could haul much further than a team of horses, and it didn’t get tired or hungry. Let's call our new machine a Lombard Log Hauler! Onward to the next challenge!",
         "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "1",
-        "imageName": "tractor"
+        "imageName": "c1opt-tractor"
       },
       {
         "label": "Electric Trolley",
         "feedback": "Sorry, incorrect! Alvin Lombard actually tried electricity to power a Lombard Log Hauler. It operated very much like a trolley car. However, it was deemed a failure due to the cost. Try a different solution.",
         "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
-        "imageName": "trolley"
+        "imageName": "c1opt-trolley"
       }
     ]  
   },
@@ -94,26 +94,26 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "tractor"
+        "imageName": "c1-tractor"
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "tractor-kaput"
+        "imageName": "c1-tractor-kaput"
       },
       {
         "note": "opton applied, 2",
         "optionChosen": [
           [
-            {"imageName": "tractor-tracks"},
-            {"imageName": "tractor-tracks"}
+            {"imageName": "c2-tractor-tracks"},
+            {"imageName": "c2-tractor-tracks"}
           ],
           [
-            {"imageName": "tractor-wheels-kaput"},
-            {"imageName": "tractor-wheels"}
+            {"imageName": "c2-tractor-wheels-kaput"},
+            {"imageName": "c2-tractor-wheels"}
           ],
           [
-            {"imageName": "tractor-screw-kaput"},
-            {"imageName": "tractor-screw"}
+            {"imageName": "c2-tractor-screw-kaput"},
+            {"imageName": "c2-tractor-screw"}
           ]
         ]
       }
@@ -124,21 +124,21 @@
         "feedback": "Excellent - That's correct!! In 1900 Alvin Lombard developed and patented the first practical crawler track system. Crawler tracks spread the weight of the machine so it can move over soft ground and have plenty of traction on ice and snow. Try the next challenge.",
         "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "1",
-        "imageName": "tracks"
+        "imageName": "c2opt-tracks"
       },
       {
         "label": "Large Wheels",
         "feedback": "Sorry, incorrect. Wheels would sink in snow and mud. Besides, steel wheels of the day offered very little traction on ice and snow. Try another solution.",
         "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
-        "imageName": "wheels"
+        "imageName": "c2opt-wheels"
       },
       {
         "label": "Giant Screws",
         "feedback": "Interesting solution...but incorrect! In 1904 Ira Peavey of Bangor, Maine patented a \"Snow Locomotive\" which used giant screws to move it through the snow and over ice. It worked, but not well enough to be a commercial success. Try again!",
         "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
-        "imageName": "screw"
+        "imageName": "c2opt-screw"
       }
     ]  
   },
@@ -149,26 +149,26 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "tractor-tracks"
+        "imageName": "c2-tractor-tracks"
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "tractor-kaput"
+        "imageName": "c2-tractor-tracks-temp-kaput"
       },
       {
         "note": "opton applied, 2",
         "optionChosen": [
           [
-            {"imageName": "chX-h-temp0-kaput"},
-            {"imageName": "chX-h-temp0"}
+            {"imageName": "cX-temp0-kaput"},
+            {"imageName": "cX-temp0"}
           ],
           [
-            {"imageName": "chX-h-temp1"},
-            {"imageName": "chX-h-temp1"}
+            {"imageName": "cX-temp1"},
+            {"imageName": "cX-temp1"}
           ],
           [
-            {"imageName": "chX-h-temp2-kaput"},
-            {"imageName": "chX-h-temp2"}
+            {"imageName": "cX-temp2-kaput"},
+            {"imageName": "cX-temp2"}
           ]
         ]
       }
@@ -179,20 +179,20 @@
         "feedback": "Sorry, not right. Tiller steering - using a stick to pivot the front wheels - was used on early automobiles. In fact, Alvin Lombard built a steam powered automobile in 1899 that used tiller steering. However, steering with a tiller would be difficult with such a heavy machine. Try another option.",
         "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
-        "imageName": "chX-opt-temp0"
+        "imageName": "cXopt-temp0"
       },
       {
         "label": "Steering Wheel",
         "feedback": "Perfect! A steering wheel, combined with gears to reduce the steering effort, worked very well! Give the next challenge a go.",
         "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "1",
-        "imageName": "chX-opt-temp1"
+        "imageName": "cXopt-temp1"
       },
       {
         "label": "Horse",
         "feedback": "Sorry, incorrect. The early Lombard log hauler used a horse to steer the skis. The steersman sat on the front of the machine and used a set of reins to direct the horse. However, it cost extra money to feed and care for the horse. Try again.",
         "correctness": "0",
-        "imageName": "chX-opt-temp2"
+        "imageName": "cXopt-temp2"
       }
     ]  
   },
@@ -203,26 +203,26 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "chX-h-temp1"
+        "imageName": "cX-temp1"
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "chX-h-temp1-kaput"
+        "imageName": "cX-temp1-kaput"
       },
       {
         "note": "opton applied, 2",
         "optionChosen": [
           [
-            {"imageName": "chX-h-temp0-kaput"},
-            {"imageName": "chX-h-temp0"}
+            {"imageName": "cX-temp0-kaput"},
+            {"imageName": "cX-temp0"}
           ],
           [
-            {"imageName": "chX-h-temp1-kaput"},
-            {"imageName": "chX-h-temp1"}
+            {"imageName": "cX-temp1-kaput"},
+            {"imageName": "cX-temp1"}
           ],
           [
-            {"imageName": "chX-h-temp2"},
-            {"imageName": "chX-h-temp2"}
+            {"imageName": "cX-temp2"},
+            {"imageName": "cX-temp2"}
           ]
         ]
       }
@@ -233,21 +233,21 @@
         "feedback": "Sorry, incorrect. A Lombard steam log hauler required a crew of three: Steersman, Engineer and fireman. All were vital to the successful and safe operation of the machine. Reducing the crew would create many problems. Try another solution.",
         "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
-        "imageName": "chX-opt-temp0"
+        "imageName": "cXopt-temp0"
       },
       {
         "label": "Make Smaller",
         "feedback": "Nope. Lombard did produce a much smaller steam Log Hauler. It featured a vertical boiler and narrower tracks. Though successful, the cost savings was minimal. Try again.",
         "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
-        "imageName": "chX-opt-temp1"
+        "imageName": "cXopt-temp1"
       },
       {
         "label": "Gas Engine",
         "feedback": "Correct! In 1909 Alvin Lombard developed a gasoline powered log hauler. In 1915 he introduced the Lombard \"Tractor-Truck\" which was so successful that he stopped production of steam powered Log haulers in 1917. The \"Tractor-Truck\" was smaller lighter, faster, required only a driver to operate. Give the last challenge a go.",
         "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "1",
-        "imageName": "chX-opt-temp2"
+        "imageName": "cXopt-temp2"
       }
     ]  
   },
@@ -258,26 +258,26 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "chX-h-temp2"
+        "imageName": "cX-temp2"
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "chX-h-temp2-kaput"
+        "imageName": "cX-temp2-kaput"
       },
       {
         "note": "opton applied, 2",
         "optionChosen": [
           [
-            {"imageName": "chX-h-temp0-kaput"},
-            {"imageName": "chX-h-temp0"}
+            {"imageName": "cX-temp0-kaput"},
+            {"imageName": "cX-temp0"}
           ],
           [
-            {"imageName": "chX-h-temp1"},
-            {"imageName": "chX-h-temp1"}
+            {"imageName": "cX-temp1"},
+            {"imageName": "cX-temp1"}
           ],
           [
-            {"imageName": "chX-h-temp2-kaput"},
-            {"imageName": "chX-h-temp2"}
+            {"imageName": "cX-temp2-kaput"},
+            {"imageName": "cX-temp2"}
           ]
         ]
       }
@@ -288,21 +288,21 @@
         "feedback": "Sorry, wrong answer. When horses were used to pull logging sleds, lumbermen placed straw on the hills to create friction to hold the sleds back. This also worked well for the much bigger steam log haulers. It was expensive because it required a person stationed at each hill to remove the old wet, ice coated straw and lay down a new layer. Try again.",
         "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
-        "imageName": "chX-opt-temp0"
+        "imageName": "cXopt-temp0"
       },
       {
         "label": "Mechanical Brakes",
         "feedback": "Great choice! Steam powered Lombard log haulers never had brakes. However, with the introduction of the Lombard Lag Bed tractor in 1912 all gasoline powered Lombards had a powerful, foot operated drum brake mounted on the drive shaft.",
         "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "1",
-        "imageName": "chX-opt-temp1"
+        "imageName": "cXopt-temp1"
       },
       {
         "label": "Snubbing Machine",
         "feedback": "Sorry, incorrect. Ropes, called \"snub lines\" were wrapped around a stump to manage the weight as the lumbermen lowered heavy logging sleds down slopes to prevent running over the horses. However, snub lines were dangerous to use and required a crew to operate which was expensive. Try again.",
         "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
-        "imageName": "chX-opt-temp2"
+        "imageName": "cXopt-temp2"
       }
     ]  
   },
@@ -313,11 +313,11 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "chX-opt-temp1"
+        "imageName": "cXopt-temp1"
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "chX-opt-temp1"
+        "imageName": "cXopt-temp1"
       },
       {
         "note": "opton applied, 2",

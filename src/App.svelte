@@ -296,13 +296,13 @@
     <!-- correctnessStates has been set chosen index by chosen index
      in the array -->
     {#if challengePhaseIndex < 2}
-      <img src="{assetPath}images/{challenges[challengeIndex].challengePhase[challengePhaseIndex].imageName}.png" 
+      <img src="{assetPath}images/hauler/{challenges[challengeIndex].challengePhase[challengePhaseIndex].imageName}.png" 
       style="transform:scale({haulerScale})"
       alt="{challenges[challengeIndex].challengePhase[challengePhaseIndex].imageName}" id="hauler"/>
     {:else}
-      <img src="{assetPath}images/{challenges[challengeIndex].challengePhase[2].optionChosen[chosenOptionIndex][correctnessStates[chosenOptionIndex]].imageName}.png"
+      <img src="{assetPath}images/hauler/{challenges[challengeIndex].challengePhase[2].optionChosen[chosenOptionIndex][correctnessStates[chosenOptionIndex]].imageName}.png"
       style="transform:scale({haulerScale})"
-      alt="horses" id="hauler"/>
+      alt="{challenges[challengeIndex].challengePhase[challengePhaseIndex].imageName}" id="hauler"/>
 
     {/if}
     
@@ -376,9 +376,9 @@
   {#if optionsVisible}
     <div class="options">
       <div class="option1" >
-        <img src="{assetPath}images/{challenges[challengeIndex].options[0].imageName}-shadow.png" alt="oxen shadow"
+        <img src="{assetPath}images/options/{challenges[challengeIndex].options[0].imageName}-shadow.png" alt="oxen shadow"
         class="can-be-overlayed">
-        <img src="{assetPath}images/{challenges[challengeIndex].options[0].imageName}.png" 
+        <img src="{assetPath}images/options/{challenges[challengeIndex].options[0].imageName}.png" 
           class="{optionsToHide[0]}"
           id="optionA" alt="option 1: oxen" 
           bind:this={optionElements[0]}
@@ -395,9 +395,9 @@
       </div>
 
       <div class="option2">
-        <img src="{assetPath}images/{challenges[challengeIndex].options[1].imageName}-shadow.png" alt="tractor shadow"
+        <img src="{assetPath}images/options/{challenges[challengeIndex].options[1].imageName}-shadow.png" alt="tractor shadow"
         class="can-be-overlayed">
-        <img src="{assetPath}images/{challenges[challengeIndex].options[1].imageName}.png" 
+        <img src="{assetPath}images/options/{challenges[challengeIndex].options[1].imageName}.png" 
           class="{optionsToHide[1]}"
           id="optionA" alt="option 2: tractor" 
           bind:this={optionElements[1]}
@@ -414,9 +414,9 @@
       </div>
 
       <div class="option3">
-        <img src="{assetPath}images/{challenges[challengeIndex].options[2].imageName}-shadow.png" alt="tractor shadow"
+        <img src="{assetPath}images/options/{challenges[challengeIndex].options[2].imageName}-shadow.png" alt="tractor shadow"
         class="can-be-overlayed">
-        <img src="{assetPath}images/{challenges[challengeIndex].options[2].imageName}.png" 
+        <img src="{assetPath}images/options/{challenges[challengeIndex].options[2].imageName}.png" 
           class="{optionsToHide[2]}"
           id="optionA" alt="option 2: tractor" 
           bind:this={optionElements[2]}
