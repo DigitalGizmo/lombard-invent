@@ -273,6 +273,7 @@
   // function playSound() {
   //   audio.play();
   // }
+
 </script>
 
 <div class="wrapper">
@@ -333,7 +334,7 @@
       {#if isFeedback}
         <!-- <p>{challenges[challengeIndex].options[0].feedback} </p> -->
         <p class="feedback">{challenges[challengeIndex].options[chosenOptionIndex].feedback} 
-          <a href="/" on:click={(e) => { e.preventDefault(); 
+          <a class="accordion" href="/" on:click={(e) => { e.preventDefault(); 
             isMoreFeedbackShowing = true;}}>
             More...</a>
         </p>
@@ -347,7 +348,7 @@
           </button>
         {/if}           
         {#if isMoreFeedbackShowing}
-          <p>{challenges[challengeIndex].options[chosenOptionIndex].moreFeedback} </p>
+          <p class="panel">{challenges[challengeIndex].options[chosenOptionIndex].moreFeedback}</p>
         {/if}
 
       {:else}
