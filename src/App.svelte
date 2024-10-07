@@ -3,6 +3,7 @@
   import { tweened } from 'svelte/motion';
   import { cubicOut } from 'svelte/easing';
   import { draggable } from '@neodrag/svelte';
+  import { slide } from 'svelte/transition';
 
   import challenges from './lib/challenges2.json';
   const assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
@@ -270,6 +271,10 @@
     }
   }
 
+  function toggleMoreFeedback() {
+    isMoreFeedbackShowing = !isMoreFeedbackShowing
+  }
+
   // function playSound() {
   //   audio.play();
   // }
@@ -334,9 +339,11 @@
       {#if isFeedback}
         <!-- <p>{challenges[challengeIndex].options[0].feedback} </p> -->
         <p class="feedback">{challenges[challengeIndex].options[chosenOptionIndex].feedback} 
-          <a class="accordion" href="/" on:click={(e) => { e.preventDefault(); 
-            isMoreFeedbackShowing = true;}}>
-            More...</a>
+          <!-- class="accordion" -->
+          <a href="/" on:click={(e) => { e.preventDefault(); 
+            toggleMoreFeedback();}}>
+            {isMoreFeedbackShowing ? "Less..." : "More.."}
+          </a>
         </p>
         {#if currentCorrectness}
           <button on:click={nextMove}>
@@ -348,7 +355,8 @@
           </button>
         {/if}           
         {#if isMoreFeedbackShowing}
-          <p class="panel">{challenges[challengeIndex].options[chosenOptionIndex].moreFeedback}</p>
+          <!-- class="panel" -->
+          <p transition:slide>{challenges[challengeIndex].options[chosenOptionIndex].moreFeedback}</p>
         {/if}
 
       {:else}
