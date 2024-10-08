@@ -310,7 +310,7 @@
   </div>
 
   <article>
-    <header class="text-box">
+    <header class="text-box"><!-- the challenge numbers -->
       <ul class="progress">
         <li class="progress-item" class:done={doneStatus[0].isDone}> 
           1 {@html doneStatus[0].label}
@@ -332,9 +332,9 @@
     {#if textVisible}
       <h2>{challenges[challengeIndex].title}</h2>
       {#if isFeedback}
-        <div>
-          <p class="feedback">{challenges[challengeIndex].options[chosenOptionIndex].feedback} 
-            <a class="accordion" href="/" on:click={(e) => { e.preventDefault(); 
+        <div class="feedback">
+          <p>{challenges[challengeIndex].options[chosenOptionIndex].feedback} 
+            <a href="/" on:click={(e) => { e.preventDefault(); 
               toggleMoreFeedback();}}>
               {isMoreFeedbackShowing ? "Less..." : "More.."}
             </a>

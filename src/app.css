@@ -12,7 +12,6 @@ p {
 .wrapper {
   width: 100vw;
   height: 100vh;
-  /* height: 120vh; */
   overflow: hidden;
   position: relative;
   background-color: #F9FDFF;
@@ -58,6 +57,7 @@ div.hauler img {
   width: 25%;
 }
 
+/* text box for challenges and feedback */
 article {
   background: rgba(217, 217, 217, .7);
   color: #525252;
@@ -76,46 +76,23 @@ article h2 {
   border-top: 1px solid lightgray;
 }
 
-article p {
-  margin: 0 0 1em 0;
-}
+div.feedback {
+  height: 15vh;
+overflow-y: scroll;
 
-article p.feedback {
+}
+div.feedback p {
+  margin: 0 0 1em 0;
   color: #d92f2f;
   font-style: italic;
 }
 
-article p.feedback a {
+div.feedback a {
   display: block;
   color: #d92f2f;
 }
 
-/* more accordian */
-.accordion {
-/*  background-color: #eee;
-  color: #444;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;*/
-  cursor: pointer;
-  transition: 0.4s;
-}
-
-.active, .accordion:hover {
-  background-color: #ccc; 
-}
-
-.panel {
-  padding: 0 18px;
-  /* display: none; */
-  background-color: white;
-  overflow: hidden;
-}
-
-/* numbered dots */
+/* challenge numbered dots */
 article header.text-box {
   width: 94%;
   top: -30px;
@@ -154,6 +131,7 @@ article header.text-box ul.progress li.done {
   background: #74A4A7;
 }
 
+/* graphic options to answer the challenges */
 div.options {
   position: absolute;
   bottom: 5vh;
