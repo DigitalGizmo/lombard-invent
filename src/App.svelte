@@ -329,8 +329,8 @@
         </li>
       </ul>
     </header>
+    <h2>{challenges[challengeIndex].title}</h2>
     {#if textVisible}
-      <h2>{challenges[challengeIndex].title}</h2>
       {#if isFeedback}
         <div class="feedback">
           <p>{challenges[challengeIndex].options[chosenOptionIndex].feedback} 
@@ -340,7 +340,7 @@
             </a>
           </p>
           {#if isMoreFeedbackShowing}
-            <p class="panel"
+            <p
             transition:slide>{challenges[challengeIndex].options[chosenOptionIndex].moreFeedback}</p>
           {/if}
         </div>

@@ -65,7 +65,7 @@ article {
   top: 70vh;
   left: 15px;
   width: 32vw;
-  min-height: 15vh;
+  height: 25vh;
   border: 1px solid lightgray;
   padding: 1%;
 }
@@ -78,18 +78,17 @@ article h2 {
 
 div.feedback {
   height: 15vh;
-overflow-y: scroll;
-
+  overflow-y: scroll;
 }
+
 div.feedback p {
   margin: 0 0 1em 0;
-  color: #d92f2f;
   font-style: italic;
 }
 
 div.feedback a {
   display: block;
-  color: #d92f2f;
+  color: #525252;
 }
 
 /* challenge numbered dots */
