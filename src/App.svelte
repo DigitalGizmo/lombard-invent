@@ -337,10 +337,8 @@
     {#if textVisible}
       <h2>{challenges[challengeIndex].title}</h2>
       {#if isFeedback}
-        <!-- <p>{challenges[challengeIndex].options[0].feedback} </p> -->
         <p class="feedback">{challenges[challengeIndex].options[chosenOptionIndex].feedback} 
-          <!-- class="accordion" -->
-          <a href="/" on:click={(e) => { e.preventDefault(); 
+          <a class="accordion" href="/" on:click={(e) => { e.preventDefault(); 
             toggleMoreFeedback();}}>
             {isMoreFeedbackShowing ? "Less..." : "More.."}
           </a>
@@ -355,8 +353,8 @@
           </button>
         {/if}           
         {#if isMoreFeedbackShowing}
-          <!-- class="panel" -->
-          <p transition:slide>{challenges[challengeIndex].options[chosenOptionIndex].moreFeedback}</p>
+          <p class="panel"
+          transition:slide>{challenges[challengeIndex].options[chosenOptionIndex].moreFeedback}</p>
         {/if}
 
       {:else}
