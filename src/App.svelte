@@ -16,8 +16,9 @@
   let currentCorrectness = 0;
   let correctnessStates = [1, 1, 1, 1];
   let optionsToHide = ["", "", "", "", ""];
-  const speed = .5; // Smaller is faster for working preview
-  const movementDuration = 5000 * speed; // 5000
+  const speed = 1; // Smaller is faster for working preview
+  const longMoveDuration = 5000 * speed; // 5000
+  const shortMoveDuration = 1000 * speed;
   // let vwidth = 1200;
   // let vheight = 800;
   let textVisible = true;
@@ -109,14 +110,8 @@
     }, 10);
   }  
 
-  const cloudsX = tweened(0, {
-    duration: movementDuration,
-    // easing: cubicOut
-  });
-  const landX = tweened(0, {
-    duration: movementDuration,
-    // easing: cubicOut
-  });
+  const cloudsX = tweened(0);
+  const landX = tweened(0);
 
   // movement
   async function nextMove() {
@@ -126,8 +121,8 @@
     // audioName = "progress";
     audioProgress = new Audio(assetPath + 'audio/' + progressAudioNames[challengeIndex] + '.mp3')
     audioProgress.play();
-    landX.update((landX) => landX - 50);
-    await cloudsX.update((cloudsX) => cloudsX - 20);
+    landX.update((landX) => landX - 50, {duration: longMoveDuration});
+    await cloudsX.update((cloudsX) => cloudsX - 20, {duration: longMoveDuration});
     audioProgress.pause();
     setTimeout(() => {
       // console.log('after timeout')
@@ -172,8 +167,8 @@
   async function shortMove( _chosenOptionIndex) {
     // await haulerX.update((haulerX) => haulerX + 10);
     audioProgress.play();
-    landX.update((landX) => landX - 20);
-    await cloudsX.update((cloudsX) => cloudsX - 12);
+    landX.update((landX) => landX - 20, {duration: shortMoveDuration});
+    await cloudsX.update((cloudsX) => cloudsX - 12, {duration: shortMoveDuration});
     audioProgress.pause();
     correctnessStates[_chosenOptionIndex] = currentCorrectness;
     audioIncorrect.play();
@@ -352,11 +347,7 @@
 
         {#if currentCorrectness}
           <button on:click={nextMove}>
-            {#if challengeIndex < 5}
-              Next Challenge
-            {:else}
-              Start Hauling Logs!
-            {/if}
+            {challengeIndex < 5 ? "Next Challenge" : "Start Hauling Logs!"}
           </button>
         {/if}           
 

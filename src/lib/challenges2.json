@@ -153,7 +153,7 @@
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "c2-tractor-tracks-temp-kaput"
+        "imageName": "c2-tractor-tracks-kaput"
       },
       {
         "note": "opton applied, 2",
@@ -313,11 +313,11 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "cXopt-temp1"
+        "imageName": "cX-temp1"
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "cXopt-temp1"
+        "imageName": "cX-temp1"
       },
       {
         "note": "opton applied, 2",
