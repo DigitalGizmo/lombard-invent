@@ -98,7 +98,6 @@
         optionTop = optionRect.top;
       }
 
-
       let optionRect = optionElements[0].getBoundingClientRect();
       // option1Left = optionRect.left;
       // option1LandingXOffset = rect.left - optionRect.left;  
@@ -167,8 +166,8 @@
   async function shortMove( _chosenOptionIndex) {
     // await haulerX.update((haulerX) => haulerX + 10);
     audioProgress.play();
-    landX.update((landX) => landX - 20, {duration: shortMoveDuration});
-    await cloudsX.update((cloudsX) => cloudsX - 12, {duration: shortMoveDuration});
+    landX.update((landX) => landX - 8, {duration: shortMoveDuration});
+    await cloudsX.update((cloudsX) => cloudsX - 5, {duration: shortMoveDuration});
     audioProgress.pause();
     correctnessStates[_chosenOptionIndex] = currentCorrectness;
     audioIncorrect.play();
@@ -230,9 +229,9 @@
     // Hide more feedback
     isMoreFeedbackShowing = false;
     console.log('opt index: ' + _chosenOptionIndex);
-    if (e.detail.offsetX > optionLandingXOffsets[_chosenOptionIndex] && 
-      e.detail.offsetX < (optionLandingXOffsets[_chosenOptionIndex] + haulerWidth - 40) &&
-      e.detail.offsetY > optionLandingYOffset && // -400 is gt -500
+    if (e.detail.offsetX > optionLandingXOffsets[_chosenOptionIndex] - 30 && 
+      e.detail.offsetX < (optionLandingXOffsets[_chosenOptionIndex] + haulerWidth - 80) &&
+      e.detail.offsetY > optionLandingYOffset - 50 && // -400 is gt -500
       e.detail.offsetY < (optionLandingYOffset + haulerHeight - 30 ) 
       )
       // -400 is lt (-500 + 200) aka -400 is lt -300
