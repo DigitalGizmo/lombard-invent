@@ -159,16 +159,16 @@
         "note": "opton applied, 2",
         "optionChosen": [
           [
-            {"imageName": "cX-temp0-kaput"},
-            {"imageName": "cX-temp0"}
+            {"imageName": "c3-tractor-tiller-kaput"},
+            {"imageName": "c3-tractor-tiller"}
           ],
           [
-            {"imageName": "cX-temp1"},
-            {"imageName": "cX-temp1"}
+            {"imageName": "c3-tractor-steeringwheel"},
+            {"imageName": "c3-tractor-steeringwheel"}
           ],
           [
-            {"imageName": "cX-temp2-kaput"},
-            {"imageName": "cX-temp2"}
+            {"imageName": "c3-tractor-horse-kaput"},
+            {"imageName": "c3-tractor-horse"}
           ]
         ]
       }
@@ -179,20 +179,20 @@
         "feedback": "Sorry, not right. Tiller steering - using a stick to pivot the front wheels - was used on early automobiles. In fact, Alvin Lombard built a steam powered automobile in 1899 that used tiller steering. However, steering with a tiller would be difficult with such a heavy machine. Try another option.",
         "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "0",
-        "imageName": "cXopt-temp0"
+        "imageName": "c3opt-tiller"
       },
       {
         "label": "Steering Wheel",
         "feedback": "Perfect! A steering wheel, combined with gears to reduce the steering effort, worked very well! Give the next challenge a go.",
         "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "1",
-        "imageName": "cXopt-temp1"
+        "imageName": "c3opt-steeringwheel"
       },
       {
         "label": "Horse",
         "feedback": "Sorry, incorrect. The early Lombard log hauler used a horse to steer the skis. The steersman sat on the front of the machine and used a set of reins to direct the horse. However, it cost extra money to feed and care for the horse. Try again.",
         "correctness": "0",
-        "imageName": "cXopt-temp2"
+        "imageName": "c3opt-horse"
       }
     ]  
   },
