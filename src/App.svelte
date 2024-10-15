@@ -22,6 +22,7 @@
   // let vwidth = 1200;
   // let vheight = 800;
   let textVisible = true;
+  let titleVisible = true;
   let optionsVisible = false;
   let haulerScale = 1;
   const doneLabels = ["<span>Power</span>", "<span>Traction</span>", 
@@ -116,6 +117,7 @@
   async function nextMove() {
     // console.log('before timeout')
     textVisible = false;
+    titleVisible = false;
     optionsVisible = false;
     // audioName = "progress";
     audioProgress = new Audio(assetPath + 'audio/' + progressAudioNames[challengeIndex] + '.mp3')
@@ -144,6 +146,7 @@
   }
 
   async function displayChallengeText() {
+    titleVisible = true;
     setTimeout(() => {
       console.log('display challengeText. chalengIndex: ' + challengeIndex)
       isFeedback = false;
@@ -212,13 +215,13 @@
     }, 1000 * speed);
   }
 
-  async function onToNext() {
-    setTimeout(() => {
-      console.log('on to next challenge')
-      optionsVisible = false;
-      nextMove();
-    }, 2000 * speed);
-  }
+  // async function onToNext() {
+  //   setTimeout(() => {
+  //     console.log('on to next challenge')
+  //     optionsVisible = false;
+  //     nextMove();
+  //   }, 2000 * speed);
+  // }
 
   function dragStop(e, _chosenOptionIndex) { //  _chosenOptionIndex
     /* Landing position of a given option is relative to its start point
@@ -328,7 +331,9 @@
         </li>
       </ul>
     </header>
-    <h2>{challenges[challengeIndex].title}</h2>
+    {#if titleVisible}
+      <h2>{challenges[challengeIndex].title}</h2>
+    {/if}
     {#if textVisible}
       {#if isFeedback}
         <div class="feedback">
@@ -350,8 +355,7 @@
           </button>
         {/if}           
 
-      {:else}
-        <!-- this is question/challenge -->
+      {:else} <!-- this is question/challenge -->
         <p>{challenges[challengeIndex].challengeText} </p>
         {#if challengeIndex === 0}
           <button on:click={nextMove}>
