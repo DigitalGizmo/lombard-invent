@@ -287,7 +287,7 @@
     <img class="land" src="{assetPath}images/landscape-double.png" alt="land" 
       style="transform:translate({$landX}vw, 0px)"
     />
-  </div>
+  </div><!-- /background -->
 
   <header>
     <h1>Be The Inventor</h1>
@@ -308,8 +308,7 @@
 
     {/if}
     
-
-  </div>
+  </div><!-- /hauler -->
 
   <article>
     <header class="text-box"><!-- the challenge numbers -->
@@ -347,7 +346,7 @@
             <p
             transition:slide>{challenges[challengeIndex].options[chosenOptionIndex].moreFeedback}</p>
           {/if}
-        </div>
+        </div><!-- /feedback -->
 
         {#if currentCorrectness}
           <button on:click={nextMove}>

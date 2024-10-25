@@ -51,13 +51,13 @@ header h1 {
 
 div.hauler {
   position: absolute;
-  top: 42vh;
-  text-align: center;
+  top: 30vh;
+  left: 33vw;
   width: 100%;
 }
 
 div.hauler img {
-  width: 25%;
+  width: 30%;
 }
 
 /* text box for challenges and feedback */
@@ -65,10 +65,10 @@ article {
   background: rgba(217, 217, 217, .7);
   color: #525252;
   position: absolute;
-  top: 70vh;
-  left: 15px;
-  width: 32vw;
-  height: 25vh;
+  top: 40vh;
+  right: 70vw;
+  width: 25vw;
+  min-height: 35vh;
   border: 1px solid lightgray;
   padding: 1%;
 }
@@ -80,9 +80,9 @@ article h2 {
 }
 
 div.feedback {
-  height: 15vh;
+  height: 25vh;
   overflow-y: scroll;
-  background:   lightgray;
+  background: lightgray;
 }
 
 div.feedback p {
@@ -137,20 +137,20 @@ article header.text-box ul.progress li.done {
 /* graphic options to answer the challenges */
 div.options {
   position: absolute;
-  bottom: 5vh;
-  left: 45vw;
+  bottom: 3vh;
+  left: 36vw;
   width: 50vw;
 }
 
 div.options img {
-  width: 12vw;
+  height: 16vh;
   /* Prevent chrome auto drag */
   -webkit-user-drag: none;
+  margin-right: 2vw;
 }
 
 div.option1, div.option2 {
   float: left;
-  margin-right: 2em;
 }
 
 .hide-option {
