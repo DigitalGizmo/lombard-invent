@@ -1,0 +1,56 @@
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    /* overflow: hidden; */
+    position: relative;
+    background-color: #F9FDFF;
+}
+
+div.hauler {
+    position: absolute;
+    text-align: center;
+    top: 30vh;
+    /* left: 15vw; */
+    width: 100%;
+}
+
+div.hauler img {
+    width: 35%;
+}
+
+article {
+    background: rgba(217, 217, 217, .7);
+    color: #525252;
+    position: absolute;
+    top: 85vh;
+    left: 20vw;
+    width: 60vw;
+    min-height: 25vh;
+    border: 1px solid lightgray;
+    padding: 1%;
+}
+
+ul.options {
+    position: absolute;
+    top: 55vh;
+    /* left: 11vw; */
+    list-style-type: none;
+    text-align: center;
+    /* margin: auto; */
+    padding: 0;
+    width: 100%;
+}
+
+ul.options li {
+    display: inline-block;
+    height: 13vh;
+    width: 25vw;
+    margin-right: 2vw;
+    text-align: center;
+}
+
+ul.options li img {
+    -webkit-user-drag: none;
+    height: 100%;
+}
+

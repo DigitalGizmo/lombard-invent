@@ -376,8 +376,8 @@
 
   <!-- {#if challengeIndex === 1} -->
   {#if optionsVisible}
-    <div class="options">
-      <div class="option1" >
+    <ul class="options">
+      <li class="option1" >
         <img src="{assetPath}images/options/{challenges[challengeIndex].options[0].imageName}-shadow.png" alt="oxen shadow"
         class="can-be-overlayed">
         <img src="{assetPath}images/options/{challenges[challengeIndex].options[0].imageName}.png" 
@@ -394,9 +394,9 @@
           on:neodrag:end={(e) => dragStop(e, 0)}     
         />
         <h3>{challenges[challengeIndex].options[0].label}</h3>
-      </div>
+      </li>
 
-      <div class="option2">
+      <li class="option2">
         <img src="{assetPath}images/options/{challenges[challengeIndex].options[1].imageName}-shadow.png" alt="tractor shadow"
         class="can-be-overlayed">
         <img src="{assetPath}images/options/{challenges[challengeIndex].options[1].imageName}.png" 
@@ -413,9 +413,9 @@
           on:neodrag:end={(e) => dragStop(e, 1)}     
         />
         <h3>{challenges[challengeIndex].options[1].label}</h3>
-      </div>
+      </li>
 
-      <div class="option3">
+      <li class="option3">
         <img src="{assetPath}images/options/{challenges[challengeIndex].options[2].imageName}-shadow.png" alt="tractor shadow"
         class="can-be-overlayed">
         <img src="{assetPath}images/options/{challenges[challengeIndex].options[2].imageName}.png" 
@@ -432,9 +432,9 @@
           on:neodrag:end={(e) => dragStop(e, 2)}     
         />
         <h3>{challenges[challengeIndex].options[2].label}</h3>
-      </div>
+      </li>
 
-    </div>
+    </ul>
   {/if}
 
 </div><!--/wrapper-->
