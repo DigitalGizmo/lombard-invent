@@ -65,9 +65,9 @@
     ],
     "options": [
       {
-        "label": "Oxen",
-        "feedback": "Sorry, incorrect! Oxen are tougher and stronger than horses however, oxen are very slow so they weren't suitable. Try a different solution.",
-        "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "label": "Railroads",
+        "feedback": "There is a better solution. Logging railroads were indeed used but they were very expensive to operate and limited to where they could be built. Try a different solution.",
+        "moreFeedback": "Tell more about lumbering trains in Maine. How many? Where did they run?",
         "correctness": "0",
         "imageName": "c1opt-oxen"
       },
