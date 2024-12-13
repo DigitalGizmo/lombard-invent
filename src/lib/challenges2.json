@@ -101,7 +101,7 @@
         "imageName": "c1-tractor-kaput"
       },
       {
-        "note": "opton applied, 2",
+        "note": "option applied, 2",
         "optionChosen": [
           [
             {"imageName": "c2-tractor-tracks"},
@@ -204,26 +204,26 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "cX-temp1"
+        "imageName": "c3-tractor-steeringwheel"
       },
       {
         "note": "while at kaput, 1",
         "imageName": "c3-tractor-steeringwheel-kaput"
       },
       {
-        "note": "opton applied, 2",
+        "note": "option applied, 2",
         "optionChosen": [
           [
-            {"imageName": "cX-temp0-kaput"},
-            {"imageName": "cX-temp0"}
+            {"imageName": "c4-tractor-workers-kaput"},
+            {"imageName": "c4-tractor-workers"}
           ],
           [
-            {"imageName": "cX-temp1-kaput"},
-            {"imageName": "cX-temp1"}
+            {"imageName": "c4-tractor-small-engine-kaput"},
+            {"imageName": "c4-tractor-small-engine"}
           ],
           [
-            {"imageName": "cX-temp2"},
-            {"imageName": "cX-temp2"}
+            {"imageName": "c4-tractor-gas-engine-kaput"},
+            {"imageName": "c4-tractor-gas-engine"}
           ]
         ]
       }
@@ -234,21 +234,21 @@
         "feedback": "Sorry, not possible. A Lombard steam log hauler required a crew of three: Steersman, Engineer and Fireman. All were vital to the successful and safe operation of the machine. Reducing the crew would create many problems. Try another solution.",
         "moreFeedback": "Roles of the 3 jobs and costs",
         "correctness": "0",
-        "imageName": "cXopt-temp0"
+        "imageName": "c4opt-workers2"
       },
       {
         "label": "Make Smaller",
         "feedback": "It wasn’t enough. Lombard actually did produce a much smaller 15-ton steam Lombard Log Hauler. The smaller machine featured a vertical boiler and narrower tracks. Though successful, the cost savings was minimal. Try again.",
         "moreFeedback": "Details on difficulties in using a steam engine",
         "correctness": "0",
-        "imageName": "cXopt-temp1"
+        "imageName": "c4opt-small-engine"
       },
       {
         "label": "Gas Engine",
         "feedback": "Correct! In 1915, he introduced the gasoline-powered Lombard “Tractor-Truck” which was so successful that he stopped production of steam-powered Log Haulers in 1917. Lombard’s “Tractor-Truck” was lighter, faster, and only required one driver. Give the last challenge a go.",
         "moreFeedback": "Why did gas Lombard require only one person to operate? What made it simpler?",
         "correctness": "1",
-        "imageName": "cXopt-temp2"
+        "imageName": "c4opt-gas-engine"
       }
     ]  
   },
