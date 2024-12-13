@@ -259,11 +259,11 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "cX-temp2"
+        "imageName": "c4-tractor-gas-engine"
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "cX-temp2-kaput"
+        "imageName": "c4-tractor-gas-engine-kaput"
       },
       {
         "note": "opton applied, 2",
