@@ -49,8 +49,8 @@
         "note": "opton applied, 2",
         "optionChosen": [
           [
-            {"imageName": "c1-oxen-kaput"},
-            {"imageName": "c1-oxen"}
+            {"imageName": "c1-train-kaput"},
+            {"imageName": "c1-train"}
           ],
           [
             {"imageName": "c1-tractor"},
@@ -69,7 +69,7 @@
         "feedback": "There is a better solution. Logging railroads were indeed used but they were very expensive to operate and limited to where they could be built. Try a different solution.",
         "moreFeedback": "Tell more about lumbering trains in Maine. How many? Where did they run?",
         "correctness": "0",
-        "imageName": "c1opt-oxen"
+        "imageName": "c1opt-train"
       },
       {
         "label": "Steam Tractor",
@@ -266,7 +266,7 @@
         "imageName": "c4-tractor-gas-engine-kaput"
       },
       {
-        "note": "opton applied, 2",
+        "note": "option applied, 2",
         "optionChosen": [
           [
             {"imageName": "cX-temp0-kaput"},
@@ -289,21 +289,21 @@
         "feedback": "Sounds scary. Lumbermen put straw on the ground to slow the sleds by creating friction, but this required paying a person stationed at each hill to replace the old ice-coated straw with a new layer. Try again.",
         "moreFeedback": "Was straw ever enough? How did they manage that?",
         "correctness": "0",
-        "imageName": "cXopt-temp0"
+        "imageName": "c5opt-straw"
       },
       {
         "label": "Mechanical Brakes",
         "feedback": "Great choice! Steam powered Lombard log haulers never had brakes. However, with the introduction of the Lombard Lag Bed tractor in 1912 all gasoline powered Lombards had a powerful, foot operated drum brake mounted on the drive shaft.",
         "moreFeedback": "Learn more? What should we say here?",
         "correctness": "1",
-        "imageName": "cXopt-temp1"
+        "imageName": "c5opt-drum-brake"
       },
       {
         "label": "Snubbing Machine",
         "feedback": "Not the best option. Lumbermen wrapped snub lines (ropes) around a stump to manage the weight as they controlled heavy logging sleds going down a hill. Snub lines were dangerous to use and required paying a crew to operate. Try again.",
         "moreFeedback": "Explain snub lines more. Was there ever a notable accident?",
         "correctness": "0",
-        "imageName": "cXopt-temp2"
+        "imageName": "c5opt-snubbing"
       }
     ]  
   },
