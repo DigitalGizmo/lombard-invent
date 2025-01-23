@@ -2,7 +2,7 @@
   import { onMount, tick } from 'svelte'; //, tick
   import { tweened } from 'svelte/motion';
   import { cubicOut } from 'svelte/easing';
-  import { draggable } from '@neodrag/svelte';
+  import { draggable, } from '@neodrag/svelte';
   import { slide } from 'svelte/transition';
 
   import challenges from './lib/challenges2.json';
@@ -61,6 +61,8 @@
   let option1LandingXOffset = 18;
   let optionLandingXOffsets = [20, 70, 120];
   let optionLandingYOffset = -100;
+  // In order to freeze on correct, awaiting retry
+  let isFrozen = false;
 
   async function calcHauler() {
     // Workaround for apparent bug - get the hauler twice here
@@ -152,6 +154,7 @@
     textVisible = false;
     titleVisible = false;
     optionsVisible = false;
+    isFrozen = false;
 
     setTimeout(() => {
       // console.log('after timeout')
@@ -212,6 +215,8 @@
     // console.log('correctnessStates[' + _chosenOptionIndex + '] = ' + challenges[challengeIndex].options[chosenOptionIndex].correctness)
     await tick();
     audioCorrect.play();
+    // Need to freeze option dragging -- retry required to try those
+    isFrozen = true;
     setTimeout(() => {
       haulerScale = 1.4;
       // console.log('setting scale 1.2')
@@ -380,7 +385,8 @@
           <button on:click={nextMove}>
             {challengeIndex < 5 ? "Next Challenge" : "Start Hauling Logs!"}
           </button>
-          {#if challengeIndex < 5}
+          <!-- Should this be 5 or 6? -->
+          {#if challengeIndex < 5} 
             <button on:click={retry}>
               Replay Challenge
             </button>
@@ -418,6 +424,7 @@
           id="optionA" alt="option 1: oxen" 
           bind:this={optionElements[0]}
           use:draggable={{ 
+            disabled: isFrozen,
             position: optionPositions[0],
             bounds: choiceObjectBounds,
             onDrag: ({offsetX, offsetY}) => {
@@ -437,6 +444,7 @@
           id="optionA" alt="option 2: tractor" 
           bind:this={optionElements[1]}
           use:draggable={{ 
+            disabled: isFrozen,
             position: optionPositions[1],
             bounds: choiceObjectBounds,
             onDrag: ({offsetX, offsetY}) => {
@@ -456,6 +464,7 @@
           id="optionA" alt="option 2: tractor" 
           bind:this={optionElements[2]}
           use:draggable={{ 
+            disabled: isFrozen,
             position: optionPositions[2],
             bounds: choiceObjectBounds,
             onDrag: ({offsetX, offsetY}) => {
