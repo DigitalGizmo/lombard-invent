@@ -27,6 +27,7 @@
   let haulerScale = 1;
   const doneLabels = ["<span>Power</span>", "<span>Traction</span>", 
     "<span>Steering</span>", "<span>Cost</span>", "<span>Brakes</span>"];
+  // doneLabels are for the 1, 2, 3 etc bubbles at the top of text box
   let doneStatus = [{isDone: false, label: ""}, {isDone: false, label: ""}, 
   {isDone: false, label: ""}, {isDone: false, label: ""}, {isDone: false, label: ""}
    ]
@@ -113,7 +114,7 @@
   const cloudsX = tweened(0);
   const landX = tweened(0);
 
-  // movement
+  // movement to next challenge
   async function nextMove() {
     // console.log('before timeout')
     textVisible = false;
@@ -134,6 +135,33 @@
       correctnessStates = [1, 1, 1, 1];
       // isFeedback = true;
       calcHauler();
+      // make it kaput
+      challengePhaseIndex = 1;
+      // audioName = "incorrect";
+      audioIncorrect.play();
+
+      correctnessStates[0] = 0; // ? not used here, but creates error if gone
+
+      displayChallengeText();
+    }, 1000 * speed);
+  }
+
+  // movement to next challenge
+  async function retry() {
+    // console.log('before timeout')
+    textVisible = false;
+    titleVisible = false;
+    optionsVisible = false;
+
+    setTimeout(() => {
+      // console.log('after timeout')
+      // chalengIndex change will change main "horse" image
+      // challengeIndex +=1;
+      chosenOptionIndex = 0;
+      optionsToHide = ["", "", "", "", ""];
+      correctnessStates = [1, 1, 1, 1];
+      // isFeedback = true;
+      // calcHauler();
       // make it kaput
       challengePhaseIndex = 1;
       // audioName = "incorrect";
@@ -352,6 +380,11 @@
           <button on:click={nextMove}>
             {challengeIndex < 5 ? "Next Challenge" : "Start Hauling Logs!"}
           </button>
+          {#if challengeIndex < 5}
+            <button on:click={retry}>
+              Replay Challenge
+            </button>
+          {/if}
         {/if}           
 
       {:else} <!-- this is question/challenge -->
