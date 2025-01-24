@@ -122,6 +122,7 @@
     textVisible = false;
     titleVisible = false;
     optionsVisible = false;
+    isFrozen = false;
     // audioName = "progress";
     audioProgress = new Audio(assetPath + 'audio/' + progressAudioNames[challengeIndex] + '.mp3')
     audioProgress.play();
