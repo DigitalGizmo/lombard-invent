@@ -417,11 +417,11 @@
   {#if optionsVisible}
     <ul class="options">
       <li class="option1" >
-        <img src="{assetPath}images/options/{challenges[challengeIndex].options[0].imageName}-shadow.png" alt="oxen shadow"
+        <img src="{assetPath}images/options/{challenges[challengeIndex].options[0].imageName}-shadow.png" alt="option1 shadow"
         class="can-be-overlayed">
         <img src="{assetPath}images/options/{challenges[challengeIndex].options[0].imageName}.png" 
           class="{optionsToHide[0]}"
-          id="optionA" alt="option 1: oxen" 
+          id="optionA" alt="option 1" 
           bind:this={optionElements[0]}
           use:draggable={{ 
             disabled: isFrozen,
@@ -437,11 +437,11 @@
       </li>
 
       <li class="option2">
-        <img src="{assetPath}images/options/{challenges[challengeIndex].options[1].imageName}-shadow.png" alt="tractor shadow"
+        <img src="{assetPath}images/options/{challenges[challengeIndex].options[1].imageName}-shadow.png" alt="option2 shadow"
         class="can-be-overlayed">
         <img src="{assetPath}images/options/{challenges[challengeIndex].options[1].imageName}.png" 
           class="{optionsToHide[1]}"
-          id="optionA" alt="option 2: tractor" 
+          id="optionA" alt="option 2" 
           bind:this={optionElements[1]}
           use:draggable={{ 
             disabled: isFrozen,
@@ -457,11 +457,11 @@
       </li>
 
       <li class="option3">
-        <img src="{assetPath}images/options/{challenges[challengeIndex].options[2].imageName}-shadow.png" alt="tractor shadow"
+        <img src="{assetPath}images/options/{challenges[challengeIndex].options[2].imageName}-shadow.png" alt="option3 shadow"
         class="can-be-overlayed">
         <img src="{assetPath}images/options/{challenges[challengeIndex].options[2].imageName}.png" 
           class="{optionsToHide[2]}"
-          id="optionA" alt="option 2: tractor" 
+          id="optionA" alt="option 3" 
           bind:this={optionElements[2]}
           use:draggable={{ 
             disabled: isFrozen,
