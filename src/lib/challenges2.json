@@ -315,18 +315,26 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "cX-temp1"
+        "imageName": "c5-tractor-brakes"
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "cX-temp1"
+        "imageName": "c5-tractor-brakes"
       },
       {
         "note": "opton applied, 2",
         "optionChosen": [
           [
-            {"imageName": "n/a"},
-            {"imageName": "n/a"}
+            {"imageName": "c5-tractor-brakes"},
+            {"imageName": "c5-tractor-brakes"}
+          ],
+          [
+            {"imageName": "c5-tractor-brakes"},
+            {"imageName": "c5-tractor-brakes"}
+          ],
+          [
+            {"imageName": "c5-tractor-brakes"},
+            {"imageName": "c5-tractor-brakes"}
           ]
         ]
       }

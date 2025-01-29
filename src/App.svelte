@@ -17,7 +17,7 @@
   let currentCorrectness = 0;
   let correctnessStates = [1, 1, 1, 1];
   let optionsToHide = ["", "", "", "", ""];
-  const speed = 0.3; // Smaller is faster for working preview
+  const speed = 0.3; // Smaller is faster for working preview, default = 1
   const longMoveDuration = 5000 * speed; // 5000
   const shortMoveDuration = 1000 * speed;
   // let vwidth = 1200;
@@ -130,21 +130,31 @@
     landX.update((landX) => landX - 50, {duration: longMoveDuration});
     await cloudsX.update((cloudsX) => cloudsX - 20, {duration: longMoveDuration});
     audioProgress.pause();
-    setTimeout(() => {
-      // console.log('after timeout')
-      // chalengIndex change will change main "horse" image
-      challengeIndex +=1;
-      chosenOptionIndex = 0;
-      optionsToHide = ["", "", "", "", ""];
-      correctnessStates = [1, 1, 1, 1];
-      // isFeedback = true;
-      calcHauler();
-      // make it kaput
-      challengePhaseIndex = 1;
-      // audioName = "incorrect";
-      audioIncorrect.play();
 
-      correctnessStates[0] = 0; // ? not used here, but creates error if gone
+    // if (challengeIndex > 4) {
+    //   console.log(' - stop or alt here?')
+    //   setTimeout(() => {
+    //     displayChallengeText();
+    //   }, 1000 * speed);
+    // }
+
+    setTimeout(() => {
+      // Don't do all these steps when we've finished last challenge
+      // Increment first so we can suppress options in display challengeText
+      challengeIndex +=1;
+      if ( challengeIndex < 6){
+        chosenOptionIndex = 0;
+        optionsToHide = ["", "", "", "", ""];
+        correctnessStates = [1, 1, 1, 1];
+        // isFeedback = true;
+        calcHauler();
+        // make it kaput
+        challengePhaseIndex = 1;
+        // audioName = "incorrect";
+        audioIncorrect.play();
+  
+        correctnessStates[0] = 0; // ? not used here, but creates error if gone
+      }
 
       displayChallengeText();
     }, 1000 * speed);
