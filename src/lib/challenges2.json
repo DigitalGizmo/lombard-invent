@@ -269,8 +269,9 @@
         "note": "option applied, 2",
         "optionChosen": [
           [
-            {"imageName": "c5-tractor-straw-kaput"},
-            {"imageName": "c5-tractor-straw"}
+            {"imageName": "c5-tractor-straw-kaput1"},
+            {"imageName": "c5-tractor-straw"},
+            {"imageName": "c5-tractor-straw-kaput2"}
           ],
           [
             {"imageName": "c5-tractor-brakes-water"},

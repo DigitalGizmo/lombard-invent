@@ -1,5 +1,5 @@
 <script>
-  import { onMount, tick } from 'svelte'; //, tick
+  import { tick } from 'svelte'; //, onMount, ˜
   import { tweened } from 'svelte/motion';
   import { cubicOut } from 'svelte/easing';
   import { draggable, } from '@neodrag/svelte';
@@ -16,7 +16,7 @@
   let currentCorrectness = 0;
   let correctnessStates = [1, 1, 1, 1];
   let optionsToHide = ["", "", "", "", ""];
-  const speed = 1; // Smaller is faster for working preview
+  const speed = 0.3; // Smaller is faster for working preview
   const longMoveDuration = 5000 * speed; // 5000
   const shortMoveDuration = 1000 * speed;
   // let vwidth = 1200;
@@ -205,9 +205,19 @@
     await cloudsX.update((cloudsX) => cloudsX - 5, {duration: shortMoveDuration});
     audioProgress.pause();
     correctnessStates[_chosenOptionIndex] = currentCorrectness;
-    audioIncorrect.play();
-    // console.log('correctnessStates[' + _chosenOptionIndex + '] = ' + challenges[challengeIndex].options[chosenOptionIndex].correctness)
-    displayFeedback();
+
+    // Some options have animations as determined by third "correctness" state
+    if (challenges[challengeIndex].challengePhase[2].optionChosen[chosenOptionIndex].length > 2) {
+      setTimeout(() => {
+        // console.log('- trying kaput2')
+        correctnessStates[_chosenOptionIndex] = 2;
+        audioIncorrect.play();
+        displayFeedback();
+      }, 1000);
+    } else {
+      audioIncorrect.play();
+      displayFeedback();
+    }
   }  
 
   async function bingCorrect(_chosenOptionIndex) {
@@ -329,18 +339,25 @@
 
   <div class="hauler">
     <img src="{assetPath}images/lumber.png" alt="lumber"/>
-    <!-- correctnessStates has been set chosen index by chosen index
-     in the array -->
+    <!-- image during travel  0 = travel, 1 = kaput -->
     {#if challengePhaseIndex < 2}
       <img src="{assetPath}images/hauler/{challenges[challengeIndex].challengePhase[challengePhaseIndex].imageName}.png" 
       style="transform:scale({haulerScale})"
       alt="{challenges[challengeIndex].challengePhase[challengePhaseIndex].imageName}" id="hauler"/>
+
+    <!-- image while options are chosen 
+      correctnessStates has been set chosen index by chosen index in the array ??
+      For animation: could reverse 0 & 1 and add a 2 -- or just go from 0 to 2 for animation
+      e.g. 
+      <img src="{assetPath}images/hauler/{challenges[5th].challengePhase[2-options].optionChosen[1][0=kaput or correct; 1=attempt that travels].imageName}.png"/>
+      -->
     {:else}
       <img src="{assetPath}images/hauler/{challenges[challengeIndex].challengePhase[2].optionChosen[chosenOptionIndex][correctnessStates[chosenOptionIndex]].imageName}.png"
       style="transform:scale({haulerScale})"
       alt="{challenges[challengeIndex].challengePhase[challengePhaseIndex].imageName}" id="hauler"/>
-
     {/if}
+
+    
     
   </div><!-- /hauler -->
 
@@ -387,11 +404,11 @@
             {challengeIndex < 5 ? "Next Challenge" : "Start Hauling Logs!"}
           </button>
           <!-- Should this be 5 or 6? -->
-          {#if challengeIndex < 5} 
+          <!-- {#if challengeIndex < 5}  -->
             <button on:click={retry}>
               Replay Challenge
             </button>
-          {/if}
+          <!-- {/if} -->
         {/if}           
 
       {:else} <!-- this is question/challenge -->
