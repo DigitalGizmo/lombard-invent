@@ -269,16 +269,16 @@
         "note": "option applied, 2",
         "optionChosen": [
           [
-            {"imageName": "cX-temp0-kaput"},
-            {"imageName": "cX-temp0"}
+            {"imageName": "c5-tractor-straw-kaput"},
+            {"imageName": "c5-tractor-straw"}
           ],
           [
-            {"imageName": "cX-temp1"},
-            {"imageName": "cX-temp1"}
+            {"imageName": "c5-tractor-brakes-water"},
+            {"imageName": "c5-tractor-brakes"}
           ],
           [
-            {"imageName": "cX-temp2-kaput"},
-            {"imageName": "cX-temp2"}
+            {"imageName": "c5-tractor-snubbing-kaput"},
+            {"imageName": "c5-tractor-snubbing"}
           ]
         ]
       }
