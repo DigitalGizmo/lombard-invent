@@ -4,6 +4,7 @@
   import { cubicOut } from 'svelte/easing';
   import { draggable, } from '@neodrag/svelte';
   import { slide } from 'svelte/transition';
+  // import { fade } from 'svelte/transition';
 
   import challenges from './lib/challenges2.json';
   const assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
@@ -316,10 +317,6 @@
     isMoreFeedbackShowing = !isMoreFeedbackShowing
   }
 
-  // function playSound() {
-  //   audio.play();
-  // }
-
 </script>
 
 <div class="wrapper">
@@ -340,8 +337,11 @@
   <div class="hauler">
     <img src="{assetPath}images/lumber.png" alt="lumber"/>
     <!-- image during travel  0 = travel, 1 = kaput -->
+     <!-- Could use a fade, but we'd need to do some absolute positoning to avoid jump
+     transition:fade={{ duration: 500}} -->
     {#if challengePhaseIndex < 2}
-      <img src="{assetPath}images/hauler/{challenges[challengeIndex].challengePhase[challengePhaseIndex].imageName}.png" 
+      <img 
+      src="{assetPath}images/hauler/{challenges[challengeIndex].challengePhase[challengePhaseIndex].imageName}.png" 
       style="transform:scale({haulerScale})"
       alt="{challenges[challengeIndex].challengePhase[challengePhaseIndex].imageName}" id="hauler"/>
 
@@ -352,7 +352,8 @@
       <img src="{assetPath}images/hauler/{challenges[5th].challengePhase[2-options].optionChosen[1][0=kaput or correct; 1=attempt that travels].imageName}.png"/>
       -->
     {:else}
-      <img src="{assetPath}images/hauler/{challenges[challengeIndex].challengePhase[2].optionChosen[chosenOptionIndex][correctnessStates[chosenOptionIndex]].imageName}.png"
+      <img 
+      src="{assetPath}images/hauler/{challenges[challengeIndex].challengePhase[2].optionChosen[chosenOptionIndex][correctnessStates[chosenOptionIndex]].imageName}.png"
       style="transform:scale({haulerScale})"
       alt="{challenges[challengeIndex].challengePhase[challengePhaseIndex].imageName}" id="hauler"/>
     {/if}
