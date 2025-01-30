@@ -61,7 +61,7 @@ div.hauler {
   position: absolute;
   top: 30vh;
   left: 33vw;
-  width: 100%;
+/*  width: 100%;*/
 }
 
 @media screen and (max-aspect-ratio: 9.5/9) {
@@ -74,7 +74,11 @@ div.hauler {
 }
 
 div.hauler img {
-  width: 30%;
+  width: 68%;
+}
+
+div.hauler img.logs{
+  width: 31%;
 }
 
 @media screen and (max-aspect-ratio: 9.5/9) {
@@ -159,7 +163,7 @@ article header.text-box ul.progress li.progress-item span { /* progress number l
   font-size: .35em;
   text-transform: uppercase;
   letter-spacing: .05em;
-  font-weight: bold;
+  font-family: "Fira Sans", sans-serif;
   margin-top: 4px;
 }
 

@@ -345,7 +345,7 @@
   </header>
 
   <div class="hauler">
-    <img src="{assetPath}images/lumber.png" alt="lumber"/>
+    <img src="{assetPath}images/lumber.png" alt="lumber" class="logs" />
     <!-- image during travel  0 = travel, 1 = kaput -->
      <!-- Could use a fade, but we'd need to do some absolute positoning to avoid jump
      transition:fade={{ duration: 500}} -->
