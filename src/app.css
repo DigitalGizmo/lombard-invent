@@ -174,9 +174,10 @@ article header.text-box ul.progress li.done {
 /* graphic options to answer the challenges */
 ul.options {
   position: absolute;
-  bottom: 3vh;
+  bottom: 5vh;
   left: 36vw;
   list-style-type: none;
+  padding: 0;
 }
 
 @media screen and (max-aspect-ratio: 9.5/9) {
@@ -189,10 +190,12 @@ ul.options {
 
 ul.options li {
   display: inline-block;
-  height: 16vh;
+/*  height: 16vh;*/
   width: 15vw;
   margin-right: 2vw;
+  position: relative;
   text-align: center;
+/*  vertical-align: middle;*/
 }
 
 @media screen and (max-aspect-ratio: 9.5/9) {
@@ -204,7 +207,8 @@ ul.options li {
 
 ul.options li img {
   -webkit-user-drag: none;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .hide-option {
@@ -213,8 +217,9 @@ ul.options li img {
 
 .can-be-overlayed { /* shadows? */
   position: absolute;
-  width: 15vw;
-  max-height: 15vh;
+  max-height: 80%;
+  vertical-align: middle;
+  opacity: 0.6;
 }
 
 @media screen and (max-aspect-ratio: 9.5/9) {
