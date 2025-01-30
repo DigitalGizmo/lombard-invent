@@ -14,6 +14,20 @@ p {
   line-height: 1.4rem;
 }
 
+button {
+  background: #5CB8C4;
+  border: solid 1px #74A4A7;
+  padding: .5em;
+  color: white;
+  border-radius: 2px;
+  font-family: "Fira Sans", sans-serif;
+}
+
+button:hover {
+  background: #74A4A7;
+  cursor: pointer;
+}
+
 .wrapper {
   width: 100vw;
   height: 100vh;
