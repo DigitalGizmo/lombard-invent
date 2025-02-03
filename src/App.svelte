@@ -106,7 +106,6 @@
       let optionRect = optionElements[0].getBoundingClientRect();
       // option1Left = optionRect.left;
       // option1LandingXOffset = rect.left - optionRect.left;  
-      
       // optionTop = optionRect.top;
       // console.log('optionTop: ' + optionTop);
       optionLandingYOffset = -(Math.round(optionRect.top) - rect.top);  
@@ -130,13 +129,6 @@
     landX.update((landX) => landX - 50, {duration: longMoveDuration});
     await cloudsX.update((cloudsX) => cloudsX - 20, {duration: longMoveDuration});
     audioProgress.pause();
-
-    // if (challengeIndex > 4) {
-    //   console.log(' - stop or alt here?')
-    //   setTimeout(() => {
-    //     displayChallengeText();
-    //   }, 1000 * speed);
-    // }
 
     setTimeout(() => {
       // Don't do all these steps when we've finished last challenge
@@ -269,14 +261,6 @@
       }
     }, 1000 * speed);
   }
-
-  // async function onToNext() {
-  //   setTimeout(() => {
-  //     console.log('on to next challenge')
-  //     optionsVisible = false;
-  //     nextMove();
-  //   }, 2000 * speed);
-  // }
 
   function dragStop(e, _chosenOptionIndex) { //  _chosenOptionIndex
     /* Landing position of a given option is relative to its start point
