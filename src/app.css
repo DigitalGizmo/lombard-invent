@@ -73,7 +73,7 @@ header h1 {
 
 div.hauler {
   position: absolute;
-  top: 30vh;
+  top: 20vh;
   left: 33vw;
 /*  width: 100%;*/
 }
@@ -81,7 +81,7 @@ div.hauler {
 @media screen and (max-aspect-ratio: 9.5/9) {
   div.hauler {
     position: absolute;
-    top: 30vh;
+    top: 40vh;
     left: 10vw;
     width: 100%;
   }
@@ -91,13 +91,16 @@ div.hauler img {
   width: 68%;
 }
 
-div.hauler img.logs{
+div.hauler img.logs {
   width: 31%;
 }
 
 @media screen and (max-aspect-ratio: 9.5/9) {
-div.hauler img {
-  width: 40%;
+  div.hauler img {
+    width: 65%;
+  }
+  div.hauler img.logs {
+    width: 31%;
   }
 }
 
@@ -117,8 +120,8 @@ article {
 @media screen and (max-aspect-ratio: 9.5/9) {
   article {
     top: 80vh;
-    left: 14vw;
-    width: 70vw;
+    left: 0vw;
+    width: 100vw;
     min-height: 15vh;
   }
 }
@@ -188,7 +191,7 @@ article header.text-box ul.progress li.done {
 /* graphic options to answer the challenges */
 ul.options {
   position: absolute;
-  bottom: 5vh;
+  top: 65vh;
   left: 36vw;
   list-style-type: none;
   padding: 0;
@@ -209,7 +212,7 @@ ul.options li {
   margin-right: 2vw;
   position: relative;
   text-align: center;
-/*  vertical-align: middle;*/
+  vertical-align: middle;
 }
 
 @media screen and (max-aspect-ratio: 9.5/9) {
@@ -225,11 +228,15 @@ ul.options li img {
   max-height: 100%;
 }
 
+ul.options li h3 {
+  margin-top:0;
+}
+
 .hide-option {
   visibility: hidden;
 }
 
-.can-be-overlayed { /* shadows? */
+.shadows { /* shadows */
   position: absolute;
   max-height: 80%;
   vertical-align: middle;
@@ -237,7 +244,7 @@ ul.options li img {
 }
 
 @media screen and (max-aspect-ratio: 9.5/9) {
-  .can-be-overlayed { 
+  .shadows { 
     width: unset;
   }
 }

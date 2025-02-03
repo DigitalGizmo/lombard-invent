@@ -447,7 +447,7 @@
     <ul class="options">
       <li class="option1" >
         <img src="{assetPath}images/options/shadow1.png" alt="option1 shadow"
-        class="can-be-overlayed">
+        class="shadows">
         <img src="{assetPath}images/options/{challenges[challengeIndex].options[0].imageName}.png" 
           class="{optionsToHide[0]}"
           id="optionA" alt="option 1" 
@@ -467,7 +467,7 @@
 
       <li class="option2">
         <img src="{assetPath}images/options/shadow2.png" alt="option2 shadow"
-        class="can-be-overlayed">
+        class="shadows">
         <img src="{assetPath}images/options/{challenges[challengeIndex].options[1].imageName}.png" 
           class="{optionsToHide[1]}"
           id="optionA" alt="option 2" 
@@ -487,7 +487,7 @@
 
       <li class="option3">
         <img src="{assetPath}images/options/shadow3.png" alt="option3 shadow"
-        class="can-be-overlayed">
+        class="shadows">
         <img src="{assetPath}images/options/{challenges[challengeIndex].options[2].imageName}.png" 
           class="{optionsToHide[2]}"
           id="optionA" alt="option 3" 
