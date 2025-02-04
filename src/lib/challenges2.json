@@ -104,7 +104,7 @@
       {
         "note": "while at kaput, 1",
         "imageName": "c1-tractor-kaput",
-        "audio": "correct"
+        "audio": "incorrect"
       },
       {
         "note": "option applied, 2",
@@ -332,8 +332,8 @@
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "c5-tractor-brakes",
-        "audio": "incorrect"
+        "imageName": "c5-tractor-success",
+        "audio": "correct"
       },
       {
         "note": "opton applied, 2",

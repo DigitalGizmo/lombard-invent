@@ -132,7 +132,7 @@
       // Don't do all these steps when we've finished last challenge
       // Increment first so we can suppress options in display challengeText
       challengeIndex +=1;
-      if ( challengeIndex < 6){
+      if ( challengeIndex < 9){
         chosenOptionIndex = 0;
         optionsToHide = ["", "", "", "", ""];
         correctnessStates = [1, 1, 1, 1];
