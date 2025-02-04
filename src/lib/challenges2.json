@@ -6,11 +6,13 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "c0-horses"
+        "imageName": "c0-horses",
+        "audio": "progress"
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "c0-horses-kaput"
+        "imageName": "c0-horses-kaput",
+        "audio": "incorrect"
       },
       {
         "note": "opton applied, 2",
@@ -39,11 +41,13 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "c0-horses"
+        "imageName": "c0-horses",
+        "audio": "progress-steam"
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "c0-horses-kaput"
+        "imageName": "c0-horses-kaput",
+        "audio": "incorrect"
       },
       {
         "note": "opton applied, 2",
@@ -94,11 +98,13 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "c1-tractor"
+        "imageName": "c1-tractor",
+        "audio": "progress-steam"
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "c1-tractor-kaput"
+        "imageName": "c1-tractor-kaput",
+        "audio": "correct"
       },
       {
         "note": "option applied, 2",
@@ -149,11 +155,13 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "c2-tractor-tracks"
+        "imageName": "c2-tractor-tracks",
+        "audio": "progress-steam"
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "c2-tractor-tracks-kaput"
+        "imageName": "c2-tractor-tracks-kaput",
+        "audio": "incorrect"
       },
       {
         "note": "opton applied, 2",
@@ -204,11 +212,13 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "c3-tractor-steeringwheel"
+        "imageName": "c3-tractor-steeringwheel",
+        "audio": "progress-steam"
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "c3-tractor-steeringwheel-kaput"
+        "imageName": "c3-tractor-steeringwheel-kaput",
+        "audio": "incorrect"
       },
       {
         "note": "option applied, 2",
@@ -259,11 +269,13 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "c4-tractor-gas-engine"
+        "imageName": "c4-tractor-gas-engine",
+        "audio": "progress-steam"
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "c4-tractor-gas-engine-kaput"
+        "imageName": "c4-tractor-gas-engine-kaput",
+        "audio": "incorrect"
       },
       {
         "note": "option applied, 2",
@@ -315,11 +327,13 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "c5-tractor-brakes"
+        "imageName": "c5-tractor-brakes",
+        "audio": "progress-steam"
       },
       {
         "note": "while at kaput, 1",
-        "imageName": "c5-tractor-brakes"
+        "imageName": "c5-tractor-brakes",
+        "audio": "incorrect"
       },
       {
         "note": "opton applied, 2",

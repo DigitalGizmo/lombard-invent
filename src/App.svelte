@@ -37,19 +37,15 @@
   let optionPositions = [
     { x: 0, y: 0}, { x: 0, y: 0}, { x: 0, y: 0}, { x: 0, y: 0}
   ]
-
   // Temp array for progress audio names, should be in json
-  const progressAudioNames = ['progress', 'progress-steam', 'progress-steam', 
-    'progress-steam', 'progress-steam', 'progress-steam' ]
+  // const progressAudioNames = ['progress', 'progress-steam', 'progress-steam', 
+  //   'progress-steam', 'progress-steam', 'progress-steam' ]
   // let audioName = "progress"
   let audioProgress = new Audio(assetPath + 'audio/progress.mp3')
+  let audioEndTravel = new Audio(assetPath + 'audio/incorrect.mp3')
   const audioIncorrect = new Audio(assetPath + 'audio/incorrect.mp3')
   const audioCorrect = new Audio(assetPath + 'audio/correct.mp3')
-  const audioProgressSteam = new Audio(assetPath + 'audio/progress-audioProgressSteam.mp3')
-  // $: audio = new Audio(assetPath + 'audio/' + audioName + '.mp3')
 
-
-  // let optionAElement;
   let optionElements = [null, null, null, null];
 
   // let haulerLeft = 600;
@@ -123,9 +119,11 @@
     titleVisible = false;
     optionsVisible = false;
     isFrozen = false;
-    // audioName = "progress";
-    audioProgress = new Audio(assetPath + 'audio/' + progressAudioNames[challengeIndex] + '.mp3')
+
+    audioProgress = new Audio(assetPath + 'audio/' + 
+      challenges[challengeIndex].challengePhase[0].audio + '.mp3')
     audioProgress.play();
+
     landX.update((landX) => landX - 50, {duration: longMoveDuration});
     await cloudsX.update((cloudsX) => cloudsX - 20, {duration: longMoveDuration});
     audioProgress.pause();
@@ -143,7 +141,10 @@
         // make it kaput
         challengePhaseIndex = 1;
         // audioName = "incorrect";
-        audioIncorrect.play();
+
+        audioEndTravel = new Audio(assetPath + 'audio/' + 
+        challenges[challengeIndex].challengePhase[1].audio + '.mp3')
+        audioEndTravel.play();
   
         correctnessStates[0] = 0; // ? not used here, but creates error if gone
       }
@@ -172,7 +173,11 @@
       // make it kaput
       challengePhaseIndex = 1;
       // audioName = "incorrect";
-      audioIncorrect.play();
+      // audioIncorrect.play();
+      audioEndTravel = new Audio(assetPath + 'audio/' + 
+        challenges[challengeIndex].challengePhase[1].audio + '.mp3')
+      audioEndTravel.play();
+  
 
       correctnessStates[0] = 0; // ? not used here, but creates error if gone
 
