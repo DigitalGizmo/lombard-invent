@@ -7,6 +7,8 @@
   // import { fade } from 'svelte/transition';
 
   import challenges from './lib/challenges2.json';
+  import Credits from './Credits.svelte';
+
   const assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
   // const assetPath = ""
   let challengeIndex = 0;
@@ -14,6 +16,7 @@
   let chosenOptionIndex = 0;
   let isFeedback = false; // otherwise question/challenge
   let isMoreFeedbackShowing = false;
+  let isModalShowing = false;
   let currentCorrectness = 0;
   let correctnessStates = [1, 1, 1, 1];
   let optionsToHide = ["", "", "", "", ""];
@@ -316,6 +319,10 @@
     isMoreFeedbackShowing = !isMoreFeedbackShowing
   }
 
+  function showModal() { 
+    console.log('got to showModal')
+    isModalShowing = true;
+  };  
 </script>
 
 <div class="wrapper">
@@ -429,6 +436,12 @@
       challenges[challengeIndex].options[0].imageName: {challenges[challengeIndex].options[0].imageName}
     </p> -->
 
+    <p>
+      <a href="/" 
+        on:click={(e) => { e.preventDefault(); showModal();}}>
+        Credits
+      </a>
+    </p>
   </article>
 
   <!-- {#if challengeIndex === 1} -->
@@ -496,5 +509,11 @@
 
     </ul>
   {/if}
-
+  
 </div><!--/wrapper-->
+
+{#if isModalShowing}
+  <Credits 
+    bind:isModalShowing 
+  />
+{/if}  
