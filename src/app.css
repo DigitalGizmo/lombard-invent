@@ -34,6 +34,7 @@ button:hover {
   overflow: hidden;
   position: relative;
   background-color: #F9FDFF;
+  text-align: center;
 }
 
 @media screen and (max-aspect-ratio: 9.5/9) {
@@ -115,6 +116,7 @@ article {
   min-height: 35vh;
   border: 1px solid lightgray;
   padding: 1%;
+  text-align: left;
 }
 
 @media screen and (max-aspect-ratio: 9.5/9) {
@@ -207,7 +209,7 @@ ul.options {
 
 ul.options li {
   display: inline-block;
-/*  height: 16vh;*/
+/*height: 16vh;*/
   width: 15vw;
   margin-right: 2vw;
   position: relative;
@@ -247,4 +249,106 @@ ul.options li h3 {
   .shadows { 
     width: unset;
   }
+}
+
+p.credits {
+  position: absolute;
+  bottom: 5vh;
+  left: 3vw;
+}
+
+p.credits a {
+  color: #5CB8C4;
+  text-decoration: none;
+}
+
+p.credits a:hover {
+  text-decoration: underline;
+}
+
+#modal-overlay {
+  background: url(./assets/overlay.png) repeat;
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 99;
+}
+
+#modal-wrapper {
+  background-color: white;
+  border: 1px solid lightgray;
+  overflow: auto;
+  padding: 1.5em;
+  position: relative;
+  height: 30vh;
+}
+
+/* JavaScript assigns this (or .hidden) to modal container */
+@media screen and (max-width: 799px) { /* displays smaller than 800px */
+  .modal-basic {
+    bottom: 0;
+    display: block;
+    left: 18vw;
+    margin: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: fixed;
+    z-index: 100;
+    right: 0;
+    top: 10vh;
+    width: 90vw;
+  }
+}
+
+@media screen and (min-width: 800px) { /* displays larger than 800px */
+  .modal-basic {
+    bottom: 0;
+    display: block;
+    left: 0;
+    margin: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: fixed;/* this positions the modal window relative to viewport, it won't scroll with the page */  
+    z-index: 100;
+    right: 0;
+    top: 25vh;
+    width: 60vw;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+}
+
+.close { 
+  cursor:pointer;
+}
+
+.close:after, .close:before {
+  content: "";
+  height: 20px;
+  width: 20px;
+  border-top: 2px solid #c3c0c0;
+  position: absolute;
+  top: 6px;
+  right: -8px;
+  rotate: -45deg;
+}
+      
+.close:before {
+  right: 6px;
+  rotate: 45deg;
+}
+  
+.close:hover {  
+  opacity: 0.3;
 }

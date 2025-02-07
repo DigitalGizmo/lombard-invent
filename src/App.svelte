@@ -436,14 +436,15 @@
       challenges[challengeIndex].options[0].imageName: {challenges[challengeIndex].options[0].imageName}
     </p> -->
 
-    <p>
-      <a href="/" 
-        on:click={(e) => { e.preventDefault(); showModal();}}>
-        Credits
-      </a>
-    </p>
   </article>
 
+  <p class="credits">
+    <a href="/" 
+      on:click={(e) => { e.preventDefault(); showModal();}}>
+      Credits
+    </a>
+  </p>
+  
   <!-- {#if challengeIndex === 1} -->
   {#if optionsVisible}
     <ul class="options">
