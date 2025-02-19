@@ -30,7 +30,8 @@
         "feedback": "not used",
         "moreFeedback": "also not used, but needs to exist",
         "correctness": "0",
-        "imageName": "placeHolder"
+        "imageName": "placeHolder",
+        "audioFeedback": "placeHolder"
       }
     ]  
   },
@@ -73,21 +74,24 @@
         "feedback": "There is a better solution. Logging railroads were indeed used but they were very expensive to operate and limited to where they could be built. Try a different solution.",
         "moreFeedback": "Tell more about lumbering trains in Maine. How many? Where did they run?",
         "correctness": "0",
-        "imageName": "c1opt-train"
+        "imageName": "c1opt-train",
+        "audioFeedback": "incorrect"
       },
       {
         "label": "Steam Tractor",
         "feedback": "Excellent solution! Steam worked! A steam powered machine could haul much further than a team of horses, and it didn’t get tired or hungry. Let's call our new machine a Lombard Log Hauler! Onward to the next challenge!",
         "moreFeedback": "Learn more: ?? Do we need to say more if the answer is right?",
         "correctness": "1",
-        "imageName": "c1opt-tractor"
+        "imageName": "c1opt-tractor",
+        "audioFeedback": "correct"
       },
       {
         "label": "Electric Trolley",
         "feedback": "Good thought, but not the solution. Alvin Lombard tried using electricity to power a Lombard Log Hauler like a trolley car. It was declared, a failure, however, due to the cost of running electrical lines. Try a different solution.",
         "moreFeedback": "Tell more about trying to electrify these. Did Lombard actually try this? Where? Did someone else? Are there photos?",
         "correctness": "0",
-        "imageName": "c1opt-trolley"
+        "imageName": "c1opt-trolley",
+        "audioFeedback": "incorrect"
       }
     ]  
   },
@@ -130,21 +134,24 @@
         "feedback": "Excellent!! In 1900, Alvin Lombard developed and patented the first practical crawler track system. Crawler tracks spread the weight of the machine so it could gain traction on ice and snow. Try the next challenge.",
         "moreFeedback": "More on why crawler tracks were the best",
         "correctness": "1",
-        "imageName": "c2opt-tracks"
+        "imageName": "c2opt-tracks",
+        "audioFeedback": "correct"
       },
       {
         "label": "Large Wheels",
         "feedback": "Wrong. Wheels would sink in snow and mud. Besides, steel wheels of the day offered very little traction on ice and snow. Try another solution.",
         "moreFeedback": "Learn more: what might we say here?",
         "correctness": "0",
-        "imageName": "c2opt-wheels"
+        "imageName": "c2opt-wheels",
+        "audioFeedback": "incorrect"
       },
       {
         "label": "Giant Screws",
         "feedback": "Interesting solution, but not effective! In 1904, Ira Peavey of Bangor patented a \"Snow Locomotive\" which used giant screws to move it through the snow and over ice. It worked but wasn’t a commercial success. Try again!",
         "moreFeedback": "Details on the Snow Locomotive.",
         "correctness": "0",
-        "imageName": "c2opt-screw"
+        "imageName": "c2opt-screw",
+        "audioFeedback": "incorrect"
       }
     ]  
   },
@@ -187,21 +194,24 @@
         "feedback": "Not quite. Tiller steering - using a stick to pivot the front wheels - was used on early automobiles. However, steering with a tiller would be difficult on such a heavy machine. Try another option.",
         "moreFeedback": "In fact, Alvin Lombard built a steam powered automobile in 1899 that used tiller steering.",
         "correctness": "0",
-        "imageName": "c3opt-tiller"
+        "imageName": "c3opt-tiller",
+        "audioFeedback": "incorrect"
       },
       {
         "label": "Steering Wheel",
         "feedback": "Perfect! A steering wheel, combined with gears to reduce the steering effort, worked very well! Give the next challenge a go.",
         "moreFeedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         "correctness": "1",
-        "imageName": "c3opt-steeringwheel"
+        "imageName": "c3opt-steeringwheel",
+        "audioFeedback": "correct"
       },
       {
         "label": "Horse",
         "feedback": "That’s an idea! However, using horses was cumbersome, and it cost extra money to feed and care for them. Try again.",
         "moreFeedback": "Could discuss horses in general since we didn’t get to do this earlier.",
         "correctness": "0",
-        "imageName": "c3opt-horse"
+        "imageName": "c3opt-horse",
+        "audioFeedback": "incorrect"
       }
     ]  
   },
@@ -244,21 +254,24 @@
         "feedback": "Sorry, not possible. A Lombard steam log hauler required a crew of three: Steersman, Engineer and Fireman. All were vital to the successful and safe operation of the machine. Reducing the crew would create many problems. Try another solution.",
         "moreFeedback": "Roles of the 3 jobs and costs",
         "correctness": "0",
-        "imageName": "c4opt-workers2"
+        "imageName": "c4opt-workers2",
+        "audioFeedback": "incorrect"
       },
       {
         "label": "Make Smaller",
         "feedback": "It wasn’t enough. Lombard actually did produce a much smaller 15-ton steam Lombard Log Hauler. The smaller machine featured a vertical boiler and narrower tracks. Though successful, the cost savings was minimal. Try again.",
         "moreFeedback": "Details on difficulties in using a steam engine",
         "correctness": "0",
-        "imageName": "c4opt-small-engine"
+        "imageName": "c4opt-small-engine",
+        "audioFeedback": "incorrect"
       },
       {
         "label": "Gas Engine",
         "feedback": "Correct! In 1915, he introduced the gasoline-powered Lombard “Tractor-Truck” which was so successful that he stopped production of steam-powered Log Haulers in 1917. Lombard’s “Tractor-Truck” was lighter, faster, and only required one driver. Give the last challenge a go.",
         "moreFeedback": "Why did gas Lombard require only one person to operate? What made it simpler?",
         "correctness": "1",
-        "imageName": "c4opt-gas-engine"
+        "imageName": "c4opt-gas-engine",
+        "audioFeedback": "correct"
       }
     ]  
   },
@@ -302,21 +315,24 @@
         "feedback": "Sounds scary. Lumbermen put straw on the ground to slow the sleds by creating friction, but this required paying a person stationed at each hill to replace the old ice-coated straw with a new layer. Try again.",
         "moreFeedback": "Was straw ever enough? How did they manage that?",
         "correctness": "0",
-        "imageName": "c5opt-straw"
+        "imageName": "c5opt-straw",
+        "audioFeedback": "kerplash"
       },
       {
         "label": "Mechanical Brakes",
         "feedback": "Great choice! Steam powered Lombard log haulers never had brakes. However, with the introduction of the Lombard Lag Bed tractor in 1912 all gasoline powered Lombards had a powerful, foot operated drum brake mounted on the drive shaft.",
         "moreFeedback": "Learn more? What should we say here?",
         "correctness": "1",
-        "imageName": "c5opt-drum-brake"
+        "imageName": "c5opt-drum-brake",
+        "audioFeedback": "woo-hoo"
       },
       {
         "label": "Snubbing Machine",
         "feedback": "Not the best option. Lumbermen wrapped snub lines (ropes) around a stump to manage the weight as they controlled heavy logging sleds going down a hill. Snub lines were dangerous to use and required paying a crew to operate. Try again.",
         "moreFeedback": "Explain snub lines more. Was there ever a notable accident?",
         "correctness": "0",
-        "imageName": "c5opt-snubbing"
+        "imageName": "c5opt-snubbing",
+        "audioFeedback": "kerplash"
       }
     ]  
   },
@@ -333,7 +349,7 @@
       {
         "note": "while at kaput, 1",
         "imageName": "c5-tractor-success",
-        "audio": "correct"
+        "audio": "congratulations"
       },
       {
         "note": "opton applied, 2",
@@ -359,7 +375,8 @@
         "feedback": "not used",
         "moreFeedback": "may not be needed, or maybe more congratulations",
         "correctness": "0",
-        "imageName": "placeHolder"
+        "imageName": "placeHolder",
+        "audioFeedback": "placeHolder"
       }
     ]  
   }

@@ -46,8 +46,8 @@
   // let audioName = "progress"
   let audioProgress = new Audio(assetPath + 'audio/progress.mp3')
   let audioEndTravel = new Audio(assetPath + 'audio/incorrect.mp3')
-  const audioIncorrect = new Audio(assetPath + 'audio/incorrect.mp3')
-  const audioCorrect = new Audio(assetPath + 'audio/correct.mp3')
+  let audioOption = new Audio(assetPath + 'audio/incorrect.mp3')
+  // const audioCorrect = new Audio(assetPath + 'audio/correct.mp3')
 
   let optionElements = [null, null, null, null];
 
@@ -175,8 +175,6 @@
       // calcHauler();
       // make it kaput
       challengePhaseIndex = 1;
-      // audioName = "incorrect";
-      // audioIncorrect.play();
       audioEndTravel = new Audio(assetPath + 'audio/' + 
         challenges[challengeIndex].challengePhase[1].audio + '.mp3')
       audioEndTravel.play();
@@ -217,16 +215,21 @@
     audioProgress.pause();
     correctnessStates[_chosenOptionIndex] = currentCorrectness;
 
+    audioOption = new Audio(assetPath + 'audio/' + 
+        challenges[challengeIndex].options[_chosenOptionIndex].audioFeedback + '.mp3')
+
+
     // Some options have animations as determined by third "correctness" state
     if (challenges[challengeIndex].challengePhase[2].optionChosen[chosenOptionIndex].length > 2) {
       setTimeout(() => {
         // console.log('- trying kaput2')
         correctnessStates[_chosenOptionIndex] = 2;
-        audioIncorrect.play();
+
+        audioOption.play();
         displayFeedback();
       }, 1000);
     } else {
-      audioIncorrect.play();
+      audioOption.play();
       displayFeedback();
     }
   }  
@@ -236,7 +239,13 @@
     correctnessStates[_chosenOptionIndex] = currentCorrectness;
     // console.log('correctnessStates[' + _chosenOptionIndex + '] = ' + challenges[challengeIndex].options[chosenOptionIndex].correctness)
     await tick();
-    audioCorrect.play();
+
+    audioOption = new Audio(assetPath + 'audio/' + 
+        challenges[challengeIndex].options[_chosenOptionIndex].audioFeedback + '.mp3')
+
+    audioOption.play();
+
+    // audioCorrect.play();
     // Need to freeze option dragging -- retry required to try those
     isFrozen = true;
     setTimeout(() => {
@@ -253,7 +262,7 @@
       haulerScale = 1;
       // console.log('setting scale 1.2')
       displayFeedback();
-      audioCorrect.pause();
+      audioOption.pause();
     }, 500);
   }  
 
