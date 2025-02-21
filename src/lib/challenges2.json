@@ -5,7 +5,7 @@
     "challengeText": "Your challenge will be to invent a machine to haul logs out of the forest! For each of the five challenges, drag and drop your best guess to the Lombard Hauler.",
     "challengePhase": [
       {
-        "note": "while in transition, 0",
+        "note": "while in transition, 0, audio is clippity cloppity",
         "imageName": "c0-horses",
         "audio": "progress"
       },
@@ -15,7 +15,7 @@
         "audio": "incorrect"
       },
       {
-        "note": "opton applied, 2",
+        "note": "option applied, 2",
         "optionChosen": [
           [
             {"imageName": "n/a"},
@@ -41,7 +41,7 @@
     "challengeText": "Lumbermen used horses to haul timber from the forest to the nearest river. It was hard on horses to pull heavy logging sleds more than a few miles, but lumbermen needed to go deeper into the woods to harvest the logs. What power source might work better?",
     "challengePhase": [
       {
-        "note": "while in transition, 0",
+        "note": "while in transition, 0, audio is chokka chokka",
         "imageName": "c0-horses",
         "audio": "progress-steam"
       },
@@ -51,7 +51,7 @@
         "audio": "incorrect"
       },
       {
-        "note": "opton applied, 2",
+        "note": "option applied, 2",
         "optionChosen": [
           [
             {"imageName": "c1-train-kaput"},
@@ -108,7 +108,7 @@
       {
         "note": "while at kaput, 1",
         "imageName": "c1-tractor-kaput",
-        "audio": "incorrect"
+        "audio": "hmmmm"
       },
       {
         "note": "option applied, 2",
@@ -168,10 +168,10 @@
       {
         "note": "while at kaput, 1",
         "imageName": "c2-tractor-tracks-kaput",
-        "audio": "incorrect"
+        "audio": "timber"
       },
       {
-        "note": "opton applied, 2",
+        "note": "option applied, 2",
         "optionChosen": [
           [
             {"imageName": "c3-tractor-tiller-kaput"},
@@ -195,7 +195,7 @@
         "moreFeedback": "In fact, Alvin Lombard built a steam powered automobile in 1899 that used tiller steering.",
         "correctness": "0",
         "imageName": "c3opt-tiller",
-        "audioFeedback": "incorrect"
+        "audioFeedback": "boulder-crash"
       },
       {
         "label": "Steering Wheel",
@@ -211,7 +211,7 @@
         "moreFeedback": "Could discuss horses in general since we didn’t get to do this earlier.",
         "correctness": "0",
         "imageName": "c3opt-horse",
-        "audioFeedback": "incorrect"
+        "audioFeedback": "horse"
       }
     ]  
   },
@@ -288,7 +288,7 @@
       {
         "note": "while at kaput, 1",
         "imageName": "c4-tractor-gas-engine-kaput",
-        "audio": "incorrect"
+        "audio": "ruh-roh"
       },
       {
         "note": "option applied, 2",
@@ -352,7 +352,7 @@
         "audio": "congratulations"
       },
       {
-        "note": "opton applied, 2",
+        "note": "option applied, 2",
         "optionChosen": [
           [
             {"imageName": "c5-tractor-brakes"},
