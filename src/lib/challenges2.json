@@ -43,7 +43,7 @@
       {
         "note": "while in transition, 0, audio is chokka chokka",
         "imageName": "c0-horses",
-        "audio": "progress-steam"
+        "audio": "progress-steam-phase-0-never-used"
       },
       {
         "note": "while at kaput, 1",
@@ -300,7 +300,7 @@
           ],
           [
             {"imageName": "c5-tractor-brakes-water"},
-            {"imageName": "c5-tractor-success"}
+            {"imageName": "c5-tractor-brakes"}
           ],
           [
             {"imageName": "c5-tractor-snubbing-kaput"},
@@ -343,7 +343,7 @@
     "challengePhase": [
       {
         "note": "while in transition, 0",
-        "imageName": "c5-tractor-brakes",
+        "imageName": "c5-tractor-success",
         "audio": "progress-steam"
       },
       {
