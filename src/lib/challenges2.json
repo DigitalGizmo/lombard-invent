@@ -41,9 +41,9 @@
     "challengeText": "Lumbermen used horses to haul timber from the forest to the nearest river. It was hard on horses to pull heavy logging sleds more than a few miles, but lumbermen needed to go deeper into the woods to harvest the logs. What power source might work better?",
     "challengePhase": [
       {
-        "note": "while in transition, 0, audio is chokka chokka",
+        "note": " while in transition, 0, audio is chokka chokka",
         "imageName": "c0-horses",
-        "audio": "progress-steam-phase-0-never-used"
+        "audio": "progress-steam"
       },
       {
         "note": "while at kaput, 1",
@@ -283,7 +283,7 @@
       {
         "note": "while in transition, 0",
         "imageName": "c4-tractor-gas-engine",
-        "audio": "progress-steam"
+        "audio": "gas-engine"
       },
       {
         "note": "while at kaput, 1",

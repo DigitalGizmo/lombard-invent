@@ -117,24 +117,35 @@
 
   // movement to next challenge
   async function nextMove() {
-    // console.log('before timeout')
     textVisible = false;
     titleVisible = false;
     optionsVisible = false;
     isFrozen = false;
+    
+    console.log(' ** nextMove, challengeIndex before increment: ' + challengeIndex);
 
+    // reset to phase 0
+    challengePhaseIndex = 0;
+    // Increment before timeuout so that next challenge image shows
+    challengeIndex +=1;
+    // console.log(' in nextMove after increment');
+    // console.log('-- nextMove, audio: ' + "audio/" + 
+    // challenges[challengeIndex].challengePhase[0].audio + '.mp3');
     audioProgress = new Audio(assetPath + 'audio/' + 
       challenges[challengeIndex].challengePhase[0].audio + '.mp3')
     audioProgress.play();
-
+    
     landX.update((landX) => landX - 50, {duration: longMoveDuration});
     await cloudsX.update((cloudsX) => cloudsX - 20, {duration: longMoveDuration});
     audioProgress.pause();
 
     setTimeout(() => {
-      // Don't do all these steps when we've finished last challenge
       // Increment first so we can suppress options in display challengeText
-      challengeIndex +=1;
+      // console.log(' in setTimeout before increment');
+      // moving this to before timeuout
+      // challengeIndex +=1;
+      console.log(' in setTimeout after increment, chal index: ' + challengeIndex);
+      // Don't do all these steps when we've finished last challenge
       if ( challengeIndex < 9){
         chosenOptionIndex = 0;
         optionsToHide = ["", "", "", "", ""];
@@ -143,15 +154,13 @@
         calcHauler();
         // make it kaput
         challengePhaseIndex = 1;
-        // audioName = "incorrect";
-
+        // Usually incorrect, but success on last chanllenge
         audioEndTravel = new Audio(assetPath + 'audio/' + 
         challenges[challengeIndex].challengePhase[1].audio + '.mp3')
         audioEndTravel.play();
   
         correctnessStates[0] = 0; // ? not used here, but creates error if gone
       }
-
       displayChallengeText();
     }, 1000 * speed);
   }
@@ -179,7 +188,6 @@
         challenges[challengeIndex].challengePhase[1].audio + '.mp3')
       audioEndTravel.play();
   
-
       correctnessStates[0] = 0; // ? not used here, but creates error if gone
 
       displayChallengeText();
@@ -214,10 +222,9 @@
     await cloudsX.update((cloudsX) => cloudsX - 5, {duration: shortMoveDuration});
     audioProgress.pause();
     correctnessStates[_chosenOptionIndex] = currentCorrectness;
-
+    // console.log('- about to set audio in shortMove');
     audioOption = new Audio(assetPath + 'audio/' + 
         challenges[challengeIndex].options[_chosenOptionIndex].audioFeedback + '.mp3')
-
 
     // Some options have animations as determined by third "correctness" state
     if (challenges[challengeIndex].challengePhase[2].optionChosen[chosenOptionIndex].length > 2) {
@@ -245,7 +252,6 @@
 
     audioOption.play();
 
-    // audioCorrect.play();
     // Need to freeze option dragging -- retry required to try those
     isFrozen = true;
     setTimeout(() => {
