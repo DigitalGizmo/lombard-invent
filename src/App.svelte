@@ -20,7 +20,7 @@
   let currentCorrectness = 0;
   let correctnessStates = [1, 1, 1, 1];
   let optionsToHide = ["", "", "", "", ""];
-  const speed = 1; // Smaller is faster for working preview, default = 1, fast = 0.3
+  const speed = 0.3; // Smaller is faster for working preview, default = 1, fast = 0.3
   const longMoveDuration = 5000 * speed; // 5000
   const shortMoveDuration = 1000 * speed;
   // let vwidth = 1200;
@@ -155,9 +155,12 @@
         // make it kaput
         challengePhaseIndex = 1;
         // Usually incorrect, but success on last chanllenge
-        audioEndTravel = new Audio(assetPath + 'audio/' + 
-        challenges[challengeIndex].challengePhase[1].audio + '.mp3')
-        audioEndTravel.play();
+        if (challengeIndex < 6) {
+
+          audioEndTravel = new Audio(assetPath + 'audio/' + 
+          challenges[challengeIndex].challengePhase[1].audio + '.mp3')
+          audioEndTravel.play();
+        }
   
         correctnessStates[0] = 0; // ? not used here, but creates error if gone
       }
