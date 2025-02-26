@@ -20,7 +20,7 @@
   let currentCorrectness = 0;
   let correctnessStates = [1, 1, 1, 1];
   let optionsToHide = ["", "", "", "", ""];
-  const speed = 0.3; // Smaller is faster for working preview, default = 1
+  const speed = 1; // Smaller is faster for working preview, default = 1, fast = 0.3
   const longMoveDuration = 5000 * speed; // 5000
   const shortMoveDuration = 1000 * speed;
   // let vwidth = 1200;
