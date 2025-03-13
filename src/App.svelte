@@ -9,9 +9,19 @@
   import challenges from './lib/challenges2.json';
   import Credits from './Credits.svelte';
 
-  const assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
-  // const assetPath = ""
-  let challengeIndex = 0;
+  let assetPath = "https://assets.digitalgizmo.com/lombard-invent/";
+
+  let buildMode = 0;
+  // buildMode: 0 = devel, 1 web, 2 = kiosk
+  if (buildMode === 0) {
+    assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
+  } else if (buildMode === 1) {
+    assetPath = "https://mainestetemuseum.org/lombard-invent/";
+  } else {
+    assetPath = "";
+  }
+
+  let challengeIndex = 7;
   let challengePhaseIndex = 0;
   let chosenOptionIndex = 0;
   let isFeedback = false; // otherwise question/challenge
@@ -217,6 +227,9 @@
     }, 2000 * speed);
   }
 
+  function begin() {
+    challengeIndex = 0;
+  }
   // Short move for wrong
   async function shortMove( _chosenOptionIndex) {
     // await haulerX.update((haulerX) => haulerX + 10);
@@ -408,6 +421,7 @@
     </header>
     {#if titleVisible}
       <h2>{challenges[challengeIndex].title}</h2>
+
     {/if}
     {#if textVisible}
       {#if isFeedback}
@@ -443,6 +457,11 @@
             start
           </button>
         {/if}   
+        {#if challengeIndex === 7}
+        <button on:click={begin}>
+          tap to begin
+        </button>
+      {/if}   
       {/if}
     {/if}
     <!-- <p>Debug: 

@@ -379,5 +379,41 @@
         "audioFeedback": "placeHolder"
       }
     ]  
-  }
+  },
+  {
+    "slug": "attract",
+    "title": "Tap to begin",
+    "challengeText": "",
+    "challengePhase": [
+      {
+        "note": "attact loop special case = 9",
+        "imageName": "c0-horses",
+        "audio": "progress"
+      },
+      {
+        "note": "while at kaput, 1",
+        "imageName": "c0-horses-kaput",
+        "audio": "incorrect"
+      },
+      {
+        "note": "option applied, 2",
+        "optionChosen": [
+          [
+            {"imageName": "n/a"},
+            {"imageName": "n/a"}
+          ]
+        ]
+      }
+    ],
+    "options": [
+      {
+        "label": "n/a",
+        "feedback": "not used",
+        "moreFeedback": "also not used, but needs to exist",
+        "correctness": "0",
+        "imageName": "placeHolder",
+        "audioFeedback": "placeHolder"
+      }
+    ]  
+  }  
 ]
