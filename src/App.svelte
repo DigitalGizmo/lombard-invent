@@ -1,4 +1,5 @@
 <script>
+  import { onMount, onDestroy } from 'svelte';
   import { tick } from 'svelte'; //, onMount, ˜
   import { tweened } from 'svelte/motion';
   import { cubicOut } from 'svelte/easing';
@@ -11,7 +12,7 @@
 
   let assetPath = "https://assets.digitalgizmo.com/lombard-invent/";
 
-  let buildMode = 0;
+  let buildMode = 2;
   // buildMode: 0 = devel, 1 web, 2 = kiosk
   if (buildMode === 0) {
     assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
@@ -74,6 +75,46 @@
   // In order to freeze on correct, awaiting retry
   let isFrozen = false;
 
+  // Kiosk timeout functionality
+  const TIMEOUT_DURATION = 5000; // 120000 2 minutes in milliseconds
+  let timeoutId;
+
+  function resetTimeout() {
+    if (buildMode === 2 && (challengeIndex !== 7 || isModalShowing)) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        challengeIndex = 7;
+        isModalShowing = false;
+        // Reset to defualts
+        challengeIndex = 0;
+        challengePhaseIndex = 0;
+        chosenOptionIndex = 0;
+        isFeedback = false; // otherwise question/challenge
+        isMoreFeedbackShowing = false;
+        isModalShowing = false;
+        currentCorrectness = 0;
+        correctnessStates = [1, 1, 1, 1];
+        optionsToHide = ["", "", "", "", ""];    
+        // Remove options 
+        optionsVisible = false;   
+
+
+      }, TIMEOUT_DURATION);
+    }
+  }
+
+  function clearKioskTimeout() {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+  }
+
+  function handleUserActivity() {
+    if (buildMode === 2) {
+      resetTimeout();
+    }
+  }
+  
   async function calcHauler() {
     // Workaround for apparent bug - get the hauler twice here
     // and then again in calcOptionOffsets
@@ -125,12 +166,23 @@
   const cloudsX = tweened(0);
   const landX = tweened(0);
 
+  // End attract loop
+  function begin() {
+    challengeIndex = 0;
+  }
+
+  // if (buildMode === 2 && (challengeIndex !== 7 || isModalShowing)) {
+  //   resetTimeout();
+  // }    
+
   // movement to next challenge
   async function nextMove() {
     textVisible = false;
     titleVisible = false;
     optionsVisible = false;
     isFrozen = false;
+
+    handleUserActivity();
     
     console.log(' ** nextMove, challengeIndex before increment: ' + challengeIndex);
 
@@ -186,6 +238,8 @@
     optionsVisible = false;
     isFrozen = false;
 
+    handleUserActivity();
+
     setTimeout(() => {
       // console.log('after timeout')
       // chalengIndex change will change main "horse" image
@@ -227,12 +281,12 @@
     }, 2000 * speed);
   }
 
-  function begin() {
-    challengeIndex = 0;
-  }
   // Short move for wrong
   async function shortMove( _chosenOptionIndex) {
     // await haulerX.update((haulerX) => haulerX + 10);
+
+    handleUserActivity();
+
     audioProgress.play();
     landX.update((landX) => landX - 8, {duration: shortMoveDuration});
     await cloudsX.update((cloudsX) => cloudsX - 5, {duration: shortMoveDuration});
@@ -354,6 +408,27 @@
     console.log('got to showModal')
     isModalShowing = true;
   };  
+
+  onMount(() => {
+    if (buildMode === 2) {
+      // Add event listeners for user activity
+      window.addEventListener('click', handleUserActivity);
+      window.addEventListener('touchstart', handleUserActivity);
+      window.addEventListener('mousemove', handleUserActivity);
+      window.addEventListener('keydown', handleUserActivity);
+    }
+  });
+
+  onDestroy(() => {
+    if (buildMode === 2) {
+      // Clean up event listeners and timeout
+      window.removeEventListener('click', handleUserActivity);
+      window.removeEventListener('touchstart', handleUserActivity);
+      window.removeEventListener('mousemove', handleUserActivity);
+      window.removeEventListener('keydown', handleUserActivity);
+      clearKioskTimeout();
+    }
+  });  
 </script>
 
 <div class="wrapper">
@@ -394,8 +469,6 @@
       style="transform:scale({haulerScale})"
       alt="{challenges[challengeIndex].challengePhase[challengePhaseIndex].imageName}" id="hauler"/>
     {/if}
-
-    
     
   </div><!-- /hauler -->
 
