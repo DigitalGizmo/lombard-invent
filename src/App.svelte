@@ -79,7 +79,7 @@
   let isFrozen = false;
 
   // Kiosk timeout functionality
-  const TIMEOUT_DURATION = 8000; // 120000 2 minutes in milliseconds
+  const TIMEOUT_DURATION = 60000; // 120000 2 minutes in milliseconds
   let timeoutId;
 
   // In your resetTimeout function:
@@ -480,81 +480,92 @@
     
   </div><!-- /hauler -->
 
-  <article>
-    <header class="text-box"><!-- the challenge numbers -->
-      <ul class="progress">
-        <li class="progress-item" class:done={doneStatus[0].isDone}> 
-          1 {@html doneStatus[0].label}
-        </li>
-        <li class="progress-item" class:done={doneStatus[1].isDone}> 
-          2 {@html doneStatus[1].label}
-        </li>
-        <li class="progress-item" class:done={doneStatus[2].isDone}> 
-          3 {@html doneStatus[2].label}
-        </li>
-        <li class="progress-item" class:done={doneStatus[3].isDone}> 
-          4 {@html doneStatus[3].label}
-        </li>
-        <li class="progress-item" class:done={doneStatus[4].isDone}> 
-          5 {@html doneStatus[4].label}
-        </li>
-      </ul>
-    </header>
-    {#if titleVisible}
-      <h2>{challenges[challengeIndex].title}</h2>
+  {#if challengeIndex === 7}
+    <p class="credits">
+      <button on:click={begin}>
+        tap to begin
+      </button>
+    </p>
+  {:else}
 
-    {/if}
-    {#if textVisible}
-      {#if isFeedback}
-        <div class="feedback">
-          <p>{challenges[challengeIndex].options[chosenOptionIndex].feedback} 
-            <a href="/" on:click={(e) => { e.preventDefault(); 
-              toggleMoreFeedback();}}>
-              {isMoreFeedbackShowing ? "Less..." : "More.."}
-            </a>
-          </p>
-          {#if isMoreFeedbackShowing}
-            <p
-            transition:slide>{challenges[challengeIndex].options[chosenOptionIndex].moreFeedback}</p>
-          {/if}
-        </div><!-- /feedback -->
+    
+    <article>
+      <header class="text-box"><!-- the challenge numbers -->
+        <ul class="progress">
+          <li class="progress-item" class:done={doneStatus[0].isDone}> 
+            1 {@html doneStatus[0].label}
+          </li>
+          <li class="progress-item" class:done={doneStatus[1].isDone}> 
+            2 {@html doneStatus[1].label}
+          </li>
+          <li class="progress-item" class:done={doneStatus[2].isDone}> 
+            3 {@html doneStatus[2].label}
+          </li>
+          <li class="progress-item" class:done={doneStatus[3].isDone}> 
+            4 {@html doneStatus[3].label}
+          </li>
+          <li class="progress-item" class:done={doneStatus[4].isDone}> 
+            5 {@html doneStatus[4].label}
+          </li>
+        </ul>
+      </header>
+      {#if titleVisible}
+        <h2>{challenges[challengeIndex].title} DWH</h2>
 
-        {#if currentCorrectness}
-          <button on:click={nextMove}>
-            {challengeIndex < 5 ? "Next Challenge" : "Start Hauling Logs!"}
-          </button>
-          <!-- Should this be 5 or 6? -->
-          <!-- {#if challengeIndex < 5}  -->
-            <button on:click={retry}>
-              Replay Challenge
-            </button>
-          <!-- {/if} -->
-        {/if}           
-
-      {:else} <!-- this is question/challenge -->
-        <p>{challenges[challengeIndex].challengeText} </p>
-        {#if challengeIndex === 0}
-          <button on:click={nextMove}>
-            start
-          </button>
-        {/if}   
-        {#if challengeIndex === 7}
-        <button on:click={begin}>
-          tap to begin
-        </button>
-      {/if}   
       {/if}
-    {/if}
-    <!-- <p>Debug: 
-      {challenges[challengeIndex].challengePhase[2].optionChosen[chosenOptionIndex][correctnessStates[chosenOptionIndex]].imageName} <br>
-      challengeIndex: {challengeIndex} <br>
-      challengePhaseIndex: {challengePhaseIndex} <br>
-      chosenOptionIndex: {chosenOptionIndex},  <br>
-      correctnessStates[chosenOptionIndex]: {correctnessStates[chosenOptionIndex]}
-      challenges[challengeIndex].options[0].imageName: {challenges[challengeIndex].options[0].imageName}
-    </p> -->
+      {#if textVisible}
 
-  </article>
+        {#if isFeedback}
+          <div class="feedback">
+            <p>{challenges[challengeIndex].options[chosenOptionIndex].feedback} 
+              <a href="/" on:click={(e) => { e.preventDefault(); 
+                toggleMoreFeedback();}}>
+                {isMoreFeedbackShowing ? "Less..." : "More.."}
+              </a>
+            </p>
+            {#if isMoreFeedbackShowing}
+              <p
+              transition:slide>{challenges[challengeIndex].options[chosenOptionIndex].moreFeedback}</p>
+            {/if}
+          </div><!-- /feedback -->
+
+          {#if currentCorrectness}
+            <button on:click={nextMove}>
+              {challengeIndex < 5 ? "Next Challenge" : "Start Hauling Logs!"}
+            </button>
+            <!-- Should this be 5 or 6? -->
+            <!-- {#if challengeIndex < 5}  -->
+              <button on:click={retry}>
+                Replay Challenge
+              </button>
+            <!-- {/if} -->
+          {/if}           
+
+        {:else} <!-- this is question/challenge -->
+          <p>{challenges[challengeIndex].challengeText} </p>
+          {#if challengeIndex === 0}
+            <button on:click={nextMove}>
+              start
+            </button>
+          {/if}   
+        {/if}
+        
+      {/if}
+      <!-- <p>Debug: 
+        {challenges[challengeIndex].challengePhase[2].optionChosen[chosenOptionIndex][correctnessStates[chosenOptionIndex]].imageName} <br>
+        challengeIndex: {challengeIndex} <br>
+        challengePhaseIndex: {challengePhaseIndex} <br>
+        chosenOptionIndex: {chosenOptionIndex},  <br>
+        correctnessStates[chosenOptionIndex]: {correctnessStates[chosenOptionIndex]}
+        challenges[challengeIndex].options[0].imageName: {challenges[challengeIndex].options[0].imageName}
+      </p> -->
+
+    </article>
+
+
+
+  {/if} <!-- end if not attract (7) -->
+
 
   <p class="credits">
     <a href="/" 
