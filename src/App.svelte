@@ -79,34 +79,33 @@
   let isFrozen = false;
 
   // Kiosk timeout functionality
-  const TIMEOUT_DURATION = 5000; // 120000 2 minutes in milliseconds
+  const TIMEOUT_DURATION = 8000; // 120000 2 minutes in milliseconds
   let timeoutId;
 
+  // In your resetTimeout function:
   function resetTimeout() {
     console.log(' got to resetTimeout. challengeIndex: ' + challengeIndex);
-    if (buildMode === 2 && (challengeIndex !== 7 || isModalShowing)) {
+    if (buildMode === 2) {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         console.log(' -- inside setTimeout. challengeIndex: ' + challengeIndex);
-        challengeIndex = 7;
+        // Reset game state
+        challengeIndex = 7; // Set to attract screen
         isModalShowing = false;
-        // Reset to defualts
-        challengeIndex = 0;
         challengePhaseIndex = 0;
         chosenOptionIndex = 0;
-        isFeedback = false; // otherwise question/challenge
+        isFeedback = false;
         isMoreFeedbackShowing = false;
-        isModalShowing = false;
         currentCorrectness = 0;
         correctnessStates = [1, 1, 1, 1];
-        optionsToHide = ["", "", "", "", ""];    
-        // Remove options 
-        optionsVisible = false;   
-
-
+        optionsToHide = ["", "", "", "", ""];
+        optionsVisible = false;
+        textVisible = true;
+        titleVisible = true;
       }, TIMEOUT_DURATION);
     }
   }
+
 
   function clearKioskTimeout() {
     if (timeoutId) {
@@ -415,8 +414,11 @@
     isModalShowing = true;
   };  
 
+
   onMount(() => {
     if (buildMode === 2) {
+      // Initial timeout setup
+      resetTimeout();
       // Add event listeners for user activity
       window.addEventListener('click', handleUserActivity);
       window.addEventListener('touchstart', handleUserActivity);
