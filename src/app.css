@@ -105,6 +105,17 @@ div.hauler img.logs {
   }
 }
 
+div.idle {
+  background: rgba(217, 217, 217, .7);
+  color: #525252;
+  position: absolute;
+  top: 20vh;
+  left: 25vw;
+  width: 50vw;
+  border: 1px solid lightgray;
+  padding: 1%;
+}
+
 /* text box for challenges and feedback */
 article {
   background: rgba(217, 217, 217, .7);

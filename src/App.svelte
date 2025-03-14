@@ -22,7 +22,7 @@
     assetPath = "https://mainestetemuseum.org/lombard-invent/";
     challengeIndex = 0;
   } else {
-    assetPath = "";
+    assetPath = "https://assets.digitalgizmo.com/lombard-invent/";
     challengeIndex = 7;
   }
 
@@ -481,11 +481,13 @@
   </div><!-- /hauler -->
 
   {#if challengeIndex === 7}
-    <p class="credits">
+    <div class="idle">
+      <h3>Be the Inventor!</h3>
+      <p>Your challenge is to invent a machine to haul logs out of the forest! For each of the five challenges ahead, drag and drop your best guess onto the Lombard Hauler.</p>
       <button on:click={begin}>
-        tap to begin
+        tap to start inventing
       </button>
-    </p>
+    </div>
   {:else}
 
     
