@@ -11,18 +11,21 @@
   import Credits from './Credits.svelte';
 
   let assetPath = "https://assets.digitalgizmo.com/lombard-invent/";
+  let challengeIndex = 0;
 
   let buildMode = 2;
   // buildMode: 0 = devel, 1 web, 2 = kiosk
   if (buildMode === 0) {
     assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
+    challengeIndex = 0;
   } else if (buildMode === 1) {
     assetPath = "https://mainestetemuseum.org/lombard-invent/";
+    challengeIndex = 0;
   } else {
     assetPath = "";
+    challengeIndex = 7;
   }
 
-  let challengeIndex = 7;
   let challengePhaseIndex = 0;
   let chosenOptionIndex = 0;
   let isFeedback = false; // otherwise question/challenge
@@ -80,9 +83,11 @@
   let timeoutId;
 
   function resetTimeout() {
+    console.log(' got to resetTimeout. challengeIndex: ' + challengeIndex);
     if (buildMode === 2 && (challengeIndex !== 7 || isModalShowing)) {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
+        console.log(' -- inside setTimeout. challengeIndex: ' + challengeIndex);
         challengeIndex = 7;
         isModalShowing = false;
         // Reset to defualts
@@ -169,6 +174,7 @@
   // End attract loop
   function begin() {
     challengeIndex = 0;
+    handleUserActivity();
   }
 
   // if (buildMode === 2 && (challengeIndex !== 7 || isModalShowing)) {
