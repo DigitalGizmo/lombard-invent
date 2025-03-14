@@ -34,7 +34,7 @@
   let currentCorrectness = 0;
   let correctnessStates = [1, 1, 1, 1];
   let optionsToHide = ["", "", "", "", ""];
-  const speed = 0.3; // Smaller is faster for working preview, default = 1, fast = 0.3
+  const speed = 1 //0.3; // Smaller is faster for working preview, default = 1, fast = 0.3
   const longMoveDuration = 5000 * speed; // 5000
   const shortMoveDuration = 1000 * speed;
   // let vwidth = 1200;
@@ -42,6 +42,7 @@
   let textVisible = true;
   let titleVisible = true;
   let optionsVisible = false;
+  let isBoxVisible = true;
   let haulerScale = 1;
   const doneLabels = ["<span>Power</span>", "<span>Traction</span>", 
     "<span>Steering</span>", "<span>Cost</span>", "<span>Brakes</span>"];
@@ -174,6 +175,8 @@
   function begin() {
     challengeIndex = 0;
     handleUserActivity();
+    isBoxVisible = false;
+    nextMove(true); // true: isAttract
   }
 
   // if (buildMode === 2 && (challengeIndex !== 7 || isModalShowing)) {
@@ -181,7 +184,7 @@
   // }    
 
   // movement to next challenge
-  async function nextMove() {
+  async function nextMove(_isAttract=false) {
     textVisible = false;
     titleVisible = false;
     optionsVisible = false;
@@ -198,13 +201,17 @@
     // console.log(' in nextMove after increment');
     // console.log('-- nextMove, audio: ' + "audio/" + 
     // challenges[challengeIndex].challengePhase[0].audio + '.mp3');
-    audioProgress = new Audio(assetPath + 'audio/' + 
-      challenges[challengeIndex].challengePhase[0].audio + '.mp3')
-    audioProgress.play();
-    
-    landX.update((landX) => landX - 50, {duration: longMoveDuration});
-    await cloudsX.update((cloudsX) => cloudsX - 20, {duration: longMoveDuration});
-    audioProgress.pause();
+
+    if (!_isAttract) {
+      audioProgress = new Audio(assetPath + 'audio/' + 
+        challenges[challengeIndex].challengePhase[0].audio + '.mp3')
+      audioProgress.play();
+      
+      
+      landX.update((landX) => landX - 50, {duration: longMoveDuration});
+      await cloudsX.update((cloudsX) => cloudsX - 20, {duration: longMoveDuration});
+      audioProgress.pause();
+    }
 
     setTimeout(() => {
       // Increment first so we can suppress options in display challengeText
@@ -270,6 +277,9 @@
     titleVisible = true;
     setTimeout(() => {
       console.log('display challengeText. chalengIndex: ' + challengeIndex)
+
+      isBoxVisible = true;
+
       isFeedback = false;
       textVisible = true;
       if (challengeIndex < 6) {
@@ -488,7 +498,7 @@
         tap to start inventing
       </button>
     </div>
-  {:else}
+  {:else if isBoxVisible}
 
     
     <article>
@@ -512,7 +522,7 @@
         </ul>
       </header>
       {#if titleVisible}
-        <h2>{challenges[challengeIndex].title} DWH</h2>
+        <h2>{challenges[challengeIndex].title}</h2>
 
       {/if}
       {#if textVisible}
@@ -532,7 +542,7 @@
           </div><!-- /feedback -->
 
           {#if currentCorrectness}
-            <button on:click={nextMove}>
+            <button on:click={(e) => {nextMove(false);}}>
               {challengeIndex < 5 ? "Next Challenge" : "Start Hauling Logs!"}
             </button>
             <!-- Should this be 5 or 6? -->
@@ -546,7 +556,7 @@
         {:else} <!-- this is question/challenge -->
           <p>{challenges[challengeIndex].challengeText} </p>
           {#if challengeIndex === 0}
-            <button on:click={nextMove}>
+            <button on:click={(e) => {nextMove(false);}}>>
               start
             </button>
           {/if}   
