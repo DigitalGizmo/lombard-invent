@@ -34,15 +34,18 @@
   let currentCorrectness = 0;
   let correctnessStates = [1, 1, 1, 1];
   let optionsToHide = ["", "", "", "", ""];
-  const speed = 1 //0.3; // Smaller is faster for working preview, default = 1, fast = 0.3
+  const speed = 1 // 0.3; // Smaller is faster for working preview, default = 1, fast = 0.3
   const longMoveDuration = 5000 * speed; // 5000
   const shortMoveDuration = 1000 * speed;
+  const attractDuration = 34000 * speed;
   // let vwidth = 1200;
   // let vheight = 800;
   let textVisible = true;
   let titleVisible = true;
   let optionsVisible = false;
   let isBoxVisible = true;
+  let attractAnimationRunning = true; // Flag to control animation loop
+
   let haulerScale = 1;
   const doneLabels = ["<span>Power</span>", "<span>Traction</span>", 
     "<span>Steering</span>", "<span>Cost</span>", "<span>Brakes</span>"];
@@ -80,7 +83,7 @@
   let isFrozen = false;
 
   // Kiosk timeout functionality
-  const TIMEOUT_DURATION = 60000; // 120000 2 minutes in milliseconds
+  const TIMEOUT_DURATION = 8000 // 60000; // 120000 2 minutes in milliseconds
   let timeoutId;
 
   // In your resetTimeout function:
@@ -103,6 +106,7 @@
         optionsVisible = false;
         textVisible = true;
         titleVisible = true;
+        attract();
       }, TIMEOUT_DURATION);
     }
   }
@@ -173,20 +177,44 @@
 
 
   function attract() {
-    landX.update((landX) => landX - 600, {duration: 60000});
-    cloudsX.update((cloudsX) => cloudsX - 240, {duration: 60000}); // await 
+    // If animation is no longer supposed to run, exit early
+    if (!attractAnimationRunning) return;
+    
+    // Start the animation
+    Promise.all([
+      landX.update((landX) => landX - 340, {duration: (attractDuration)}),
+      cloudsX.update((cloudsX) => cloudsX - 136, {duration: attractDuration})
+    ]).then(() => {
+      // Reset positions to create seamless loop
+      landX.set(0, {duration: 0});
+      cloudsX.set(0, {duration: 0});
+      
+      // If still running, start the animation again
+      if (attractAnimationRunning) {
+        setTimeout(attract, 10); // Small delay before restarting
+      }
+    });
   }
 
   // End attract loop
   function begin() {
-
-    // Stop travel before going to nextMove which will just kaput
-    landX.set($landX); // This stops the landX animation by setting it to its current value
-    cloudsX.set($cloudsX); // This stops the cloudsX animation by setting it to its current value
-
+    // Stop the animation loop
+    attractAnimationRunning = false;
+    
+    // Cancel current animations
+    landX.set($landX);
+    cloudsX.set($cloudsX);
+    
     challengeIndex = 0;
     handleUserActivity();
     isBoxVisible = false;
+
+    // Reset flag for next time
+    setTimeout(() => {
+      attractAnimationRunning = true;
+    }, 1000);
+
+    // Now call nextMove
     nextMove(true); // true: isAttract
   }
 
@@ -463,7 +491,7 @@
 <div class="wrapper">
 
   <div class="background">
-    <img class="sky" src="{assetPath}images/sky-double.jpg"  alt="sky" 
+    <img class="sky" src="{assetPath}images/sky-6000.jpg"  alt="sky" 
       style="transform:translate({$cloudsX}vw, 0px)"
     />
     <img class="land" src="{assetPath}images/landscape-double.png" alt="land" 
