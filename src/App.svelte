@@ -83,34 +83,43 @@
   let isFrozen = false;
 
   // Kiosk timeout functionality
-  const TIMEOUT_DURATION = 8000 // 60000; // 120000 2 minutes in milliseconds
+  const TIMEOUT_DURATION = 12000 // 60000; // 120000 2 minutes in milliseconds
   let timeoutId;
 
-  // In your resetTimeout function:
+  // Reste on timeout and define what will happen upon timeout
   function resetTimeout() {
-    console.log(' got to resetTimeout. challengeIndex: ' + challengeIndex);
-    if (buildMode === 2) {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        console.log(' -- inside setTimeout. challengeIndex: ' + challengeIndex);
-        // Reset game state
-        challengeIndex = 7; // Set to attract screen
-        isModalShowing = false;
-        challengePhaseIndex = 0;
-        chosenOptionIndex = 0;
-        isFeedback = false;
-        isMoreFeedbackShowing = false;
-        currentCorrectness = 0;
-        correctnessStates = [1, 1, 1, 1];
-        optionsToHide = ["", "", "", "", ""];
-        optionsVisible = false;
-        textVisible = true;
-        titleVisible = true;
-        attract();
-      }, TIMEOUT_DURATION);
-    }
+  console.log(' got to resetTimeout. challengeIndex: ' + challengeIndex);
+  if (buildMode === 2) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      console.log(' -- inside setTimeout. challengeIndex: ' + challengeIndex);
+      // Reset game state
+      challengeIndex = 7; // Set to attract screen
+      isModalShowing = false;
+      challengePhaseIndex = 0;
+      chosenOptionIndex = 0;
+      isFeedback = false;
+      isMoreFeedbackShowing = false;
+      currentCorrectness = 0;
+      correctnessStates = [1, 1, 1, 1];
+      optionsToHide = ["", "", "", "", ""];
+      optionsVisible = false;
+      textVisible = true;
+      titleVisible = true;
+      doneStatus = [{isDone: false, label: ""}, {isDone: false, label: ""}, 
+      {isDone: false, label: ""}, {isDone: false, label: ""}, {isDone: false, label: ""}
+      ]
+      
+      // Reset animation values
+      landX.set(0, {duration: 0});
+      cloudsX.set(0, {duration: 0});
+      
+      // Make sure animation flag is true and restart animation
+      attractAnimationRunning = true;
+      attract();
+    }, TIMEOUT_DURATION);
   }
-
+}
 
   function clearKioskTimeout() {
     if (timeoutId) {
@@ -275,6 +284,9 @@
   
         correctnessStates[0] = 0; // ? not used here, but creates error if gone
       }
+      // Reset timeout becuse the travel looks like inactivity
+      handleUserActivity();
+
       displayChallengeText();
     }, 1000 * speed);
   }
@@ -471,13 +483,16 @@
       window.addEventListener('touchstart', handleUserActivity);
       window.addEventListener('mousemove', handleUserActivity);
       window.addEventListener('keydown', handleUserActivity);
-      // Start attract loop
+      // Set flag and start attract loop
+      attractAnimationRunning = true;
       attract();
     }
   });
 
   onDestroy(() => {
     if (buildMode === 2) {
+      // Stop animations
+      attractAnimationRunning = false;
       // Clean up event listeners and timeout
       window.removeEventListener('click', handleUserActivity);
       window.removeEventListener('touchstart', handleUserActivity);
