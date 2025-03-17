@@ -171,17 +171,24 @@
   const cloudsX = tweened(0);
   const landX = tweened(0);
 
+
+  function attract() {
+    landX.update((landX) => landX - 600, {duration: 60000});
+    cloudsX.update((cloudsX) => cloudsX - 240, {duration: 60000}); // await 
+  }
+
   // End attract loop
   function begin() {
+
+    // Stop travel before going to nextMove which will just kaput
+    landX.set($landX); // This stops the landX animation by setting it to its current value
+    cloudsX.set($cloudsX); // This stops the cloudsX animation by setting it to its current value
+
     challengeIndex = 0;
     handleUserActivity();
     isBoxVisible = false;
     nextMove(true); // true: isAttract
   }
-
-  // if (buildMode === 2 && (challengeIndex !== 7 || isModalShowing)) {
-  //   resetTimeout();
-  // }    
 
   // movement to next challenge
   async function nextMove(_isAttract=false) {
@@ -202,6 +209,8 @@
     // console.log('-- nextMove, audio: ' + "audio/" + 
     // challenges[challengeIndex].challengePhase[0].audio + '.mp3');
 
+    // If we're coming here from the attract screen, then we don't play the move
+    // since we were already moving
     if (!_isAttract) {
       audioProgress = new Audio(assetPath + 'audio/' + 
         challenges[challengeIndex].challengePhase[0].audio + '.mp3')
@@ -434,6 +443,8 @@
       window.addEventListener('touchstart', handleUserActivity);
       window.addEventListener('mousemove', handleUserActivity);
       window.addEventListener('keydown', handleUserActivity);
+      // Start attract loop
+      attract();
     }
   });
 
