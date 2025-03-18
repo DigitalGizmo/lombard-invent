@@ -28,7 +28,7 @@
 
   let challengePhaseIndex = 0;
   let chosenOptionIndex = 0;
-  let isFeedback = false; // otherwise question/challenge
+  let showFeedback = false; // otherwise question/challenge
   let isMoreFeedbackShowing = false;
   let isModalShowing = false;
   let currentCorrectness = 0;
@@ -58,10 +58,6 @@
   let optionPositions = [
     { x: 0, y: 0}, { x: 0, y: 0}, { x: 0, y: 0}, { x: 0, y: 0}
   ]
-  // Temp array for progress audio names, should be in json
-  // const progressAudioNames = ['progress', 'progress-steam', 'progress-steam', 
-  //   'progress-steam', 'progress-steam', 'progress-steam' ]
-  // let audioName = "progress"
   let audioProgress = new Audio(assetPath + 'audio/progress.mp3')
   let audioEndTravel = new Audio(assetPath + 'audio/incorrect.mp3')
   let audioOption = new Audio(assetPath + 'audio/incorrect.mp3')
@@ -98,7 +94,7 @@
       isModalShowing = false;
       challengePhaseIndex = 0;
       chosenOptionIndex = 0;
-      isFeedback = false;
+      showFeedback = false;
       isMoreFeedbackShowing = false;
       currentCorrectness = 0;
       correctnessStates = [1, 1, 1, 1];
@@ -270,7 +266,7 @@
         chosenOptionIndex = 0;
         optionsToHide = ["", "", "", "", ""];
         correctnessStates = [1, 1, 1, 1];
-        // isFeedback = true;
+        // showFeedback = true;
         calcHauler();
         // make it kaput
         challengePhaseIndex = 1;
@@ -308,7 +304,7 @@
       chosenOptionIndex = 0;
       optionsToHide = ["", "", "", "", ""];
       correctnessStates = [1, 1, 1, 1];
-      // isFeedback = true;
+      // showFeedback = true;
       // calcHauler();
       // make it kaput
       challengePhaseIndex = 1;
@@ -329,7 +325,7 @@
 
       isBoxVisible = true;
 
-      isFeedback = false;
+      showFeedback = false;
       textVisible = true;
       if (challengeIndex < 6) {
         displayOptions();
@@ -409,7 +405,7 @@
   async function displayFeedback() {
     setTimeout(() => {
       console.log('display Feedback')
-      isFeedback = true;
+      showFeedback = true;
       textVisible = true;
       if (challengeIndex > 0 && currentCorrectness) {
         // minus 1 bcz json element 0 is intro
@@ -445,20 +441,19 @@
       correctnessStates[0] = 1;
       // Put it away
       optionPositions[_chosenOptionIndex] = {x: 0, y: 0};
-      // optionPositions[1].y = 0;
-      // Trigger short movement
-      textVisible = false;
-      isFeedback = true;
+      // dont remove challenge text
+      // textVisible = false;
+      // Hide feedback until motion stops
+      showFeedback = false;
       // Handle correctness
       currentCorrectness = Number(challenges[challengeIndex].options[chosenOptionIndex].correctness);
-      // correctnessStates[_chosenOptionIndex] = currentCorrectness;
+      // Trigger short movement
       if (currentCorrectness) {
         bingCorrect(_chosenOptionIndex);
       } else {
         shortMove( _chosenOptionIndex);
         // Short move will trigger feedback and options
       }
-
     } else { // back to home base
       optionPositions[_chosenOptionIndex] = {x: 0, y: 0};
     }
@@ -558,6 +553,13 @@
     <article>
       <header class="text-box"><!-- the challenge numbers -->
         <ul class="progress">
+          <!-- Starting point: class "done" is added if 
+            doneStatus[x].isDone (is true) 
+            Need to add a state for "current" challenge.
+            Maybe doneStatus object holds name of class:
+            "", "current", or "done" (rather than isDone)
+            isDone is only used for class, not for logic anywhere
+            -->
           <li class="progress-item" class:done={doneStatus[0].isDone}> 
             1 {@html doneStatus[0].label}
           </li>
@@ -581,7 +583,13 @@
       {/if}
       {#if textVisible}
 
-        {#if isFeedback}
+        <p>{challenges[challengeIndex].challengeText} </p>
+        {#if challengeIndex === 0}
+          <button on:click={(e) => {nextMove(false);}}>>
+            start
+          </button>
+        {/if}   
+        {#if showFeedback}
           <div class="feedback">
             <p>{challenges[challengeIndex].options[chosenOptionIndex].feedback} 
               <a href="/" on:click={(e) => { e.preventDefault(); 
@@ -607,13 +615,13 @@
             <!-- {/if} -->
           {/if}           
 
-        {:else} <!-- this is question/challenge -->
+        <!-- {:else}
           <p>{challenges[challengeIndex].challengeText} </p>
           {#if challengeIndex === 0}
             <button on:click={(e) => {nextMove(false);}}>>
               start
             </button>
-          {/if}   
+          {/if}    -->
         {/if}
         
       {/if}

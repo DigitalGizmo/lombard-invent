@@ -187,7 +187,9 @@ article header.text-box ul.progress li.progress-item {
   border-radius: 50%;
 }
 
-article header.text-box ul.progress li.progress-item span { /* progress number label */
+/* progress number label */
+/* article header.text-box ul.progress li.progress-item span {  */
+article header.text-box ul.progress li.current { 
   display: block;
   color: #5CB8C4;/* aqua */
   font-size: .35em;
