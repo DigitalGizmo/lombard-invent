@@ -226,9 +226,11 @@
   // movement to next challenge
   async function nextMove(_isAttract=false) {
     textVisible = false;
-    titleVisible = false;
     optionsVisible = false;
     isFrozen = false;
+    
+    // titleVisible = false;
+
 
     handleUserActivity();
     
@@ -293,10 +295,13 @@
   // movement to next challenge
   async function retry() {
     // console.log('before timeout')
-    textVisible = false;
-    titleVisible = false;
     optionsVisible = false;
     isFrozen = false;
+    
+    showFeedback = false;
+
+    // textVisible = false;
+    // titleVisible = false;
 
     handleUserActivity();
 
