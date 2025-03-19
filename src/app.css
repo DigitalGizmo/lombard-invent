@@ -188,8 +188,7 @@ article header.text-box ul.progress li.progress-item {
 }
 
 /* progress number label */
-/* article header.text-box ul.progress li.progress-item span {  */
-article header.text-box ul.progress li.current { 
+article header.text-box ul.progress li.progress-item span { 
   display: block;
   color: #5CB8C4;/* aqua */
   font-size: .35em;
@@ -201,6 +200,10 @@ article header.text-box ul.progress li.current {
 
 article header.text-box ul.progress li.done {
   background: #74A4A7;
+}
+
+article header.text-box ul.progress li.current {
+  color: #a25f1d;
 }
 
 /* graphic options to answer the challenges */

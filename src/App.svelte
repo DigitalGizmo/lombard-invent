@@ -13,7 +13,7 @@
   let assetPath = "https://assets.digitalgizmo.com/lombard-invent/";
   let challengeIndex = 0;
 
-  let buildMode = 2;
+  let buildMode = 0;
   // buildMode: 0 = devel, 1 web, 2 = kiosk
   if (buildMode === 0) {
     assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
@@ -50,8 +50,8 @@
   const doneLabels = ["<span>Power</span>", "<span>Traction</span>", 
     "<span>Steering</span>", "<span>Cost</span>", "<span>Brakes</span>"];
   // doneLabels are for the 1, 2, 3 etc bubbles at the top of text box
-  let doneStatus = [{isDone: false, label: ""}, {isDone: false, label: ""}, 
-  {isDone: false, label: ""}, {isDone: false, label: ""}, {isDone: false, label: ""}
+  let doneStatus = [{progNumClass: "", label: ""}, {progNumClass: "", label: ""}, 
+  {progNumClass: "", label: ""}, {progNumClass: "", label: ""}, {progNumClass: "", label: ""}
    ]
   // let test = true;
   let choiceObjectBounds = {top: 100, left:20, bottom:50, right:50};
@@ -102,9 +102,9 @@
       optionsVisible = false;
       textVisible = true;
       titleVisible = true;
-      doneStatus = [{isDone: false, label: ""}, {isDone: false, label: ""}, 
-      {isDone: false, label: ""}, {isDone: false, label: ""}, {isDone: false, label: ""}
-      ]
+      doneStatus = [{progNumClass: "current", label: ""}, {progNumClass: "", label: ""}, 
+  {progNumClass: "", label: ""}, {progNumClass: "", label: ""}, {progNumClass: "", label: ""}
+   ]
       
       // Reset animation values
       landX.set(0, {duration: 0});
@@ -283,6 +283,9 @@
       // Reset timeout becuse the travel looks like inactivity
       handleUserActivity();
 
+      // Fudge -1 because index has already been incremented
+      doneStatus[challengeIndex-1].progNumClass = "current";
+      
       displayChallengeText();
     }, 1000 * speed);
   }
@@ -410,7 +413,7 @@
       if (challengeIndex > 0 && currentCorrectness) {
         // minus 1 bcz json element 0 is intro
         doneStatus[challengeIndex - 1].label = doneLabels[challengeIndex - 1];
-        doneStatus[challengeIndex - 1].isDone = true;
+        doneStatus[challengeIndex - 1].progNumClass = "done";
       }
     }, 1000 * speed);
   }
@@ -560,19 +563,19 @@
             "", "current", or "done" (rather than isDone)
             isDone is only used for class, not for logic anywhere
             -->
-          <li class="progress-item" class:done={doneStatus[0].isDone}> 
+          <li class="progress-item {doneStatus[0].progNumClass}"> 
             1 {@html doneStatus[0].label}
           </li>
-          <li class="progress-item" class:done={doneStatus[1].isDone}> 
+          <li class="progress-item {doneStatus[1].progNumClass}"> 
             2 {@html doneStatus[1].label}
           </li>
-          <li class="progress-item" class:done={doneStatus[2].isDone}> 
+          <li class="progress-item {doneStatus[2].progNumClass}" > 
             3 {@html doneStatus[2].label}
           </li>
-          <li class="progress-item" class:done={doneStatus[3].isDone}> 
+          <li class="progress-item {doneStatus[3].progNumClass}" > 
             4 {@html doneStatus[3].label}
           </li>
-          <li class="progress-item" class:done={doneStatus[4].isDone}> 
+          <li class="progress-item {doneStatus[4].progNumClass}" > 
             5 {@html doneStatus[4].label}
           </li>
         </ul>
