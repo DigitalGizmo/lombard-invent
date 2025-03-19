@@ -37,7 +37,7 @@
   },
   {
     "slug": "power",
-    "title": "1. The Power Challenge",
+    "title": "Power",
     "challengeText": "Lumbermen used horses to haul timber from the forest to the nearest river. It was hard on horses to pull heavy logging sleds more than a few miles, but lumbermen needed to go deeper into the woods to harvest the logs. What power source might work better?",
     "challengePhase": [
       {
@@ -97,7 +97,7 @@
   },
   {
     "slug": "traction",
-    "title": "2. The Traction Challenge",
+    "title": "Traction",
     "challengeText": "Lumbermen usually moved timber during the winter when the ground was frozen so sleds could easily glide over ice and snow roads. Designing a machine that would work in those conditions was rather tricky! What might provide good traction for snowy roads?",
     "challengePhase": [
       {
@@ -157,7 +157,7 @@
   },
   {
     "slug": "steering",
-    "title": "3. The Steering Challenge",
+    "title": "Steering",
     "challengeText": "The Lombard Log hauler with its heavy steam engine and big crawler tracks weighed 19-tons. How can such a heavy machine be steered?",
     "challengePhase": [
       {
@@ -217,7 +217,7 @@
   },
   {
     "slug": "cost",
-    "title": "4. The Cost Challenge",
+    "title": "Cost",
     "challengeText": "The Lombard steam Log Hauler worked great, but it was pretty expensive to operate. How can costs be reduced?",
     "challengePhase": [
       {
@@ -277,7 +277,7 @@
   },
   {
     "slug": "brakes",
-    "title": "5. The Braking Challenge",
+    "title": "Braking",
     "challengeText": "A Lombard steam Log Hauler weighed 19 tons and could pull up to 300 tons of logs loaded on sleds. Going down a hill is going to be a challenge! Which option would work to slow or stop the hauler?",
     "challengePhase": [
       {

@@ -13,7 +13,7 @@
   let assetPath = "https://assets.digitalgizmo.com/lombard-invent/";
   let challengeIndex = 0;
 
-  let buildMode = 0;
+  let buildMode = 2;
   // buildMode: 0 = devel, 1 web, 2 = kiosk
   if (buildMode === 0) {
     assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
@@ -44,6 +44,7 @@
   let titleVisible = true;
   let optionsVisible = false;
   let isBoxVisible = true;
+  let dynoTitle = "Be The Inventor";
   let attractAnimationRunning = true; // Flag to control animation loop
 
   let haulerScale = 1;
@@ -230,7 +231,11 @@
     isFrozen = false;
     
     // titleVisible = false;
-
+    if (challengeIndex === 5){
+      dynoTitle = "You solved may challenges!";
+    } else if (challengeIndex > 0) {
+      dynoTitle = challenges[challengeIndex].title + " solved! On to the next Challenge";
+    }
 
     handleUserActivity();
     
@@ -286,7 +291,9 @@
       handleUserActivity();
 
       // Fudge -1 because index has already been incremented
-      doneStatus[challengeIndex-1].progNumClass = "current";
+      if (challengeIndex < 6) {
+        doneStatus[challengeIndex-1].progNumClass = "current";
+      }
       
       displayChallengeText();
     }, 1000 * speed);
@@ -297,12 +304,9 @@
     // console.log('before timeout')
     optionsVisible = false;
     isFrozen = false;
-    
     showFeedback = false;
-
     // textVisible = false;
     // titleVisible = false;
-
     handleUserActivity();
 
     setTimeout(() => {
@@ -328,6 +332,12 @@
 
   async function displayChallengeText() {
     titleVisible = true;
+    if (challengeIndex === 6) {
+      dynoTitle = challenges[challengeIndex].title;
+    } else {
+      dynoTitle = challengeIndex + ". The " + challenges[challengeIndex].title + " Challenge";
+
+    }
     setTimeout(() => {
       console.log('display challengeText. chalengIndex: ' + challengeIndex)
 
@@ -431,7 +441,7 @@
     //   e.detail.offsetY)
     // Hide more feedback
     isMoreFeedbackShowing = false;
-    console.log('opt index: ' + _chosenOptionIndex);
+    // console.log('opt index: ' + _chosenOptionIndex);
     if (e.detail.offsetX > optionLandingXOffsets[_chosenOptionIndex] - 30 && 
       e.detail.offsetX < (optionLandingXOffsets[_chosenOptionIndex] + haulerWidth - 80) &&
       e.detail.offsetY > optionLandingYOffset - 50 && // -400 is gt -500
@@ -586,7 +596,8 @@
         </ul>
       </header>
       {#if titleVisible}
-        <h2>{challenges[challengeIndex].title}</h2>
+        <h2>{dynoTitle}</h2>
+        <!-- {challenges[challengeIndex].title} -->
 
       {/if}
       {#if textVisible}
