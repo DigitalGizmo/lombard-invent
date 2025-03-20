@@ -232,7 +232,7 @@
     
     // titleVisible = false;
     if (challengeIndex === 5){
-      dynoTitle = "You solved may challenges!";
+      dynoTitle = "You solved many challenges!";
     } else if (challengeIndex > 0) {
       dynoTitle = challenges[challengeIndex].title + " solved! On to the next Challenge";
     }
@@ -335,8 +335,7 @@
     if (challengeIndex === 6) {
       dynoTitle = challenges[challengeIndex].title;
     } else {
-      dynoTitle = challengeIndex + ". The " + challenges[challengeIndex].title + " Challenge";
-
+      dynoTitle = challengeIndex + challenges[challengeIndex].title;
     }
     setTimeout(() => {
       console.log('display challengeText. chalengIndex: ' + challengeIndex)

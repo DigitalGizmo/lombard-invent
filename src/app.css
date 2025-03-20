@@ -109,9 +109,9 @@ div.idle {
   background: rgba(217, 217, 217, .7);
   color: #525252;
   position: absolute;
-  top: 20vh;
-  left: 25vw;
-  width: 50vw;
+  top: 65vh;
+  left: 33vw;
+  width: 40vw;
   border: 1px solid lightgray;
   padding: 1%;
 }
@@ -146,7 +146,7 @@ article h2 {
 }
 
 div.feedback {
-/*  height: 25vh;*/
+  height: 18vh;
   overflow-y: scroll;
   background: lightgray;
   margin-bottom: 6px;
@@ -203,7 +203,7 @@ article header.text-box ul.progress li.done {
 }
 
 article header.text-box ul.progress li.current {
-  color: #a25f1d;
+  background: #5CB8C4;
 }
 
 /* graphic options to answer the challenges */
@@ -270,7 +270,7 @@ ul.options li h3 {
 p.credits {
   position: absolute;
   bottom: 5vh;
-  left: 3vw;
+  right: 6vw;
 }
 
 p.credits a {

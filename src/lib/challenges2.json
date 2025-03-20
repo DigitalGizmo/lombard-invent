@@ -71,7 +71,7 @@
     "options": [
       {
         "label": "Railroads",
-        "feedback": "There is a better solution. Logging railroads were indeed used but they were very expensive to operate and limited to where they could be built. Try a different solution.",
+        "feedback": "Railroads...there is a better solution. Logging railroads were indeed used but they were very expensive to operate and limited to where they could be built. Try a different solution.",
         "moreFeedback": "Tell more about lumbering trains in Maine. How many? Where did they run?",
         "correctness": "0",
         "imageName": "c1opt-train",
@@ -87,7 +87,7 @@
       },
       {
         "label": "Electric Trolley",
-        "feedback": "Good thought, but not the solution. Alvin Lombard tried using electricity to power a Lombard Log Hauler like a trolley car. It was declared, a failure, however, due to the cost of running electrical lines. Try a different solution.",
+        "feedback": "Electric trollies are a good thought, but not the solution. Alvin Lombard tried using electricity to power a Lombard Log Hauler like a trolley car. It was declared, a failure, however, due to the cost of running electrical lines. Try a different solution.",
         "moreFeedback": "Tell more about trying to electrify these. Did Lombard actually try this? Where? Did someone else? Are there photos?",
         "correctness": "0",
         "imageName": "c1opt-trolley",
@@ -139,7 +139,7 @@
       },
       {
         "label": "Large Wheels",
-        "feedback": "Wrong. Wheels would sink in snow and mud. Besides, steel wheels of the day offered very little traction on ice and snow. Try another solution.",
+        "feedback": "Wrong -- large wheels would sink in snow and mud. Besides, steel wheels of the day offered very little traction on ice and snow. Try another solution.",
         "moreFeedback": "Learn more: what might we say here?",
         "correctness": "0",
         "imageName": "c2opt-wheels",
@@ -147,7 +147,7 @@
       },
       {
         "label": "Giant Screws",
-        "feedback": "Interesting solution, but not effective! In 1904, Ira Peavey of Bangor patented a \"Snow Locomotive\" which used giant screws to move it through the snow and over ice. It worked but wasn’t a commercial success. Try again!",
+        "feedback": "Giant screws are an interesting idea, but not effective! In 1904, Ira Peavey of Bangor patented a \"Snow Locomotive\" which used giant screws to move it through the snow and over ice. It worked but wasn’t a commercial success. Try again!",
         "moreFeedback": "Details on the Snow Locomotive.",
         "correctness": "0",
         "imageName": "c2opt-screw",
@@ -207,7 +207,7 @@
       },
       {
         "label": "Horse",
-        "feedback": "That’s an idea! However, using horses was cumbersome, and it cost extra money to feed and care for them. Try again.",
+        "feedback": "Using a steering horse was tried! However, using horses was cumbersome, and it cost extra money to feed and care for them. Try again.",
         "moreFeedback": "Could discuss horses in general since we didn’t get to do this earlier.",
         "correctness": "0",
         "imageName": "c3opt-horse",
@@ -251,7 +251,7 @@
     "options": [ 
       {
         "label": "A Smaller Crew",
-        "feedback": "Sorry, not possible. A Lombard steam log hauler required a crew of three: Steersman, Engineer and Fireman. All were vital to the successful and safe operation of the machine. Reducing the crew would create many problems. Try another solution.",
+        "feedback": "Sorry, a smaller crew was not possible. A Lombard steam log hauler required a crew of three: Steersman, Engineer and Fireman. All were vital to the successful and safe operation of the machine. Reducing the crew would create many problems. Try another solution.",
         "moreFeedback": "Roles of the 3 jobs and costs",
         "correctness": "0",
         "imageName": "c4opt-workers2",
@@ -259,7 +259,7 @@
       },
       {
         "label": "Make Smaller",
-        "feedback": "It wasn’t enough. Lombard actually did produce a much smaller 15-ton steam Lombard Log Hauler. The smaller machine featured a vertical boiler and narrower tracks. Though successful, the cost savings was minimal. Try again.",
+        "feedback": "A smaller engine wasn’t didn't save enough. Lombard actually did produce a much smaller 15-ton steam Lombard Log Hauler. The smaller machine featured a vertical boiler and narrower tracks. Though successful, the cost savings was minimal. Try again.",
         "moreFeedback": "Details on difficulties in using a steam engine",
         "correctness": "0",
         "imageName": "c4opt-small-engine",
@@ -312,7 +312,7 @@
     "options": [ 
       {
         "label": "Straw",
-        "feedback": "Sounds scary. Lumbermen put straw on the ground to slow the sleds by creating friction, but this required paying a person stationed at each hill to replace the old ice-coated straw with a new layer. Try again.",
+        "feedback": "Using straw sounds scary. Lumbermen put straw on the ground to slow the sleds by creating friction, but this required paying a person stationed at each hill to replace the old ice-coated straw with a new layer. Try again.",
         "moreFeedback": "Was straw ever enough? How did they manage that?",
         "correctness": "0",
         "imageName": "c5opt-straw",
@@ -328,7 +328,7 @@
       },
       {
         "label": "Snubbing Machine",
-        "feedback": "Not the best option. Lumbermen wrapped snub lines (ropes) around a stump to manage the weight as they controlled heavy logging sleds going down a hill. Snub lines were dangerous to use and required paying a crew to operate. Try again.",
+        "feedback": "A snubbing maching was not the best option. Lumbermen wrapped snub lines (ropes) around a stump to manage the weight as they controlled heavy logging sleds going down a hill. Snub lines were dangerous to use and required paying a crew to operate. Try again.",
         "moreFeedback": "Explain snub lines more. Was there ever a notable accident?",
         "correctness": "0",
         "imageName": "c5opt-snubbing",
