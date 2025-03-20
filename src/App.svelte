@@ -335,7 +335,7 @@
     if (challengeIndex === 6) {
       dynoTitle = challenges[challengeIndex].title;
     } else {
-      dynoTitle = challengeIndex + challenges[challengeIndex].title;
+      dynoTitle = challengeIndex + ". The " + challenges[challengeIndex].title + " Challenge";
     }
     setTimeout(() => {
       console.log('display challengeText. chalengIndex: ' + challengeIndex)
