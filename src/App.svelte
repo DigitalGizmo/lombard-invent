@@ -87,43 +87,64 @@
   let animationFrameId = null;
 
   // Kiosk timeout functionality
-  const TIMEOUT_DURATION = 60000 // 60000; // 120000 2 minutes in milliseconds
+  const TIMEOUT_DURATION = 20000 // 60000; // 120000 2 minutes in milliseconds
   let timeoutId;
 
-  // Reste on timeout and define what will happen upon timeout
+  // Reset on timeout and define what will happen upon timeout
+  // Modify the resetTimeout function to properly cancel any existing animation before restarting
+  // Also update resetTimeout to clear any existing timeout
   function resetTimeout() {
-  console.log(' got to resetTimeout. challengeIndex: ' + challengeIndex);
-  if (buildMode === 2) {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => {
-      console.log(' -- inside setTimeout. challengeIndex: ' + challengeIndex);
-      // Reset game state
-      challengeIndex = 7; // Set to attract screen
-      isModalShowing = false;
-      challengePhaseIndex = 0;
-      chosenOptionIndex = 0;
-      showFeedback = false;
-      isMoreFeedbackShowing = false;
-      currentCorrectness = 0;
-      correctnessStates = [1, 1, 1, 1];
-      optionsToHide = ["", "", "", "", ""];
-      optionsVisible = false;
-      textVisible = true;
-      titleVisible = true;
-      doneStatus = [{progNumClass: "current", label: ""}, {progNumClass: "", label: ""}, 
-      {progNumClass: "", label: ""}, {progNumClass: "", label: ""}, {progNumClass: "", label: ""}
-      ]
+    console.log(' got to resetTimeout. challengeIndex: ' + challengeIndex);
+    if (buildMode === 2) {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+      }
       
-      // Reset animation values
-      landX.set(0, {duration: 0});
-      skyX.set(0, {duration: 0});
+      // Don't set a new timeout if we're in attract mode
+      if (challengeIndex === 7) return;
       
-      // Make sure animation flag is true and restart animation
-      attractAnimationRunning = true;
-      attract();
-    }, TIMEOUT_DURATION);
+      timeoutId = setTimeout(() => {
+        console.log(' -- inside setTimeout. challengeIndex: ' + challengeIndex);
+        
+        // First stop any existing animation
+        if (attractAnimationRunning) {
+          attractAnimationRunning = false;
+          if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+          }
+        }
+        
+        // Reset game state
+        challengeIndex = 7; // Set to attract screen
+        isModalShowing = false;
+        challengePhaseIndex = 0;
+        chosenOptionIndex = 0;
+        showFeedback = false;
+        isMoreFeedbackShowing = false;
+        currentCorrectness = 0;
+        correctnessStates = [1, 1, 1, 1];
+        optionsToHide = ["", "", "", "", ""];
+        optionsVisible = false;
+        textVisible = true;
+        titleVisible = true;
+        doneStatus = [{progNumClass: "current", label: ""}, {progNumClass: "", label: ""}, 
+        {progNumClass: "", label: ""}, {progNumClass: "", label: ""}, {progNumClass: "", label: ""}
+        ]
+        
+        // Reset animation values
+        landX.set(0, {duration: 0});
+        skyX.set(0, {duration: 0});
+        
+        // Start attract mode animation
+        setTimeout(() => {
+          attractAnimationRunning = true;
+          attract();
+        }, 100);
+      }, TIMEOUT_DURATION);
+    }
   }
-}
 
   function clearKioskTimeout() {
     if (timeoutId) {
@@ -131,8 +152,10 @@
     }
   }
 
+  // Modify the handleUserActivity function to only reset timeout when not in attract mode
   function handleUserActivity() {
-    if (buildMode === 2) {
+    if (buildMode === 2 && challengeIndex !== 7) {
+      // Only reset timeout when not in attract mode (attract mode is index 7)
       resetTimeout();
     }
   }
@@ -203,14 +226,24 @@
   }
 
   // Improved continuous scrolling animation
+  // Modify the attract function to ensure it only starts one animation loop
   function attract() {
     if (!attractAnimationRunning) return;
+    
+    // Cancel any existing animation frame first
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = null;
+    }
     
     let lastTime = performance.now();
     
     function animate(currentTime) {
       if (!attractAnimationRunning) {
-        cancelAnimationFrame(animationFrameId);
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = null;
+        }
         return;
       }
       
@@ -239,28 +272,35 @@
       // Continue animation
       animationFrameId = requestAnimationFrame(animate);
     }
+    
     // Start animation loop
     animationFrameId = requestAnimationFrame(animate);
   }
-  
-
   // End attract loop
+  // Also modify the begin function to ensure proper cleanup
+  // Update the begin function to ensure proper timeout management
   function begin() {
     // Stop the animation loop
     attractAnimationRunning = false;
+    
+    // Cancel the animation frame
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = null;
+    }
     
     // Cancel current animations
     landX.set($landX);
     skyX.set($skyX);
     
     challengeIndex = 0;
-    handleUserActivity();
+    
+    // Now we're leaving attract mode, so start the timeout
+    if (buildMode === 2) {
+      resetTimeout(); 
+    }
+    
     isBoxVisible = false;
-
-    // Reset flag for next time
-    setTimeout(() => {
-      attractAnimationRunning = true;
-    }, 1000);
 
     // Now call nextMove
     nextMove(true); // true: isAttract
@@ -530,19 +570,35 @@
     isModalShowing = true;
   };  
 
-
+  // Update the onMount function to be more careful about animation initialization
+  // Modify onMount to not start timeout if in attract mode
   onMount(() => {
     if (buildMode === 2) {
-      // Initial timeout setup
-      resetTimeout();
+      // Make sure animation isn't running yet
+      attractAnimationRunning = false;
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+      
+      // Only set timeout if not in attract mode
+      if (challengeIndex !== 7) {
+        resetTimeout();
+      }
+      
       // Add event listeners for user activity
       window.addEventListener('click', handleUserActivity);
       window.addEventListener('touchstart', handleUserActivity);
       window.addEventListener('mousemove', handleUserActivity);
       window.addEventListener('keydown', handleUserActivity);
-      // Set flag and start attract loop
-      attractAnimationRunning = true;
-      attract();
+      
+      // Start attract loop after a brief delay
+      if (challengeIndex === 7) {
+        setTimeout(() => {
+          attractAnimationRunning = true;
+          attract();
+        }, 100);
+      }
     }
   });
 
