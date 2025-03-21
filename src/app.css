@@ -59,6 +59,11 @@ div.background img.land {
   left: 0;
 }
 
+/* adding per ai leapfrog attract */
+.sky1, .sky2, .land1, .land2 {
+  position: absolute;
+}
+
 header {
   position: absolute;
   width: 100vw;

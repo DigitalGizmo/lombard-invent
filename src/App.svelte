@@ -79,8 +79,12 @@
   // In order to freeze on correct, awaiting retry
   let isFrozen = false;
 
+  // These values may need adjustment based on your image dimensions
+  const skyWidth = 200; // Width of sky image in vw
+  const landWidth = 120; // Width of land image in vw
+
   // Kiosk timeout functionality
-  const TIMEOUT_DURATION = 12000 // 60000; // 120000 2 minutes in milliseconds
+  const TIMEOUT_DURATION = 60000 // 60000; // 120000 2 minutes in milliseconds
   let timeoutId;
 
   // Reste on timeout and define what will happen upon timeout
@@ -104,8 +108,8 @@
       textVisible = true;
       titleVisible = true;
       doneStatus = [{progNumClass: "current", label: ""}, {progNumClass: "", label: ""}, 
-  {progNumClass: "", label: ""}, {progNumClass: "", label: ""}, {progNumClass: "", label: ""}
-   ]
+      {progNumClass: "", label: ""}, {progNumClass: "", label: ""}, {progNumClass: "", label: ""}
+      ]
       
       // Reset animation values
       landX.set(0, {duration: 0});
@@ -181,25 +185,38 @@
   const skyX = tweened(0);
   const landX = tweened(0);
 
+  // Function to check and reposition images when they move off-screen
+  function checkAndRepositionImages() {
+    if ($skyX <= -skyWidth) {
+      skyX.set($skyX + skyWidth, {duration: 0});
+    }
+    
+    if ($landX <= -landWidth) {
+      landX.set($landX + landWidth, {duration: 0});
+    }
+  }
 
+  // Modify the attract function to use the continuous scrolling approach
   function attract() {
-    // If animation is no longer supposed to run, exit early
     if (!attractAnimationRunning) return;
     
-    // Start the animation
-    Promise.all([
-      landX.update((landX) => landX - 340, {duration: (attractDuration)}),
-      skyX.update((skyX) => skyX - 136, {duration: attractDuration})
-    ]).then(() => {
-      // Reset positions to create seamless loop
-      landX.set(0, {duration: 0});
-      skyX.set(0, {duration: 0});
+    // Use requestAnimationFrame for smoother animation
+    function animate() {
+      if (!attractAnimationRunning) return;
       
-      // If still running, start the animation again
-      if (attractAnimationRunning) {
-        setTimeout(attract, 10); // Small delay before restarting
-      }
-    });
+      // Update positions
+      skyX.update(x => x - 0.1);
+      landX.update(x => x - 0.25);
+      
+      // Check and reposition images if needed
+      checkAndRepositionImages();
+      
+      // Continue animation
+      requestAnimationFrame(animate);
+    }
+    
+    // Start animation
+    requestAnimationFrame(animate);
   }
 
   // End attract loop
@@ -256,10 +273,12 @@
         challenges[challengeIndex].challengePhase[0].audio + '.mp3')
       audioProgress.play();
       
-      
       landX.update((landX) => landX - 50, {duration: longMoveDuration});
       await skyX.update((skyX) => skyX - 20, {duration: longMoveDuration});
       audioProgress.pause();
+      
+      // Check and reposition images after animation
+      checkAndRepositionImages();
     }
 
     setTimeout(() => {
@@ -368,6 +387,9 @@
     landX.update((landX) => landX - 8, {duration: shortMoveDuration});
     await skyX.update((skyX) => skyX - 5, {duration: shortMoveDuration});
     audioProgress.pause();
+    // Check and reposition images after animation
+    checkAndRepositionImages();
+
     correctnessStates[_chosenOptionIndex] = currentCorrectness;
     // console.log('- about to set audio in shortMove');
     audioOption = new Audio(assetPath + 'audio/' + 
@@ -518,13 +540,22 @@
 <div class="wrapper">
 
   <div class="background">
-    <img class="sky" src="{assetPath}images/sky-6000.jpg"  alt="sky" 
+    <!-- Two sky images for continuous scrolling -->
+    <img class="sky sky1" src="{assetPath}images/sky-4196.jpg" alt="sky" 
       style="transform:translate({$skyX}vw, 0px)"
     />
-    <img class="land" src="{assetPath}images/land-8000.png" alt="land" 
+    <img class="sky sky2" src="{assetPath}images/sky-4196.jpg" alt="sky" 
+      style="transform:translate({$skyX + skyWidth}vw, 0px)"
+    />
+    
+    <!-- Two land images for continuous scrolling -->
+    <img class="land land1" src="{assetPath}images/land-2500.png" alt="land" 
       style="transform:translate({$landX}vw, 0px)"
     />
-  </div><!-- /background -->
+    <img class="land land2" src="{assetPath}images/land-2500.png" alt="land" 
+      style="transform:translate({$landX + landWidth}vw, 0px)"
+    />
+  </div>
 
   <header>
     <h1>Be The Inventor</h1>
