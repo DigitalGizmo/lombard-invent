@@ -109,7 +109,7 @@
       
       // Reset animation values
       landX.set(0, {duration: 0});
-      cloudsX.set(0, {duration: 0});
+      skyX.set(0, {duration: 0});
       
       // Make sure animation flag is true and restart animation
       attractAnimationRunning = true;
@@ -178,7 +178,7 @@
     }, 10);
   }  
 
-  const cloudsX = tweened(0);
+  const skyX = tweened(0);
   const landX = tweened(0);
 
 
@@ -189,11 +189,11 @@
     // Start the animation
     Promise.all([
       landX.update((landX) => landX - 340, {duration: (attractDuration)}),
-      cloudsX.update((cloudsX) => cloudsX - 136, {duration: attractDuration})
+      skyX.update((skyX) => skyX - 136, {duration: attractDuration})
     ]).then(() => {
       // Reset positions to create seamless loop
       landX.set(0, {duration: 0});
-      cloudsX.set(0, {duration: 0});
+      skyX.set(0, {duration: 0});
       
       // If still running, start the animation again
       if (attractAnimationRunning) {
@@ -209,7 +209,7 @@
     
     // Cancel current animations
     landX.set($landX);
-    cloudsX.set($cloudsX);
+    skyX.set($skyX);
     
     challengeIndex = 0;
     handleUserActivity();
@@ -258,7 +258,7 @@
       
       
       landX.update((landX) => landX - 50, {duration: longMoveDuration});
-      await cloudsX.update((cloudsX) => cloudsX - 20, {duration: longMoveDuration});
+      await skyX.update((skyX) => skyX - 20, {duration: longMoveDuration});
       audioProgress.pause();
     }
 
@@ -366,7 +366,7 @@
 
     audioProgress.play();
     landX.update((landX) => landX - 8, {duration: shortMoveDuration});
-    await cloudsX.update((cloudsX) => cloudsX - 5, {duration: shortMoveDuration});
+    await skyX.update((skyX) => skyX - 5, {duration: shortMoveDuration});
     audioProgress.pause();
     correctnessStates[_chosenOptionIndex] = currentCorrectness;
     // console.log('- about to set audio in shortMove');
@@ -519,9 +519,9 @@
 
   <div class="background">
     <img class="sky" src="{assetPath}images/sky-6000.jpg"  alt="sky" 
-      style="transform:translate({$cloudsX}vw, 0px)"
+      style="transform:translate({$skyX}vw, 0px)"
     />
-    <img class="land" src="{assetPath}images/landscape-double.png" alt="land" 
+    <img class="land" src="{assetPath}images/land-8000.png" alt="land" 
       style="transform:translate({$landX}vw, 0px)"
     />
   </div><!-- /background -->
