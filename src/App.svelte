@@ -2,7 +2,8 @@
   import { onMount, onDestroy } from 'svelte';
   import { tick } from 'svelte'; //, onMount, ˜
   import { tweened } from 'svelte/motion';
-  import { cubicOut } from 'svelte/easing';
+  // import { cubicOut } from 'svelte/easing';
+  import { linear } from 'svelte/easing';
   import { draggable, } from '@neodrag/svelte';
   import { slide } from 'svelte/transition';
   // import { fade } from 'svelte/transition';
@@ -37,9 +38,7 @@
   const speed = 1 // 0.3; // Smaller is faster for working preview, default = 1, fast = 0.3
   const longMoveDuration = 5000 * speed; // 5000
   const shortMoveDuration = 1000 * speed;
-  const attractDuration = 34000 * speed;
-  // let vwidth = 1200;
-  // let vheight = 800;
+  // const attractDuration = 34000 * speed;
   let textVisible = true;
   let titleVisible = true;
   let optionsVisible = false;
@@ -80,8 +79,12 @@
   let isFrozen = false;
 
   // These values may need adjustment based on your image dimensions
-  const skyWidth = 200; // Width of sky image in vw
+  const skyWidth = 205; // Width of sky image in vw
   const landWidth = 120; // Width of land image in vw
+  // Animation speed variables
+  const ATTRACT_SKY_SPEED = 0.06;  // pixels per frame
+  const ATTRACT_LAND_SPEED = 0.12;  // pixels per frame
+  let animationFrameId = null;
 
   // Kiosk timeout functionality
   const TIMEOUT_DURATION = 60000 // 60000; // 120000 2 minutes in milliseconds
@@ -163,9 +166,6 @@
       // console.log('haulerLeft:' + rect.left + ' haulerTop:' + rect.top + 
       // ' haulerWidth:' + haulerWidth + ' haulerHeight:' + haulerHeight)
 
-      // May need to create array and get each, but many not matter since
-      // we never show the landed option
-      // For now only 1 & 1
       for (let i = 0; i < 3; i++) {
         let optionRect = optionElements[i].getBoundingClientRect();
         optionLandingXOffsets[i] = rect.left - optionRect.left;
@@ -173,51 +173,76 @@
       }
 
       let optionRect = optionElements[0].getBoundingClientRect();
-      // option1Left = optionRect.left;
-      // option1LandingXOffset = rect.left - optionRect.left;  
-      // optionTop = optionRect.top;
-      // console.log('optionTop: ' + optionTop);
       optionLandingYOffset = -(Math.round(optionRect.top) - rect.top);  
       // console.log('distance from opt top to haul top: ' + optionLandingYOffset)
     }, 10);
   }  
 
-  const skyX = tweened(0);
-  const landX = tweened(0);
+  // Update tweened store creation to use linear easing by default
+  const skyX = tweened(0, {
+    duration: 400,
+    easing: linear
+  });
+  
+  const landX = tweened(0, {
+    duration: 400,
+    easing: linear
+  });
 
   // Function to check and reposition images when they move off-screen
+  // Improved implementation for checkAndRepositionImages that avoids any transition
   function checkAndRepositionImages() {
+    // Using immediate repositioning with no transition
     if ($skyX <= -skyWidth) {
-      skyX.set($skyX + skyWidth, {duration: 0});
+      skyX.set($skyX + skyWidth, { duration: 0 });
     }
     
     if ($landX <= -landWidth) {
-      landX.set($landX + landWidth, {duration: 0});
+      landX.set($landX + landWidth, { duration: 0 });
     }
   }
 
-  // Modify the attract function to use the continuous scrolling approach
+  // Improved continuous scrolling animation
   function attract() {
     if (!attractAnimationRunning) return;
     
-    // Use requestAnimationFrame for smoother animation
-    function animate() {
-      if (!attractAnimationRunning) return;
+    let lastTime = performance.now();
+    
+    function animate(currentTime) {
+      if (!attractAnimationRunning) {
+        cancelAnimationFrame(animationFrameId);
+        return;
+      }
       
-      // Update positions
-      skyX.update(x => x - 0.1);
-      landX.update(x => x - 0.25);
+      const deltaTime = currentTime - lastTime;
+      lastTime = currentTime;
       
-      // Check and reposition images if needed
-      checkAndRepositionImages();
+      // Update positions based on time elapsed (smoother than fixed increments)
+      skyX.update(x => {
+        const newX = x - ATTRACT_SKY_SPEED * (deltaTime / 16.67); // normalized to ~60fps
+        // Reposition immediately if passed threshold (no animation)
+        if (newX <= -skyWidth) {
+          return newX + skyWidth;
+        }
+        return newX;
+      }, { duration: 0 }); // No duration for continuous movement
+      
+      landX.update(x => {
+        const newX = x - ATTRACT_LAND_SPEED * (deltaTime / 16.67); // normalized to ~60fps
+        // Reposition immediately if passed threshold (no animation)
+        if (newX <= -landWidth) {
+          return newX + landWidth;
+        }
+        return newX;
+      }, { duration: 0 }); // No duration for continuous movement
       
       // Continue animation
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
     }
-    
-    // Start animation
-    requestAnimationFrame(animate);
+    // Start animation loop
+    animationFrameId = requestAnimationFrame(animate);
   }
+  
 
   // End attract loop
   function begin() {
@@ -264,7 +289,6 @@
     challengeIndex +=1;
     // console.log(' in nextMove after increment');
     // console.log('-- nextMove, audio: ' + "audio/" + 
-    // challenges[challengeIndex].challengePhase[0].audio + '.mp3');
 
     // If we're coming here from the attract screen, then we don't play the move
     // since we were already moving
@@ -273,11 +297,11 @@
         challenges[challengeIndex].challengePhase[0].audio + '.mp3')
       audioProgress.play();
       
-      landX.update((landX) => landX - 50, {duration: longMoveDuration});
-      await skyX.update((skyX) => skyX - 20, {duration: longMoveDuration});
+      // Use linear easing explicitly for this movement
+      landX.update(x => x - 50, {duration: longMoveDuration, easing: linear});
+      await skyX.update(x => x - 20, {duration: longMoveDuration, easing: linear});
       audioProgress.pause();
       
-      // Check and reposition images after animation
       checkAndRepositionImages();
     }
 
@@ -285,7 +309,6 @@
       // Increment first so we can suppress options in display challengeText
       // console.log(' in setTimeout before increment');
       // moving this to before timeuout
-      // challengeIndex +=1;
       console.log(' in setTimeout after increment, chal index: ' + challengeIndex);
       // Don't do all these steps when we've finished last challenge
       if ( challengeIndex < 9){
@@ -384,10 +407,10 @@
     handleUserActivity();
 
     audioProgress.play();
-    landX.update((landX) => landX - 8, {duration: shortMoveDuration});
-    await skyX.update((skyX) => skyX - 5, {duration: shortMoveDuration});
+    landX.update(x => x - 8, {duration: shortMoveDuration, easing: linear});
+    await skyX.update(x => x - 5, {duration: shortMoveDuration, easing: linear});
     audioProgress.pause();
-    // Check and reposition images after animation
+    
     checkAndRepositionImages();
 
     correctnessStates[_chosenOptionIndex] = currentCorrectness;
@@ -527,6 +550,9 @@
     if (buildMode === 2) {
       // Stop animations
       attractAnimationRunning = false;
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
       // Clean up event listeners and timeout
       window.removeEventListener('click', handleUserActivity);
       window.removeEventListener('touchstart', handleUserActivity);
@@ -601,13 +627,6 @@
     <article>
       <header class="text-box"><!-- the challenge numbers -->
         <ul class="progress">
-          <!-- Starting point: class "done" is added if 
-            doneStatus[x].isDone (is true) 
-            Need to add a state for "current" challenge.
-            Maybe doneStatus object holds name of class:
-            "", "current", or "done" (rather than isDone)
-            isDone is only used for class, not for logic anywhere
-            -->
           <li class="progress-item {doneStatus[0].progNumClass}"> 
             1 {@html doneStatus[0].label}
           </li>
@@ -627,7 +646,6 @@
       </header>
       {#if titleVisible}
         <h2>{dynoTitle}</h2>
-        <!-- {challenges[challengeIndex].title} -->
 
       {/if}
       {#if textVisible}
@@ -663,14 +681,6 @@
               </button>
             <!-- {/if} -->
           {/if}           
-
-        <!-- {:else}
-          <p>{challenges[challengeIndex].challengeText} </p>
-          {#if challengeIndex === 0}
-            <button on:click={(e) => {nextMove(false);}}>>
-              start
-            </button>
-          {/if}    -->
         {/if}
         
       {/if}
@@ -682,13 +692,8 @@
         correctnessStates[chosenOptionIndex]: {correctnessStates[chosenOptionIndex]}
         challenges[challengeIndex].options[0].imageName: {challenges[challengeIndex].options[0].imageName}
       </p> -->
-
     </article>
-
-
-
   {/if} <!-- end if not attract (7) -->
-
 
   <p class="credits">
     <a href="/" 
@@ -697,7 +702,6 @@
     </a>
   </p>
   
-  <!-- {#if challengeIndex === 1} -->
   {#if optionsVisible}
     <ul class="options">
       <li class="option1" >
