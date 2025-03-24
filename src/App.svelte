@@ -80,7 +80,7 @@
 
   // These values may need adjustment based on your image dimensions
   const skyWidth = 205; // Width of sky image in vw
-  const landWidth = 120; // Width of land image in vw
+  const landWidth = 139; // Width of land image in vw
   // Animation speed variables
   const ATTRACT_SKY_SPEED = 0.06;  // pixels per frame
   const ATTRACT_LAND_SPEED = 0.12;  // pixels per frame
@@ -237,6 +237,9 @@
     }
     
     let lastTime = performance.now();
+
+    audioProgress = new Audio(assetPath + 'audio/progress-attract.mp3')
+      audioProgress.play();
     
     function animate(currentTime) {
       if (!attractAnimationRunning) {
@@ -307,7 +310,7 @@
   }
 
   // movement to next challenge
-  async function nextMove(_isAttract=false) {
+  async function nextMove(_isFromAttract=false) {
     textVisible = false;
     optionsVisible = false;
     isFrozen = false;
@@ -332,7 +335,7 @@
 
     // If we're coming here from the attract screen, then we don't play the move
     // since we were already moving
-    if (!_isAttract) {
+    if (!_isFromAttract) {
       audioProgress = new Audio(assetPath + 'audio/' + 
         challenges[challengeIndex].challengePhase[0].audio + '.mp3')
       audioProgress.play();
@@ -708,7 +711,7 @@
 
         <p>{challenges[challengeIndex].challengeText} </p>
         {#if challengeIndex === 0}
-          <button on:click={(e) => {nextMove(false);}}>>
+          <button on:click={(e) => {nextMove(false);}}>
             start
           </button>
         {/if}   
