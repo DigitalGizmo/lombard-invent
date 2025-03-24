@@ -14,7 +14,7 @@
   let assetPath = "https://assets.digitalgizmo.com/lombard-invent/";
   let challengeIndex = 0;
 
-  let buildMode = 2;
+  let buildMode = 0;
   // buildMode: 0 = devel, 1 web, 2 = kiosk
   if (buildMode === 0) {
     assetPath = "https://assets.digitalgizmo.com/lombard-invent/"

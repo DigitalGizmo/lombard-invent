@@ -87,8 +87,8 @@ div.hauler {
 @media screen and (max-aspect-ratio: 9.5/9) {
   div.hauler {
     position: absolute;
-    top: 40vh;
-    left: 10vw;
+    top: 30vh;
+    left: 5vw;
     width: 100%;
   }
 }
@@ -137,7 +137,7 @@ article {
 
 @media screen and (max-aspect-ratio: 9.5/9) {
   article {
-    top: 80vh;
+    top: 70vh;
     left: 0vw;
     width: 100vw;
     min-height: 15vh;
@@ -222,7 +222,7 @@ ul.options {
 
 @media screen and (max-aspect-ratio: 9.5/9) {
   ul.options {
-    top: 55vh;
+    top: 45vh;
     left: 3vw;
     height: 22vh;
   }
@@ -278,6 +278,14 @@ p.credits {
   right: 6vw;
 }
 
+@media screen and (max-aspect-ratio: 9.5/9) {
+  p.credits {
+    position: absolute;
+    top: 0vh;
+    right: 6vw;
+  }
+}
+
 p.credits a {
   color: #5CB8C4;
   text-decoration: none;
@@ -312,7 +320,7 @@ p.credits a:hover {
   .modal-basic {
     bottom: 0;
     display: block;
-    left: 18vw;
+    left: 1vw;
     margin: auto;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -336,7 +344,7 @@ p.credits a:hover {
     z-index: 100;
     right: 0;
     top: 25vh;
-    width: 60vw;
+    width: 50vw;
   }
 }
 
