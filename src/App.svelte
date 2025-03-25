@@ -79,11 +79,11 @@
   let isFrozen = false;
 
   // These values may need adjustment based on your image dimensions
-  const skyWidth = 205; // Width of sky image in vw
-  const landWidth = 139; // Width of land image in vw
+  const skyWidth = 390; // Width of sky image in vw
+  const landWidth = 440; // 139 w 2500 Width of land image in vw
   // Animation speed variables
-  const ATTRACT_SKY_SPEED = 0.06;  // pixels per frame
-  const ATTRACT_LAND_SPEED = 0.12;  // pixels per frame
+  const ATTRACT_SKY_SPEED = 0.06;  // * 3 pixels per frame
+  const ATTRACT_LAND_SPEED = 0.12;  //  * 3 pixels per frame
   let animationFrameId = null;
 
   // Kiosk timeout functionality
@@ -626,18 +626,18 @@
 
   <div class="background">
     <!-- Two sky images for continuous scrolling -->
-    <img class="sky sky1" src="{assetPath}images/sky-4196.jpg" alt="sky" 
+    <img class="sky sky1" src="{assetPath}images/sky-double.jpg" alt="sky" 
       style="transform:translate({$skyX}vw, 0px)"
     />
-    <img class="sky sky2" src="{assetPath}images/sky-4196.jpg" alt="sky" 
+    <img class="sky sky2" src="{assetPath}images/sky-double.jpg" alt="sky" 
       style="transform:translate({$skyX + skyWidth}vw, 0px)"
     />
     
     <!-- Two land images for continuous scrolling -->
-    <img class="land land1" src="{assetPath}images/land-2500.png" alt="land" 
+    <img class="land land1" src="{assetPath}images/land-8000.png" alt="land" 
       style="transform:translate({$landX}vw, 0px)"
     />
-    <img class="land land2" src="{assetPath}images/land-2500.png" alt="land" 
+    <img class="land land2" src="{assetPath}images/land-8000.png" alt="land" 
       style="transform:translate({$landX + landWidth}vw, 0px)"
     />
   </div>
