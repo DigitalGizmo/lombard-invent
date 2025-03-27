@@ -17,8 +17,12 @@ p {
 button {
   background: #5CB8C4;
   border: solid 1px #74A4A7;
-  padding: .5em;
+  padding: .75em;
   color: white;
+  font-size: 1em;
+  letter-spacing: 0.015em;
+  text-transform: uppercase;
+  margin: 0 .5em .5em 0;
   border-radius: 2px;
   font-family: "Fira Sans", sans-serif;
 }
@@ -221,7 +225,7 @@ ul.options {/* */
 
 @media screen and (max-aspect-ratio: 11/9) {/* */
   ul.options {
-    top: 45vh;
+    top: 46vh;
     left: 3vw;
     height: 22vh;
   }
