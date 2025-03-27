@@ -28,7 +28,7 @@ button:hover {
   cursor: pointer;
 }
 
-.wrapper {
+.wrapper {/* for beatronics/16X9 displays */
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -37,9 +37,9 @@ button:hover {
   text-align: center;
 }
 
-@media screen and (max-aspect-ratio: 9.5/9) {
+@media screen and (max-aspect-ratio: 9.5/9) {/* let content scroll for anything that's less letter box-y */
   .wrapper {
-    overflow: scroll;
+    overflow-y: scroll;
   }
 }
 
@@ -77,31 +77,30 @@ header h1 {
   letter-spacing: .15em;
 }
 
-div.hauler {
+div.hauler {/* positions the hauler and sled relative to the gray text box */
   position: absolute;
   top: 20vh;
   left: 33vw;
-/*  width: 100%;*/
 }
 
-@media screen and (max-aspect-ratio: 9.5/9) {
+@media screen and (max-aspect-ratio: 11/9) {/* for displays that are less letter boxy */
   div.hauler {
     position: absolute;
-    top: 30vh;
-    left: 5vw;
+    top: 23vh;
+    left: 1vw;
     width: 100%;
   }
 }
 
-div.hauler img {
+div.hauler img {/* 16/9 */
   width: 68%;
 }
 
-div.hauler img.logs {
+div.hauler img.logs {/* 16/9 */
   width: 31%;
 }
 
-@media screen and (max-aspect-ratio: 9.5/9) {
+@media screen and (max-aspect-ratio: 11/9) {/* displays that are less letter boxy */
   div.hauler img {
     width: 65%;
   }
@@ -122,12 +121,12 @@ div.idle {
 }
 
 /* text box for challenges and feedback */
-article {
+article {/* */
   background: rgba(217, 217, 217, .7);
   color: #525252;
   position: absolute;
   top: 40vh;
-  right: 70vw;
+  margin: 0 0 0 2vw;
   width: 25vw;
   min-height: 35vh;
   border: 1px solid lightgray;
@@ -135,11 +134,11 @@ article {
   text-align: left;
 }
 
-@media screen and (max-aspect-ratio: 9.5/9) {
+@media screen and (max-aspect-ratio: 11/9) {/* for less letter boxy displays, stack the hauler and text box */
   article {
+    margin: 0 15vw;
     top: 70vh;
-    left: 0vw;
-    width: 100vw;
+    width: 70vw;
     min-height: 15vh;
   }
 }
@@ -212,7 +211,7 @@ article header.text-box ul.progress li.current {
 }
 
 /* graphic options to answer the challenges */
-ul.options {
+ul.options {/* */
   position: absolute;
   top: 65vh;
   left: 36vw;
@@ -220,7 +219,7 @@ ul.options {
   padding: 0;
 }
 
-@media screen and (max-aspect-ratio: 9.5/9) {
+@media screen and (max-aspect-ratio: 11/9) {/* */
   ul.options {
     top: 45vh;
     left: 3vw;
@@ -228,9 +227,8 @@ ul.options {
   }
 }
 
-ul.options li {
+ul.options li {/* */
   display: inline-block;
-/*height: 16vh;*/
   width: 15vw;
   margin-right: 2vw;
   position: relative;
@@ -238,7 +236,7 @@ ul.options li {
   vertical-align: middle;
 }
 
-@media screen and (max-aspect-ratio: 9.5/9) {
+@media screen and (max-aspect-ratio: 11/9) {/* */
   ul.options li {
     width: 23vw;
     margin-right: 6vw;
@@ -252,21 +250,30 @@ ul.options li img {
 }
 
 ul.options li h3 {
-  margin-top:0;
+  margin-top: 0;
+  font-size: 1em;
+}
+
+
+@media screen and (max-aspect-ratio: 11/9) {/* */
+  ul.options li h3 {
+    margin-top: 0;
+    font-size: .75em;
+  }
 }
 
 .hide-option {
   visibility: hidden;
 }
 
-.shadows { /* shadows */
+.shadows {/* */
   position: absolute;
   max-height: 80%;
   vertical-align: middle;
   opacity: 0.6;
 }
 
-@media screen and (max-aspect-ratio: 9.5/9) {
+@media screen and (max-aspect-ratio: 11/9) {/* */
   .shadows { 
     width: unset;
   }
@@ -278,7 +285,7 @@ p.credits {
   right: 6vw;
 }
 
-@media screen and (max-aspect-ratio: 9.5/9) {
+@media screen and (max-aspect-ratio: 11/9) {/* move credits link to top for small displays */
   p.credits {
     position: absolute;
     top: 0vh;

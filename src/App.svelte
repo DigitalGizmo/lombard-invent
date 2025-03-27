@@ -627,10 +627,10 @@
   <div class="background">
     <!-- Two sky images for continuous scrolling -->
     <img class="sky sky1" src="{assetPath}images/sky-double.jpg" alt="sky" 
-      style="transform:translate({$skyX}vw, 0px)"
+      style="transform:translate({$skyX}vw, -3px)"
     />
     <img class="sky sky2" src="{assetPath}images/sky-double.jpg" alt="sky" 
-      style="transform:translate({$skyX + skyWidth}vw, 0px)"
+      style="transform:translate({$skyX + skyWidth}vw, -3px)"
     />
     
     <!-- Two land images for continuous scrolling -->
