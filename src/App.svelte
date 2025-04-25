@@ -720,7 +720,7 @@
             <p>{challenges[challengeIndex].options[chosenOptionIndex].feedback} 
               <a href="/" on:click={(e) => { e.preventDefault(); 
                 toggleMoreFeedback();}}>
-                {isMoreFeedbackShowing ? "Less..." : "More.."}
+                {isMoreFeedbackShowing ? "show less..." : "learn more..."}
               </a>
             </p>
             {#if isMoreFeedbackShowing}
