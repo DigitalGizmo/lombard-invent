@@ -192,7 +192,7 @@
       {
         "label": "Tiller",
         "feedback": "Not quite. Tiller steering - using a stick to pivot the front wheels - was used on early automobiles. In fact, Alvin Lombard built a steam powered automobile in 1899 that used tiller steering. However, steering with a tiller would be difficult on such a heavy machine. Try again!",
-        "moreFeedback": "In fact, Alvin Lombard built a steam powered automobile in 1899 that used tiller steering.",
+        "moreFeedback": "",
         "correctness": "0",
         "imageName": "c3opt-tiller",
         "audioFeedback": "boulder-crash"
@@ -329,7 +329,7 @@
       {
         "label": "Snubbing Machine",
         "feedback": "Not the best option. Lumbermen wrapped ropes (snub lines) around tree stumps to lower the Log Hauler with its heavy logging sleds downhill. Equipment called a \"snubbing machine\" gradually released the rope to control the descent. Snub lines were dangerous and required paying an additional crew to operate. Try again!",
-        "moreFeedback": "Explain snub lines more. Was there ever a notable accident?",
+        "moreFeedback": "",
         "correctness": "0",
         "imageName": "c5opt-snubbing",
         "audioFeedback": "kerplash"
@@ -338,7 +338,7 @@
   },
   {
     "slug": "end",
-    "title": "You Invented a Better Log Hauler!",
+    "title": "You did it!",
     "challengeText": "Thanks for playing \"Be the Inventor\"! Like Alvin Lombard learned, making a successful new machine requires a series of many smaller inventions along the way.",
     "challengePhase": [
       {
