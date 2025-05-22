@@ -717,28 +717,21 @@
         {/if}   
         {#if showFeedback}
           <div class="feedback">
-            <p>{challenges[challengeIndex].options[chosenOptionIndex].feedback} 
-              <a href="/" on:click={(e) => { e.preventDefault(); 
-                toggleMoreFeedback();}}>
-                {isMoreFeedbackShowing ? "show less..." : "learn more..."}
-              </a>
-            </p>
-            {#if isMoreFeedbackShowing}
-              <p
-              transition:slide>{challenges[challengeIndex].options[chosenOptionIndex].moreFeedback}</p>
-            {/if}
+            <p><span>{challenges[challengeIndex].options[chosenOptionIndex].feedback}</span><br>
+            {challenges[challengeIndex].options[chosenOptionIndex].moreFeedback}</p>
           </div><!-- /feedback -->
 
           {#if currentCorrectness}
-            <button on:click={(e) => {nextMove(false);}}>
-              {challengeIndex < 5 ? "Next Challenge" : "Start Hauling Logs!"}
-            </button>
             <!-- Should this be 5 or 6? -->
             <!-- {#if challengeIndex < 5}  -->
               <button on:click={retry}>
                 Replay Challenge
               </button>
             <!-- {/if} -->
+            <button on:click={(e) => {nextMove(false);}}>
+              {challengeIndex < 5 ? "Next Challenge" : "Start Hauling Logs!"}
+            </button>
+
           {/if}           
         {/if}
         

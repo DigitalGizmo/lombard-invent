@@ -71,16 +71,16 @@
     "options": [
       {
         "label": "Railroads",
-        "feedback": "Railroads...there is a better solution. Try a different solution.",
+        "feedback": "Railroads...incorrect. Try a different solution.",
         "moreFeedback": "Logging railroads were indeed used but they were very expensive to operate and limited to where they could be built.",
         "correctness": "0",
         "imageName": "c1opt-train",
         "audioFeedback": "incorrect"
       },
       {
-        "label": "Steam Tractor",
-        "feedback": "Excellent solution! Steam worked! Let's call our new machine a Lombard Log Hauler! Onward to the next challenge!",
-        "moreFeedback": "A steam powered machine could haul much further than a team of horses, and it didn’t get tired or hungry.",
+        "label": "Steam Engine",
+        "feedback": "Excellent solution! Steam worked!",
+        "moreFeedback": "A steam powered machine could haul much further than a team of horses, and it didn’t get tired or hungry. Let's call our new machine a Lombard Log Hauler! Onward to the next challenge!",
         "correctness": "1",
         "imageName": "c1opt-tractor",
         "audioFeedback": "correct"
@@ -131,8 +131,8 @@
     "options": [ 
       {
         "label": "Crawler Tracks",
-        "feedback": "Excellent!! Try the next challenge.",
-        "moreFeedback": "In 1900, Alvin Lombard developed and patented the first practical crawler track system. Crawler tracks spread out the weight of the machine so it had better traction on ice and snow.",
+        "feedback": "Excellent!!",
+        "moreFeedback": "In 1900, Alvin Lombard developed and patented the first practical crawler track system. Crawler tracks spread the machine's weight so it wouldn't get stuck and have better traction on ice and snow. Try the next challenge.",
         "correctness": "1",
         "imageName": "c2opt-tracks",
         "audioFeedback": "correct"
@@ -148,7 +148,7 @@
       {
         "label": "Giant Screws",
         "feedback": "Giant screws are an interesting idea, but not effective! Try again!",
-        "moreFeedback": "In 1904, Ira Peavey of Bangor patented a \"Snow Locomotive\" which used giant screws to move through the snow and over ice. It worked but wasn’t a commercial success.",
+        "moreFeedback": "In 1904, Ira Peavey of Bangor patented a \"Snow Locomotive\" which used giant screws to move through the snow and over ice. It worked but wasn’t a commercial success",
         "correctness": "0",
         "imageName": "c2opt-screw",
         "audioFeedback": "incorrect"
@@ -191,24 +191,24 @@
     "options": [ 
       {
         "label": "Tiller",
-        "feedback": "Not quite. Tiller steering - using a stick to pivot the front wheels - was used on early automobiles. In fact, Alvin Lombard built a steam powered automobile in 1899 that used tiller steering. However, steering with a tiller would be difficult on such a heavy machine. Try again!",
-        "moreFeedback": "",
+        "feedback": "Not quite. Try again!",
+        "moreFeedback": "Tiller steering - using a stick to pivot the front wheels - was used on early automobiles. In fact, Alvin Lombard built a steam powered automobile in 1899 that used tiller steering. However, steering with a tiller would be difficult on such a heavy machine.",
         "correctness": "0",
         "imageName": "c3opt-tiller",
         "audioFeedback": "boulder-crash"
       },
       {
         "label": "Steering Wheel",
-        "feedback": "Perfect! Combining a steering wheel with gears reduced the steering effort. It worked great! Give the next challenge a go.",
-        "moreFeedback": "",
+        "feedback": "Perfect!",
+        "moreFeedback": "Combining a steering wheel with gears reduced the steering effort. It worked great! Give the next challenge a go.",
         "correctness": "1",
         "imageName": "c3opt-steeringwheel",
         "audioFeedback": "correct"
       },
       {
         "label": "Horse",
-        "feedback": "Alvin first tried using horses to steer his Log Hauler. Imagine sitting on a 19-ton moving machine and trying to steer it with two horses. This turned out to be challenging and dangerous!",
-        "moreFeedback": "",
+        "feedback": "Sorry, incorrect.",
+        "moreFeedback": "Alvin first tried using horses to steer his Log Hauler. Imagine sitting on a 19-ton moving machine and trying to steer it with a horse. This turned out to be challenging and dangerous!",
         "correctness": "0",
         "imageName": "c3opt-horse",
         "audioFeedback": "horse"
@@ -251,24 +251,24 @@
     "options": [ 
       {
         "label": "A Smaller Crew",
-        "feedback": "Sorry, a smaller crew was not possible. A Lombard steam log hauler required a crew of three: a Steersman, an Engineer, and a Fireman to regulate the fire in the steam engine boiler. All were vital to the successful and safe operation of the machine. Try another solution.",
-        "moreFeedback": "",
+        "feedback": "Sorry, a smaller crew was not possible. Try another solution.",
+        "moreFeedback": "A Lombard steam log hauler required a crew of three: a Steersman, an Engineer, and a Fireman to regulate the fire in the steam engine boiler. All were vital to the successful and safe operation of the machine. ",
         "correctness": "0",
         "imageName": "c4opt-workers2",
         "audioFeedback": "incorrect"
       },
       {
         "label": "Make Smaller",
-        "feedback": "A smaller engine didn't save enough money. Lombard actually produced a much smaller 15-ton steam Lombard Log Hauler. The smaller machine featured a vertical boiler and narrower tracks. Though successful, the cost savings were minimal. Try again.",
-        "moreFeedback": "",
+        "feedback": "A smaller engine didn't save enough money. Try again.",
+        "moreFeedback": "Lombard actually produced a much smaller 15-ton steam Lombard Log Hauler. The smaller machine featured a vertical boiler and narrower tracks. Though successful, the cost savings were minimal.",
         "correctness": "0",
         "imageName": "c4opt-small-engine",
         "audioFeedback": "incorrect"
       },
       {
         "label": "Gas Engine",
-        "feedback": "Correct! In 1915, Alvin introduced the gasoline-powered Lombard “Tractor-Truck” which was so successful that he stopped production of steam-powered Log Haulers in 1917. The “Tractor-Truck” was lighter, faster, and only required one driver. Let's move to the last challenge!",
-        "moreFeedback": "",
+        "feedback": "Correct!",
+        "moreFeedback": "In 1915, Alvin introduced the gasoline-powered Lombard “Tractor-Truck” which was so successful that he stopped production of steam-powered Log Haulers in 1917. The “Tractor-Truck” was lighter, faster, and only required one driver. Let's move to the last challenge!",
         "correctness": "1",
         "imageName": "c4opt-gas-engine",
         "audioFeedback": "correct"
@@ -278,7 +278,7 @@
   {
     "slug": "brakes",
     "title": "Braking",
-    "challengeText": "Lombard's Tractor Truck didn't have brakes, although it weighed 10 tons and could pull up to 250 tons. Going downhill was dangerous! Which option would slow or stop the hauler?",
+    "challengeText": "Lombard's Tractor-Truck weighed 10 tons and could pull up to 250 tons. Going downhill would be dangerous! Which option would slow or stop the hauler?",
     "challengePhase": [
       {
         "note": "while in transition, 0",
@@ -312,24 +312,24 @@
     "options": [ 
       {
         "label": "Straw",
-        "feedback": "Using straw sounds scary. Lumbermen put straw on the ground to slow the sleds by creating friction. This barely slowed the machine and required paying a person stationed at each hill to replace the old ice-coated straw with a new layer. Try again.",
-        "moreFeedback": "",
+        "feedback": "Using straw sounds scary. Try again.",
+        "moreFeedback": "Lumbermen put straw on the ground to slow the sleds by creating friction. This barely slowed the machine and required paying a person stationed at each hill to replace the old ice-coated straw with a new layer. ",
         "correctness": "0",
         "imageName": "c5opt-straw",
         "audioFeedback": "kerplash"
       },
       {
         "label": "Mechanical Brakes",
-        "feedback": "Great choice! While steam powered Lombard log haulers never had brakes, all gasoline powered Lombards had a powerful, foot operated drum brake.",
-        "moreFeedback": "",
+        "feedback": "Great choice!",
+        "moreFeedback": "While steam powered Lombard log haulers never had brakes, all gasoline powered Lombards had a powerful, foot operated drum brake.",
         "correctness": "1",
         "imageName": "c5opt-drum-brake",
         "audioFeedback": "woo-hoo"
       },
       {
         "label": "Snubbing Machine",
-        "feedback": "Not the best option. Lumbermen wrapped ropes (snub lines) around tree stumps to lower the Log Hauler with its heavy logging sleds downhill. Equipment called a \"snubbing machine\" gradually released the rope to control the descent. Snub lines were dangerous and required paying an additional crew to operate. Try again!",
-        "moreFeedback": "",
+        "feedback": "Not the best option. Try again!",
+        "moreFeedback": "Lumbermen wrapped ropes (snub lines) around tree stumps to lower the Log Hauler with its heavy logging sleds downhill. Equipment called a \"snubbing machine\" gradually released the rope to control the descent. Snub lines were dangerous and required paying an additional crew to operate.",
         "correctness": "0",
         "imageName": "c5opt-snubbing",
         "audioFeedback": "kerplash"

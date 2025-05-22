@@ -168,6 +168,10 @@ div.feedback p {
   font-style: italic;
 }
 
+div.feedback p span {
+  font-weight: 600;
+}
+
 div.feedback a {
   display: block;
   color: #525252;
