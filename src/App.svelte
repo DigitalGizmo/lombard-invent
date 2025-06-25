@@ -23,7 +23,7 @@
     assetPath = "https://mainestetemuseum.org/lombard-invent/";
     challengeIndex = 0;
   } else {
-    assetPath = "https://assets.digitalgizmo.com/lombard-invent/";
+    assetPath = "";
     challengeIndex = 7;
   }
 
@@ -87,7 +87,7 @@
   let animationFrameId = null;
 
   // Kiosk timeout functionality
-  const TIMEOUT_DURATION = 20000 // 60000; // 120000 2 minutes in milliseconds
+  const TIMEOUT_DURATION = 120000 // 60000 = 1 minute; // 1000 per second  (milliseconds)
   let timeoutId;
 
   // Reset on timeout and define what will happen upon timeout
