@@ -38,7 +38,8 @@
   {
     "slug": "power",
     "title": "Power",
-    "challengeText": "Lumbermen used horses to haul timber from the forest to the river. It was hard on horses to pull heavy logging sleds more than a few miles, but lumbermen needed to go deeper into the woods to harvest the logs. What power source might work better? Drag and drop your best guess on top of the horses.",
+    "challengeText": "Lumbermen used horses to haul timber from the forest to the river. It was hard on horses to pull heavy logging sleds more than a few miles, but lumbermen needed to go deeper into the woods to harvest the logs. What power source might work better?",
+    "challengeHint": "Drag and drop your best guess on top of the horses.",
     "challengePhase": [
       {
         "note": " while in transition, 0, audio is chokka chokka",

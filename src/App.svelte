@@ -14,7 +14,7 @@
   let assetPath = "https://assets.digitalgizmo.com/lombard-invent/";
   let challengeIndex = 0;
 
-  let buildMode = 0;
+  let buildMode = 2;
   // buildMode: 0 = devel, 1 web, 2 = kiosk
   if (buildMode === 0) {
     assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
@@ -31,6 +31,7 @@
   let chosenOptionIndex = 0;
   let showFeedback = false; // otherwise question/challenge
   let isMoreFeedbackShowing = false;
+  let hintHasBeenShown = false;
   let isModalShowing = false;
   let currentCorrectness = 0;
   let correctnessStates = [1, 1, 1, 1];
@@ -123,6 +124,7 @@
         chosenOptionIndex = 0;
         showFeedback = false;
         isMoreFeedbackShowing = false;
+        hintHasBeenShown = false;
         currentCorrectness = 0;
         correctnessStates = [1, 1, 1, 1];
         optionsToHide = ["", "", "", "", ""];
@@ -285,7 +287,8 @@
   function begin() {
     // Stop the animation loop
     attractAnimationRunning = false;
-    
+    // Stop audio
+    audioProgress.pause();
     // Cancel the animation frame
     if (animationFrameId) {
       cancelAnimationFrame(animationFrameId);
@@ -314,6 +317,7 @@
     textVisible = false;
     optionsVisible = false;
     isFrozen = false;
+    hintHasBeenShown = false;
     
     // titleVisible = false;
     if (challengeIndex === 5){
@@ -528,6 +532,7 @@
     //   e.detail.offsetY)
     // Hide more feedback
     isMoreFeedbackShowing = false;
+    hintHasBeenShown = true;
     // console.log('opt index: ' + _chosenOptionIndex);
     if (e.detail.offsetX > optionLandingXOffsets[_chosenOptionIndex] - 30 && 
       e.detail.offsetX < (optionLandingXOffsets[_chosenOptionIndex] + haulerWidth - 80) &&
@@ -681,8 +686,6 @@
       </button>
     </div>
   {:else if isBoxVisible}
-
-    
     <article>
       <header class="text-box"><!-- the challenge numbers -->
         <ul class="progress">
@@ -705,15 +708,17 @@
       </header>
       {#if titleVisible}
         <h2>{dynoTitle}</h2>
-
       {/if}
       {#if textVisible}
-
         <p>{challenges[challengeIndex].challengeText} </p>
         {#if challengeIndex === 0}
           <button on:click={(e) => {nextMove(false);}}>
             start
           </button>
+        {/if}   
+        {#if challenges[challengeIndex].challengeHint &&
+          !showFeedback && !hintHasBeenShown }
+          <p>{challenges[challengeIndex].challengeHint}</p>
         {/if}   
         {#if showFeedback}
           <div class="feedback">
