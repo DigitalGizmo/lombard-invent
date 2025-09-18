@@ -680,9 +680,9 @@
   {#if challengeIndex === 7}
     <div class="idle">
       <h3>Be the Inventor!</h3>
-      <p>Your challenge is to invent a machine to haul logs out of the forest! For each of the five challenges ahead, drag and drop your best guess onto the Lombard Hauler.</p>
+      <p>Your challenge is to invent a machine to haul logs out of the forest!</p>
       <button on:click={begin}>
-        tap to start inventing
+        Let's start inventing!
       </button>
     </div>
   {:else if isBoxVisible}
@@ -757,8 +757,10 @@
       on:click={(e) => { e.preventDefault(); showModal();}}>
       Credits
     </a>
+    &nbsp;|&nbsp;
+    <a href="/">Start Over</a>
   </p>
-  
+
   {#if optionsVisible}
     <ul class="options">
       <li class="option1" >
