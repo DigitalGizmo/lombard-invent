@@ -31,6 +31,7 @@
   let challengePhaseIndex = 0;
   let chosenOptionIndex = 0;
   let showFeedback = false; // otherwise question/challenge
+  let showIncorrectFBColor = false;
   let isMoreFeedbackShowing = false;
   let hintHasBeenShown = false;
   let isModalShowing = false;
@@ -462,7 +463,8 @@
     checkAndRepositionImages();
 
     correctnessStates[_chosenOptionIndex] = currentCorrectness;
-    // console.log('- about to set audio in shortMove');
+    // console.log('- in shortMove -- set bg color to incorrect');
+    showIncorrectFBColor = true;
     audioOption = new Audio(assetPath + 'audio/' + 
         challenges[challengeIndex].options[_chosenOptionIndex].audioFeedback + '.mp3')
 
@@ -502,7 +504,8 @@
   }  
 
   async function bingCorrectPart2(_chosenOptionIndex) {
-    // console.log(' -- bing Correct p 2');
+    // console.log(' -- bing Correct p 2 -- leave or reset to  default color');
+    showIncorrectFBColor = false;
     await tick();
     setTimeout(() => {
       haulerScale = 1;
@@ -722,7 +725,7 @@
           <p class=challenge-prompt>{challenges[challengeIndex].challengeHint}</p>
         {/if}   
         {#if showFeedback}
-          <div class="feedback">
+          <div class="feedback {showIncorrectFBColor ? "incorrect" : ""}">
             <p><span>{challenges[challengeIndex].options[chosenOptionIndex].feedback}</span><br>
             {challenges[challengeIndex].options[chosenOptionIndex].moreFeedback}</p>
           </div><!-- /feedback -->
