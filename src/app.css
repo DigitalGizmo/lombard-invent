@@ -163,13 +163,13 @@ p.challenge-prompt {
 div.feedback {
   max-height: 18vh;
   overflow-y: scroll;
-  background-color: #7ebd63;
+  background-color: #b9dade;
   margin-bottom: 6px;
   padding: 6px;
 }
 
 div.incorrect {
-  background-color: #faa9cd;
+  background-color: #ffd2f8;
 }
 
 div.feedback p {
