@@ -155,12 +155,21 @@ article h2 {
   border-top: 1px solid lightgray;
 }
 
+p.challenge-prompt {
+  font-style: italic;
+  font-weight: 500;
+}
+
 div.feedback {
-  height: 18vh;
+  max-height: 18vh;
   overflow-y: scroll;
-  background: lightgray;
+  background-color: #7ebd63;
   margin-bottom: 6px;
   padding: 6px;
+}
+
+div.feedback .incorrect {
+  background-color: #faa9cd;
 }
 
 div.feedback p {
@@ -292,8 +301,8 @@ ul.options li h3 {
 
 p.credits {
   position: absolute;
-  bottom: 5vh;
-  right: 6vw;
+  bottom: 1vh;
+  left: 2vw;
 }
 
 @media screen and (max-aspect-ratio: 11/9) {/* move credits link to top for small displays */

@@ -20,10 +20,11 @@
     assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
     challengeIndex = 0;
   } else if (buildMode === 1) {
-    assetPath = "https://mainestetemuseum.org/lombard-invent/";
+    assetPath = "https://mainestatemuseum.org/lombard-invent/";
     challengeIndex = 0;
   } else {
-    assetPath = "";
+    // assetPath = "";
+    assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
     challengeIndex = 7;
   }
 
@@ -36,7 +37,7 @@
   let currentCorrectness = 0;
   let correctnessStates = [1, 1, 1, 1];
   let optionsToHide = ["", "", "", "", ""];
-  const speed = 1 // 0.3; // Smaller is faster for working preview, default = 1, fast = 0.3
+  const speed = 0.3 // 0.3; // Smaller is faster for working preview, default = 1, fast = 0.3
   const longMoveDuration = 5000 * speed; // 5000
   const shortMoveDuration = 1000 * speed;
   // const attractDuration = 34000 * speed;
@@ -88,7 +89,7 @@
   let animationFrameId = null;
 
   // Kiosk timeout functionality
-  const TIMEOUT_DURATION = 120000 // 60000 = 1 minute; // 1000 per second  (milliseconds)
+  const TIMEOUT_DURATION = (120000 * speed) // 60000 = 1 minute; // 1000 per second  (milliseconds)
   let timeoutId;
 
   // Reset on timeout and define what will happen upon timeout
@@ -718,7 +719,7 @@
         {/if}   
         {#if challenges[challengeIndex].challengeHint &&
           !showFeedback && !hintHasBeenShown }
-          <p>{challenges[challengeIndex].challengeHint}</p>
+          <p class=challenge-prompt>{challenges[challengeIndex].challengeHint}</p>
         {/if}   
         {#if showFeedback}
           <div class="feedback">
