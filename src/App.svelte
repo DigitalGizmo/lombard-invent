@@ -23,8 +23,8 @@
     assetPath = "https://mainestatemuseum.org/lombard-invent/";
     challengeIndex = 0;
   } else {
-    // assetPath = "";
-    assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
+    assetPath = "";
+    // assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
     challengeIndex = 7;
   }
 
@@ -38,7 +38,7 @@
   let currentCorrectness = 0;
   let correctnessStates = [1, 1, 1, 1];
   let optionsToHide = ["", "", "", "", ""];
-  const speed = 0.3 // 0.3; // Smaller is faster for working preview, default = 1, fast = 0.3
+  const speed = 1 // 0.3; // Smaller is faster for working preview, default = 1, fast = 0.3
   const longMoveDuration = 5000 * speed; // 5000
   const shortMoveDuration = 1000 * speed;
   // const attractDuration = 34000 * speed;
