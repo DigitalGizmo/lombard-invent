@@ -761,8 +761,10 @@
       on:click={(e) => { e.preventDefault(); showModal();}}>
       Credits
     </a>
-    &nbsp;|&nbsp;
-    <a href="/">Start Over</a>
+    {#if buildMode == 2}
+      &nbsp;|&nbsp;
+      <a href="/">Start Over</a>
+    {/if}
   </p>
 
   {#if optionsVisible}
