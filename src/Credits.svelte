@@ -32,7 +32,7 @@
       </div><!-- /modal-close -->
 
       <h3>Credits</h3>
-      <h4>Funding for Virtual Lombard Website Development</h4>
+      <h4>Funding for "Be The Inventor" Development</h4>
       <ul>
         <li>Bill and Joan Alfond Foundation</li>
         <li>Maine State Museum</li>
