@@ -342,6 +342,11 @@ p.credits a:hover {
   height: 30vh;
 }
 
+#modal-wrapper li, #modal-wrapper h4 {
+  font-size: 1.25em;
+}
+
+
 /* JavaScript assigns this (or .hidden) to modal container */
 @media screen and (max-width: 799px) { /* displays smaller than 800px */
   .modal-basic {

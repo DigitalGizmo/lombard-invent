@@ -2,7 +2,7 @@
   {
     "slug": "intro",
     "title": "Be The Inventor",
-    "challengeText": "Here's your challenge: invent a machine to haul logs out of the forest! For each of the five challenges, drag and drop your best guess to the Lombard Hauler. Click start to begin!",
+    "challengeText": "Team up with Alvin Lombard to solve a problem: Invent a machine to haul logs out of the forest. You'll face five challenges. Click start to begin!",
     "challengePhase": [
       {
         "note": "while in transition, 0, audio is clippity cloppity",
@@ -73,7 +73,7 @@
       {
         "label": "Railroads",
         "feedback": "Railroads...incorrect. Try a different solution.",
-        "moreFeedback": "Logging railroads were indeed used but they were very expensive to operate and limited to where they could be built.",
+        "moreFeedback": "Logging railroads were indeed used but they were very expensive to operate and not suitable for most areas.",
         "correctness": "0",
         "imageName": "c1opt-train",
         "audioFeedback": "incorrect"
@@ -81,7 +81,7 @@
       {
         "label": "Steam Engine",
         "feedback": "Excellent solution! Steam worked!",
-        "moreFeedback": "A steam powered machine could haul much further than a team of horses, and it didn’t get tired or hungry. Let's call our new machine a Lombard Log Hauler! Onward to the next challenge!",
+        "moreFeedback": "A steam-powered machine could haul much farther than a team of horses, and it didn’t get tired or hungry. Let's call our new machine a Lombard Log Hauler! Onward to the next challenge!",
         "correctness": "1",
         "imageName": "c1opt-tractor",
         "audioFeedback": "correct"
@@ -133,7 +133,7 @@
       {
         "label": "Crawler Tracks",
         "feedback": "Excellent!!",
-        "moreFeedback": "In 1900, Alvin Lombard developed and patented the first practical crawler track system. Crawler tracks spread the machine's weight so it wouldn't get stuck and have better traction on ice and snow. Try the next challenge.",
+        "moreFeedback": "In 1900, Alvin Lombard developed and patented the first practical crawler track system. Crawler tracks spread the weight so the machine could have better traction and not get stuck on ice and snow. Try the next challenge.",
         "correctness": "1",
         "imageName": "c2opt-tracks",
         "audioFeedback": "correct"
@@ -141,7 +141,7 @@
       {
         "label": "Large Wheels",
         "feedback": "Wrong. Try another solution.",
-        "moreFeedback": "Large steel wheels from that time had terrible traction and would sink in snow and mud.",
+        "moreFeedback": "Large steel wheels from that time had terrible traction and sank in snow and mud.",
         "correctness": "0",
         "imageName": "c2opt-wheels",
         "audioFeedback": "incorrect"
@@ -149,7 +149,7 @@
       {
         "label": "Giant Screws",
         "feedback": "Giant screws are an interesting idea, but not effective! Try again!",
-        "moreFeedback": "In 1904, Ira Peavey of Bangor patented a \"Snow Locomotive\" which used giant screws to move through the snow and over ice. It worked but wasn’t a commercial success",
+        "moreFeedback": "In 1904, Ira Peavey of Bangor patented a \"Snow Locomotive\" which used giant screws to move the machine through the snow and over ice. It worked but wasn’t a commercial success.",
         "correctness": "0",
         "imageName": "c2opt-screw",
         "audioFeedback": "incorrect"
@@ -159,7 +159,7 @@
   {
     "slug": "steering",
     "title": "Steering",
-    "challengeText": "The Lombard Log hauler with its heavy steam engine and big crawler tracks weighed 19-tons. How can you steer such a massive machine?",
+    "challengeText": "The Lombard Log Hauler with its heavy steam engine and big crawler tracks weighed 19 tons. How can you steer such a massive machine?",
     "challengePhase": [
       {
         "note": "while in transition, 0",
@@ -193,23 +193,23 @@
       {
         "label": "Tiller",
         "feedback": "Not quite. Try again!",
-        "moreFeedback": "Tiller steering - using a stick to pivot the front wheels - was used on early automobiles. In fact, Alvin Lombard built a steam powered automobile in 1899 that used tiller steering. However, steering with a tiller would be difficult on such a heavy machine.",
+        "moreFeedback": "Tiller steering - using a stick to pivot the front wheels - was used on early automobiles. In fact, Alvin Lombard built a steam-powered automobile in 1899 that used tiller steering. But, steering with a tiller would be difficult on a heavy machine like the Lombard Log Hauler.",
         "correctness": "0",
         "imageName": "c3opt-tiller",
         "audioFeedback": "boulder-crash"
       },
       {
         "label": "Steering Wheel",
-        "feedback": "Perfect!",
-        "moreFeedback": "Combining a steering wheel with gears reduced the steering effort. It worked great! Give the next challenge a go.",
+        "feedback": "Perfect! Give the next challenge a go.",
+        "moreFeedback": "Combining a steering wheel with gears reduced the steering effort. It worked great!",
         "correctness": "1",
         "imageName": "c3opt-steeringwheel",
         "audioFeedback": "correct"
       },
       {
         "label": "Horse",
-        "feedback": "Sorry, incorrect.",
-        "moreFeedback": "Alvin first tried using horses to steer his Log Hauler. Imagine sitting on a 19-ton moving machine and trying to steer it with a horse. This turned out to be challenging and dangerous!",
+        "feedback": "Sorry, incorrect. Try again.",
+        "moreFeedback": "Alvin Lombard first tried using horses to steer his Log Hauler. Imagine sitting on a 19-ton moving machine and trying to steer it with horses. This turned out to be challenging and dangerous!",
         "correctness": "0",
         "imageName": "c3opt-horse",
         "audioFeedback": "horse"
@@ -219,7 +219,7 @@
   {
     "slug": "cost",
     "title": "Cost",
-    "challengeText": "The Lombard steam Log Hauler worked great, but it was pretty expensive to operate. How can we reduce costs?",
+    "challengeText": "The Lombard Steam Log Hauler worked great, but it was pretty expensive to operate. How can we reduce costs?",
     "challengePhase": [
       {
         "note": "while in transition, 0",
@@ -253,7 +253,7 @@
       {
         "label": "A Smaller Crew",
         "feedback": "Sorry, a smaller crew was not possible. Try another solution.",
-        "moreFeedback": "A Lombard steam log hauler required a crew of three: a Steersman, an Engineer, and a Fireman to regulate the fire in the steam engine boiler. All were vital to the successful and safe operation of the machine. ",
+        "moreFeedback": "A steam Lombard Log Hauler required a crew of three: a steersman, an engineer, and a fireman to regulate the fire in the steam engine boiler. All were vital to the successful and safe operation of the machine.",
         "correctness": "0",
         "imageName": "c4opt-workers2",
         "audioFeedback": "incorrect"
@@ -268,8 +268,8 @@
       },
       {
         "label": "Gas Engine",
-        "feedback": "Correct!",
-        "moreFeedback": "In 1915, Alvin introduced the gasoline-powered Lombard “Tractor-Truck” which was so successful that he stopped production of steam-powered Log Haulers in 1917. The “Tractor-Truck” was lighter, faster, and only required one driver. Let's move to the last challenge!",
+        "feedback": "Correct! Let's move to the last challenge!",
+        "moreFeedback": "In 1915, Alvin Lombard introduced the gasoline-powered Lombard Tractor-Truck which was so successful that he stopped production of steam-powered Log Haulers in 1917. The Tractor-Truck was lighter, faster, and only required one driver.",
         "correctness": "1",
         "imageName": "c4opt-gas-engine",
         "audioFeedback": "correct"
@@ -314,7 +314,7 @@
       {
         "label": "Straw",
         "feedback": "Using straw sounds scary. Try again.",
-        "moreFeedback": "Lumbermen put straw on the ground to slow the sleds by creating friction. This barely slowed the machine and required paying a person stationed at each hill to replace the old ice-coated straw with a new layer. ",
+        "moreFeedback": "Lumbermen put straw on the ground to slow the sleds by creating friction. This barely slowed the machine and required that a person be paid to stay at each hill to replace the old ice-coated straw with a new layer.",
         "correctness": "0",
         "imageName": "c5opt-straw",
         "audioFeedback": "kerplash"
@@ -322,7 +322,7 @@
       {
         "label": "Mechanical Brakes",
         "feedback": "Great choice!",
-        "moreFeedback": "While steam powered Lombard log haulers never had brakes, all gasoline powered Lombards had a powerful, foot operated drum brake.",
+        "moreFeedback": "While steam-powered Lombard Log Haulers never had brakes, all gasoline-powered Lombards had powerful, foot-operated drum brakes.",
         "correctness": "1",
         "imageName": "c5opt-drum-brake",
         "audioFeedback": "woo-hoo"
@@ -330,7 +330,7 @@
       {
         "label": "Snubbing Machine",
         "feedback": "Not the best option. Try again!",
-        "moreFeedback": "Lumbermen wrapped ropes (snub lines) around tree stumps to lower the Log Hauler with its heavy logging sleds downhill. Equipment called a \"snubbing machine\" gradually released the rope to control the descent. Snub lines were dangerous and required paying an additional crew to operate.",
+        "moreFeedback": "Lumbermen wrapped ropes (snub lines) around tree stumps to lower a Log Hauler with its heavy logging sleds downhill. A piece of equipment called a \"snubbing machine\" gradually released the rope to control the hauler’s descent. Snub lines were dangerous and required an additional crew to operate.",
         "correctness": "0",
         "imageName": "c5opt-snubbing",
         "audioFeedback": "kerplash"
@@ -340,7 +340,7 @@
   {
     "slug": "end",
     "title": "You did it!",
-    "challengeText": "Thanks for playing \"Be the Inventor\"! Like Alvin Lombard learned, making a successful new machine requires a series of many smaller inventions along the way.",
+    "challengeText": "Thanks for playing \"Be the Inventor\"! As Alvin Lombard learned, making a successful new machine requires a series of many smaller inventions along the way.",
     "challengePhase": [
       {
         "note": "while in transition, 0",

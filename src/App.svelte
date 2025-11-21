@@ -23,8 +23,8 @@
     assetPath = "https://mainestatemuseum.org/lombard-invent/";
     challengeIndex = 0;
   } else {
-    assetPath = "";
-    // assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
+    // assetPath = "";
+    assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
     challengeIndex = 7;
   }
 
@@ -323,7 +323,7 @@
     
     // titleVisible = false;
     if (challengeIndex === 5){
-      dynoTitle = "You solved many challenges!";
+      dynoTitle = "You solved all five challenges!";
     } else if (challengeIndex > 0) {
       dynoTitle = challenges[challengeIndex].title + " solved! On to the next Challenge";
     }
@@ -684,7 +684,7 @@
   {#if challengeIndex === 7}
     <div class="idle">
       <h3>Be the Inventor!</h3>
-      <p>Your challenge is to invent a machine to haul logs out of the forest!</p>
+      <p>Team up with Alvin Lombard to solve a problem: Invent a machine to haul logs out of the forest. You'll face five challenges.</p>
       <button on:click={begin}>
         Let's start inventing!
       </button>
