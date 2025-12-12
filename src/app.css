@@ -133,7 +133,7 @@ article {/* */
   position: absolute;
   top: 40vh;
   margin: 0 0 0 2vw;
-  width: 25vw;
+  width: 28vw;
   min-height: 35vh;
   border: 1px solid lightgray;
   padding: 1%;
@@ -423,21 +423,26 @@ p.credits a:hover {
 
 /* No Mobile */
 
-.mobile-message p {
+div.mobile-message {
   display: none;
 }
 
 @media (max-width: 480px) or (max-height: 480px) { /* mobile displays @media (min-width: 480px) and (max-width: 767px) */
-  .mobile-message p {
-    height: 100%;
-    width: 100%;
+  div.mobile-message {
+    display: block;
+    height: 100vh;
+    width: 100vw;
     background-color: #5CB8C4;
-    color: #FFF;
     text-align: center;
-    padding: 5em 2em;
-    font-size: 1.25em;
+    padding: 5em 0;
     position: absolute;
     top: 0;
+  }
+  div.mobile-message p {
+    width: 60vw;
+    margin: auto;
+    font-size: 1.25em;
+    color: #FFF;
   }
 }
 
