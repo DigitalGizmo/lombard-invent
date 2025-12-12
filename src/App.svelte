@@ -834,6 +834,10 @@
   
 </div><!--/wrapper-->
 
+<div class="mobile-message">
+  <p>This activity is not formatted for mobile. Please try a device with a larger display.</p>
+</div>
+
 {#if isModalShowing}
   <Credits 
     bind:isModalShowing 
