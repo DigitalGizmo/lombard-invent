@@ -7,7 +7,7 @@
       {
         "note": "while in transition, 0, audio is clippity cloppity",
         "imageName": "c0-horses",
-        "audio": "progress"
+        "audio": "progress-horse"
       },
       {
         "note": "while at kaput, 1",
@@ -44,7 +44,7 @@
       {
         "note": " while in transition, 0, audio is chokka chokka",
         "imageName": "c0-horses",
-        "audio": "progress"
+        "audio": "progress-steam"
       },
       {
         "note": "while at kaput, 1",
@@ -102,7 +102,7 @@
     "challengeText": "Lumbermen usually moved timber during the winter when the ground was frozen. Sleds could easily glide over ice and snowy roads, but machines had trouble! How would you design a machine that provides good traction on wintery roads?",
     "challengePhase": [
       {
-        "note": "while in transition, 0",
+        "note": "while in transition, 0, audio is chokka chokka",
         "imageName": "c1-tractor",
         "audio": "progress-steam"
       },
@@ -162,7 +162,7 @@
     "challengeText": "The Lombard Log Hauler with its heavy steam engine and big crawler tracks weighed 19 tons. How can you steer such a massive machine?",
     "challengePhase": [
       {
-        "note": "while in transition, 0",
+        "note": "while in transition, 0, audio is chokka chokka",
         "imageName": "c2-tractor-tracks",
         "audio": "progress-steam"
       },
@@ -229,7 +229,7 @@
       {
         "note": "while at kaput, 1",
         "imageName": "c3-tractor-steeringwheel-kaput",
-        "audio": "incorrect"
+        "audio": "cost-dilemma"
       },
       {
         "note": "option applied, 2",
@@ -284,7 +284,7 @@
       {
         "note": "while in transition, 0",
         "imageName": "c4-tractor-gas-engine",
-        "audio": "gas-engine"
+        "audio": "progress-gas"
       },
       {
         "note": "while at kaput, 1",
@@ -350,7 +350,7 @@
       {
         "note": "while at kaput, 1",
         "imageName": "c5-tractor-success",
-        "audio": "congratulations"
+        "audio": "woo-hoo"
       },
       {
         "note": "option applied, 2",
@@ -389,7 +389,7 @@
       {
         "note": "attact loop special case = 9",
         "imageName": "c0-horses",
-        "audio": "progress"
+        "audio": "progress-horse"
       },
       {
         "note": "while at kaput, 1",
