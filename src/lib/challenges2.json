@@ -7,7 +7,7 @@
       {
         "note": "while in transition, 0, audio is clippity cloppity",
         "imageName": "c0-horses",
-        "audio": "progress-horse"
+        "audio": "placeholder-not used"
       },
       {
         "note": "while at kaput, 1",
@@ -44,7 +44,7 @@
       {
         "note": " while in transition, 0, audio is chokka chokka",
         "imageName": "c0-horses",
-        "audio": "progress-steam"
+        "audio": "progress-horse"
       },
       {
         "note": "while at kaput, 1",

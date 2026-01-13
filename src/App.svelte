@@ -23,8 +23,8 @@
     assetPath = "https://mainestatemuseum.org/lombard-invent/";
     challengeIndex = 0;
   } else {
-    // assetPath = "";
-    assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
+    assetPath = "";
+    // assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
     challengeIndex = 7;
   }
 
@@ -61,7 +61,7 @@
   let optionPositions = [
     { x: 0, y: 0}, { x: 0, y: 0}, { x: 0, y: 0}, { x: 0, y: 0}
   ]
-  let audioProgress = new Audio(assetPath + 'audio/progress.mp3')
+  let audioProgress = new Audio(assetPath + 'audio/placeholder.mp3')
   let audioEndTravel = new Audio(assetPath + 'audio/incorrect.mp3')
   let audioOption = new Audio(assetPath + 'audio/incorrect.mp3')
   // const audioCorrect = new Audio(assetPath + 'audio/correct.mp3')
@@ -242,7 +242,8 @@
     
     let lastTime = performance.now();
 
-    audioProgress = new Audio(assetPath + 'audio/progress-attract.mp3')
+    audioProgress = new Audio(assetPath + 'audio/' + 
+        challenges[challengeIndex].challengePhase[0].audio + '.mp3')
       audioProgress.play();
     
     function animate(currentTime) {
@@ -342,6 +343,8 @@
     // If we're coming here from the attract screen, then we don't play the move
     // since we were already moving
     if (!_isFromAttract) {
+      console.log("nextMove, not attract, audo: " + 
+        challenges[challengeIndex].challengePhase[0].audio);
       audioProgress = new Audio(assetPath + 'audio/' + 
         challenges[challengeIndex].challengePhase[0].audio + '.mp3')
       audioProgress.play();
