@@ -352,7 +352,12 @@
       // Use linear easing explicitly for this movement
       landX.update(x => x - 50, {duration: longMoveDuration, easing: linear});
       await skyX.update(x => x - 20, {duration: longMoveDuration, easing: linear});
-      audioProgress.pause();
+
+      // Grand finale audio cuts off too soon, but regular progress does
+      // need to stop, eg clopping
+      if (challengeIndex != 6){
+        audioProgress.pause();
+      }
       
       checkAndRepositionImages();
     }
@@ -458,7 +463,7 @@
 
     handleUserActivity();
 
-    audioProgress.play();
+    // audioProgress.play();
     landX.update(x => x - 8, {duration: shortMoveDuration, easing: linear});
     await skyX.update(x => x - 5, {duration: shortMoveDuration, easing: linear});
     audioProgress.pause();
@@ -495,13 +500,14 @@
     audioOption = new Audio(assetPath + 'audio/' + 
         challenges[challengeIndex].options[_chosenOptionIndex].audioFeedback + '.mp3')
 
+    console.log("-- about to play: " + challenges[challengeIndex].options[_chosenOptionIndex].audioFeedback)
     audioOption.play();
 
     // Need to freeze option dragging -- retry required to try those
     isFrozen = true;
     setTimeout(() => {
       haulerScale = 1.4;
-      // console.log('setting scale 1.2')
+      console.log('call bingCorrectPart2')
       bingCorrectPart2();
     }, 500);
   }  
@@ -512,9 +518,9 @@
     await tick();
     setTimeout(() => {
       haulerScale = 1;
-      // console.log('setting scale 1.2')
+      console.log('pause audio')
       displayFeedback();
-      audioOption.pause();
+      // audioOption.pause();
     }, 500);
   }  
 
