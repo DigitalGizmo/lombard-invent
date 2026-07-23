@@ -11,22 +11,12 @@
   import challenges from './lib/challenges2.json';
   import Credits from './Credits.svelte';
 
-  let assetPath = "https://assets.digitalgizmo.com/lombard-invent/";
-  let challengeIndex = 0;
-
-  let buildMode = 0;
-  // buildMode: 0 = devel, 1 web, 2 = kiosk
-  if (buildMode === 0) {
-    assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
-    challengeIndex = 0;
-  } else if (buildMode === 1) {
-    assetPath = "https://mainestatemuseum.org/lombard-invent/";
-    challengeIndex = 0;
-  } else {
-    assetPath = "";
-    // assetPath = "https://assets.digitalgizmo.com/lombard-invent/"
-    challengeIndex = 7;
-  }
+  // Build config comes from .env files (see .env, .env.web, .env.kiosk).
+  // Run with: npm run dev | dev:web | dev:kiosk, or build | build:web | build:kiosk
+  let assetPath = import.meta.env.VITE_ASSET_PATH;
+  const isKiosk = import.meta.env.VITE_KIOSK === 'true';
+  // Kiosk starts in attract mode (challengeIndex 7); everything else starts at 0.
+  let challengeIndex = isKiosk ? 7 : 0;
 
   let challengePhaseIndex = 0;
   let chosenOptionIndex = 0;
@@ -98,7 +88,7 @@
   // Also update resetTimeout to clear any existing timeout
   function resetTimeout() {
     console.log(' got to resetTimeout. challengeIndex: ' + challengeIndex);
-    if (buildMode === 2) {
+    if (isKiosk) {
       if (timeoutId) {
         clearTimeout(timeoutId);
         timeoutId = null;
@@ -158,7 +148,7 @@
 
   // Modify the handleUserActivity function to only reset timeout when not in attract mode
   function handleUserActivity() {
-    if (buildMode === 2 && challengeIndex !== 7) {
+    if (isKiosk && challengeIndex !== 7) {
       // Only reset timeout when not in attract mode (attract mode is index 7)
       resetTimeout();
     }
@@ -305,7 +295,7 @@
     challengeIndex = 0;
     
     // Now we're leaving attract mode, so start the timeout
-    if (buildMode === 2) {
+    if (isKiosk) {
       resetTimeout(); 
     }
     
@@ -594,7 +584,7 @@
   // Update the onMount function to be more careful about animation initialization
   // Modify onMount to not start timeout if in attract mode
   onMount(() => {
-    if (buildMode === 2) {
+    if (isKiosk) {
       // Make sure animation isn't running yet
       attractAnimationRunning = false;
       if (animationFrameId) {
@@ -624,7 +614,7 @@
   });
 
   onDestroy(() => {
-    if (buildMode === 2) {
+    if (isKiosk) {
       // Stop animations
       attractAnimationRunning = false;
       if (animationFrameId) {
@@ -770,7 +760,7 @@
       on:click={(e) => { e.preventDefault(); showModal();}}>
       Credits
     </a>
-    {#if buildMode == 2}
+    {#if isKiosk}
       &nbsp;|&nbsp;
       <a href="/">Start Over</a>
     {/if}
