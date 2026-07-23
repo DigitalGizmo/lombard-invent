@@ -547,7 +547,7 @@
     isMoreFeedbackShowing = false;
     hintHasBeenShown = true;
     // console.log('opt index: ' + _chosenOptionIndex);
-    if (e.detail.offsetX > optionLandingXOffsets[_chosenOptionIndex] - 30 && 
+    if (e.detail.offsetX > optionLandingXOffsets[_chosenOptionIndex] - 160 && 
       e.detail.offsetX < (optionLandingXOffsets[_chosenOptionIndex] + haulerWidth - 80) &&
       e.detail.offsetY > optionLandingYOffset - 50 && // -400 is gt -500
       e.detail.offsetY < (optionLandingYOffset + haulerHeight - 30 ) 
