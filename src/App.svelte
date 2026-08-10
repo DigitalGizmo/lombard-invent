@@ -97,47 +97,52 @@
       // Don't set a new timeout if we're in attract mode
       if (challengeIndex === 7) return;
       
-      timeoutId = setTimeout(() => {
-        console.log(' -- inside setTimeout. challengeIndex: ' + challengeIndex);
-        
-        // First stop any existing animation
-        if (attractAnimationRunning) {
-          attractAnimationRunning = false;
-          if (animationFrameId) {
-            cancelAnimationFrame(animationFrameId);
-            animationFrameId = null;
-          }
-        }
-        
-        // Reset game state
-        challengeIndex = 7; // Set to attract screen
-        isModalShowing = false;
-        challengePhaseIndex = 0;
-        chosenOptionIndex = 0;
-        showFeedback = false;
-        isMoreFeedbackShowing = false;
-        hintHasBeenShown = false;
-        currentCorrectness = 0;
-        correctnessStates = [1, 1, 1, 1];
-        optionsToHide = ["", "", "", "", ""];
-        optionsVisible = false;
-        textVisible = true;
-        titleVisible = true;
-        doneStatus = [{progNumClass: "current", label: ""}, {progNumClass: "", label: ""}, 
-        {progNumClass: "", label: ""}, {progNumClass: "", label: ""}, {progNumClass: "", label: ""}
-        ]
-        
-        // Reset animation values
-        landX.set(0, {duration: 0});
-        skyX.set(0, {duration: 0});
-        
-        // Start attract mode animation
-        setTimeout(() => {
-          attractAnimationRunning = true;
-          attract();
-        }, 100);
-      }, TIMEOUT_DURATION);
+      timeoutId = setTimeout(goToAttract, TIMEOUT_DURATION);
     }
+  }
+
+  // Reset all game state and return to the attract screen. Called both by the
+  // kiosk inactivity timeout and by the "Start Over" link (programmatic reset
+  // rather than a page reload, which Kioware treats as a file:// navigation).
+  function goToAttract() {
+    console.log(' -- goToAttract. challengeIndex: ' + challengeIndex);
+
+    // First stop any existing animation
+    if (attractAnimationRunning) {
+      attractAnimationRunning = false;
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+    }
+
+    // Reset game state
+    challengeIndex = 7; // Set to attract screen
+    isModalShowing = false;
+    challengePhaseIndex = 0;
+    chosenOptionIndex = 0;
+    showFeedback = false;
+    isMoreFeedbackShowing = false;
+    hintHasBeenShown = false;
+    currentCorrectness = 0;
+    correctnessStates = [1, 1, 1, 1];
+    optionsToHide = ["", "", "", "", ""];
+    optionsVisible = false;
+    textVisible = true;
+    titleVisible = true;
+    doneStatus = [{progNumClass: "current", label: ""}, {progNumClass: "", label: ""},
+    {progNumClass: "", label: ""}, {progNumClass: "", label: ""}, {progNumClass: "", label: ""}
+    ]
+
+    // Reset animation values
+    landX.set(0, {duration: 0});
+    skyX.set(0, {duration: 0});
+
+    // Start attract mode animation
+    setTimeout(() => {
+      attractAnimationRunning = true;
+      attract();
+    }, 100);
   }
 
   function clearKioskTimeout() {
@@ -762,7 +767,7 @@
     </a>
     {#if isKiosk}
       &nbsp;|&nbsp;
-      <a href="/">Start Over</a>
+      <a href="/" on:click={(e) => { e.preventDefault(); goToAttract(); }}>Start Over</a>
     {/if}
   </p>
 
