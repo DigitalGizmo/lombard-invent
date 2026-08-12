@@ -346,7 +346,7 @@ p.credits a:hover {
   overflow: auto;
   padding: 1.5em;
   position: relative;
-  height: 30vh;
+  height: 60vh;
 }
 
 #modal-wrapper li, #modal-wrapper h4 {
@@ -361,8 +361,7 @@ p.credits a:hover {
     display: block;
     left: 1vw;
     margin: auto;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    overflow: hidden;/* #modal-wrapper is the scroll container; keep this one from adding a 2nd scrollbar */
     position: fixed;
     z-index: 100;
     right: 0;
@@ -377,9 +376,8 @@ p.credits a:hover {
     display: block;
     left: 0;
     margin: auto;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    position: fixed;/* this positions the modal window relative to viewport, it won't scroll with the page */  
+    overflow: hidden;/* #modal-wrapper is the scroll container; keep this one from adding a 2nd scrollbar */
+    position: fixed;/* this positions the modal window relative to viewport, it won't scroll with the page */
     z-index: 100;
     right: 0;
     top: 25vh;
