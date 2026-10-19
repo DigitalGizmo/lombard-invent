@@ -80,7 +80,7 @@
   let animationFrameId = null;
 
   // Kiosk timeout functionality
-  const TIMEOUT_DURATION = (120000 * speed) // 60000 = 1 minute; // 1000 per second  (milliseconds)
+  const TIMEOUT_DURATION = (90000 * speed) // 60000 = 1 minute; // 1000 per second  (milliseconds)
   let timeoutId;
 
   // Reset on timeout and define what will happen upon timeout
